@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,warning = F)
+knitr::opts_chunk$set(echo = TRUE,warning = F,message = F)
 ```
 
 
@@ -69,16 +69,16 @@ ggplot(df,aes(x=no,y=freq,fill=type)) +
 
 
 
-
-
 Using the data, we get 
-$$\hat p_{MLE} = \frac{n_1+n_2+\dots+n_5}{n_1+2n_2+3n_3+4n_4+5n_5+5n_6}=`r mle`.$$
+$$\hat p_{MLE} = \frac{n_1+n_2+\dots+n_5}{n_1+2n_2+3n_3+4n_4+5n_5+5n_6}=`r mle`.$$ 
+The estimated average number of occupants is 
+$$\frac{1}{\hat p_{MLE}} =`r 1/mle`.$$
 
 
 ## 案例二：删失数据(censored data)
 
 Suppose $Y_i\stackrel{iid}\sim f(y;\theta)$, but if $Y_i> t_i$ then we don't see $Y_i$ we only learn that $Y_i> t_i$. Let $\delta_i=1$ if $Y_i$ was observed and $\delta_i=0$ otherwise. The likelihood function is given by
-$$L(\theta)=\prod_{i=1}^n f(y_i;\theta)^{\delta_i}(1-F(t;\theta))^{1-\delta_i},$$
+$$L(\theta)=\prod_{i=1}^n f(y_i;\theta)^{\delta_i}(1-F(t_i;\theta))^{1-\delta_i},$$
 where $F(t;\theta)$ is the PDF of $Y_i$. 
 
 **Exponential model**: Assume that $Y_i\stackrel{iid}\sim Exp(\lambda)$. Then we have
@@ -91,6 +91,7 @@ $$\frac{\partial\ln L(\lambda)}{\partial \lambda}=\frac {n_1}\lambda-\sum_{i=1}^
 The MLE is given by
 $$\hat\lambda_{MLE}=\frac {n_1}{\sum_{i=1}^n(\delta_i Y_i+(1-\delta_i)t_i)}=\frac{n_1}{\sum_{i=1}^n\min(Y_i,t_i)}=\frac{n_1}{\sum_{i=1}^nX_i},$$
 where $X_i=\min(Y_i,t_i)$ is the observed data.
+The estimated average survival time is $1/\hat\lambda_{MLE}$. The probability of survival time no less than $t_0$ is $\exp(-\hat\lambda_{MLE} t_0)$.
 
 
 ### Acute Myelogenous Leukemia survival data (急性骨髓性白血病生存数据)
@@ -101,7 +102,7 @@ knitr::kable(head(aml,10),caption = "Acute Myelogenous Leukemia survival data",a
 with(aml, Surv(time, status))
 lambda1 = sum(aml$status)/sum(aml$time)
 ```
-The MLE of $\lambda$ is $\hat\lambda_{MLE}=`r lambda1`$.
+The MLE of $\lambda$ is $\hat\lambda_{MLE}=`r lambda1`$. The estimated average survival time is $1/\hat\lambda_{MLE}=`r 1/lambda1`$. The probability $P(Y>10)$ is estimated by $\exp(-10\times\hat\lambda_{MLE})=`r exp(-10*lambda1)`$. 
 
 ###  Lung Cancer Data (肺癌数据)
 ```{r}
@@ -111,37 +112,40 @@ lambda2 = sum(lung$status==2)/sum(lung$time)
 ```
 
 
-
-
-The MLE of $\lambda$ is $\hat\lambda_{MLE}=`r lambda2`$.
+The MLE of $\lambda$ is $\hat\lambda_{MLE}=`r lambda2`$.  The estimated average survival time is $1/\hat\lambda_{MLE}=`r 1/lambda2`$.
 
 ### What's the MLE for Weibull distribution
 
-The Weibull distribution with shape parameter $a>0$ and scale parameter $b>0$ has density given by
-$$f(x;a,b) = (a/b) (x/b)^{a-1} \exp(- (x/b)^a)$$
-for $x > 0$. The cumulative distribution function is $F(x) = 1 - \exp(- (x/b)^a)$ on $x > 0$.
+The Weibull distribution with shape parameter $\gamma>0$ and rate parameter $\lambda>0$ has density given by
+$$f(x;\gamma,\lambda) = \lambda\gamma x^{\gamma-1} \exp(- \lambda x^\gamma)$$
+for $x > 0$. The cumulative distribution function is $F(x) = 1 - \exp(-  \lambda x^\gamma)$ on $x > 0$. Particularly, if $\gamma=1$, Weibull distribution turns out to be Exponential distribution.
 
 ```{r,fig.align='center'}
-plot(seq(0,5,by=0.01),dweibull(seq(0,5,by=0.01), shape = 2),type='l',xlab='x',ylab='density',main='Weibull distribution with a=2,b=1',bty = "l")
+plot(seq(0,5,by=0.01),dweibull(seq(0,5,by=0.01), shape = 2),type='l',xlab='x',ylab='density',main='Weibull distribution',bty = "l")
 ```
 
 
-Suppose $Y_i\stackrel{iid}\sim f(y;a,b)$. How to estimate $a$ and $b$ for the two data sets above? The likelihood  equation cannot be solved algebraically so you may need a numerical procedure.
+Suppose $Y_i\stackrel{iid}\sim f(y;\gamma,\lambda)$. How to estimate $\gamma$ and $\lambda$ for the two datasets above? How to estimate the average survival time $\lambda^{-1/\gamma}\Gamma(1+1/\gamma)$? 
+The likelihood  equation cannot be solved algebraically so you may need a numerical procedure.
 The Newton-Raphson algorithm is one way to solve such equations numerically.
 
 
 ## 案例三：高斯混合模型(Gaussian mixture model, GMM)
 
-The Gaussian mixture distribution has density given by
+The Gaussian mixture distribution has density given by 
 $$f(x)=\sum_{j=1}^J w_j \phi(x;\mu_j,\sigma^2_j),$$
 where $w_j>0$ and $\sum_{j=1}^J w_j=1$, $\phi(x;\mu,\sigma^2)$ is the PDF of $N(\mu,\sigma^2)$, and $J$ is a given positive integer.
 
-How to estimate the parameters $w_j,\mu_j,\sigma_j^2$?
+How to estimate the parameters $w_j,\mu_j,\sigma_j^2$? The most popular method is the Expectation-Maximization (EM) algorithm proposed by Dempster et al. (1977).
+
+> Dempster, A.P., Laird, N.M. and Rubin, D.B. (1977), Maximum Likelihood from Incomplete Data Via the EM Algorithm. Journal of the Royal Statistical Society: Series B (Methodological), 39: 1-22.  https://doi.org/10.1111/j.2517-6161.1977.tb01600.x
+
+This paper is cited 62040 times as of 2020/10/7.
 
 ### Galaxies data
 
 The galaxies data in the MASS package (Venables and Ripley, 2002) is a frequently used example for
-Gaussian mixture models. It contains the velocities of 82 galaxies from a redshift survey in the Corona
+Gaussian mixture models. It contains the velocities of 82 galaxies from a redshift survey ([红移巡天](https://baike.baidu.com/item/%E7%BA%A2%E7%A7%BB/189542)：红移在物理学和天文学领域，指物体的电磁辐射由于某种原因频率降低的现象，在可见光波段，表现为光谱的谱线朝红端移动了一段距离，即波长变长、频率降低。红移的现象目前多用于天体的移动及规律的预测上。BY 百度百科) in the Corona
 Borealis region (北冕座地区). Clustering of galaxy velocities reveals information about the large scale structure of the
 universe.
 
