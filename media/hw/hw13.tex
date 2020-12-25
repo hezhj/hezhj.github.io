@@ -1,0 +1,227 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{SimSun}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 13},
+            pdfauthor={Put your name and student ID here},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Homework 13}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Put your name and student ID here}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020-12-01}
+
+
+\begin{document}
+\maketitle
+
+\textbf{Q1}: Consider the linear model
+
+\[y_i=\beta_0+\beta_1x_i+\epsilon_i,\ \epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2), i=1,\dots,n.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Derive the maximum likelihood estimators (MLE) for
+  \(\beta_0,\beta_1\). Are they consistent with the least square
+  estimators (LSE)?
+\item
+  Derive the MLE for \(\sigma^2\) and look at its unbiasedness.
+\item
+  A very slippery point is whether to treat the \(x_i\) as fixed numbers
+  or as random variables. In the class, we treated the predictors
+  \(x_i\) as fixed numbers for sake of convenience. Now suppose that the
+  predictors \(x_i\) are iid random variables (independent of
+  \(\epsilon_i\)) with density \(f_X(x;\theta)\) for some parameter
+  \(\theta\). Write down the likelihood function for all of our data
+  \((x_i,y_i),i=1,\dots,n\). Derive the MLE for \(\beta_0,\beta_1\) and
+  see whether the MLE changes if we work with the setting of random
+  predictors?
+\end{enumerate}
+
+\textbf{Q2}: Consider the linear model without intercept
+
+\[y_i  = \beta x_i+\epsilon_i,\ i=1,\dots,n,\]
+
+where \(\epsilon_i\) are independent with \(E[\epsilon_i]=0\) and
+\(Var[\epsilon_i]=\sigma^2\).
+
+\begin{itemize}
+\item
+  Write down the least square estimator \(\hat \beta\) for \(\beta\),
+  and derive an unbiased estiamtor for \(\sigma^2\).
+\item
+  For fixed \(x_0\), let \(\hat{y}_0=\hat\beta x_0\). Work out
+  \(Var[\hat{y}_0]\).
+\end{itemize}
+
+\textbf{Q3}: Genetic variability is thought to be a key factor in the
+survival of a species, the idea being that ``diverse'' populations
+should have a better chance of coping with changing environments. Table
+below summarizes the results of a study designed to test that hypothesis
+experimentally. Two populations of fruit flies (Drosophila serrata)-one
+that was cross-bred (Strain A) and the other, in-bred (Strain B)-were
+put into sealed containers where food and space were kept to a minimum.
+Recorded every hundred days were the numbers of Drosophila alive in each
+population.
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Date & Day number & Strain A & Strain B\tabularnewline
+\midrule
+\endhead
+Feb 2 & 0 & 100 & 100\tabularnewline
+May 13 & 100 & 250 & 203\tabularnewline
+Aug 21 & 200 & 304 & 214\tabularnewline
+Nov 29 & 300 & 403 & 295\tabularnewline
+Mar 8 & 400 & 446 & 330\tabularnewline
+Jun 16 & 500 & 482 & 324\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\item
+  Plot day numbers versus population sizes for Strain A and Strain B,
+  respectively. Does the plot look linear? If so, please use least
+  squares to figure out the coefficients and their standard errors, and
+  plot the two regression lines.
+\item
+  Let \(\beta_1^A\) and \(\beta_1^B\) be the true slopes (i.e., growth
+  rates) for Strain A and Strain B, respectively. Assume the population
+  sizes for the two strains are independent. Under the same assumptions
+  of \(\epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2)\) for both strains,
+  do we have enough evidence here to reject the null hypothesis that
+  \(\beta_1^A\le \beta_1^B\) (significance level \(\alpha=0.05\))? Or
+  equivalently, do these data support the theory that genetically mixed
+  populations have a better chance of survival in hostile environments.
+  (提示：仿照方差相同的两个正态总体均值差的假设检验，构造相应的t检验统计量)
+\end{itemize}
+
+\textbf{Q4}: Let us consider fitting a straight line,
+\(y = \beta_0+\beta_1x\), to points \((x_i,y_i)\), where
+\(i=1,\dots,n\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Write down the normal equations for the simple linear model via the
+  matrix formalism.
+\item
+  Solve the normal equations by the matrix approach and see whether the
+  solutions agree with the earlier calculation derived in the simple
+  linear models.
+\end{enumerate}
+
+\textbf{Q5}: Consider fitting the curve \(y = \beta_0x+\beta_1x^2\) to
+points (\(x_i,y_i\)), where \(i = 1,\dots,n\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use the matrix formalism to find expressions for the least squares
+  estimates of \(\beta_0\) and \(\beta_1\).
+\item
+  Find an expression for the covariance matrix of the estimates.
+\end{enumerate}
+
+\textbf{Q6}: Suppose that in the model
+
+\[y_i= \beta_0+\beta_1x_i+\epsilon_i,\ i=1,\dots,n,\]
+
+the errors \(\epsilon_i\) have mean zero and are uncorrelated, but
+\(\mathrm{Var}(\epsilon_i) = \rho_i^2\sigma^2\), where the \(\rho_i>0\)
+are known constants, so the errors do not have equal variance. Because
+the variances are not equal, the theory developed in our class does not
+apply.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Try to transform suitably the model such that the basic assumptions
+  (i.e., the errors have zero mean and equal variance, and are
+  uncorrelated) of the standard statistical model are satisfied.
+\item
+  Find the least squares estimates of \(\beta_0\) and \(\beta_1\) for
+  the transformed model.
+\item
+  Find the variances of the estimates of Part (b).
+\end{enumerate}
+
+
+\end{document}

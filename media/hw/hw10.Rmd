@@ -1,0 +1,35 @@
+---
+title: "Homework 10"
+author: "Put your name and student ID here"
+date: "`r format(Sys.Date())`"
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+
+**Q1**: Let $X_1,\dots,X_n$ be an iid sample of $N(\mu,\sigma^2)$, where $\mu$ is known. Show that this model has a monotone likelihood ratio. Given a significance level $\alpha$, derive a UMP test of the following hypotheses:
+$$H_0:\sigma^2 \ge \sigma_0^2\ vs.\ H_1:\sigma^2<\sigma_0^2;$$
+$$H_0:\sigma^2 \le \sigma_0^2\ vs.\ H_1:\sigma^2>\sigma_0^2.$$
+
+**Q2**: Let $X_1,\dots,X_n$ be an iid sample of the double exponential distribution with PDF $f(x) = \frac 12\lambda\exp(-\lambda|x|)$, where $\lambda>0$ is unknown. Show that this model has a monotone likelihood ratio. Given a significance level $\alpha$, derive a UMP test of the following hypotheses:
+$$H_0:\lambda \ge \lambda_0\ vs.\ H_1:\lambda < \lambda_0;$$
+$$H_0:\lambda \le \lambda_0\ vs.\ H_1:\lambda > \lambda_0.$$
+
+
+**Q3**: Under the setting of Q2, derive a test (not necessarily UMP) of the two-sided hypothesis
+$$H_0:\lambda =\lambda_0\ vs.\ H_1:\lambda \neq \lambda_0$$
+for a given level of significance $\alpha$.
+
+**Q4**: Under the setting of Q2, derive a UMP test of the hypothesis
+$$H_0:\lambda > \lambda_0\ vs.\ H_1:\lambda \le \lambda_0$$
+for a given level of significance $\alpha$. (Hint:  prove that the result in Q2 is also UMP for this case)

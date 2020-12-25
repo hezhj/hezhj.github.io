@@ -1,0 +1,51 @@
+---
+title: "Homework 5"
+author: "Put your name and student ID here"
+date: "`r format(Sys.Date())`"
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+**Q1**: Let $X_1,\dots,X_n$ be a sample from density
+$$f(x;\sigma)=\frac{1}{2\sigma} e^{-|x|/\sigma},$$
+where $\sigma>0$. Find the maximum likelihood estimator for $\sigma$.
+
+
+**Q2**: Let $X_1,\dots,X_n$ be  a sample from $\mathbb{U}[\theta,\theta+1]$, where $\theta\in\mathbb{R}$. Prove that the maximum likelihood estimator (MLE) for $\theta$ is not unique, and find out all the MLEs.
+
+
+**Q3**: Suppose that the random variable $X$ is taken from $N(0,1)$ and $N(\mu,\sigma^2)$ with equal probability $1/2$, where $\mu\in \mathbb{R},\sigma^2>0$. The random variable $X$ actually follows a mixed distribution with density
+$$f(x;\mu,\sigma^2) = \frac 12\frac{1}{\sqrt{2\pi}}e^{-\frac {x^2}2}+\frac 12\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}.$$
+
+Let $X_1,\dots,X_n$ be a sample from the mixed distribution. Prove that the maximum likelihood estimation for $\mu,\sigma^2$ does not exist. Could you estimate $\mu,\sigma^2$ via the method of moments?
+
+
+**Q3'(选做)**: Consider a more general mixed distribution with density
+$$f(x;\lambda,\mu_1,\sigma_1,\mu_2,\sigma_2)=\frac{\lambda}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}+\frac{1-\lambda}{\sqrt{2\pi}\sigma_2}e^{-\frac{(x-\mu_2)^2}{2\sigma_2^2}},$$
+where $\lambda\in[0,1],\mu_1,\mu_2\in \mathbb{R},\sigma_1^2,\sigma_2^2>0$. How to estimate the five parameters via the method of moments?
+
+
+**Q4**: Let $X_1,\dots,X_n$ be a sample from density
+$$f(x;\theta)=\frac{\Gamma(\theta+1)}{\Gamma(\theta)\Gamma(1)}x^{\theta-1}1\{0< x< 1\},$$
+
+where $\theta>0$.  Use the method of moments to estimate $\theta$.
+
+
+**Q5**: Let $X_1,\dots,X_n$ be a sample from density
+$$f(x;c,\theta)=\frac{1}{2\theta}1\{c-\theta\le x\le c+\theta\},$$
+
+where $\theta>0,c\in\mathbb{R}$. Use the method of moments to estimate $c$ and $\theta$.
+
+
+
+

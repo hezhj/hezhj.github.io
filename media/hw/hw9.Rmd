@@ -1,0 +1,57 @@
+---
+title: "Homework 9"
+author: "Put your name and student ID here"
+date: "`r format(Sys.Date())`"
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+
+**Q1**: Let $X_1,\dots,X_n$ be an iid sample of Possion distribution with parameter $\lambda>0$. Find an approximate $100(1-\alpha)\%$ confidence interval for $\lambda$.
+
+**Q2**: Suppose that an event $A$ was observed 36 times out of 120 independent experiments. Use CLT to find an approximate $95\%$ confidence interval for $P(A)$.
+
+**Q3**: Let $X_1,\dots,X_n$ be an iid sample from a distribution with CDF $F(x)$. 
+
+(a) Show that the empirical CDF $\hat F_n(x)$ is an unbiased estimate of $F(x)$ for any fixed $x\in\mathbb{R}$. 
+
+(b) Find the variance of $\hat F_n(x)$.
+
+(c) Now suppose that $F(x)=1-\exp(-\lambda x)$ for $x>0$ and $0$ otherwise. Inspecting whether the variance of $\hat F_n(x)$ attains the lower bound of Cramer-Rao inequality for estimating $F(x)$ with fixed $x>0$. (In fact, there exists a better unbiased estimator for $F(x)$ than the empirical CDF for this case.)
+
+
+
+**Q4**: True or false, and state why:
+
+1. The significance level of a statistical test is equal to the probability that the
+null hypothesis is true.
+2. If the significance level of a test is decreased, the power of the test would be expected to
+increase.
+3. The probability that the null hypothesis is falsely rejected is equal to the power
+of the test.
+4. A type I error occurs when the test statistic falls in the rejection region of the
+test.
+
+
+**Q5**: A coin is thrown independently 10 times to test the hypothesis that the probability of heads is $1/2$ versus the alternative that the probability is not $1/2$. The test rejects
+if either 0 or 10 heads are observed.
+
+1. What is the significance level of the test?
+2. If in fact the probability of heads is $0.1$, what is the power of the test?
+
+
+**Q6**: Suppose that $X_1,X_2,X_3$ are samples of Bernoulli $B(1,p)$ population. For testing the hypothesis $H_0:p=1/2\ vs.\ H_1:p=3/4$, we use a rejection region:
+$$W=\{(x_1,x_2,x_3):x_1+x_2+x_3\ge 2\}.$$
+
+1. What are the probabilities of the two types of errors for $W$?
+2. What is the power of the test? 

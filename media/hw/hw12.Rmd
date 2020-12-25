@@ -1,0 +1,107 @@
+---
+title: "Homework 12"
+author: "Put your name and student ID here"
+date: "`r format(Sys.Date())`"
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+**Q1**: True or false, and state why:
+
+1. If the p-value is 0.03, the corresponding test will reject at the significance
+level 0.02.
+
+ 
+
+2. If a test rejects at significance level 0.06, then the p-value is less than or equal
+to 0.06.
+
+
+3. The p-value of a test is the probability that the null hypothesis is correct.
+
+
+
+
+
+**Q2**: Mutual funds are investment vehicles consisting of a portfolio of various types
+of investments. If such an investment is to meet annual spending needs, the
+owner of shares in the fund is interested in the average of the annual returns of
+the fund. Investors are also concerned with the volatility of the annual returns,
+measured by the variance or standard deviation. One common method of evaluating
+a mutual fund is to compare it to a benchmark, the Lipper Average being
+one of these. This index number is the average of returns from a universe of
+mutual funds.
+The Global Rock Fund is a typical mutual fund, with heavy investments in
+international funds. It claimed to best the Lipper Average in terms of volatility
+over the period from 1989 through 2007. Its returns are given in the table below.
+
+
+Year | Investment Return % | Year |  Investment Return %
+ - | - | - | - |
+1989  | 15.32 | 1999 | 27.43
+1990  | 1.62  | 2000  | 8.57
+1991  |  28.43 | 2001  | 1.88
+1992  | 11.91  | 2002  | −7.96
+1993  | 20.71  | 2003  | 35.98
+1994  | −2.15  | 2004  | 14.27
+1995  | 23.29  | 2005  | 10.33
+1996  | 15.96  | 2006  | 15.94
+1997  | 11.12  | 2007  | 16.71
+1998  | 0.37 | |
+
+The standard deviation for the Lipper Average is $11.67\%$. Let $\sigma^2$ denote the variance of the population represented by the return
+percentages shown in the table above. Consider the test
+
+$$H_0: \sigma^2\ge(11.67)^2\ vs.\ H_1:\sigma^2<(11.67)^2.$$
+ 
+
+- If the significance level $\alpha=0.05$, what's your decision?
+
+- Show up the p-value of your test.
+
+
+
+**Q3**: The National Center for Health Statistics (1970) gives the following data on
+distribution of suicides in the United States by month in 1970. Is there any
+evidence that the suicide rate varies seasonally, or are the data consistent with
+the hypothesis that the rate is constant (the significance level $\alpha=0.05$)? (Hint: Under the latter hypothesis, model
+the number of suicides in each month as a multinomial random variable with the
+appropriate probabilities and conduct a goodness-of-fit test.)
+
+Month | Number of Suicides | Days/Month |
+-|-|-|
+Jan.  | 1867  | 31
+Feb.  | 1789  | 28
+Mar.  | 1944  | 31
+Apr.  | 2094  | 30
+May  | 2097  | 31
+June  | 1981  | 30
+July  | 1887  | 31
+Aug.  | 2024  | 31
+Sept.  | 1928  | 30
+Oct.  | 2032  | 31
+Nov.  | 1978  | 30
+Dec.  | 1859  | 31
+
+**Q4**: Under (the assumption of) simple Mendelian inheritance, a cross between plants of two particular genotypes produces progeny 1/4 of
+which are "dwarf" and $3/4$ of which are "giant", respectively.
+In an experiment to determine if this assumption is reasonable, a
+cross results in progeny having 243 dwarf and 682 giant plants.
+If "giant" is taken as success, the null hypothesis is that $p =3/4$ and the alternative that $p \neq 3/4$. 
+
+
+- Let $X_i,i=1,\dots,n$ be the sample of the population $B(1,p)$. By central limit theorem (CLT), the distribution of $\bar X$ can be approximated by a normal distribution $N(p,p(1-p)/n)$. Please use this approximation to do the binominal test above.
+
+
+- Actually, we can do the exact binominal test according to the formula given in P.114 of our Chinese textbook.  Compare the results in the exact test and the approximate test for significance  levels $\alpha=0.05,0.01,0.001$.
+

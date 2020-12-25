@@ -1,0 +1,62 @@
+---
+title: "Homework 7"
+author: "Put your name and student ID here"
+date: "`r format(Sys.Date())`"
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+
+**Q1**: Let $X_1,\dots,X_n$ be an iid sample of Poisson distribution with parameter $\lambda$. Which of the following are
+unbiased estimates of $\lambda$? (    ) 多选
+
+A. $\bar X$
+
+B. $S_n^{*2}$
+
+C. $(\bar X+S_n^{*2})/2$
+
+D. $S_n^2$
+
+
+**Q2**: Let $X_1,\dots,X_n$ be an iid  sample of $N(\mu,\sigma^2)$, where $\mu,\sigma$ are unknown parameters. Let $T_k=k\sum_{i=1}^n(X_i-\bar X)^2$ be an estimator of $\sigma^2$. Particularly, when $k=1/n$, $T_k=S_n^2$, and when $k=1/(n-1)$, $T_k=S_n^{*2}$. Find a value of $k$ such that $T_k$ is the most efficient one by taking account of MSE.
+
+**Q3**: Let $X_1,\dots,X_n$ be a simple random sample taken from the density
+
+$$f(x;\theta)=\frac{2x}{\theta^2},\quad 0\le x\le \theta.$$
+
+1. Find an expression for $\hat\theta_L$, the maximum likelihood estimator (MLE) for $\theta$.
+
+2. Find an expression for $\hat\theta_M$, the method of moments estimator for $\theta$.
+
+3. For the two estimators $\hat\theta_L$ and $\hat\theta_M$, which one is more efficient in terms of MSE?
+
+4. Inspecting the consistency of the estimators $\hat\theta_L$ and $\hat\theta_M$.
+
+
+**Q4**: Suppose that $X_1,\dots,X_n$ is an iid sample from the exponential density, $f(x)=\lambda e^{-\lambda x},x>0$, and $\lambda>0$.
+
+(a) Show that $\hat\lambda_n=X_1$ is not consistent for $\lambda$.
+
+(b) Show that $\hat\lambda_n=X_1+\dots+X_n$ is not consistent for $\lambda$.
+
+**Q5**: Suppose that the population $X$ has a density $f(x;\theta)$, where $\theta\in (a,b)$. The Fisher information is defined by $I(\theta) = E[(\frac{d}{d\theta}\ln f(X;\theta))^2]$. If $\int_R\frac{d^2}{d\theta^2} f(x;\theta)d x = \frac{d^2}{d\theta^2}\int_R f(x;\theta)d x$ holds, prove that $$I(\theta)= -E\left[\frac{d^2}{d\theta^2} \ln f(X;\theta)\right].$$
+
+
+**Q6**: Suppose that the population $X$ follows a Poisson distribution with parameter $\lambda>0$, and $X_1,\dots, X_n$ is iid sample of $X$. 
+
+1. Use the two formulas in Q5 to compute the Fisher information $I(\lambda)$ (where $f(x;\theta)$ refers to the probability mass function (PMF) of the Poisson distribution $X$ for this case) and see whether they are the same.
+
+2. Prove that the sample mean $\bar X$ as an unbiased estimator of $\lambda$ attains the Cramer-Rao lower bound. Based on this result, could you find the best unbiased estimator in Q1? 
+
+

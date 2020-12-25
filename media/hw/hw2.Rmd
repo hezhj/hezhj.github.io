@@ -1,0 +1,44 @@
+---
+title: "Homework 2"
+author: "Put your name and student ID here"
+date: '`r format(Sys.Date())`'
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+
+
+**Q1**: Assume that $X_1\sim Gamma(\alpha_1,\lambda)$, $X_2\sim Gamma(\alpha_2,\lambda)$, and they are independent. Prove that:
+
+1. $Y_1=X_1+X_2\sim Gamma(\alpha_1+\alpha_2,\lambda)$,
+
+2. $Y_2=X_1/(X_1+X_2)\sim Beta(\alpha_1,\alpha_2)$,
+
+3. $Y_1$ and $Y_2$ are independent.
+
+ 
+
+**Q2**: Let $X_1,\dots,X_n$ be iid random variables whose CDF $F(x)$ is continuous and strictly increasing. Show that $$T=-2\sum_{i=1}^n \ln F(X_i)\sim Gamma(n,1/2).$$
+
+
+
+**Q3**: Let $Z_1,\dots,Z_n\stackrel{iid}{\sim}N(0,1)$. Show that
+$Z_1^2\sim Gamma(1/2,1/2)$ and $\sum_{i=1}^n Z_i^2\sim Gamma(n/2,1/2)$.
+
+
+**Q4**: Prove that $Var(X) = E[Var(X|Y)]+Var(E[X|Y])$.
+
+**Q5**: In the context of Bayesian statistics, the parameter $\theta$ is treated as a random number. Suppose that $\theta \sim Beta(\alpha_1,\alpha_2)$ as a prior distribution, and the conditional distribution of $X$ given $\theta$ is $B(n,\theta)$, where $n$ is a known positive integer, that is $X|\theta\sim B(n,\theta)$. Show that the posterior distribution of $\theta$ (given $X=x$) is $$\theta|X=x\sim Beta(\alpha_1+x,\alpha_2+n-x).$$
+
+
+(Hints: read pages 94-95 of the English textbook)

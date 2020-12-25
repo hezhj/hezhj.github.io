@@ -1,0 +1,37 @@
+---
+title: "Homework 8"
+author: "Put your name and student ID here"
+date: "`r format(Sys.Date())`"
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+**Q1**: Let $X_1,\dots,X_n$ be i.i.d. sample of $X\sim N(\mu_1,\sigma^2)$, and $Y_1,\dots,Y_m$ be i.i.d. sample of $Y\sim N(\mu_2,\sigma^2)$, where $X_i$s and $Y_j$s are independent, $\mu_1,\mu_2\in\mathbb{R}$ and $\sigma>0$ are unknown parameters. Denote $S_X^2 = \frac 1n\sum_{i=1}^n(X_i-\bar X)^2$ and $S_Y^2 = \frac 1m\sum_{i=1}^m(Y_i-\bar Y)^2$. Let $S_w = \sqrt{(nS_X^2+mS_Y^2)/(n+m-2)}$
+
+(a) Prove that $S_w^2$ is an unbiased estimator for $\sigma^2$
+
+(b) Prove that 
+
+$$T_{a,b}:=\frac{a(\bar X-\mu_1)-b(\bar Y-\mu_2)}{S_w\sqrt{\frac{a^2}{n}+\frac{b^2}{m}}}\sim t(n+m-2),$$
+
+where $a,b$ are non-zero constants.
+
+(c) Based on the result in (b), find a $100(1-\alpha)\%$ confidence interval for the parameter $\vartheta = a\mu_1-b\mu_2$.
+
+
+
+**Q2**: Problem 23 in Page 61 of our Chinese  textbook.
+
+**Q3**: Problem 27 in Page 62 of our Chinese textbook.
+
+**Q4**: Problem 28 in Page 62 of our Chinese textbook.

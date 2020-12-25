@@ -1,0 +1,83 @@
+---
+title: "Homework 14"
+author: "Put your name and student ID here"
+date: "`r format(Sys.Date())`"
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+---
+
+**Q1**: Consider the multiple linear regression model
+$$
+\boldsymbol{Y} = \boldsymbol{X}\boldsymbol {\beta} + \boldsymbol\epsilon,
+$$
+where $\boldsymbol Y=(y_1,\dots,y_n)^\top$, $\boldsymbol\beta=(\beta_0,\dots,\beta_{p-1})^\top$, $\boldsymbol X$ is the $n\times p$ design matrix, and $\boldsymbol\epsilon=(\epsilon_1,\dots,\epsilon_n)^\top$. Assume that $\mathrm{rank}(X)=p<n$, $E[\boldsymbol\epsilon]=\boldsymbol 0$, and $\mathrm{Var}[\boldsymbol\epsilon]= \sigma^2 I_n$ with $\sigma>0$.
+
+(a). Show that the covariance matrix of the least squares estimates is diagonal if and only if the columns of $\boldsymbol{X}$, $\boldsymbol{X}_1,\dots,\boldsymbol{X}_p$, are orthogonal, that is $\boldsymbol{X}_i^\top \boldsymbol{X}_j=0$ for $i\neq j$. 
+
+(b). Let $\hat y_i$ and $\hat\epsilon_i$ be the fitted values and the residuals, respectively. Show that $n\sigma^2 = \sum_{i=1}^n \mathrm{Var}[\hat y_i]+\sum_{i=1}^n\mathrm{Var}[\hat\epsilon_i]$.
+
+(c). Suppose further that $\boldsymbol\epsilon\sim N(\boldsymbol 0,\sigma^2 I_n)$, and you use F test to handle the hypothesis
+$$H_0: \beta_1=\beta_2=\dots=\beta_{p-1}=0\ vs.\ H_1:\sum_{i=1}^{p-1} \beta_i^2\neq0.$$
+If the coefficient of determination $R^2=0.58$, $p = 5$ and $n=15$, is the null rejected at the significance level $\alpha =0.05$? 
+($F_{0.95}(4,10)=3.48,F_{0.95}(5,10)=3.33,t_{0.95}(10)=1.81$)
+
+
+**Q2**: Consider the multiple linear model $Y = X\beta +\epsilon$, where $X$ is the $n\times p$ design matrix, $\beta=(\beta_0,\dots,\beta_{p-1})^\top$ is a vector of $p$ parameters, and the error $\epsilon\sim N(0,\sigma^2 I_n)$.
+Now consider the problem of estimating $\theta = \beta_0+\beta_1+\dots+\beta_{p-1}$. Assume that $\mathrm{rank}(X)=p<n$. Let $\hat\beta=(\hat\beta_0,\dots,\hat\beta_{p-1})^\top$ be the least squares estimate of $\beta$. Let $\hat\theta=\hat\beta_0+\hat\beta_1+\dots+\hat\beta_{p-1}$.
+
+(a) Show that $\hat\theta$ is an unbaised estimate of $\theta$.
+
+(b) Find the variance of the estimate $\hat\theta$.
+
+(c) Let $\hat\theta_c=c^\top Y$ be an unbiased estimate of $\theta$ for any $\beta\in \mathbb{R}^{p\times 1}$, where $c\in \mathbb{R}^{n\times 1}$ is any fixed vector. Prove that $\mathrm{Var}(\hat\theta_c)\ge \mathrm{Var}(\hat\theta)$. (Notice that $\hat\theta$ is also a linear combination of $y_i$. This result  implies that $\hat\theta$ is the best linear unbiased estimator for $\theta$.)
+
+**Q3**: Consider the simple linear model
+
+$$y_i= \beta_0+\beta_1x_i+\epsilon_i,\ \epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2).$$
+
+Use the F-test method derived in the multiple linear model to test the hypothesis $H_0:\beta_1=0\ vs.\ H_1:\beta_1\neq 0$, and see whether the F-test agrees with the earlier t-test derived in the simple linear models.
+
+
+**Q4**: Consider the linear model in matrix formalism
+
+$$
+\boldsymbol{Y} = \boldsymbol{X}\boldsymbol {\beta} + \boldsymbol\epsilon,
+$$
+where $\boldsymbol Y=(y_1,\dots,y_n)^\top$, $\boldsymbol\beta=(\beta_0,\dots,\beta_{p-1})^\top$, $\boldsymbol X$ is the $n\times p$ design matrix, and $\boldsymbol\epsilon=(\epsilon_1,\dots,\epsilon_n)^\top\sim N(\boldsymbol 0,\sigma^2 I_n)$ with unknown $\sigma>0$. Assume that $\mathrm{rank}(\boldsymbol{X})=r<p$.
+
+
+(a) Show that the least squares estimator (LSE) for $\boldsymbol\beta$ is not unique.
+
+(b) Show that there exists an $n\times r$ submatrix $\boldsymbol{X}^*$ of $\boldsymbol{X}$ with rank $r$ such that $\boldsymbol{X}=\boldsymbol{X}^*\boldsymbol{Q}$, where $\boldsymbol{Q}$ is a $r\times p$ matrix. 
+
+(c) Let $\boldsymbol\beta^* = \boldsymbol{Q\beta}$. Then the linear model becomes $\boldsymbol{Y} = \boldsymbol{X}^*\boldsymbol {\beta}^* + \boldsymbol\epsilon$. Find an LSE for $\boldsymbol\beta^*$ and show that the LSE is unique. Find an unbiased estimate of $\sigma^2$ and show its variance.
+
+**Q5**: 这是一份1994年收集1379个对象关于收入(earn)、身高(height，单位：英寸)、性别(sex)、教育水平(ed，单位：年)、年龄(age)等信息的数据集。下面展示**前6组数据(不是完整数据)**。
+
+```{r,echo=FALSE}
+a=read.csv('wages.csv')
+knitr::kable(head(a))
+```
+
+根据完整的数据集: [http://www.hezhijian.com.cn/hw/wages.csv](http://www.hezhijian.com.cn/hw/wages.csv)，建立回归模型探索收入与其他变量之间的关系. 根据回归的结果回答以下问题:
+
+1. 长的越高的人挣钱越多？男性是否比女性挣得多？是否年龄越大挣得越多？高学历是不是挣得更多？ 
+2. 请根据你自己的个人数据预测下你在未来不同年龄段收入的置信区间和预测区间。PS: 这里身高单位为英寸（1厘米=0.3937008英寸），教育年长是指你一共读了多少年的书（不算幼儿园时间,例如大部分大三学生读书时间=$6+3+3+3=15$, 当然留级或者跳级除外.）。
+
+
+在R中你可以这样导入数据:
+```{r}
+wages <- read.csv(url('http://www.hezhijian.com.cn/hw/wages.csv'))
+head(wages) # 展示前6行
+```
+

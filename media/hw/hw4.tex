@@ -1,0 +1,141 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{SimSun}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Homework 4},
+            pdfauthor={Put your name and student ID here},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Homework 4}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Put your name and student ID here}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020-09-29}
+
+
+\begin{document}
+\maketitle
+
+\textbf{Q1}: Let \(X_1,\dots,X_n\) be an iid sample of \(N(1,2^2)\).
+Which of the following items are true? ( )
+
+A. \(\frac{\bar X-1}{2/\sqrt{n}}\sim t(n)\)
+
+B. \(\frac{1}{4}\sum_{i=1}^n(X_i-1)^2\sim F(n,1)\)
+
+C. \(\frac{\bar X-1}{\sqrt{2}/\sqrt{n}}\sim N(0,1)\)
+
+D. \(\frac{1}{4}\sum_{i=1}^n(X_i-1)^2\sim \chi^2(n)\)
+
+\textbf{Q2}: Let \(X_1,\dots,X_n\) be a simple random sample of normal
+population \(N(\mu,\sigma^2)\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the mean and variance of \(S_n^2\).
+\item
+  Show that \(S_n^2\sim Gamma((n-1)/2,n/(2\sigma^2))\).
+\end{enumerate}
+
+\textbf{Q3}: Let \(X_1,\dots,X_n\) be a simple random sample of a
+distribution with mean \(\mu\) and variance \(\sigma^2\). Find the mean
+of \(S_n^2\) and \(S_n^{*2}\), respectively.
+
+\textbf{Q4}: An iid sample \(X_1,\dots,X_6\) is taken from the density
+\(f_X(x)=3x^2,\ 0<x<1\). Find \(P(X_{(6)}>0.75)\).
+
+\textbf{Q5}: Let \(X_1,\dots,X_m\) be a simple random sample of
+\(N(\mu_1,\sigma_1^2)\), and \(Y_1,\dots,Y_n\) (\(n>3\)) be a simple
+random sample of \(N(\mu_2,\sigma_2^2)\), and the two samples are
+independent. Denote \(S_X^{*2}\) and \(S_Y^{*2}\) by the modified sample
+variances of \(X_i\)s and \(Y_i\)s, respectively.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Show the PDF of the ratio of the two modified sample variances
+  \(S_X^{*2}/S_Y^{*2}\).
+\item
+  Find the mean of \(S_X^{*2}/S_Y^{*2}\), and compare it with the ratio
+  of two population variances \(\sigma_1^2/\sigma_2^2\).
+\end{enumerate}
+
+(Hint: the mean of \(F(m,n)\) distribution is \(n/(n-2)\) when \(n>2\))
+
+
+\end{document}

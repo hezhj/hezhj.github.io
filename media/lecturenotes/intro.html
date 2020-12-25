@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Mathematical Statistics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Zhijian He" />
+    <meta name="date" content="2020-09-07" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Mathematical Statistics
+### Zhijian He
+### School of Mathematics, SCUT
+### 2020-09-07
+
+---
+
+
+
+
+class: center, middle
+
+# Instructor
+
+|姓名     |   何志坚|
+|----     |     ----|
+|职称     | 数学学院副教授|
+|研究兴趣 | 统计模拟与计算、随机算法、金融工程 |
+|办公地址 | 五山校区四号楼4301|
+|个人主页 | [www.hezhijian.com.cn](http://www.hezhijian.com.cn)
+|邮箱     | hezhijian@scut.edu.cn |
+
+---
+## Books
+
+- 中文教材(TB1): **数理统计学讲义（第3版）**，陈家鼎、孙山泽、李东风、刘力平编著，高等教育出版社
+
+
+- 英文教材(TB2)：John Rice, **Mathematical Statistics and Data Analysis**, 3rd edition, 2007. (685 pages)
+
+
+
+- 自编讲义：[http://hezhijian.com.cn/courses/stat/](http://hezhijian.com.cn/courses/stat/)
+
+
+
+
+.pull-left[
+&lt;img src="figs/rice-book.jpg" width="50%" /&gt;&lt;img src="figs/chen-book.jpg" width="50%" /&gt;
+]
+
+.pull-right[
+### Software
+
+- 首选[R软件](https://www.r-project.org/)，并配合[Rstudio](https://rstudio.com/products/rstudio/
+)编辑器
+
+- Python
+
+- Matlab
+
+- etc.
+
+]
+
+--
+
+&lt;span style="color: red;"&gt;京东价：2616.00&lt;/span&gt;
+
+---
+# Why R?
+
+&lt;img src="figs/tiobe-rank.jpg" width="680" style="display: block; margin: auto;" /&gt;
+
+.center[
+[TIOBE Index for August 2020](https://www.tiobe.com/tiobe-index/)
+]
+
+---
+background-image: url(http://hadley.nz/hadley-wickham.jpg)
+background-size: cover
+class: center, bottom, inverse
+
+# [Hadley Wickham](http://hadley.nz/)
+
+## Chief Scientist at RStudio
+
+## **2019 COPSS Presidents' Award**
+
+---
+
+# Rstudio IDE
+
+&lt;iframe allowfullscreen="allowfullscreen" scrolling="no" src="https://fast.wistia.net/embed/iframe/520zbd3tij?videoFoam=true" title="RStudio IDE Overview Video" style="width: 780px; height: 400px;"&gt;&lt;/iframe&gt;
+---
+
+# Syllabus
+
+| No | Readings | Topics   | 
+|-----|------|-----|-----|
+|1 | TB1: Ch 1 &lt;br&gt;TB2: Ch 1-7&lt;/br&gt; | Outline of course, Review of Probability, Fundamentals of Statistics  |
+| 2 | TB1: Ch 2.1 &lt;br&gt;TB2: Ch 8.1-8.5&lt;/br&gt; | Method of moments and maximum likelihood estimation  |
+| 3 | TB1: Ch 2.2 &lt;br&gt;TB2: Ch 8.7-8.8&lt;/br&gt;  | Unbiasedness, MSE, UMVUE, Apymptotic properties  |
+| 4 | TB1: Ch 2.3  | Confidence interval  |
+| 5 | TB1: Ch 2.4 &lt;br&gt;TB2: Ch 10&lt;/br&gt; | Graphical summaries: QQ-plots, empirical CDF, density estimates  | 
+| 6 | TB1: Ch 3 &lt;br&gt;TB2: Ch 9, 11.1-11.3.1&lt;/br&gt; | Hypothesis test: concepts, LR tests, NP lemma  |
+| 7 | TB1: Ch 4 &lt;br&gt;TB2: Ch 14&lt;/br&gt; | Linear Least squares: estimation, tests, prediction and control  |
+| 8 | TB1: Ch 5.1-5.2 &lt;br&gt;TB2: Ch 12&lt;/br&gt; | Analysis of Variance  |
+
+ 
+---
+class: center, middle, inverse
+
+# Homework(30%) + Final Exam (70%)
+
+.footnote[
+All problems are written in English.
+]
+
+
+---
+
+# Homework
+
+### Two formats are recommended:
+
+1. JPG: handwriting
+
+2. PDF: [Rmarkdown](https://rmarkdown.rstudio.com/) or [Latex](https://www.latex-project.org/)
+
+### Notes:
+
+- Submit to [changjiang.yuketang.cn](https://changjiang.yuketang.cn/web) before the due date (usually Mon. 22:00 for each week).
+
+- Late penalties apply.  
+
+
+### TAs
+
+
+- 19级博士生 **郑铮**，&lt;zhengzhengyv@126.com&gt;，负责前八次作业
+
+- 20级硕士生 **李凌楠**，&lt;1144747170@qq.com&gt;，负责后八次作业
+
+---
+
+# Rmarkdown
+
+## .center[Rmarkdown = R + Markdown]
+
+### Example
+
+````
+## R code
+
+```{r}
+par(mar = c(4, 4, 1, .1))
+plot(cars, pch = 19, col = 'red', cex=2)
+```
+
+## Math
+
+$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+
+````
+
+---
+
+## R code
+
+
+```r
+par(mar = c(4, 4, 1, .1))
+plot(cars, pch = 19, col = 'red', cex=2)
+```
+
+&lt;img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="250" style="display: block; margin: auto;" /&gt;
+
+## Math
+
+`$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$`
+
+
+---
+class: center, middle, inverse
+
+# Questions?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
