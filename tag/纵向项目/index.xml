@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>纵向项目 | 何志坚</title>
+    <link>/tag/%E7%BA%B5%E5%90%91%E9%A1%B9%E7%9B%AE/</link>
+      <atom:link href="/tag/%E7%BA%B5%E5%90%91%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" />
+    <description>纵向项目</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language><copyright>Zhijian He 2020</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>纵向项目</title>
+      <link>/tag/%E7%BA%B5%E5%90%91%E9%A1%B9%E7%9B%AE/</link>
+    </image>
+    
+    <item>
+      <title>纵向项目</title>
+      <link>/project/internal-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/project/internal-project/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;国家自然科学基金青年项目&lt;/strong&gt;：基于拟蒙特卡罗模拟的VaR和CVaR计算问题研究，编号：71601189，执行期限：2017-2019，主持（已结题）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;2019中央高校面上项目&lt;/strong&gt;：条件拟蒙特卡罗模拟研究，编号：2019MS106，执行期限：执行期限： 2019-2020，主持，在研&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

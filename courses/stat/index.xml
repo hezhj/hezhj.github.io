@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数理统计 | 何志坚</title>
+    <link>/courses/stat/</link>
+      <atom:link href="/courses/stat/index.xml" rel="self" type="application/rss+xml" />
+    <description>数理统计</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language><copyright>Zhijian He 2020</copyright><lastBuildDate>Sun, 09 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>数理统计</title>
+      <link>/courses/stat/</link>
+    </image>
+    
+    <item>
+      <title>数理统计</title>
+      <link>/courses/stat/hw/</link>
+      <pubDate>Mon, 24 Aug 2020 00:00:00 +0100</pubDate>
+      <guid>/courses/stat/hw/</guid>
+      <description>&lt;h2 id=&#34;作业说明-&#34;&gt;作业说明 💬&lt;/h2&gt;
+&lt;p&gt;通过长江雨课堂提交作业，一般为每周一次作业，有相应的deadline。学生通过雨课堂（公众号/小程序/电脑端）提交作业。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;请准备一个作业本写下每次的作业，并通过拍照的方式在雨课堂上提交。注意&lt;strong&gt;照片需要清晰可阅读&lt;/strong&gt;，提交的答案要对应相应的题号。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本课程还有些上机编程的作业和project，可通过雨课堂的电脑端&lt;strong&gt;以PDF的形式提交电子版作业&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作业还提供
+&lt;a href=&#34;https://rmarkdown.rstudio.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rmarkdown&lt;/a&gt;和
+&lt;a href=&#34;https://www.latex-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Latex&lt;/a&gt;版本，供熟悉的同学使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    注意：作业只接受图片和PDF两种格式，切勿上传压缩文件，否则影响助教批改效率。原则上不允许迟交作业，除非有正当理由。
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;助教-&#34;&gt;助教 👏&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;郑铮，📧 &lt;a href=&#34;mailto:zhengzhengyv@126.com&#34;&gt;zhengzhengyv@126.com&lt;/a&gt;  (负责前八次作业)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;李凌楠，📧 &lt;a href=&#34;mailto:1144747170@qq.com&#34;&gt;1144747170@qq.com&lt;/a&gt; (负责后八次作业)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有关作业问题请咨询助教！&lt;/p&gt;
+&lt;h2 id=&#34;作业题目-&#34;&gt;作业题目 💯&lt;/h2&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    注意：如果下面链接无法打开，有可能是待布置的作业还没上传到服务器所致。如果雨课堂发布了作业，但对应作业的链接无效，请邮件告知我！
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;序号&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;PDF版&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Rmarkdown版&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Latex版&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw1.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw1.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw1.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw1.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw1.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw1.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw2.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw2.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw2.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw2.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw2.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw2.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw3.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw3.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw3.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw3.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw3.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw3.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw4.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw4.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw4.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw4.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw4.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw4.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw5.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw5.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw5.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw5.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw5.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw5.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw6.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw6.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw6.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw6.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw6.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw6.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw7.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw7.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw7.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw7.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw7.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw7.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;8&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw8.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw8.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw8.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw8.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw8.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw8.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;9&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw9.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw9.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw9.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw9.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw9.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw9.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;10&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw10.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw10.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw10.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw10.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw10.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw10.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;11&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw11.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw11.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw11.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw11.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw11.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw11.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;12&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw12.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw12.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw12.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw12.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw12.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw12.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;13&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw13.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw13.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw13.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw13.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw13.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw13.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;14&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw14.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw14.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw14.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw14.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw14.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw14.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;15&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw15.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw15.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw15.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw15.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw15.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw15.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;16&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw16.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw16.pdf&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw16.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw16.Rmd&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;
+&lt;a href=&#34;http://www.hezhijian.com.cn/hw/hw16.tex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;hw16.tex&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

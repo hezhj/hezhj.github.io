@@ -1,0 +1,1004 @@
+<!DOCTYPE html><html lang="zh-Hans" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="何志坚">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="频率学派与贝叶斯学派 频率学派（传统学派）   频率学派认为样本信息来自总体，仅通过研究样本信息可以对总体信息做出合理的推断和估计，并且样本越多，就越准确。
+  代表性人物：费希尔 (R. A. Fisher, 1890-1962)
+  贝叶斯学派  起源于英国学者贝叶斯(T. Bayes, 1702-1761)在1763年发表的著名论文《论有关机遇问题的求解》 最基本观点：任何一个未知量都可以看作是随机的，应该用一个概率分布去描述未知参数，而不是频率派认为的固定值。这种信息称为先验信息，是主观信息。  贝叶斯公式 案例一：天蝎号核潜艇搜救 1968年5月，美国海军的天蝎号核潜艇在大西洋亚速海海域突然失踪，潜艇和艇上的99名海军官兵全部杳无音信。按照事后调查报告的说法，罪魁祸首是这艘潜艇上的一枚奇怪的鱼雷，发射出去后竟然敌我不分，扭头射向自己，让潜艇中弹爆炸。
+为了寻找天蝎号的位置，美国政府从国内调集了包括多位专家的搜索部队前往现场，其中包括一位名叫John Craven的数学家，他的头衔是“美国海军特别计划部首席科学家”。在搜寻潜艇的问题上，Craven提出的方案使用了贝叶斯公式。
+这种方法已经用于2009年法航447和2014年马航370的搜救。 具体原理参考： Bayesian search theory">
+
+  
+  <link rel="alternate" hreflang="en" href="/courses/bayes/chap1/">
+  
+  <link rel="alternate" hreflang="zh-Hans" href="/zh/courses/bayes/chap1/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/zh/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/zh/courses/bayes/chap1/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="何志坚">
+  <meta property="og:url" content="/zh/courses/bayes/chap1/">
+  <meta property="og:title" content="第1章 | 何志坚">
+  <meta property="og:description" content="频率学派与贝叶斯学派 频率学派（传统学派）   频率学派认为样本信息来自总体，仅通过研究样本信息可以对总体信息做出合理的推断和估计，并且样本越多，就越准确。
+  代表性人物：费希尔 (R. A. Fisher, 1890-1962)
+  贝叶斯学派  起源于英国学者贝叶斯(T. Bayes, 1702-1761)在1763年发表的著名论文《论有关机遇问题的求解》 最基本观点：任何一个未知量都可以看作是随机的，应该用一个概率分布去描述未知参数，而不是频率派认为的固定值。这种信息称为先验信息，是主观信息。  贝叶斯公式 案例一：天蝎号核潜艇搜救 1968年5月，美国海军的天蝎号核潜艇在大西洋亚速海海域突然失踪，潜艇和艇上的99名海军官兵全部杳无音信。按照事后调查报告的说法，罪魁祸首是这艘潜艇上的一枚奇怪的鱼雷，发射出去后竟然敌我不分，扭头射向自己，让潜艇中弹爆炸。
+为了寻找天蝎号的位置，美国政府从国内调集了包括多位专家的搜索部队前往现场，其中包括一位名叫John Craven的数学家，他的头衔是“美国海军特别计划部首席科学家”。在搜寻潜艇的问题上，Craven提出的方案使用了贝叶斯公式。
+这种方法已经用于2009年法航447和2014年马航370的搜救。 具体原理参考： Bayesian search theory"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>第1章 | 何志坚</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/zh">何志坚</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/zh">何志坚</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/post/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/project/"><span>项目</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/publication/"><span>文章</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/zh/courses/"><span>课程</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/#contact"><span>联系方式</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="搜索"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown i18n-dropdown">
+        <a href="#" class="nav-link " data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-globe mr-1" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-item dropdown-item-active">
+            <span>中文 (简体)</span>
+          </div>
+          
+          <a class="dropdown-item" href="/courses/bayes/chap1/">
+            <span>English</span>
+          </a>
+          
+        </div>
+      </li>
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="搜索..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/zh/courses/bayes/">课程简介</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/zh/courses/bayes/chap1/">主要内容</a>
+    <ul class="nav docs-sidenav">
+      
+      <li class="active">
+        <a href="/zh/courses/bayes/chap1/">第1章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/chap2/">第2章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/chap3/">第3章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/chap4/">第4章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/chap5/">第5章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/chap6/">第6章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/chap10/">第10章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/chap11/">第11章</a>
+      </li>
+      
+      <li >
+        <a href="/zh/courses/bayes/vi/">变分推断</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">在本页</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#频率学派与贝叶斯学派">频率学派与贝叶斯学派</a>
+      <ul>
+        <li><a href="#频率学派传统学派">频率学派（传统学派）</a></li>
+        <li><a href="#贝叶斯学派">贝叶斯学派</a></li>
+      </ul>
+    </li>
+    <li><a href="#贝叶斯公式">贝叶斯公式</a></li>
+    <li><a href="#案例一天蝎号核潜艇搜救">案例一：天蝎号核潜艇搜救</a></li>
+    <li><a href="#20英里海域的概率图">20英里海域的概率图</a></li>
+    <li><a href="#案例二联邦党人文集作者公案">案例二：联邦党人文集作者公案</a></li>
+    <li><a href="#案例二联邦党人文集作者公案-1">案例二：联邦党人文集作者公案</a></li>
+    <li><a href="#贝叶斯的发展">贝叶斯的发展</a>
+      <ul>
+        <li><a href="#经典统计学的困难">经典统计学的困难</a></li>
+        <li><a href="#贝叶斯网络带来工具革命">贝叶斯网络带来工具革命</a></li>
+      </ul>
+    </li>
+    <li><a href="#贝叶斯统计的发展">贝叶斯统计的发展</a>
+      <ul>
+        <li><a href="#应用领域">应用领域</a></li>
+        <li><a href="#贝叶斯决策">贝叶斯决策</a></li>
+      </ul>
+    </li>
+    <li><a href="#一些评价">一些评价</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>第1章</h1>
+
+          <div class="article-style">
+            <h2 id="频率学派与贝叶斯学派">频率学派与贝叶斯学派</h2>
+<h3 id="频率学派传统学派">频率学派（传统学派）</h3>
+<ul>
+<li>
+<p>频率学派认为样本信息来自总体，仅通过研究<strong>样本信息</strong>可以对<strong>总体信息</strong>做出合理的推断和估计，并且样本越多，就越准确。</p>
+</li>
+<li>
+<p>代表性人物：费希尔 (R. A. Fisher, 1890-1962)</p>
+</li>
+</ul>
+<h3 id="贝叶斯学派">贝叶斯学派</h3>
+<ul>
+<li>起源于英国学者贝叶斯(T. Bayes, 1702-1761)在1763年发表的著名论文《论有关机遇问题的求解》</li>
+<li>最基本观点：任何一个未知量都可以看作是随机的，应该用一个概率分布去描述未知参数，而不是频率派认为的固定值。这种信息称为<strong>先验信息</strong>，是主观信息。</li>
+</ul>
+<h2 id="贝叶斯公式">贝叶斯公式</h2>
+<p><img src="/media/img/bigbang_bayes.png" alt=""></p>
+<h2 id="案例一天蝎号核潜艇搜救">案例一：天蝎号核潜艇搜救</h2>
+<p>1968年5月，美国海军的天蝎号核潜艇在大西洋亚速海海域突然失踪，潜艇和艇上的99名海军官兵全部杳无音信。按照事后调查报告的说法，罪魁祸首是这艘潜艇上的一枚奇怪的鱼雷，发射出去后竟然敌我不分，扭头射向自己，让潜艇中弹爆炸。</p>
+<p>为了寻找天蝎号的位置，美国政府从国内调集了包括多位专家的搜索部队前往现场，其中包括一位名叫John Craven的数学家，他的头衔是“美国海军特别计划部首席科学家”。在搜寻潜艇的问题上，Craven提出的方案使用了贝叶斯公式。</p>
+<p>这种方法已经用于2009年法航447和2014年马航370的搜救。
+具体原理参考：
+<a href="https://en.wikipedia.org/wiki/Bayesian_search_theory" target="_blank" rel="noopener">Bayesian search theory</a></p>
+<h2 id="20英里海域的概率图">20英里海域的概率图</h2>
+<p><img src="/media/img/scorpion.jpg" alt=""></p>
+<h2 id="案例二联邦党人文集作者公案">案例二：联邦党人文集作者公案</h2>
+<ul>
+<li>1787年5月，美国各州的代表在费城召开制宪会议。</li>
+<li>1787年9月，美国的宪法草案被分发到各州进行讨论。一批反对派以“反联邦主义者”为笔名，发表了大量文章对该草案提出批评。宪法起草人之一<strong>亚历山大·汉密尔顿</strong>着急了，他找到曾任外交国务秘书（即后来的国务卿）的约翰·杰伊，以及纽约市国会议员<strong>麦迪逊</strong>，一同以<strong>Publius的笔名发表文章</strong>，向公众解释为什么美国需要一部宪法。他们走笔如飞，通常在一周之内就会发表3-4篇新的评论。</li>
+<li>1788年，他们所写的85篇文章结集出版，这就是美国历史上著名的《联邦党人文集》。</li>
+</ul>
+<h2 id="案例二联邦党人文集作者公案-1">案例二：联邦党人文集作者公案</h2>
+<ul>
+<li>
+<p>1810年，汉密尔顿接受了一个政敌的决斗挑战。在决斗之前数日，汉密尔顿自知时日不多，他列出了一份《联邦党人文集》的作者名单。</p>
+</li>
+<li>
+<p>1818年，麦迪逊又提出了另一份作者名单。这两份名单并不一致。在85篇文章中，有73篇文章的作者身份较为明确，其余<strong>12篇存在争议</strong>。</p>
+</li>
+<li>
+<p>1955年，哈佛大学统计学教授Fredrick Mosteller找到芝加哥大学的年轻统计学家David Wallance，建议他跟自己一起做一个小课题，他想用统计学的方法，<strong>鉴定出《联邦党人文集》的作者身份</strong>。</p>
+</li>
+<li>
+<p>采用的方法是以<strong>贝叶斯公式为核心的分类算法</strong>。先挑选一些能够反映作者写作风格的词汇，在已经确定了作者的文本中，对这些特征词汇的出现频率进行统计，然后再统计这些词汇在那些不确定作者的文本中的出现频率，从而根据词频的差别推断作者归属。</p>
+</li>
+</ul>
+<h2 id="贝叶斯的发展">贝叶斯的发展</h2>
+<h3 id="经典统计学的困难">经典统计学的困难</h3>
+<ul>
+<li>经典统计学比较适合于解决小型的问题，同时需要足够多的样本数据</li>
+<li>都大数据时代了，还存在数据稀疏性问题吗？<strong>致病基因</strong></li>
+</ul>
+<h3 id="贝叶斯网络带来工具革命">贝叶斯网络带来工具革命</h3>
+<ul>
+<li>龙卷风的形成、星系的起源、致病基因、大脑的运作机制等，要揭示隐藏在这些问题背后的规律，就必须理解它们的<strong>成因网络</strong></li>
+<li>贝叶斯公式+图论</li>
+</ul>
+<h2 id="贝叶斯统计的发展">贝叶斯统计的发展</h2>
+<h3 id="应用领域">应用领域</h3>
+<ul>
+<li>自然语言处理：计算机翻译语言、识别语音、认识文字和海量文献的检索</li>
+</ul>
+<blockquote>
+<p><strong>南京市长江大桥欢迎您!</strong></p>
+</blockquote>
+<ul>
+<li>人工智能、无人驾驶</li>
+<li>垃圾短信、垃圾邮件识别</li>
+</ul>
+<h3 id="贝叶斯决策">贝叶斯决策</h3>
+<ul>
+<li>如何在一个陌生的地方找餐馆吃饭？</li>
+</ul>
+<h2 id="一些评价">一些评价</h2>
+<p>**Berger (1985)**说：</p>
+<blockquote>
+<p>“防止误用的最好方法是给人们在先验信息方面以适当的教育，另外在贝叶斯分析的最后报告中，应将先验分开来写，以便使其他人对主观输入的合理性做出评价。”</p>
+</blockquote>
+<p>**Good (1973)**更是直截了当的说：</p>
+<blockquote>
+<p>“主观主义者直抒他们的判断，而客观主义者以假设来掩盖其判断，并以此享受科学客观性的荣耀。”</p>
+</blockquote>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">下一页</div>
+    <a href="/zh/courses/bayes/vi/" rel="prev">变分推断</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>最近更新于 May 5, 2019</p>
+
+          
+
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/zh/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/zh/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    Zhijian He 2020
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/zh/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

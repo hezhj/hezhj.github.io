@@ -1,0 +1,1073 @@
+<!DOCTYPE html><html lang="zh-Hans" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="何志坚">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Nuisance parametersthere are more than one unknown or unobservable parameters
+conclusions will often be drawn about one, or only a few parameters at a time
+there is no interest in making inferences about many of the unknown parameters – nuisance parameters">
+
+  
+  <link rel="alternate" hreflang="zh-Hans" href="/zh/courses/bayes/chap03/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/zh/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/zh/courses/bayes/chap03/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="何志坚">
+  <meta property="og:url" content="/zh/courses/bayes/chap03/">
+  <meta property="og:title" content="Chapter 3: Introduction to multiparameter models | 何志坚">
+  <meta property="og:description" content="Nuisance parametersthere are more than one unknown or unobservable parameters
+conclusions will often be drawn about one, or only a few parameters at a time
+there is no interest in making inferences about many of the unknown parameters – nuisance parameters"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+      <meta property="article:published_time" content="2020-08-10T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-08-10T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Chapter 3: Introduction to multiparameter models | 何志坚</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/zh">何志坚</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/zh">何志坚</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/post/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/project/"><span>项目</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/publication/"><span>文章</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/zh/courses/"><span>课程</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/zh/#contact"><span>联系方式</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="搜索"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Chapter 3: Introduction to multiparameter models</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 10, 2020
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<div id="nuisance-parameters" class="section level2">
+<h2>Nuisance parameters</h2>
+<ul>
+<li><p>there are more than one unknown or unobservable parameters</p></li>
+<li><p>conclusions will often be drawn about one, or only a few parameters at a time</p></li>
+<li><p>there is no interest in making inferences about many of the unknown parameters – <em>nuisance parameters</em></p></li>
+<li><p>suppose <span class="math inline">\(\theta=(\theta_1,\theta_2)\)</span></p></li>
+<li><p>interest centers only on <span class="math inline">\(\theta_1\)</span>; <span class="math inline">\(\theta_2\)</span> is a ‘nuisance’ parameter.</p></li>
+<li><p>the joint posterior density:
+<span class="math display">\[p(\theta_1,\theta_2|y)\propto p(y|\theta_1,\theta_2)p(\theta_1,\theta_2)\]</span></p></li>
+<li><p>the marginal posterior density:
+<span class="math display">\[p(\theta_1|y)=\int p(\theta_1,\theta_2|y)d\theta_2=\int p(\theta_1|\theta_2,y)p(\theta_2|y)d\theta_2\]</span></p></li>
+</ul>
+</div>
+<div id="normal-data-with-a-noninformative-prior-distribution" class="section level2">
+<h2>Normal data with a noninformative prior distribution</h2>
+<p><strong>Likelihood function</strong>:
+<span class="math display">\[p(y|\mu,\sigma^2)=\prod_{i=1}^n \frac 1{\sqrt{2\pi}\sigma}e^{-\frac{(y_i-\theta)^2}{2\sigma^2}}\]</span></p>
+<p><strong>Noninformative prior distribution</strong>:
+<span class="math display">\[p(\mu,\sigma^2)\propto 1\times (\sigma^2)^{-1}\]</span></p>
+<p><strong>Posterior distribution</strong>:
+<span class="math display">\[p(\mu,\sigma^2|y)\propto \sigma^{-n-2}e^{-\frac{\sum_{i=1}^n(y_i-\theta)^2}{2\sigma^2}}=\sigma^{-n-2}e^{-\frac{(n-1)s^2+n(\bar y-\mu)^2}{2\sigma^2}}\]</span></p>
+<ul>
+<li><span class="math inline">\(s^2=\frac 1{n-1}\sum_{i=1}^n(y_i-\bar y)^2\)</span> is the sample variance</li>
+</ul>
+</div>
+<div id="normal-data-with-a-noninformative-prior-distribution-1" class="section level2">
+<h2>Normal data with a noninformative prior distribution</h2>
+<p><strong>Conditional posterior distribution</strong>:
+<span class="math display">\[p(\mu|\sigma^2,y)\sim N(\bar y,\sigma^2/n)\]</span></p>
+<p><strong>Marginal posterior distribution <span class="math inline">\(p(\sigma^2|y)\)</span></strong>:
+<span class="math display">\[p(\sigma^2|y)\propto \int \sigma^{-n-2}e^{-\frac{(n-1)s^2+n(\bar y-\mu)^2}{2\sigma^2}} d\mu=(\sigma^2)^{-\frac{n+1}2}e^{-\frac{(n-1)s^2}{2\sigma^2}}\]</span></p>
+<p><span class="math display">\[\sigma^2|y\sim \text{Inv-}\chi^2(n-1,s^2)\]</span></p>
+</div>
+<div id="normal-data-with-a-noninformative-prior-distribution-2" class="section level2">
+<h2>Normal data with a noninformative prior distribution</h2>
+<p><strong>Marginal posterior distribution <span class="math inline">\(p(\mu|y)\)</span></strong>:</p>
+<p><span class="math display">\[p(\mu|y)\propto \int_0^\infty \sigma^{-n-2}e^{-\frac{(n-1)s^2+n(\bar y-\mu)^2}{2\sigma^2}} d\sigma^2\propto \left[1+\frac{n(\mu-\bar y)^2}{(n-1)s^2}\right]^{-\frac n2}\]</span></p>
+<p><span class="math display">\[\mu|y\sim t_{n-1}(\bar y,s^2/n),\ \frac{\mu-\bar y}{s/\sqrt{n}}\Big|y\sim t_{n-1}\]</span></p>
+<p><strong>Posterior predictive distribution for a future observation</strong></p>
+<p><span class="math display">\[\tilde y|y \sim t_{n-1}(\bar y,(1+1/n)s^2)\]</span></p>
+</div>
+<div id="example-estimating-the-speed-of-light" class="section level2">
+<h2>Example: Estimating the speed of light</h2>
+<p>Simon Newcomb set up an experiment in 1882 to measure the speed of light. Newcom measured the amount of time rquired for light to travel a distance of 7442 meters (66 measurements, from Stigler (1977), the data are recorded as deviations from 24800 nanoseconds).</p>
+<ul>
+<li><span class="math inline">\(n=66,\ \bar y = 26.2,\ s = 10.8\)</span></li>
+<li><span class="math inline">\((\mu-26.2)/(10.8/\sqrt{66})|y\sim t_{65}\)</span></li>
+<li><span class="math inline">\(95\%\)</span> central posterior interval for <span class="math inline">\(\mu\)</span> is <span class="math inline">\(26.2\pm 10.8t_{65,0.975}/\sqrt{66}=[23.6,28.8]\)</span></li>
+<li>the speed of light is 299792458 m/s, so the true value for <span class="math inline">\(\mu\)</span> is <span class="math inline">\(23.8\)</span> nanoseconds</li>
+</ul>
+</div>
+<div id="example-estimating-the-speed-of-light-1" class="section level2">
+<h2>Example: Estimating the speed of light</h2>
+<p><img src="figs/newcomb.png" width="90%" /></p>
+</div>
+<div id="normal-data-with-a-conjugate-prior-distribution" class="section level2">
+<h2>Normal data with a conjugate prior distribution</h2>
+<p><strong>Prior distribution</strong>:
+<span class="math display">\[\mu|\sigma^2\sim N(\mu_0,\sigma^2/\kappa_0),\]</span></p>
+<p><span class="math display">\[\sigma^2\sim \text{Inv-}\chi^2(\nu_0,\sigma_0^2).\]</span></p>
+<p><span class="math display">\[p(\mu,\sigma^2)\propto \sigma^{-1}(\sigma^2)^{-(\nu_0/2+1)}\exp\left(-\frac 1{2\sigma^2}[\nu_0\sigma^2+\kappa_0(\mu_0-\mu)^2]\right)\]</span></p>
+<ul>
+<li>denoted by <span class="math inline">\(\text{N-Inv-}\chi^2(\mu_0,\sigma^2_0/\kappa_0;\nu_0,\sigma_0^2)\)</span></li>
+</ul>
+</div>
+<div id="normal-data-with-a-conjugate-prior-distribution-1" class="section level2">
+<h2>Normal data with a conjugate prior distribution</h2>
+<p><strong>Posterior distribution</strong>:</p>
+<p><span class="math display">\[\mu,\sigma^2|y\sim \text{N-Inv-}\chi^2(\mu_n,\sigma^2_n/\kappa_n;\nu_n,\sigma_n^2)\]</span></p>
+<p><span class="math display">\[
+\begin{cases}
+\mu_n &amp;= \frac{\kappa_0}{\kappa_0+n}\mu_0+\frac{n}{\kappa_0+n}\bar y\\
+\kappa_n &amp;= \kappa_0+n\\
+\nu_n&amp;=\nu_0+n\\
+\nu_n\sigma_n^2 &amp;= \nu_0\sigma_0^2+(n-1)s^2+\frac{\kappa_0n}{\kappa_0+n}(\bar y-\mu_0)^2
+\end{cases}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mu|\sigma^2,y\sim N(\mu_n,\sigma^2/\kappa_n)\)</span></li>
+<li><span class="math inline">\(\sigma^2|y\sim \text{Inv-}\chi^2(\nu_n,\sigma_n^2)\)</span></li>
+<li><span class="math inline">\(\mu|y\sim t_{\nu_n}(\mu_n,\sigma_n^2/\kappa_n)\)</span></li>
+</ul>
+</div>
+<div id="multinormal-model-for-categorical-data" class="section level2">
+<h2>Multinormal model for categorical data</h2>
+<p>The multinomial sampling distribution is used to describe data for which each observation is one of <span class="math inline">\(k\)</span> possible outcomes. If <span class="math inline">\(y\)</span> is the vector of counts of the number of observations of each outcome, then
+<span class="math display">\[p(y|\theta)\propto \prod_{j=1}^k\theta_j^{y_j},\]</span>
+where <span class="math inline">\(\sum_{j=1}^k\theta_j=1\)</span>.</p>
+<p><strong>Conjugate prior</strong>:
+<span class="math display">\[p(\theta|\alpha)\propto \prod_{j=1}^k\theta_j^{\alpha_j-1}\]</span></p>
+<ul>
+<li>Dirichlet distribution</li>
+</ul>
+<p><strong>Posterior distribution</strong>:
+<span class="math display">\[p(\theta|y)\propto \prod_{j=1}^k\theta_j^{y_j+\alpha_j-1}\]</span></p>
+</div>
+<div id="multivariate-normal-model-with-known-variance" class="section level2">
+<h2>Multivariate normal model with known variance</h2>
+<p><strong>Likelihood function</strong>:
+<span class="math display">\[p(y_1,\dots,y_n|\mu,\Sigma)\propto |\Sigma|^{-n/2}\exp\left(-\frac 12\sum_{i=1}^n(y_i-\mu)^\top\Sigma^{-1}(y_i-\mu)\right)\]</span></p>
+<p><strong>Conjuate prior</strong>: <span class="math inline">\(\mu\sim N(\mu_0,\Lambda_0)\)</span></p>
+<p><strong>Posterior distribution</strong>: <span class="math inline">\(\mu|y\sim N(\mu_n,\Lambda_n)\)</span></p>
+<ul>
+<li><span class="math inline">\(\mu_n=(\Lambda_n^{-1}+n\Sigma^{-1})^{-1}(\Lambda_0^{-1}\mu_0+n\Sigma^{-1}\bar y)\)</span></li>
+<li><span class="math inline">\(\Lambda_n^{-1} = \Lambda_n^{-1}+n\Sigma^{-1}\)</span></li>
+</ul>
+</div>
+<div id="multivariate-normal-model-with-unknown-mean-and-variance" class="section level2">
+<h2>Multivariate normal model with unknown mean and variance</h2>
+<p><strong>Prior distribution</strong>: the normal-inverse-Wishart <span class="math inline">\((\mu_0,\kappa_0;\nu_0,\Lambda_0)\)</span></p>
+<p><span class="math display">\[\Sigma\sim \text{Inv-Wishart}_{\nu_0}(\Lambda_0^{-1})\]</span>
+<span class="math display">\[\mu|\Sigma\sim N(\mu_0,\Sigma/\kappa_0)\]</span>
+<span class="math display">\[p(\mu,\Sigma)\propto |\Sigma|^{-\frac{\nu_0+d}{2}-1}\exp\left(-\frac{1}{2}tr(\Lambda_0\Sigma^{-1})-\frac {\kappa_0}2(\mu-\mu_0)^\top\Sigma^{-1}(\mu-\mu_0)\right)\]</span></p>
+<p><strong>Posterior distribution</strong>: the normal-inverse-Wishart <span class="math inline">\((\mu_n,\kappa_n;\nu_0,\Lambda_n)\)</span></p>
+<p><span class="math display">\[
+\begin{cases}
+\mu_n &amp;= \frac{\kappa_0}{\kappa_0+n}\mu_0+\frac{n}{\kappa_0+n}\bar y\\
+\kappa_n &amp;= \kappa_0+n\\
+\nu_n&amp;=\nu_0+n\\
+\Lambda_n &amp;= \Lambda_0+\sum_{i=1}^n(y_i-\bar y)(y_i-\bar y)^\top+\frac{\kappa_0n}{\kappa_0+n}(\bar y-\mu_0)(\bar y-\mu_0)^\top
+\end{cases}
+\]</span></p>
+</div>
+<div id="multivariate-normal-model-with-unknown-mean-and-variance-1" class="section level2">
+<h2>Multivariate normal model with unknown mean and variance</h2>
+<ul>
+<li><p><span class="math inline">\(\Sigma|y\sim \text{Inv-Wishart}_{\nu_n}(\Lambda_n^{-1}),\ \mu|\Sigma,y\sim N(\mu_n,\Sigma/\kappa_n)\)</span></p></li>
+<li><p><span class="math inline">\(\mu|y \sim t_{\nu_n-d+1}(\mu_,\Lambda_n/(\kappa_n(\nu_n-d+1)))\)</span> multivariate t distriution.</p></li>
+<li><p><span class="math inline">\(\tilde y|y \sim t_{\nu_n-d+1}(\mu_,(k_n+1)\Lambda_n/(\kappa_n(\nu_n-d+1)))\)</span></p></li>
+</ul>
+</div>
+<div id="wishart-distributions" class="section level2">
+<h2>Wishart distributions</h2>
+<p>Let <span class="math inline">\(X_i \stackrel {iid}\sim N_p(0, \Sigma)\)</span>, where <span class="math inline">\(\Sigma\)</span> is <span class="math inline">\(p\times p\)</span> definite matrix, and <span class="math inline">\(i=1,\dots,n\)</span>.</p>
+<p><span class="math display">\[W=\sum_{i=1}^n X_iX_i&#39;\in R^{p\times p}\]</span></p>
+<p>is called the <strong>Wishart distribution</strong> with <span class="math inline">\(n\)</span> degree of freedom, denoted by <span class="math inline">\(\text{Wishart}_n(\Sigma)\)</span>.</p>
+<ul>
+<li><p>if <span class="math inline">\(p=\Sigma = 1\)</span>, then it is a chi-squared distribution with <span class="math inline">\(n\)</span> degrees of freedom.</p></li>
+<li><p>For <span class="math inline">\(n \ge p\)</span> the matrix <span class="math inline">\(W\)</span> is invertible with probability 1.</p></li>
+<li><p>if <span class="math inline">\(X_i \stackrel {iid}\sim N_p(\mu, \Sigma)\)</span>, then</p></li>
+</ul>
+<p><span class="math display">\[(n-1)S^2 = \sum_{i=1}^n (X_i-\bar X)(X_i-\bar X)&#39;\sim \text{Wishart}_{n-1}(\Sigma).\]</span></p>
+</div>
+<div id="inverse-wishart-distributions" class="section level2">
+<h2>Inverse-Wishart distributions</h2>
+<p>If <span class="math inline">\(W\sim \text{Wishart}_n(\Sigma)\)</span> with <span class="math inline">\(n\ge p\)</span>, then <span class="math inline">\(W^{-1}\sim \text{Inv-Wishart}_n(\Sigma^{-1})\)</span>.</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/zh/author/%E4%BD%95%E5%BF%97%E5%9D%9A/avatar_hu26518a61d225cc8c1cdec2d140c029ab_206092_270x270_fill_q90_lanczos_center.jpg" alt="何志坚">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="/">何志坚</a></h5>
+        <h6 class="card-subtitle">副教授</h6>
+        <p class="card-text">研究兴趣是蒙特卡罗和拟蒙特卡罗方法及其在金融和统计中的应用</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/zh/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=DXOnZJAAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+        <i class="fab fa-google"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/ivanscut" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/zh/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/zh/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/zh/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

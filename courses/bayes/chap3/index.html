@@ -1,0 +1,1242 @@
+<!DOCTYPE html><html lang="zh-Hans" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="何志坚">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Binomial modelsEstimating a probability from binomial datalet \(\theta\) be the proportion of successes in the population
+the data \((y_1,\dots,y_n)\in \{0,1\}^n\)
+the total number of successes in the \(n\) trials is denoted by \(y\)">
+
+  
+  <link rel="alternate" hreflang="en" href="/en/courses/bayes/chap3/">
+  
+  <link rel="alternate" hreflang="zh-Hans" href="/courses/bayes/chap3/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/courses/bayes/chap3/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="何志坚">
+  <meta property="og:url" content="/courses/bayes/chap3/">
+  <meta property="og:title" content="第3章 | 何志坚">
+  <meta property="og:description" content="Binomial modelsEstimating a probability from binomial datalet \(\theta\) be the proportion of successes in the population
+the data \((y_1,\dots,y_n)\in \{0,1\}^n\)
+the total number of successes in the \(n\) trials is denoted by \(y\)"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>第3章 | 何志坚</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project/"><span>项目</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publication/"><span>文章</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/courses/"><span>课程</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>联系方式</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="搜索"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown i18n-dropdown">
+        <a href="#" class="nav-link " data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-globe mr-1" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-item dropdown-item-active">
+            <span>中文 (简体)</span>
+          </div>
+          
+          <a class="dropdown-item" href="/en/courses/bayes/chap3/">
+            <span>English</span>
+          </a>
+          
+        </div>
+      </li>
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="搜索..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/">课程简介</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/chap1/">主要内容</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/courses/bayes/chap1/">第1章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap2/">第2章</a>
+      </li>
+      
+      <li class="active">
+        <a href="/courses/bayes/chap3/">第3章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap4/">第4章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap5/">第5章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap6/">第6章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap10/">第10章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap11/">第11章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/vi/">变分推断</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>第3章</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="binomial-models" class="section level1">
+<h1>Binomial models</h1>
+<div id="estimating-a-probability-from-binomial-data" class="section level2">
+<h2>Estimating a probability from binomial data</h2>
+<ul>
+<li><p>let <span class="math inline">\(\theta\)</span> be the proportion of successes in the population</p></li>
+<li><p>the data <span class="math inline">\((y_1,\dots,y_n)\in \{0,1\}^n\)</span></p></li>
+<li><p>the total number of successes in the <span class="math inline">\(n\)</span> trials is denoted by <span class="math inline">\(y\)</span></p></li>
+<li><p>the binomial model is
+<span class="math display">\[p(y|\theta) = C_n^y\theta^y(1-\theta)^{n-y}\]</span></p></li>
+<li><p>the posterior distribution is
+<span class="math display">\[p(\theta|y) \propto p(\theta)p(y|\theta)\propto p(\theta)\theta^y(1-\theta)^{n-y}\]</span></p></li>
+</ul>
+<p><strong>Example</strong>: estimating the probability of a female birth</p>
+<ul>
+<li>A total of 241,945 girls and 251,527 boys were born in Paris from 1745 to 1770.</li>
+</ul>
+</div>
+<div id="how-to-choose-a-proper-prior" class="section level2">
+<h2>How to choose a proper prior?</h2>
+<ul>
+<li><p>A naive choice for <span class="math inline">\(p(\theta)\)</span> is uniform on the interval <span class="math inline">\([0,1]\)</span>. Then
+<span class="math display">\[p(\theta|y) \propto \theta^y(1-\theta)^{n-y}\]</span></p></li>
+<li><p>that is, <span class="math inline">\(\theta|y\sim Beta(y+1,n-y+1)\)</span></p></li>
+</ul>
+<p><img src="/zh/courses/Bayes/chap3_files/figure-html/beta-1.png" width="60%" style="display: block; margin: auto;" />
+- <span class="math inline">\(P(\theta\ge 0.5|y=241945,n=241945+251527)\approx 1.15\times 10^{-42}\)</span></p>
+</div>
+<div id="prediction" class="section level2">
+<h2>Prediction</h2>
+<ul>
+<li>Let <span class="math inline">\(\tilde y\)</span> be the result of a new trial
+<span class="math display">\[P(\tilde y =1|y) = \int_0^1 P(\tilde y=1|\theta,y)p(\theta|y)d \theta=E[\theta|y]=\frac{y+1}{n+2}\]</span></li>
+</ul>
+<p><strong>Posterior as compromise between data and prior information</strong></p>
+<ul>
+<li>prior mean is <span class="math inline">\(1/2\)</span></li>
+<li>sample mean is <span class="math inline">\(y/n\)</span></li>
+<li>posterior mean is <span class="math inline">\((y+1)/(n+2)\)</span></li>
+<li>the compromise is controlled to a greater extent by the data as the sample size
+increases.</li>
+</ul>
+</div>
+<div id="posterior-quantiles-and-intervals" class="section level2">
+<h2>Posterior quantiles and intervals</h2>
+<ul>
+<li>let <span class="math inline">\(T_1\)</span> be the <span class="math inline">\(\alpha/2\)</span> quantile of the posterior distribution</li>
+<li>let <span class="math inline">\(T_2\)</span> be the <span class="math inline">\(1-\alpha/2\)</span> quantile of the posterior distribution</li>
+<li><span class="math inline">\(100(1-\alpha)\%\)</span> posterior interval is <span class="math inline">\([T_1,T_2]\)</span></li>
+</ul>
+<p><img src="/media/img/binterval.png" width="65%" style="display: block; margin: auto;" /></p>
+<ul>
+<li>compare with the usual confidence interval</li>
+</ul>
+</div>
+<div id="informative-prior-distributions" class="section level2">
+<h2>Informative prior distributions</h2>
+<p><strong>Goal</strong>: assigning a prior distribution that reflects substantive info.</p>
+<ul>
+<li><p>the likelihood is
+<span class="math display">\[p(y|\theta) \propto \theta^y(1-\theta)^{n-y}\]</span></p></li>
+<li><p>choose a prior as a <span class="math inline">\(Beta(\alpha,\beta)\)</span> distribution:
+<span class="math display">\[p(\theta) \propto \theta^{\alpha-1}(1-\theta)^{\beta-1}\]</span></p></li>
+<li><p>the parameters <span class="math inline">\(\alpha,\beta&gt;0\)</span> of the prior distribution is called <em>hyperparameters</em>.</p></li>
+<li><p>the posterior is
+<span class="math display">\[p(\theta|y)\propto \theta^{\alpha+y-1}(1-\theta)^{n-y+\beta-1}=Beta(\alpha+y,\beta+n-y)\]</span></p></li>
+</ul>
+</div>
+<div id="informative-prior-distributions-1" class="section level2">
+<h2>Informative prior distributions</h2>
+<ul>
+<li><p>the posterior mean is
+<span class="math display">\[E[\theta|y]=\frac{\alpha+y}{\alpha+\beta+n}\]</span>
+which lies between the sample proportion <span class="math inline">\(y/n\)</span> and the prior mean <span class="math inline">\(\alpha/(\alpha+\beta)\)</span></p></li>
+<li><p>the posterior variance is
+<span class="math display">\[Var[\theta|y]=\frac{(\alpha+y)(\beta+n-y)}{(\alpha+\beta+n)^2(\alpha+\beta+n+1)}=\frac{E[\theta|y](1-E[\theta|y])}{\alpha+\beta+n+1}\]</span></p></li>
+<li><p>as <span class="math inline">\(y\)</span> and <span class="math inline">\(n\)</span> become large with fixed <span class="math inline">\(\alpha,\beta\)</span>,
+<span class="math display">\[E[\theta|y]\approx \frac yn,\ Var[\theta|y]\approx \frac 1n\frac yn(1-\frac yn).\]</span></p></li>
+</ul>
+</div>
+<div id="conjugate-prior-distributions" class="section level2">
+<h2>Conjugate prior distributions</h2>
+<p><strong>Definition</strong>: If <span class="math inline">\(\mathcal{F}\)</span> is a class of sampling distribution <span class="math inline">\(p(y|\theta)\)</span>, and <span class="math inline">\(\mathcal{P}\)</span> is a class of prior distributions for <span class="math inline">\(\theta\)</span>, then the class <span class="math inline">\(\mathcal{P}\)</span> is <em>conjugate</em> for <span class="math inline">\(\mathcal{F}\)</span> if
+<span class="math display">\[p(\theta|y)\in \mathcal{P} \text{ for all } p(\cdot|\theta)\in\mathcal{F} \text{ and }p(\cdot)\in\mathcal{P}.\]</span></p>
+<p><strong>Advantages of conjugate prior distributions</strong></p>
+<ul>
+<li>computational convenience</li>
+<li>can be interpreted as additional data</li>
+</ul>
+</div>
+<div id="exponential-families" class="section level2">
+<h2>Exponential families</h2>
+<p><strong>Definition</strong>: The class <span class="math inline">\(\mathcal{F}\)</span> is an <em>exponential family</em> if all its members have the form
+<span class="math display">\[p(y_i|\theta)=f(y_i)g(\theta)\exp[\phi(\theta)^\top u(y_i)].\]</span></p>
+<ul>
+<li><span class="math inline">\(f(\cdot)\ge 0\)</span></li>
+<li><span class="math inline">\(\phi(\theta)\)</span> is called the <code>natural parameter</code></li>
+</ul>
+<p>For iid samples, we have
+<span class="math display">\[p(y|\theta)=\left(\prod_{i=1}^n f(y_i)\right)g(\theta)^n\exp\left[\phi(\theta)^\top \sum_{i=1}^nu(y_i)\right]
+\]</span>
+<span class="math display">\[p(y|\theta)\propto g(\theta)^n\exp[\phi(\theta)^\top t(y)]\]</span></p>
+<ul>
+<li>where <span class="math inline">\(t(y)=\sum_{i=1}^nu(y_i)\)</span> (i.e., a <em>sufficient statistic</em> for <span class="math inline">\(\theta\)</span>).</li>
+</ul>
+</div>
+<div id="conjugate-prior-distribution-for-exponential-families" class="section level2">
+<h2>Conjugate prior distribution for exponential families</h2>
+<p>If the prior distribution is specified as
+<span class="math display">\[p(\theta)\propto g(\theta)^\eta \exp[\phi(\theta)^\top \nu],\]</span>
+then the posterior density is
+<span class="math display">\[p(\theta|y)\propto g(\theta)^{\eta+n} \exp[\phi(\theta)^\top (\nu+t(y))].\]</span></p>
+<p><strong>A list of exponential families</strong></p>
+<ul>
+<li>binomial distributions</li>
+<li>normal distributions</li>
+<li>exponential distributions</li>
+<li>possion distributions</li>
+</ul>
+</div>
+<div id="example-probability-of-a-girl-birth-given-placenta-previa" class="section level2">
+<h2>Example: Probability of a girl birth given placenta previa</h2>
+<p>An early study concerning the sex of placenta previa births in Germany found that of a total of 980 births, 437 were female.</p>
+<p>How much evidence does this provide for the claim that the proportion of female births in the population of placenta previa births is less than <strong>0.485</strong>, the proportion of female births in the general population?</p>
+<ul>
+<li><p>using a uniform prior: the posterior is <span class="math inline">\(Beta(438,544)\)</span>. The central <span class="math inline">\(95\%\)</span> posterior interval is <span class="math inline">\([0.415,0.477]\)</span>.</p></li>
+<li><p>using conjugate prior <span class="math inline">\(Beta(\alpha,\beta)\)</span></p></li>
+<li><p>using nonconjugate prior</p></li>
+</ul>
+</div>
+<div id="different-conjugate-prior-distributions" class="section level2">
+<h2>Different conjugate prior distributions</h2>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\alpha/(\alpha+\beta)\)</span></th>
+<th><span class="math inline">\(\alpha+\beta\)</span></th>
+<th>posterior median</th>
+<th><span class="math inline">\(95\%\)</span> posterior interval</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.500</td>
+<td>2</td>
+<td>0.446</td>
+<td>[0.415, 0.477]</td>
+</tr>
+<tr class="even">
+<td>0.485</td>
+<td>2</td>
+<td>0.446</td>
+<td>[0.415, 0.477]</td>
+</tr>
+<tr class="odd">
+<td>0.485</td>
+<td>5</td>
+<td>0.446</td>
+<td>[0.415, 0.477]</td>
+</tr>
+<tr class="even">
+<td>0.485</td>
+<td>10</td>
+<td>0.446</td>
+<td>[0.415, 0.477]</td>
+</tr>
+<tr class="odd">
+<td>0.485</td>
+<td>20</td>
+<td>0.447</td>
+<td>[0.416, 0.478]</td>
+</tr>
+<tr class="even">
+<td>0.485</td>
+<td>100</td>
+<td>0.450</td>
+<td>[0.420, 0.479]</td>
+</tr>
+<tr class="odd">
+<td>0.485</td>
+<td>200</td>
+<td>0.453</td>
+<td>[0.424, 0.481]</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Posterior inferences based on a large sample are not sensitive to the prior distribution.</li>
+<li>All the <span class="math inline">\(95\%\)</span> posterior intervals exclude the prior mean.</li>
+</ul>
+</div>
+<div id="the-effect-of-prior-distributions" class="section level2">
+<h2>The effect of prior distributions</h2>
+<p><img src="/media/img/bprior.png" width="90%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="using-a-nonconjugate-prior-distribution" class="section level2">
+<h2>Using a nonconjugate prior distribution</h2>
+<p><img src="/media/img/nonconjugate.png" width="90%" style="display: block; margin: auto;" />
+<span class="math inline">\(95\%\)</span> posterior interval is [0.419, 0.480]</p>
+</div>
+</div>
+<div id="normal-models" class="section level1">
+<h1>Normal models</h1>
+<div id="estimating-a-normal-mean-with-known-variance" class="section level2">
+<h2>Estimating a normal mean with known variance</h2>
+<p><strong>Likelihood function</strong>:
+<span class="math display">\[p(y|\theta) = \prod_{i=1}^n \frac 1{\sqrt{2\pi}\sigma}e^{-\frac{(y_i-\theta)^2}{2\sigma^2}}\propto e^{-\frac{n\theta^2}{2\sigma^2}}e^{\frac{n\theta\bar y}{\sigma^2}}\]</span></p>
+<p><strong>Conjugate prior</strong>: <span class="math inline">\(\theta\sim N(\mu_0,\tau_0^2)\)</span></p>
+<p><strong>Posterior distribution</strong>:
+<span class="math display">\[p(\theta|y)\propto e^{-\frac{n\theta^2}{2\sigma^2}}e^{\frac{n\theta\bar y}{\sigma^2}}e^{-\frac{\theta^2}{2\tau_0^2}}e^{\frac{\mu_0\theta}{\tau_0^2}}=N(\mu_n,\tau_n^2)\]</span></p>
+<p>where
+<span class="math display">\[\mu_n=\frac{\frac 1{\tau_0^2}\mu_0+\frac n{\sigma^2}\bar y}{\frac 1{\tau_0^2}+\frac n{\sigma^2}},\ \frac1{\tau_n^2}=\frac{1}{\tau_0^2}+\frac n{\sigma^2}.\]</span></p>
+</div>
+<div id="comments" class="section level2">
+<h2>Comments</h2>
+<ul>
+<li>the inverse of the variance plays a prominet role and is called the <em>precision</em></li>
+<li>posterior precision = prior precision + data precision</li>
+<li>the posterior mean is expressed as a weighted average of the prior mean <span class="math inline">\(\mu_0\)</span> and the sample mean <span class="math inline">\(\bar y\)</span>, with weights proportional to the precisions.</li>
+<li>what happens if <span class="math inline">\(n\to \infty\)</span> with <span class="math inline">\(\tau_0^2\)</span> fixed? data info. dominated!</li>
+<li>what happens if <span class="math inline">\(\tau_0\to \infty\)</span> with <span class="math inline">\(n\)</span> fixed? This would result from assuming <span class="math inline">\(p(\theta)\)</span> is proportional to a constant for <span class="math inline">\(\theta\in(-\infty,\infty)\)</span>. (improper prior, serves as an noninformative prior)</li>
+</ul>
+</div>
+<div id="normal-distribution-with-known-mean-but-unknown-variance" class="section level2">
+<h2>Normal distribution with known mean but unknown variance</h2>
+<p><strong>Likelihood function</strong>:
+<span class="math display">\[p(y|\sigma^2)=\prod_{i=1}^n \frac 1{\sqrt{2\pi}\sigma}e^{-\frac{(y_i-\mu)^2}{2\sigma^2}}\propto \sigma^{-n}\exp\left[-\frac{n}{2\sigma^2}\nu\right]\]</span>
+where the sufficient statistic is
+<span class="math display">\[\nu=\frac 1n\sum_{i=1}^n(y_i-\mu)^2.\]</span>
+<strong>Conjugate prior density</strong>:
+<span class="math display">\[p(\sigma^2)\propto (\sigma^2)^{-(\alpha+1)}e^{-\beta/\sigma^2},\]</span>
+where the hyperparameters is <span class="math inline">\((\alpha,\beta)\)</span>.</p>
+<p>We may take <span class="math inline">\(\sigma^2\sim \text{Inv-}\chi^2(\nu_0,\sigma^2_0)\)</span> as a prior (i.e., <span class="math inline">\(\sigma^2\stackrel d {=}\sigma_0^2\nu_0/\chi^2_{\nu_0}\)</span>), whose PDF is given by
+<span class="math display">\[p(\sigma^2) =\frac{(\nu_0/2)^{\nu_0/2}}{\Gamma(\nu_0/2)}\sigma^{\nu_0}_0(\sigma^2)^{-(\nu_0/2+1)}e^{-\nu_0\sigma_0^2/(2\sigma^2)}.\]</span></p>
+</div>
+<div id="normal-distribution-with-known-mean-but-unknown-variance-1" class="section level2">
+<h2>Normal distribution with known mean but unknown variance</h2>
+<p><strong>Prior density</strong>:
+<span class="math display">\[p(\sigma^2)= \text{Inv-}\chi^2(\nu_0,\sigma^2_0)\]</span></p>
+<p><strong>Posterior density</strong>:
+<span class="math display">\[p(\sigma^2|y)=\text{Inv-}\chi^2\left(\nu_0+n,\frac{\nu_0\sigma_0^2+n\nu}{\nu_0+n}\right)\]</span></p>
+<ul>
+<li><p>degree of freedom = sum of the prior and data</p></li>
+<li><p>scale = weighted average of the prior and data</p></li>
+<li><p>if <span class="math inline">\(\nu_0=0\)</span>, <span class="math inline">\(p(\sigma^2|y)=\text{Inv-}\chi^2(n,\nu)\)</span>, as effectively taking <span class="math inline">\(p(\sigma^2)\propto 1/\sigma^2\)</span> (improper prior, serves as an noninformative prior)</p></li>
+</ul>
+</div>
+</div>
+<div id="poisson-models" class="section level1">
+<h1>Poisson models</h1>
+<div id="poisson-models-1" class="section level2">
+<h2>Poisson models</h2>
+<p><strong>Applications</strong>: The Possion distribution arises naturally in the study of data taking the form of counts.</p>
+<ul>
+<li>number of customer on the queue over an unit time</li>
+<li>epidemiology – the incidence of diseases</li>
+</ul>
+<p><strong>Likelihood function</strong>:
+<span class="math display">\[p(y|\theta) = \prod_{i=1}^n\frac{\theta^{y_i}e^{-\theta}}{y_i!}\propto \theta^{t(y)}e^{-n\theta}\propto e^{-n\theta}e^{t(y)\log \theta}\]</span></p>
+<ul>
+<li><span class="math inline">\(t(y)=\sum_{i=1}^n y_i\)</span> is the sufficient statistic</li>
+<li>the natural parameter is <span class="math inline">\(\log \theta\)</span></li>
+</ul>
+<p><strong>Conjugate prior</strong>:
+<span class="math display">\[p(\theta)\propto e^{-\eta\theta}e^{\nu\log \theta}\]</span></p>
+<p>So we may choose <span class="math inline">\(p(\theta)=Gamma(\alpha,\beta)\propto \theta^{\alpha-1}e^{-\beta\theta}\)</span></p>
+</div>
+<div id="poisson-models-2" class="section level2">
+<h2>Poisson models</h2>
+<p><strong>Prior density</strong>: <span class="math inline">\(p(\theta)=Gamma(\alpha,\beta)\)</span></p>
+<p><strong>Posterior density</strong>: <span class="math inline">\(p(\theta|y)=Gamma(\alpha+n\bar y,\beta+n)\)</span></p>
+<p><strong>Marginal density</strong>:
+<span class="math display">\[p(y_i)=C_{\alpha+y_i-1}^{y_i} \left(\frac{\beta}{\beta+1}\right)^\alpha\left(\frac{1}{\beta+1}\right)^{y_i}\]</span></p>
+<ul>
+<li><span class="math inline">\(y_i\sim \text{Neg-bin}(\alpha,\beta)\)</span>, i.e., the negative binomial distribution</li>
+</ul>
+</div>
+<div id="possion-models-an-extension" class="section level2">
+<h2>Possion models: an extension</h2>
+<p>In many applications, it is convenient to extend the Possion model for data pionts <span class="math inline">\(y_1,\dots,y_n\)</span> to the form
+<span class="math display">\[y_i\sim Poission(x_i\theta),\]</span></p>
+<ul>
+<li><p>the values <span class="math inline">\(x_i\)</span> are known positive values of an explanatory variable <span class="math inline">\(x\)</span>, called the <em>exposure</em> of the <span class="math inline">\(i\)</span>th unit</p></li>
+<li><p><span class="math inline">\(\theta\)</span> is unknown, called the <em>rate</em></p></li>
+</ul>
+<p><strong>Prior density</strong>: <span class="math inline">\(p(\theta)=Gamma(\alpha,\beta)\)</span></p>
+<p><strong>Posterior density</strong>:
+<span class="math display">\[p(\theta|y)=Gamma(\alpha+\sum_{i=1}^ny_i,\beta+\sum_{i=1}^nx_i)\]</span></p>
+<p><strong>Example</strong>: Bayesian inference for the cancer death rates (p.48)</p>
+</div>
+</div>
+<div id="exponential-models" class="section level1">
+<h1>Exponential models</h1>
+<div id="exponential-models-1" class="section level2">
+<h2>Exponential models</h2>
+<p><strong>Applications</strong>: The expoential distribution is commonly used to model ‘waiting times’ and other continuous, poisitive, real-valued random variables. It has a ‘memoryless’ property that makes it a natural model for survival or lifetime data.</p>
+<p><strong>Likelihood function</strong>:
+<span class="math display">\[p(y|\theta) = \prod_{i=1}^n\theta \exp(-y_i\theta)= \theta^{n}e^{-n\bar y \theta}\]</span></p>
+<p><strong>Prior density</strong>: <span class="math inline">\(p(\theta)=Gamma(\alpha,\beta)\)</span></p>
+<p><strong>Posterior density</strong>:
+<span class="math display">\[p(\theta|y)=Gamma(\alpha+n,\beta+n\bar y)\]</span></p>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Population</th>
+<th>Parameter</th>
+<th>Conjugate prior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Binomial</td>
+<td>probability of success</td>
+<td>Beta dist.</td>
+</tr>
+<tr class="even">
+<td>Possion</td>
+<td>mean</td>
+<td>Gamma dist.</td>
+</tr>
+<tr class="odd">
+<td>Exponential</td>
+<td>inverse mean</td>
+<td>Gamma dist.</td>
+</tr>
+<tr class="even">
+<td>Normal (known variance)</td>
+<td>mean</td>
+<td>Normal dist.</td>
+</tr>
+<tr class="odd">
+<td>Normal (known mean)</td>
+<td>variance</td>
+<td>Inv-Gamma dist.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="end-notes" class="section level2">
+<h2>End notes</h2>
+<ul>
+<li><p>two kinds of prior distributions: uniform (noninformative) and conjugate (informative)</p></li>
+<li><p>some other noninformative prior distributions: Jeffreys’ prior etc. See pp.52-56</p></li>
+<li><p>noninformative prior are often useful when it does not seem to be worth the effort to quantify one’s real prior knowledge as a probability distribution</p></li>
+<li><p>when using conjugate prior, it remains to choose the hyperparameters; see Chapter 5 for hierarchical models</p></li>
+</ul>
+</div>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">上一页</div>
+    <a href="/courses/bayes/chap2/" rel="next">第2章</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">下一页</div>
+    <a href="/courses/bayes/chap4/" rel="prev">第4章</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>最近更新于 May 5, 2019</p>
+
+          
+
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    Zhijian He 2020
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲",
+        'slides' : "演示文稿"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

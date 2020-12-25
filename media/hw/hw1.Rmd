@@ -1,0 +1,75 @@
+---
+title: "Homework 1"
+author: "Put your name and student ID here"
+date: '`r format(Sys.Date())`'
+CJKmainfont: SimSun
+output:
+  pdf_document: 
+    includes:
+      header-includes:
+        - \usepackage{xeCJK}
+        - \usepackage{amsmath}
+        - \usepackage{listings}
+        - \usepackage{amsfonts}
+        - \usepackage{amssymb}
+    keep_tex: yes
+    latex_engine: xelatex
+  html_document: default
+  word_document: default
+---
+
+
+**Q1**: The planet Tralfamadore has years with 500 days. There are 5 Tralfamadorans in the room. Write an expression for the probability that no two of 	them have the same birthday.
+
+How would you find the smallest $n$ for which a room of $n$ Tralfamadorans has probability at least $1/2$ of having two members with the same birthday?
+
+The above two questions really require some sort of assumption to get an answer. In case you did not already provide one, what is the customary assumption one uses in probability exercises?
+
+
+**Q2**: Write an expression for $\phi_X(t)$, the moment generating function (MGF) of a random variable X. Find and interpret the second derivative $\phi{''}_X(0)$. If the MGF does not exist what would we use instead?
+
+**Q3**: If $X$ and $Y$ are uncorrelated random variables must they be independent?
+If $X$ and $Y$ are independent random variables must they be uncorrelated?
+Explain in both cases.
+
+**Q4**: For events $A$ and $B$ define $\mathrm{Pr}(A|B)$ in terms of $\mathrm{Pr}(A)$, $\mathrm{Pr}(B)$, $\mathrm{Pr}(A \cap B)$
+and $\mathrm{Pr}(A\cup B)$. Write $\mathrm{Pr}(A|B)$ as the appropriate multiple of $\mathrm{Pr}(B|A)$.
+
+
+**Q5**:  When is $\mathrm{Pr}(A\cap B \cap C)=\mathrm{Pr}(A)\mathrm{Pr}(B)\mathrm{Pr}(C)$? You need not describe every sufficient condition, just one really good one.
+
+
+**Q6**: State (a version of) Chebychev's inequality.
+
+
+**Q7**: Write an expression for the variance of $X + Y$. Of course it is
+$$\mathrm{E}[(X+Y)^2]-(\mathrm{E}[X+Y])^2,$$
+but that is not the expression I want. Your expression should involve
+$\mathrm{Var}(X)$ in a non-trivial way.
+
+
+**Q8**: For what well-known distribution does the random variable $X$ have $\mathrm{Pr}(X =
+x) = e^{-\lambda}\lambda^x/x!$ for integers $x=0,1,2,\dots$ and a parameter $\lambda>0$? What
+sort of quantity might be thought to have that distribution?
+
+
+**Q9**: What is the probability density function of a normally distributed random
+variable with mean $\mu$ and variance $\sigma^2$?
+
+
+**Q10**: Find the variance of a random variable X with the uniform distribution
+on $[0, 1]$, either by working it out or stating it if you remember the answer.
+(No looking it up on Baidu or elsewhere! Either know it or derive it or
+do both just to be sure.) Using the known answer for $U[0, 1]$, how would
+you work out the variance of the uniform distribution on $[-3, 3]$?
+
+
+**Q11**: We have some random variables $X_1, X_2, X_3$ and so on. Suppose that
+$\mathrm{Pr}(X_i\le x)\to F(x)$ as $i\to \infty$ for some CDF $F$. Does this mean that
+$\mathrm{E}[X_i]\to \mathrm{E}[X]$ where $X$ is a random variable with distribution $F$? If it
+does, either prove it, or state a well known theorem about it. If it does
+not, then come up with a counterexample. 
+
+
+**Q12**: The random variables $X_i\in\{0,1\}$ are independent and identically distributed with $\mathrm{Pr}(X_i = 1) = p$ and $\mathrm{Pr}(X_i = 0) = 1-p$. Their average is $\bar X = (1/n)\sum_{i=1}^n X_i$. What is $\mathrm{Var}(\bar X)$? Find the answer using whatever
+combination of memory and derivation works best for you.

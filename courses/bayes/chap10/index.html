@@ -1,0 +1,1509 @@
+<!DOCTYPE html><html lang="zh-Hans" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="何志坚">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction to Bayesian computationThe goals are to estimate
+the posterior distribution \(p(\theta|y)\propto p(\theta)p(y|\theta)\)
+the posterior predictive distribution\[p(\tilde y|y) = \int p(\tilde y|\theta)p(\theta|y)d \theta =E[p(\tilde y|\theta)|y]\]">
+
+  
+  <link rel="alternate" hreflang="en" href="/en/courses/bayes/chap10/">
+  
+  <link rel="alternate" hreflang="zh-Hans" href="/courses/bayes/chap10/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/courses/bayes/chap10/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="何志坚">
+  <meta property="og:url" content="/courses/bayes/chap10/">
+  <meta property="og:title" content="第10章 | 何志坚">
+  <meta property="og:description" content="Introduction to Bayesian computationThe goals are to estimate
+the posterior distribution \(p(\theta|y)\propto p(\theta)p(y|\theta)\)
+the posterior predictive distribution\[p(\tilde y|y) = \int p(\tilde y|\theta)p(\theta|y)d \theta =E[p(\tilde y|\theta)|y]\]"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>第10章 | 何志坚</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project/"><span>项目</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publication/"><span>文章</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/courses/"><span>课程</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>联系方式</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="搜索"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown i18n-dropdown">
+        <a href="#" class="nav-link " data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-globe mr-1" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-item dropdown-item-active">
+            <span>中文 (简体)</span>
+          </div>
+          
+          <a class="dropdown-item" href="/en/courses/bayes/chap10/">
+            <span>English</span>
+          </a>
+          
+        </div>
+      </li>
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="搜索..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/">课程简介</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/chap1/">主要内容</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/courses/bayes/chap1/">第1章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap2/">第2章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap3/">第3章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap4/">第4章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap5/">第5章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap6/">第6章</a>
+      </li>
+      
+      <li class="active">
+        <a href="/courses/bayes/chap10/">第10章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap11/">第11章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/vi/">变分推断</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>第10章</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="introduction-to-bayesian-computation" class="section level2">
+<h2>Introduction to Bayesian computation</h2>
+<p>The goals are to estimate</p>
+<ul>
+<li><p>the posterior distribution <span class="math inline">\(p(\theta|y)\propto p(\theta)p(y|\theta)\)</span></p></li>
+<li><p>the posterior predictive distribution
+<span class="math display">\[p(\tilde y|y) = \int p(\tilde y|\theta)p(\theta|y)d \theta =E[p(\tilde y|\theta)|y]\]</span></p></li>
+</ul>
+<p>We are therefore insterested in estimating the posterior expectation
+<span class="math display">\[\mu=E[h(\theta)|y]=\int h(\theta)p(\theta|y)d \theta\]</span></p>
+<ul>
+<li>moments: <span class="math inline">\(h(\theta)=\theta^k\)</span></li>
+<li>probability: <span class="math inline">\(h(\theta)=1_A(\theta)\)</span>, <span class="math inline">\(A\subseteq \Theta\)</span></li>
+<li>predictive density: <span class="math inline">\(h(\theta)=p(\tilde y|\theta)\)</span> for fixed <span class="math inline">\(\tilde y\)</span></li>
+</ul>
+</div>
+<div id="monte-carlo-methods" class="section level2">
+<h2>Monte Carlo methods</h2>
+<p>Suppose we can simulate <span class="math inline">\(\theta^{(1)},\dots,\theta^{(N)}\sim p(\theta|y)\)</span> independently. Monte Carlo (MC) esimate is then the sample average:
+<span class="math display">\[\hat{\mu}_N = \frac1N\sum_{i=1}^N h(\theta^{(i)})\]</span></p>
+<ul>
+<li>LLN: <span class="math inline">\(\hat\mu_N\to \mu\)</span> w.p.1 as <span class="math inline">\(N\to \infty\)</span></li>
+<li>CLT: <span class="math inline">\(\hat\mu_N-\mu=O_p(N^{-1/2})\)</span></li>
+</ul>
+<p>Traditional quadrature rules’ have error rate <span class="math inline">\(O(N^{-r/d})\)</span>, where <span class="math inline">\(r\ge 1\)</span> depends on the smoothness of the functions, and <span class="math inline">\(d\)</span> is the dimension of <span class="math inline">\(\theta\)</span>. This suffers <strong>the curse of dimensionality</strong>.</p>
+<p>MC has an error rate <span class="math inline">\(O(N^{-1/2})\)</span> independently of the smoothness and the dimension of the functions. The task is to simulate iid samples <span class="math inline">\(\theta^{(i)}\sim p(\theta|y)\)</span>.</p>
+</div>
+<div id="random-number-generators" class="section level2">
+<h2>Random number generators</h2>
+<p>We start with a pseudo-random number generator:
+<span class="math display">\[u_1,\dots,u_n,\dots\stackrel{iid}\sim U(0,1)\]</span></p>
+<ul>
+<li><strong>Mersenne Twister</strong> by Matsumoto &amp; Nishimura (1998), whose period is <span class="math inline">\(2^{19937}-1&gt;10^{6000}\)</span></li>
+<li><strong>RngStreams</strong> by L’Ecuyer, Simard, Chen, Kelton (2002)</li>
+</ul>
+<p>They aren’t really uniform random, but good ones are close enough.</p>
+</div>
+<div id="non-uniform-random-variables" class="section level2">
+<h2>Non-uniform random variables</h2>
+<p>Some common distributions (such as Normal, exponential, binomial, Poisson etc.) are already in some scientific softwares (R, Python, Matlab, Julia, Mathematica, etc.)</p>
+<p>We are now concerned with a general distribution. Principled approaches are</p>
+<ul>
+<li>inversion</li>
+<li>acceptance-rejection</li>
+</ul>
+</div>
+<div id="inversion" class="section level2">
+<h2>Inversion</h2>
+<p>Let <span class="math inline">\(F(x)\)</span> be the CDF of the distribution of interest. We can simulate the distribution via iid uniforms <span class="math inline">\(U_1,\dots,U_N\stackrel{iid}\sim U(0,1)\)</span>:</p>
+<p><span class="math display">\[X_i=F^{-1}(U_i),i=1,\dots,N\]</span></p>
+<ul>
+<li><p><span class="math inline">\(F^{-1}\)</span> is the inverse of the CDF <span class="math inline">\(F\)</span>, definited by
+<span class="math display">\[F^{-1}(u)=\inf\{x\in\mathbb{R}|F(x)\ge u\}\]</span></p></li>
+<li><p>it is easy to see that <span class="math inline">\(X_i\stackrel{iid}\sim F\)</span></p></li>
+</ul>
+</div>
+<div id="inversion-examples" class="section level2">
+<h2>Inversion: examples</h2>
+<div id="gaussian" class="section level3">
+<h3>Gaussian</h3>
+<p><span class="math display">\[Z=\Phi^{-1}(U)\sim N(0,1)\]</span></p>
+<p><span class="math display">\[X=\mu+\sigma\Phi^{-1}(U) \sim N(\mu,\sigma^2)\]</span></p>
+</div>
+<div id="exponential" class="section level3">
+<h3>Exponential</h3>
+<p><span class="math display">\[X= -\frac 1\lambda \log (1-U)\sim Exp(\lambda)\]</span></p>
+</div>
+<div id="bernoulli" class="section level3">
+<h3>Bernoulli</h3>
+<p><span class="math display">\[X=1\{U\le p\}\sim Bin(1,p)\]</span></p>
+</div>
+</div>
+<div id="multivariate-inverse-transformation" class="section level2">
+<h2>Multivariate inverse transformation</h2>
+<ul>
+<li>let <span class="math inline">\(F(x_1,\dots,x_d)\)</span> be the PDF of <span class="math inline">\(X_1,\dots,X_d\)</span></li>
+<li>let <span class="math inline">\(F_i(x_i)\)</span> be the marginal distribution of <span class="math inline">\(X_i\)</span></li>
+<li>for <span class="math inline">\(i=2,\dots,d\)</span>, let <span class="math inline">\(F_i(x_i|x_1,\dots,x_{i-1})\)</span> be the conditional CDF</li>
+</ul>
+<p>The multivariate inverse transformation is proposed by Rosenblatt (1952), which simulates the components <span class="math inline">\(X_i\)</span> recursively, i.e.,</p>
+<p><span class="math display">\[X_1=F_1^{-1}(U_1)\]</span>
+<span class="math display">\[X_i=F_i^{-1}(U_i|X_1,\dots,X_{i-1}),\ i=2,\dots,d\]</span></p>
+<ul>
+<li>the output has the destribution <span class="math inline">\(F\)</span></li>
+<li>the order of simulating the components can be arbitrary</li>
+<li>the critical issue is to know the conditional CDFs in advance</li>
+</ul>
+</div>
+<div id="acceptance-rejection" class="section level2">
+<h2>Acceptance-rejection</h2>
+<ul>
+<li>suppose the target distrubtion is <span class="math inline">\(f(x)\)</span> with the support <span class="math inline">\(\mathcal{X}\)</span></li>
+<li>we can sample <span class="math inline">\(Y\sim g\)</span>, where <span class="math inline">\(g\)</span> is another density satisfying: there exists <span class="math inline">\(M&gt;0\)</span> such that
+<span class="math display">\[\frac{f(x)}{g(x)}\le M\ \forall x\in \mathcal{X}\]</span></li>
+<li>we can compute <span class="math inline">\(f(x)/g(x)\)</span></li>
+</ul>
+<p>The algorithm goes below</p>
+<ul>
+<li><p>Step 1: simulate <span class="math inline">\(Y\sim g\)</span></p></li>
+<li><p>Step 2: accept <span class="math inline">\(Y\)</span> as a draw from <span class="math inline">\(f\)</span> with probability <span class="math inline">\(f(Y)/(Mg(Y))\)</span>. If the draw is rejected, return to Step 1.</p></li>
+<li><p>Step 2’: simulate <span class="math inline">\(U\sim U(0,1)\)</span>
+<span class="math display">\[
+\begin{cases}
+\text{accept } Y &amp; U\le f(Y)/(Mg(Y))\\
+\text{go to Step 1 }&amp; else
+\end{cases}
+\]</span></p></li>
+</ul>
+</div>
+<div id="acceptance-rejection-1" class="section level2">
+<h2>Acceptance-rejection</h2>
+<p><img src="figs/AR.png" /></p>
+<ul>
+<li>the acceptance probability: <span class="math display">\[E[f(Y)/(Mg(Y))]=\frac 1 M\]</span></li>
+<li>we may choose the smallest <span class="math inline">\(M\)</span> such that <span class="math inline">\(f(x)\le Mg(x)\)</span> for all <span class="math inline">\(x\in\mathcal{X}\)</span></li>
+</ul>
+</div>
+<div id="acceptance-rejection-for-bayesian-computation" class="section level2">
+<h2>Acceptance-rejection for Bayesian computation</h2>
+<ul>
+<li><p>the target density
+<span class="math display">\[p(\theta|y)=\frac{p(\theta)p(y|\theta)}{p(y)}\]</span></p></li>
+<li><p>the constant <span class="math inline">\(p(y)\)</span> is unknown</p></li>
+<li><p>the AR algorithm works well if taking <span class="math inline">\(f(\theta)=p(\theta)p(y|\theta)\)</span>
+and using proposal density <span class="math inline">\(\propto g(\theta)\)</span> with
+<span class="math display">\[\frac{p(\theta)p(y|\theta)}{g(\theta)}\le M\]</span></p></li>
+</ul>
+</div>
+<div id="example-gamma-distribution" class="section level2">
+<h2>Example: Gamma distribution</h2>
+<ul>
+<li><p><span class="math inline">\(Gamma(\alpha,\lambda)\)</span>, <span class="math inline">\(\alpha&gt;0\)</span> is the shape, <span class="math inline">\(\lambda&gt;0\)</span> is the rate</p></li>
+<li><p>density</p></li>
+</ul>
+<p><span class="math display">\[f(x) = \frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x}1\{x&gt; 0\}\]</span></p>
+<p><span class="math display">\[Gamma(\alpha,\lambda)\stackrel{d}{=}\frac 1 \lambda Gamma(\alpha,1)\]</span></p>
+<p><span class="math display">\[Gamma(\alpha,1)\stackrel{d}{=}U(0,1)^{1/\alpha}Gamma(\alpha+1,1)\]</span></p>
+<ul>
+<li><p>so our target is <span class="math inline">\(Gamma(\alpha,1)\)</span> with <span class="math inline">\(\alpha&gt;1\)</span>. For this case, the density is bounded.</p></li>
+<li><p>the proposal
+<span class="math display">\[g(x)=?\]</span></p></li>
+</ul>
+</div>
+<div id="gamma-density" class="section level2">
+<h2>Gamma density</h2>
+<p><img src="/zh/courses/Bayes/chap10_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<ul>
+<li><p>Ahrens and Dieter (1974) took proposals from a density that combines a
+Gaussian density in the center and an exponential density in the right tail.</p></li>
+<li><p>Marsaglia and Tsang (2000) present an AR algorithm from a truncated
+<span class="math inline">\(N(0,1)\)</span></p></li>
+</ul>
+</div>
+<div id="example-beta-distribution" class="section level2">
+<h2>Example: Beta distribution</h2>
+<ul>
+<li><p><span class="math inline">\(Beta(\alpha,\beta)\)</span> density
+<span class="math display">\[f(x)=\frac{\Gamma(\alpha,\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}1\{0&lt;x&lt;1\}\]</span></p></li>
+<li><p>generate a Beta from two independent Gammas
+<span class="math display">\[Beta(\alpha,\beta)\stackrel{d}{=}\frac{Gamma(\alpha,\lambda)}{Gamma(\alpha,\lambda)+Gamma(\beta,\lambda)}\]</span></p></li>
+<li><p>for <span class="math inline">\(\alpha&gt;1\)</span> and <span class="math inline">\(\beta&gt;1\)</span>, the beta density is unimodal and achieves its maximum at <span class="math inline">\(x^*=(\alpha-1)/(\alpha+\beta-2)\)</span></p></li>
+</ul>
+</div>
+<div id="beta-density" class="section level2">
+<h2>Beta density</h2>
+<p><img src="/zh/courses/Bayes/chap10_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<ul>
+<li>Proposal distribution: <span class="math inline">\(U(0,1)\)</span></li>
+<li><span class="math inline">\(M=f(x^*)\)</span></li>
+<li>accept <span class="math inline">\(U\sim U(0,1)\)</span> with probability <span class="math inline">\(f(U)/M\)</span></li>
+</ul>
+</div>
+<div id="beta-generator-r-code" class="section level2">
+<h2>Beta generator: R code</h2>
+<pre class="r"><code>myBeta &lt;- function(n,alpha,beta){
+  if(alpha&lt;=1 | beta&lt;=1)
+    stop(&quot;alpha, beta cannot be &lt;= 1&quot;)
+  M = dbeta((alpha-1)/(alpha+beta-2),alpha,beta)
+  x = rep(0,n)
+  for(i in 1:n){
+    while (TRUE){
+      U = runif(1)
+      if(dbeta(U,alpha,beta)&gt;= M*runif(1)){
+        x[i] = U
+        break
+      }
+    }
+  }
+  return(x)
+}</code></pre>
+</div>
+<div id="simulation-results" class="section level2">
+<h2>Simulation results</h2>
+<p><img src="/zh/courses/Bayes/chap10_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-5">Table 1: </span></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>myBeta</td>
+<td align="right">0.4001780</td>
+<td align="right">0.1968478</td>
+</tr>
+<tr class="even">
+<td>dbeta</td>
+<td align="right">0.3996059</td>
+<td align="right">0.2000705</td>
+</tr>
+<tr class="odd">
+<td>true values</td>
+<td align="right">0.4000000</td>
+<td align="right">0.2000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="importance-sampling" class="section level2">
+<h2>Importance Sampling</h2>
+<ul>
+<li><p>the target is to estimate <span class="math inline">\(\mu=E_f[h(X)]\)</span> w.r.t. the density <span class="math inline">\(f(x)\)</span></p></li>
+<li><p>the proposal density <span class="math inline">\(g(x)\)</span>: <span class="math inline">\(g(x)&gt;0\)</span> whenever <span class="math inline">\(h(x)f(x)&gt;0\)</span>
+<span class="math display">\[\mu=\int h(x)f(x)dx=\int h(x)\frac{f(x)}{g(x)}g(x)dx=E_g[h(X)f(X)/g(X)]\]</span></p></li>
+<li><p><span class="math inline">\(f(x)/g(x)\)</span> called the <strong>likelihood ratio (LR)</strong></p></li>
+</ul>
+<p>The IS algorithm goes below</p>
+<ul>
+<li>Step 1: simulate <span class="math inline">\(n\)</span> samples <span class="math inline">\(X_1,\dots,X_n\)</span> from <span class="math inline">\(g(x)\)</span></li>
+<li>Step 2: compute the sample average:
+<span class="math display">\[\hat{\mu}_{IS}=\frac 1N\sum_{i=1}^N \frac{h(X_i)f(X_i)}{g(X_i)}\]</span></li>
+</ul>
+</div>
+<div id="choosing-the-proposal" class="section level2">
+<h2>Choosing the proposal</h2>
+<p><span class="math display">\[Var[\hat{\mu}_{IS}] = \frac{\sigma^2_g}{N}\]</span></p>
+<p><span class="math display">\[\sigma^2_g = \int \left(\frac{h(x)f(x)}{g(x)}-\mu\right)^2g(x)d x=\int\frac{(h(x)f(x)-\mu g(x))^2}{g(x)}dx\]</span></p>
+<ul>
+<li>if <span class="math inline">\(g(x)=h(x)f(x)/\mu\)</span> and <span class="math inline">\(h\ge 0\)</span>, then we have <strong>the optimal case</strong> <span class="math inline">\(\sigma^2_g=0\)</span></li>
+<li>but unattainable: <span class="math inline">\(\mu\)</span> is unknown constant</li>
+<li>we may find <span class="math inline">\(g(x)\approx h(x)f(x)/\mu\)</span></li>
+</ul>
+</div>
+<div id="the-weight-function" class="section level2">
+<h2>The weight function</h2>
+<ul>
+<li>let <span class="math inline">\(w(x)=f(x)/g(x)\)</span> be the LR
+<span class="math display">\[\sigma^2_g =\int \frac{(hf)^2}{g}dx -\mu^2\]</span></li>
+</ul>
+<p><span class="math display">\[\int \frac{(hf)^2}{g}dx=E_f[w(X)h(X)^2]=E_g[w(X)^2h(X)^2]\]</span></p>
+<ul>
+<li>if <span class="math inline">\(w(x)\)</span> is bounded, then <span class="math inline">\(\sigma^2_g\)</span> is bounded</li>
+<li>if <span class="math inline">\(w(x)\)</span> is unbounded, then <span class="math inline">\(\sigma^2_g\)</span> may be unbounded (<strong>the worst case!</strong>)</li>
+</ul>
+</div>
+<div id="self-normalized-is-snis" class="section level2">
+<h2>Self-normalized IS (SNIS)</h2>
+<p>What if we cannot compute <span class="math inline">\(f/g\)</span>? Suppose that
+<span class="math display">\[f(x)=c_f\tilde{f}(x),\ g(x)=c_g\tilde{g}(x)\]</span></p>
+<p>and we can compute <span class="math inline">\(\tilde f,\tilde g\)</span> but not the constants <span class="math inline">\(c_f,c_g\)</span>. Then we use</p>
+<p><span class="math display">\[\hat{\mu}_{SNIS}= \frac{\frac 1 N\sum_{i=1}^nh(X_i)\tilde{f}(X_i)/\tilde{g}(X_i)}{\frac 1 N\sum_{i=1}^n\tilde{f}(X_i)/\tilde{g}(X_i)}\]</span></p>
+<p>or, equivalently,</p>
+<p><span class="math display">\[\hat{\mu}_{SNIS}= \frac{\frac 1 N\sum_{i=1}^Nh(X_i){f}(X_i)/{g}(X_i)}{\frac 1 N\sum_{i=1}^N{f}(X_i)/{g}(X_i)}=\frac{\frac 1 N\sum_{i=1}^Nh(X_i)w(X_i)}{\frac 1 N\sum_{i=1}^Nw(X_i)}\]</span></p>
+</div>
+<div id="variance-of-snis" class="section level2">
+<h2>Variance of SNIS</h2>
+<ul>
+<li>Taylor expansions
+<span class="math display">\[f(\bar X,\bar Y)\approx f(\mu_1,\mu_2)+f_x(\mu_1,\mu_2)(\bar X-\mu_1)+f_y(\mu_1,\mu_2)(\bar Y-\mu_2)\]</span></li>
+</ul>
+<p><span class="math display">\[E[f(\bar X,\bar Y)]\approx f(\mu_1,\mu_2)\]</span></p>
+<p><span class="math display">\[Var[f(\bar X,\bar Y)]\approx f_x^2Var[\bar X]+f_y^2Var[\bar Y]+2f_xf_yCov(\bar X,\bar Y)\]</span></p>
+<ul>
+<li><p>for <span class="math inline">\(f(x,y)=x/y\)</span>, <span class="math inline">\(f_x=1/y,f_y=-x/y^2\)</span>
+<span class="math display">\[Var[f(\bar X,\bar Y)]\approx \frac{\sigma_X^2}{N\mu_2^2}+\frac{\mu_1^2\sigma_Y^2}{N\mu_2^4}-\frac{2\mu_1}{N\mu_2^3}Cov(X,Y)\]</span></p></li>
+<li><p><span class="math inline">\(Var[\hat{\mu}_{SNIS}]\approx \frac{1}{N}E_g[w(X)^2(h(X)-\mu)^2]\)</span></p></li>
+<li><p><span class="math inline">\(Var[\hat{\mu}_{IS}]= \frac{1}{N}E_g[(h(X)w(X)-\mu)^2]\)</span></p></li>
+</ul>
+</div>
+<div id="optimal-snis" class="section level2">
+<h2>Optimal SNIS</h2>
+<ul>
+<li><p>SNIS: <span class="math inline">\(g_{opt}(x)\propto f(x)|h(x)-\mu|\)</span></p></li>
+<li><p>IS: <span class="math inline">\(g_{opt}(x)\propto f(x)|h(x)|\)</span></p></li>
+</ul>
+</div>
+<div id="effective-sample-size" class="section level2">
+<h2>Effective sample size</h2>
+<ul>
+<li><p>Unequal weighting raises variance, see, Kong (1992), Evans and Swartz (1995)</p></li>
+<li><p>for iid <span class="math inline">\(Y_i\)</span> with variance <span class="math inline">\(\sigma^2\)</span> and fixed <span class="math inline">\(w_i\ge 0\)</span>,
+<span class="math display">\[Var\left(\frac{\sum_{i}w_iY_i}{\sum_iw_i}\right)=\frac{\sum_iw_i^2\sigma^2}{(\sum_iw_i)^2}=\frac{\sigma^2}{N_{eff}}\]</span></p></li>
+</ul>
+<p>where the effective sample size <span class="math inline">\(N_{eff}\)</span> is defined as</p>
+<p><span class="math display">\[N_{eff} = \frac{(\sum_{i=1}^Nw_i)^2}{\sum_{i=1}^Nw_i^2}\in [1,N]\]</span></p>
+<ul>
+<li><p><span class="math inline">\(N_{eff}\)</span> is small if there are few extremely high weights which would unduly influence the distribution</p></li>
+<li><p>for equal weights, we have <span class="math inline">\(N_{eff}=N\)</span></p></li>
+</ul>
+</div>
+<div id="example-1" class="section level2">
+<h2>Example 1</h2>
+<p>Suppose the posterior distribution is <span class="math inline">\(N(\mu,\sigma^2)\)</span>, the proposal distribution is <span class="math inline">\(t_3(\mu,\sigma^2)\)</span>. Consider <span class="math inline">\(\mu=\sigma=2\)</span>.</p>
+<p><img src="/zh/courses/Bayes/chap10_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+</div>
+<div id="example-1-1" class="section level2">
+<h2>Example 1</h2>
+<pre><code>## [1] &quot;Effective sample size is  9178 / 10000&quot;</code></pre>
+<p><img src="/zh/courses/Bayes/chap10_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 2: </span></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">n=100</th>
+<th align="right">n=1000</th>
+<th align="right">n=10000</th>
+<th align="right">exact_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="right">2.214328</td>
+<td align="right">2.011347</td>
+<td align="right">1.945335</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Variance</td>
+<td align="right">3.069694</td>
+<td align="right">3.688183</td>
+<td align="right">4.052519</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="example-2" class="section level2">
+<h2>Example 2</h2>
+<p>Suppose the posterior distribution is <span class="math inline">\(t_3(\mu,\sigma^2)\)</span>, the proposal distribution is <span class="math inline">\(N(\mu,\sigma^2)\)</span>.</p>
+<pre><code>## [1] &quot;Effective sample size is  6180 / 10000&quot;</code></pre>
+<p><img src="/zh/courses/Bayes/chap10_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-8">Table 3: </span></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">n=100</th>
+<th align="right">n=1000</th>
+<th align="right">n=10000</th>
+<th align="right">exact_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td align="right">1.802681</td>
+<td align="right">1.784954</td>
+<td align="right">2.019707</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Variance</td>
+<td align="right">4.630305</td>
+<td align="right">6.931088</td>
+<td align="right">6.875331</td>
+<td align="right">12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="is-vs-acceptance-rejection" class="section level2">
+<h2>IS vs acceptance rejection</h2>
+<ul>
+<li><p>Acceptance-rejection requires bounded LR <span class="math inline">\(f/g\)</span></p></li>
+<li><p>We also have to know a bound</p></li>
+<li><p>IS and SNIS require us to keep track of weights</p></li>
+<li><p>Plain IS requires normalized <span class="math inline">\(f/g\)</span></p></li>
+<li><p>Acceptance-rejection samples cost more (due to rejections)</p></li>
+</ul>
+</div>
+<div id="is-for-rare-events" class="section level2">
+<h2>IS for rare events</h2>
+<ul>
+<li><p>rare events:
+<span class="math display">\[h(x)=1_A(x), \mu = E_f[h(x)]=\int_A f(x) dx=\epsilon\approx 0\]</span></p></li>
+<li><p>coefficient of variation of <span class="math inline">\(\hat{\mu}\)</span>
+<span class="math display">\[cv:=\frac{\sigma/\sqrt{N}}{\mu}=\frac{\sqrt{\epsilon(1-\epsilon)}}{\sqrt{n}\epsilon}\approx \frac{1}{\sqrt{n\epsilon}}\]</span></p></li>
+<li><p>to get <span class="math inline">\(cv=0.1\)</span> takes <span class="math inline">\(N\ge 100/\epsilon\)</span>, e.g., <span class="math inline">\(\epsilon = 10^{-5}\)</span>, then <span class="math inline">\(N\ge 10^7\)</span></p></li>
+<li><p>Taking <span class="math inline">\(X\sim f\)</span> does not get enough data from the important region <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Get more data from <span class="math inline">\(A\)</span> (from a proper proposal <span class="math inline">\(g(x)\)</span>), and then correct the bias (the LR function)</p></li>
+</ul>
+</div>
+<div id="changing-a-parameter" class="section level2">
+<h2>Changing a parameter</h2>
+<ul>
+<li><p>norminal distribution <span class="math inline">\(p(x;\theta_0)\)</span>, <span class="math inline">\(\theta_0\in\Theta\)</span></p></li>
+<li><p>proposal distribution <span class="math inline">\(p(x;\theta)\)</span>, <span class="math inline">\(\theta\in\Theta\)</span></p></li>
+<li><p>estimator
+<span class="math display">\[\hat\mu_\theta=\frac{1}{N}\sum_{i=1}^N h(X_i) \frac{p(X_i;\theta_0)}{p(X_i;\theta)}\]</span></p></li>
+</ul>
+<p>The importance ratio often simplifies, e.g., in exponential families.</p>
+</div>
+<div id="exponential-tilting" class="section level2">
+<h2>Exponential tilting</h2>
+<p>Many important distributions can be written in the form
+<span class="math display">\[p(x;\theta) = a(\theta)\exp[\eta(\theta)^\top T(x)]b(x), \theta\in \Theta\]</span></p>
+<p><span class="math display">\[\hat\mu_\theta=\frac{a(\theta_0)}{a(\theta)}\frac{1}{N}\sum_{i=1}^N h(X_i) \exp[(\eta(\theta_0)-\eta(\theta))^\top T(X_i)]\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\eta(\theta)\)</span> is the natrual parameter</p></li>
+<li><p>This is called the ‘exponential twisting’.</p></li>
+<li><p>The goal is to choose <span class="math inline">\(\theta\in\Theta\)</span> such that <span class="math inline">\(Var[\hat\mu_\theta]\)</span> is minimized.</p></li>
+</ul>
+</div>
+<div id="a-simple-example" class="section level2">
+<h2>A simple example</h2>
+<ul>
+<li><p>norminal distribution <span class="math inline">\(p(x;\theta_0)=N(x;0,1)\)</span></p></li>
+<li><p>proposal distribution <span class="math inline">\(p(x;\theta)=N(x;\theta,1)\)</span>, <span class="math inline">\(\theta\in\mathbb{R}\)</span></p></li>
+<li><p>target function <span class="math inline">\(h(x) = 1\{x&gt;c\}\)</span>, for large <span class="math inline">\(c&gt;0\)</span>, <span class="math inline">\(\mu=E[h(X)]=1-\Phi(c)\approx 0\)</span></p></li>
+<li><p>IS estimator
+<span class="math display">\[\hat\mu_\theta=\frac{1}{N}\sum_{i=1}^N h(X_i) \frac{N(X_i;0,1)}{N(X_i;\theta,1)}=\frac{1}{N}\sum_{i=1}^N h(X_i) e^{-\frac{2\theta X_i-\theta^2}{2}}\]</span></p></li>
+<li><p>IS variance <span class="math inline">\(Var[\hat\mu_\theta]=\sigma^2_\theta/N\)</span>
+<span class="math display">\[\sigma^2_\theta=\frac{e^{\theta^2}}{\sqrt{2\pi}}\int_c^\infty e^{-\frac{(x+\theta)^2}{2}}dx-\mu^2=e^{\theta^2}[1-\Phi(c+\theta)]-\mu^2\]</span></p></li>
+<li><p>the optimal parameter <span class="math inline">\(\theta^*=\arg \min_{\theta\in \mathbb{R}} e^{\theta^2}[1-\Phi(c+\theta)]\)</span></p></li>
+</ul>
+</div>
+<div id="the-effect-of-different-parameters" class="section level2">
+<h2>The effect of different parameters</h2>
+<p><img src="/zh/courses/Bayes/chap10_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre><code>## [1] &quot;the threshold c = 3&quot;</code></pre>
+<pre><code>## [1] &quot;the true value is 0.00135&quot;</code></pre>
+<pre><code>## [1] &quot;the optimal theta is 3.155&quot;</code></pre>
+<pre><code>## [1] &quot;variance reduction factor is 222&quot;</code></pre>
+</div>
+<div id="applications-in-computational-finance" class="section level2">
+<h2>Applications in Computational Finance</h2>
+<ul>
+<li><p>P. Glasserman, P. Heidelberger, and P. Shahabuddin. Asymptotically optimal importance
+sampling and stratification for pricing path-dependent options. <em>Mathematical Finance</em>, 9
+(2):117–152, 1999.</p></li>
+<li><p>P. Glasserman, P. Heidelberger, and P. Shahabuddin. Variance reduction techniques for
+estimating value-at-risk. <em>Management Science</em>, 46(10):1349–1364, 2000.</p></li>
+<li><p>P. Glasserman, J. Li. Importance Sampling for Portfolio Credit Risk. <em>Management Science</em>, 51(11):1643–1656, 2005.</p></li>
+<li><p>Xie, Fei, <strong>Zhijian He</strong>, and Xiaoqun Wang. An Importance Sampling-Based Smoothing Approach for Quasi-Monte Carlo Simulation of Discrete Barrier Options. <em>European Journal of Operational Research</em>, October 17, 2018.
+<a href="https://doi.org/10.1016/j.ejor.2018.10.030">https://doi.org/10.1016/j.ejor.2018.10.030</a></p></li>
+</ul>
+</div>
+<div id="importance-sampling-for-portfolio-credit-risk" class="section level2">
+<h2>Importance Sampling for Portfolio Credit Risk</h2>
+<p>Our interest centers on the distribution of losses
+from default over a fixed horizon.</p>
+<ul>
+<li><p><span class="math inline">\(m\)</span>: number of obligors</p></li>
+<li><p><span class="math inline">\(Y_k\)</span>: default indicator for <span class="math inline">\(k\)</span>th obligor, <span class="math inline">\(Y_k=1\)</span> denotes the default; <span class="math inline">\(Y_k=0\)</span> otherwise</p></li>
+<li><p><span class="math inline">\(p_k\)</span>: marginal probability that <span class="math inline">\(k\)</span>th obligor defaults</p></li>
+<li><p><span class="math inline">\(c_k\)</span>: loss resulting from default of <span class="math inline">\(k\)</span>th obligor</p></li>
+<li><p><span class="math inline">\(L=c_1Y_1+\dots+c_mY_m\)</span>: total loss from defaults</p></li>
+</ul>
+<p>Our goal is to estimate tail probabilities <span class="math inline">\(P(L&gt;x)\)</span>, especially at large values of <span class="math inline">\(x\)</span></p>
+</div>
+<div id="normal-copula-model" class="section level2">
+<h2>Normal copula model</h2>
+<p>In the normal copula model, dependence
+is introduced through a multivariate normal vector <span class="math inline">\(X_1,\dots,X_m\)</span> of latent variables. Each default indicator is represented as
+<span class="math display">\[Y_k = 1\{X_k&gt; x_k\},\ k=1,\dots,m.\]</span>
+<span class="math display">\[X_k = a_{k1}Z_1+\dots+a_{kd}Z_d+b_k\epsilon_k\]</span></p>
+<ul>
+<li><p><span class="math inline">\(x_k\)</span> are chosen to match <span class="math inline">\(P(X_k&gt;x_k)=p_k\)</span></p></li>
+<li><p><span class="math inline">\(Z_1,\dots,Z_d\stackrel{iid}{\sim} N(0,1)\)</span> are systematic risk factors</p></li>
+<li><p><span class="math inline">\(\epsilon_k\stackrel{iid}{\sim} N(0,1)\)</span> is an idiosyncratic risk</p></li>
+<li><p><span class="math inline">\(a_{k1},\dots,a_{kd}\)</span> are the loading factors satisfying <span class="math inline">\(\sum_{j=1}^d a_{kj}^2\le 1\)</span></p></li>
+<li><p><span class="math inline">\(b_k=\sqrt{1-\sum_{j=1}^d a_{kj}^2}\)</span> so that <span class="math inline">\(X_k\sim N(0,1)\)</span></p></li>
+</ul>
+</div>
+<div id="is-for-independent-obligors" class="section level2">
+<h2>IS for independent obligors</h2>
+<p>Consider the simple case of independent obligors: <span class="math inline">\(a_{ij}=0,\ b_k=1\)</span>, i.e., <span class="math inline">\(Y_k\sim Bin(1,p_k)\)</span> independently. The idea is to replace each default probability <span class="math inline">\(p_k\)</span> by some other default probability <span class="math inline">\(q_k\)</span>, the basic IS identity is
+<span class="math display">\[P(L&gt;x)= \tilde{E}\left[1\{L&gt;x\}\prod_{k=1}^m\frac{p_k^{Y_k}(1-p_k)^{1-Y_k}}{q_k^{Y_k}(1-q_k)^{1-Y_k}}\right]\]</span></p>
+<p><strong>Exponential Twisting</strong>: Glasserman and Li (2005) chooses
+<span class="math display">\[q_{k,\theta} = \frac{p_ke^{\theta c_k}}{1+p_k(e^{\theta c_k}-1)}\]</span></p>
+<ul>
+<li><p>The original probabilities correspond to <span class="math inline">\(\theta=0\)</span></p></li>
+<li><p>if <span class="math inline">\(\theta&gt;0\)</span>, this does indeed increase the default
+probabilities; a larger exposure <span class="math inline">\(c_k\)</span> results in a greater
+increase in the default probability.</p></li>
+</ul>
+</div>
+<div id="choosing-the-optimal-parameter" class="section level2">
+<h2>Choosing the optimal parameter</h2>
+<p>The LR is reduced to
+<span class="math display">\[\prod_{k=1}^m\frac{p_k^{Y_k}(1-p_k)^{1-Y_k}}{q_k^{Y_k}(1-q_k)^{1-Y_k}}=\exp(-\theta L+\psi(\theta))\]</span></p>
+<p>where
+<span class="math display">\[\psi(\theta)=\log E[e^{\theta L}]=\sum_{k=1}^m \log(1+p_k(e^{\theta c_k}-1))\]</span>
+is the cumulant generating function (CGF) of L.</p>
+<p>The optimal parameter is
+<span class="math display">\[\theta^* = \arg \min_{\theta\ge 0} \{M_2(\theta)=E_\theta[1\{L&gt;x\}e^{-2\theta L+2\psi(\theta)}]\}\]</span></p>
+</div>
+<div id="choosing-the-sub-optimal-parameter" class="section level2">
+<h2>Choosing the sub-optimal parameter</h2>
+<p>Observe that for <span class="math inline">\(\theta\ge 0\)</span>,
+<span class="math display">\[M_2(\theta)\le e^{-2\theta x+2\psi(\theta)}\]</span></p>
+<p>Minimizing <span class="math inline">\(M_2(\theta)\)</span> is difficult, but minimizing
+the upper bound is easy:
+<span class="math display">\[\theta_x = \arg \min_{\theta\ge 0}e^{-2\theta x+2\psi(\theta)}=\arg \max_{\theta\ge 0} \{\theta x-\psi(\theta)\}\]</span></p>
+<p>The function <span class="math inline">\(\psi(\theta)\)</span> is strictly convex and passes through the origin, so the maximum
+is attained at
+<span class="math display">\[\theta_x = 
+\begin{cases}
+\text{unique solution to }\psi&#39;(\theta)=x,\ &amp;x&gt;\psi&#39;(0)\\
+0,\ &amp;x\le \psi&#39;(0).
+\end{cases}
+\]</span></p>
+<ul>
+<li><p>for the first case, <span class="math inline">\(E_{\theta_x}[L]=\psi&#39;(\theta_x)=x\)</span>, thus, we have shifted the distribution of L so that x is now its mean.</p></li>
+<li><p>for the second case, the event <span class="math inline">\(\{L&gt;x\}\)</span> is not rare, so we do not change the probabilities.</p></li>
+</ul>
+</div>
+<div id="dependent-obligors-conditional-importance-sampling" class="section level2">
+<h2>Dependent Obligors: Conditional Importance Sampling</h2>
+<p>For general factor models, <span class="math inline">\(Y_k\)</span> are dependent; but they are independent conditinal on the systematic risk factors <span class="math inline">\(Z_1,\dots,Z_d\)</span>. So we can apply the so-called conditional IS.</p>
+<ul>
+<li><p>Step 1: simulate <span class="math inline">\(Z_1,\dots,Z_d\sim N(0,1)\)</span> and compute the default probability
+<span class="math inline">\(p_k=p_k(Z_1,\dots,Z_d)\)</span></p></li>
+<li><p>Step 2: for simulated <span class="math inline">\(p_k\)</span>, obtain the twisting parameter <span class="math inline">\(\theta_x=\theta_x(Z_1,\dots,Z_d)\)</span></p></li>
+<li><p>Step 3: compute the LR for the <span class="math inline">\(\theta_x\)</span></p></li>
+<li><p>Step 4: repeat Steps 1–4 <span class="math inline">\(N\)</span> times and then obtain the final IS estimate</p></li>
+</ul>
+</div>
+<div id="numerical-results" class="section level2">
+<h2>Numerical results</h2>
+<p>The numerical results were reported in Glasserman and Li (2005).</p>
+<ul>
+<li><span class="math inline">\(21\)</span>-factor model with <span class="math inline">\(m=1000\)</span> obligors</li>
+<li><span class="math inline">\(p_k = 0.01(1+\sin(16\pi k/m))\)</span></li>
+<li><span class="math inline">\(c_k=(\lceil5k/m\rceil)^2\)</span></li>
+<li>VRF = “Variance Reduction Factor”</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th><span class="math inline">\(P(L&gt;x)\)</span></th>
+<th>VRF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10,000</td>
+<td>0.0114</td>
+<td>33</td>
+</tr>
+<tr class="even">
+<td>14,000</td>
+<td>0.0065</td>
+<td>53</td>
+</tr>
+<tr class="odd">
+<td>18,000</td>
+<td>0.0037</td>
+<td>83</td>
+</tr>
+<tr class="even">
+<td>22,000</td>
+<td>0.0021</td>
+<td>125</td>
+</tr>
+<tr class="odd">
+<td>30,000</td>
+<td>0.0006</td>
+<td>278</td>
+</tr>
+<tr class="even">
+<td>40,000</td>
+<td>0.0001</td>
+<td>977</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="extensions" class="section level2">
+<h2>Extensions</h2>
+<p>The defual indicators</p>
+<p><span class="math display">\[Y_k=1\{X_k&gt;x_k\}\]</span></p>
+<ul>
+<li><span class="math inline">\(X_k\)</span> follow t copula model</li>
+</ul>
+<p>Joshua C.C. Chan, Dirk P. Kroese. Efficient estimation of large portfolio loss probabilities in t-copula models. <em>European Journal of Operational Research</em>, 205:361–367, 2010.</p>
+<ul>
+<li><span class="math inline">\(X_k\)</span> follow another advanced models, e.g., self-exciting model, Giesecke et al. (2010)</li>
+</ul>
+<p>Random default exposures: <span class="math inline">\(c_k=e_k\ell_k\)</span>, where <span class="math inline">\(\ell_k\in[0,1]\)</span> denotes a random
+percentage loss, and <span class="math inline">\(e_k&gt;0\)</span> are constants.
+<span class="math display">\[L = \sum_{k=1}^m e_k\ell_k1\{X_k&gt;x_k\}\]</span></p>
+<ul>
+<li><span class="math inline">\(\ell_k\)</span> are iid truncated normals or betas</li>
+</ul>
+</div>
+<div id="cross-entropy" class="section level2">
+<h2>Cross-entropy</h2>
+<p>The optimal proposal
+density is obtained by locating the member <span class="math inline">\(p(x;\theta),\theta\in\Theta\)</span> that minimizes
+its cross-entropy distance to the zero-variance proposal
+density <span class="math inline">\(q^*(x)\propto h(x)p(x;\theta_0)\)</span>.</p>
+<p>The minimization of the cross-entropy is equivalent to solving
+the following maximization problem
+<span class="math display">\[\max_{\theta\in\Theta} \int h(x)p(x;\theta_0)\log p(x;\theta)d x=\max_{\theta\in\Theta}  E_{\theta_0}[h(X)\log p(X;\theta)]\]</span></p>
+<p>Since most often an analytical solution to the above maximization
+problem is not available, we consider instead its stochastic
+counterpart
+<span class="math display">\[\theta^*=\arg \max_{\theta\in\Theta}\frac 1{N_0}\sum_{i=1}^{N_0}h(X_i)\log p(X_i;\theta),\ X_i\stackrel{iid}{\sim} p(x;\theta_0)\]</span></p>
+<p>More detials see Rubinstein (1997), Rubinstein &amp; Kroese (2004).</p>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">上一页</div>
+    <a href="/courses/bayes/vi/" rel="next">变分推断</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">下一页</div>
+    <a href="/courses/bayes/chap11/" rel="prev">第11章</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>最近更新于 May 5, 2019</p>
+
+          
+
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    Zhijian He 2020
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲",
+        'slides' : "演示文稿"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

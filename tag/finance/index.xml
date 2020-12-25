@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Finance | 何志坚</title>
+    <link>/tag/finance/</link>
+      <atom:link href="/tag/finance/index.xml" rel="self" type="application/rss+xml" />
+    <description>Finance</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language><copyright>Zhijian He 2020</copyright><lastBuildDate>Tue, 16 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Finance</title>
+      <link>/tag/finance/</link>
+    </image>
+    
+    <item>
+      <title>An importance sampling-based smoothing approach for quasi-Monte Carlo simulation of discrete barrier options</title>
+      <link>/publication/2019ejor/</link>
+      <pubDate>Tue, 16 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/2019ejor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Efficient Computation of Option Prices and Greeks by Quasi-Monte Carlo Method with Smoothing and Dimension reduction</title>
+      <link>/publication/2017sisc/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      <guid>/publication/2017sisc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>An Auto-Realignment Method in Quasi-Monte Carlo for Pricing Financial Derivatives with Jump Structures</title>
+      <link>/publication/2016ejor/</link>
+      <pubDate>Sat, 26 Mar 2016 00:00:00 +0000</pubDate>
+      <guid>/publication/2016ejor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Good Path Generation Methods in Quasi-Monte Carlo for Pricing Financial Derivatives</title>
+      <link>/publication/2014sisc/</link>
+      <pubDate>Tue, 18 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>/publication/2014sisc/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

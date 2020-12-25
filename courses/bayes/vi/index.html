@@ -1,0 +1,1414 @@
+<!DOCTYPE html><html lang="zh-Hans" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="何志坚">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This note is adapted to the paper entitled “Variation Inference: A Review for Statisticans” by Blei et al. (2017).
+Basic ideas of VILet \(z=z_{1:m}\) be the latent variables that govern the distribution of the data (observations) \(x=x_{1:n}\).">
+
+  
+  <link rel="alternate" hreflang="en" href="/en/courses/bayes/vi/">
+  
+  <link rel="alternate" hreflang="zh-Hans" href="/courses/bayes/vi/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/courses/bayes/vi/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="何志坚">
+  <meta property="og:url" content="/courses/bayes/vi/">
+  <meta property="og:title" content="变分推断 | 何志坚">
+  <meta property="og:description" content="This note is adapted to the paper entitled “Variation Inference: A Review for Statisticans” by Blei et al. (2017).
+Basic ideas of VILet \(z=z_{1:m}\) be the latent variables that govern the distribution of the data (observations) \(x=x_{1:n}\)."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>变分推断 | 何志坚</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project/"><span>项目</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publication/"><span>文章</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/courses/"><span>课程</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>联系方式</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="搜索"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown i18n-dropdown">
+        <a href="#" class="nav-link " data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-globe mr-1" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-item dropdown-item-active">
+            <span>中文 (简体)</span>
+          </div>
+          
+          <a class="dropdown-item" href="/en/courses/bayes/vi/">
+            <span>English</span>
+          </a>
+          
+        </div>
+      </li>
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="搜索..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/">课程简介</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/chap1/">主要内容</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/courses/bayes/chap1/">第1章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap2/">第2章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap3/">第3章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap4/">第4章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap5/">第5章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap6/">第6章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap10/">第10章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap11/">第11章</a>
+      </li>
+      
+      <li class="active">
+        <a href="/courses/bayes/vi/">变分推断</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>变分推断</h1>
+
+          <div class="article-style">
+            
+
+
+<p>This note is adapted to the paper entitled “Variation Inference: A Review for Statisticans” by Blei et al. (2017).</p>
+<div id="basic-ideas-of-vi" class="section level2">
+<h2>Basic ideas of VI</h2>
+<p>Let <span class="math inline">\(z=z_{1:m}\)</span> be the latent variables that govern the distribution of the data (observations) <span class="math inline">\(x=x_{1:n}\)</span>.
+The prior is denoted by <span class="math inline">\(p(z)\)</span>. The likelihood is <span class="math inline">\(p(x|z)\)</span>. The posterior thus is given by
+<span class="math display">\[p(z|x)=\frac{p(z)p(x|z)}{p(x)}\propto p(z)p(x|z).\]</span>
+The denominator <span class="math inline">\(p(x)\)</span> contains the marginal density of the obsevations, also called the <em>evidence</em>.</p>
+<ul>
+<li><p>ABC algorithms provide a kind of approximations of the posterior in the context of simulation.</p></li>
+<li><p>VI provides another kind of approximations of the posterior by minizing the <em>Kullback-Leibler (KL) divergence</em> to the exact posterior over a family of approximate densities <span class="math inline">\(\mathcal Q\)</span>. That is
+<span class="math display">\[q^*(z) = \arg \min_{q(z)\in\mathcal Q} KL (q(z)||p(z|x)).\]</span>
+The KL divergence (also called relative entropy) is a measure of how one probability distribution is different from a second, reference probability distribution. The formal definition of KL divergence is <span class="math display">\[KL(p_1||p_2)=E_{p_1}[\log (p_1(x)/p_2(x))]=E_{p_1}[\log p_1(x)]-E_{p_1}[\log p_2(x)].\]</span></p></li>
+<li><p><span class="math inline">\(KL(p_1||p_2)\ge 0\)</span>, where the equality holds iff <span class="math inline">\(p_1(z)=p_2(z)\)</span> w.p.1. This can be proved via Jensen inequality. Noting that
+<span class="math display">\[KL(p_1||p_2)=-E_{p_1}[\log (p_2(x)/p_1(x))]\ge -\log E_{p_1}[p_2(x)/p_1(x)]=-\log \int \frac{p_2(x)}{p_1(x)} p_1(x) dx =0.\]</span>
+The equality holds iff <span class="math inline">\(p_2(x)/p_1(x)\)</span> is constant w.p.1.</p></li>
+<li><p>It is a distribution-wise asymmetric measure and thus does not qualify as a statistical metric of spread, i.e, <span class="math inline">\(KL(p_1||p_2)\neq KL(p_2||p_1)\)</span>.</p></li>
+<li><p>It also does not satisfy the triangle inequality <span class="math inline">\(KL(p_1||p_2)+KL(p_2||p_3)\ge KL(p_1||p_3)\)</span>.</p></li>
+</ul>
+<p>Note that the objective is not computable because it requires computing <span class="math inline">\(\log p(x)\)</span>, which is typically infeasible. To see why,
+<span class="math display">\[KL (q(z)||p(z|x))=E_{q}[\log q(z)]-E_{q}[\log p(z|x)]=E_{q}[\log q(z)]-E_{q}[\log p(z)]-E_{q}[\log p(x|z)]+\log p(x).\]</span>
+As a result, we optimize an alternative objective that is equivalent to the KL up to an added constant,
+<span class="math display">\[\begin{equation}
+ELBO(q)=E_{q}[\log(p(x,z)/q(z))]=E_{q}[\log p(z)]+E_{q}[\log p(x|z)]-E_{q}[\log q(z)].\label{eq:elbo}
+\end{equation}\]</span>
+This function is called the <em>evidence lower bound (ELBO)</em>. It is easy to see that
+<span class="math display">\[ELBO(q)=-KL (q(z)||p(z))+\log p(x).\]</span>
+Since the log-evidence is constant,
+<span class="math display">\[\begin{equation}
+q^*(z) = \arg \min_{q(z)\in\mathcal Q} KL (q(z)||p(z|x))=\arg\max_{q(z)\in\mathcal Q} ELBO(q).
+\label{eq:elboopt}
+\end{equation}\]</span></p>
+<ul>
+<li><p>It follows from <span class="math inline">\(KL(p_1||p_2)\ge 0\)</span> that <span class="math inline">\(ELBO(q)\le \log p(x)\)</span> for any <span class="math inline">\(q\)</span>. This means the ELBO is a lower-bound of the log-evidence, explaining its name.</p></li>
+<li><p>From the second equality in , maximazing the ELBO mirrors the usual balance between likelihood and prior.</p></li>
+</ul>
+</div>
+<div id="the-mean-field-variational-family" class="section level2">
+<h2>The Mean-Field Variational Family</h2>
+<p>The complexity of the family determines the complexity of the optimization; it is more difficulty to optimize over a complex family than a simple family. We next focus on the <em>mean-field variational family</em>,
+<span class="math display">\[\begin{equation}
+q(z) = \prod_{j=1}^m q_j(z_j).\label{eq:mfvf}
+\end{equation}\]</span>
+Each latent variable <span class="math inline">\(z_j\)</span> is governed by its own variational factor, the density <span class="math inline">\(q_j\)</span>. That is <span class="math inline">\(z_j\stackrel{ind}\sim q_j\)</span>.</p>
+<p>One may specify the parametric form of the individual variational factors. In principle, each can take on any parametric form appropriate to the corresponding random variable.</p>
+<ul>
+<li><p>A continous variable might have a Gaussian factor.</p></li>
+<li><p>A categorical variable will typically have a categorical factor.</p></li>
+</ul>
+</div>
+<div id="coordinate-ascent-mean-field-vi" class="section level2">
+<h2>Coordinate Ascent Mean-Field VI</h2>
+<p>This section describe one of the most commonly used algorithms for solving the optimizatin problem  subject to the mean-field variational family . The coordinate ascent VI (CAVI) iteratively optimizes each factor of the mean-field variation density, while holding the others fixed. It climbs the ELBO to a local optimum.</p>
+<p>Let <span class="math inline">\(z_{-j}\)</span> be the vector of <span class="math inline">\(z\)</span> by removing the <span class="math inline">\(j\)</span>th component <span class="math inline">\(z_j\)</span>, and let <span class="math inline">\(p(z_j|z_{-j},x)\)</span> be the <em>complete conditional</em> of <span class="math inline">\(z_j\)</span> given all of the other latent variables in the model and the observations.
+Fixing the other variational factors, <span class="math inline">\(q_\ell(z_\ell)\)</span>, <span class="math inline">\(\ell\neq j\)</span>, the optimal <span class="math inline">\(q_j(z_j)\)</span> is then propotional to the exponentiated expected log of the complete conditional,
+<span class="math display">\[\begin{equation}
+q_j^*(z_j) \propto \exp\{E_{-j}[\log p(z_j|z_{-j},x)]\}\propto \exp\{E_{-j}[\log p(x,z)]\},\label{eq:cavi}
+\end{equation}\]</span>
+where the expectation is with respective to the currently fixed variational density over <span class="math inline">\(z_{-j}\)</span>, i.e, <span class="math inline">\(\prod_{\ell\neq j} q_\ell (z_\ell)\)</span>. To see why, when fixing the other variational factors, <span class="math inline">\(q_\ell(z_\ell)\)</span>, <span class="math inline">\(\ell\neq j\)</span>, it follows from  that
+<span class="math display">\[\begin{align*}
+ELBO(q) &amp;= ELBO(q_j) = E_{q}[\log(p(x,z)/q(z))] \\&amp;= E_{q}[\log(p(z_{j}|z_{-j},x)p(z_{-j},x)/q_{j}(z_j)/q_{-j}(z_{-j}))]\\
+&amp; = E_{q}[\log(p(z_{j}|z_{-j},x)/q_j(z_j)] + \text{const}\\
+&amp;=E_{q_j}[E_{-j}[\log(p(z_{j}|z_{-j},x)]-\log q_j(z_j)] + \text{const}\\
+&amp;=E_{q_j}[\log (\exp\{E_{-j}[\log p(z_j|z_{-j},x)]\}/q_j(z_j))]+ \text{const}\\
+&amp;= - KL(q_j(z_j)||c\exp\{E_{-j}[\log p(z_j|z_{-j},x)]\})+ \text{const},
+\end{align*}\]</span>
+where <span class="math inline">\(c\)</span> is a normalized constant such that <span class="math inline">\(c\exp\{E_{-j}[\log p(z_j|z_{-j},x)]\)</span> is a PDF.
+Since <span class="math inline">\(KL\ge 0\)</span>, the maximization of ELBO attains at <span class="math inline">\(q_j(z_j)=c\exp\{E_{-j}[\log p(z_j|z_{-j},x)]\}\)</span> w.p.1. Therefore, the optimal <span class="math inline">\(q_j(z_j)\)</span> is propotional to <span class="math inline">\(\exp\{E_{-j}[\log p(z_j|z_{-j},x)]\}\)</span>.</p>
+<p>CAVI goes as follows: Initizlize the variational factors <span class="math inline">\(q_j(z_j)\)</span>; Update each factor of the mean-field variation density by , while holding the others fixed, until the ELBO converges. To check the convergence, we may compute the ELBO after a (few) loop of all the factors.</p>
+<p>The ELBO is (generally) a nonconvex objective function. CAVI only guarantees to a local optimum, which can be sensitive to iniitialization. Also, the updated variational factor should have a closed form.</p>
+</div>
+<div id="application-i-bayesian-mixture-of-gaussians" class="section level2">
+<h2>Application I: Bayesian mixture of Gaussians</h2>
+<p>As a concrete example, we consider a Bayesian mixture of <em>unit-variance univariate Gaussians</em>. There are <span class="math inline">\(K\)</span> mixture components, corresponding to <span class="math inline">\(K\)</span> Gaussian distributions with means <span class="math inline">\(\mu=(\mu_1,\dots,\mu_K)\)</span>. Given the means, the data is generated via
+<span class="math display">\[x_i|\mu,\alpha\stackrel{iid}{\sim} \sum_{k=1}^K \alpha_{k} N(\mu_k,1),\]</span>
+where <span class="math inline">\(\alpha_{k}&gt;0\)</span> is the probablity drawn from the <span class="math inline">\(k\)</span>th Guassian with <span class="math inline">\(\sum_{k=1}^K \alpha_{k} =1\)</span>.</p>
+<p>We now add some latent variables to reformulate the model. This is actually a technique of <em>data augment</em>. Let the latent variable <span class="math inline">\(c_i\)</span> be an indicator <span class="math inline">\(K\)</span>-vector, all zeros expect for a one in the position corresponding to <span class="math inline">\(x_i\)</span>’s cluster. There are <span class="math inline">\(K\)</span> possible values for <span class="math inline">\(c_i\)</span>. As a result, <span class="math inline">\(x_i|\mu,c_i\sim N(c_i^\top \mu,1)\)</span>, <span class="math inline">\(c_i\sim \text{categorical}(\alpha)=:CG(\alpha)\)</span>, where <span class="math inline">\(\alpha=(\alpha_{1},\dots,\alpha_{K})\)</span>. Assume that the mean parameters are drawn independently from a common prior <span class="math inline">\(p(\mu_k)\sim N(0,\sigma^2)\)</span>; the prior variance <span class="math inline">\(\sigma^2\)</span> ia a hyperparameter; and the prior for the latent indicators is <span class="math inline">\(c_i\sim CG(1/K,1/K,\dots,1/K)\)</span>.</p>
+<p>The full hierarchical model is
+<span class="math display">\[\begin{align}
+\mu_k&amp;\stackrel{iid}{\sim} N(0,\sigma^2), &amp; k=1,\dots,K,\\
+c_i&amp;\stackrel{iid}{\sim} \text{categorical}(1/K,1/K,\dots,1/K), &amp; i=1,\dots, n,\\
+x_i|\mu,c_i&amp;\stackrel{ind}{\sim} N(c_i^\top \mu,1), &amp;i=1,\dots, n.
+\end{align}\]</span>
+The latent variables are <span class="math inline">\(z=(\mu, c)\)</span>. The joint density of latent and observed variables is
+<span class="math display">\[p(\mu,c,x) = p(\mu) \prod_{i=1}^n p(c_i)p(x_i|c_i,\mu).\]</span>
+The evidence is
+<span class="math display">\[\begin{align}
+p(x)= \int p(\mu) \prod_{i=1}^n \sum_{c_i} p(c_i)p(x_i|c_i,\mu) d\mu=\sum_{c_1,\dots,c_n}\prod_{i=1}^n p(c_i) \int p(\mu) \prod_{i=1}^n p(x_i|c_i,\mu) d\mu.\label{eq:gmmevi}
+\end{align}\]</span>
+Thanks to conjugacy between the Gaussian prior on the components and the Gaussian likelihood, each individual integral <span class="math inline">\(I(c_1,\dots,c_n):=\int p(\mu) \prod_{i=1}^n p(x_i|c_i,\mu) d\mu\)</span> is computable. However, the total cases of the configuration <span class="math inline">\((c_1,\dots,c_n)\)</span> is <span class="math inline">\(K^n\)</span>. As a result, the complexity of computing  is <span class="math inline">\(O(K^n)\)</span>, which is infeasible for moderate sample size <span class="math inline">\(n\)</span> and <span class="math inline">\(K\)</span>. For example, when <span class="math inline">\(K=3\)</span> and <span class="math inline">\(n=100\)</span>, <span class="math inline">\(K^n = 3^{100}\approx 5.2\times 10^{47}\)</span>. In this sense, we can say that the evidence  is intractable.</p>
+<p>In VI, we choose the mean-field variational family as the form
+<span class="math display">\[q(\mu,c) = \prod_{k=1}^K q(\mu_k;m_k,s_k^2)\prod_{i=1}^nq(c_i;\psi_i),\]</span>
+where the variational factor <span class="math inline">\(q(\mu_k;m_k,s_k^2)\)</span> for the mean <span class="math inline">\(\mu_i\)</span> is a Guassian <span class="math inline">\(N(m_k,s_k^2)\)</span>, and the variational factor <span class="math inline">\(q(c_i;\psi_i)\)</span> for the indicator is <span class="math inline">\(CG(\psi_i)\)</span>.
+By , we have
+<span class="math display">\[\begin{align}
+ELBO(m,s^2,\psi)&amp;=E_{q}[\log p(z)]+E_{q}[\log p(x|z)]-E_{q}[\log q(z)]\notag\\
+&amp;=\sum_{k=1}^K E_{\mu_k\sim N(m_k,s_k^2)}[\log p(\mu_k)]\notag\\
+&amp;\quad+\sum_{i=1}^n (E_{c_i\sim CG(\psi_i)}[\log p(c_i)]+E_{c_i\sim CG(\psi_i),\mu\sim N(m,\text{diag}(s^2))}[\log p(x_i|c_i,\mu)])\notag\\
+&amp;\quad-\sum_{i=1}^n E_{c_i\sim CG(\psi_i)}[\log q(c_i;\psi_i)]-\sum_{k=1}^K E_{\mu_k\sim N(m_k,s_k^2)}[\log q(\mu_k;m_k,s_k^2)]\notag\\
+&amp;=\frac K 2-K\log\sigma-n\log K-\frac 12 n\log(2\pi)+\frac 1 2\sum_{i=1}^n x_i^2+\sum_{k=1}^K\left[\log(s_k)-\frac{m_k^2+s_k^2}{2\sigma^2}\right] \notag\\
+&amp;\quad-\sum_{i=1}^n\sum_{k=1}^K\psi_{ik}\left[\frac{m_k^2+s_k^2}2-x_im_k+\log(\psi_{ik}) \right]\notag\\
+&amp;=\sum_{k=1}^K\left[\log(s_k)-\frac{m_k^2+s_k^2}{2\sigma^2}\right] -\sum_{i=1}^n\sum_{k=1}^K\psi_{ik}\left[\frac{m_k^2+s_k^2}2-x_im_k+\log(\psi_{ik}) \right]+\text{const}.\label{eq:BMGelbo}
+\end{align}\]</span></p>
+<p>Note that all the expectation in the ELBO  can be computed in closed form. There are many methods to find a local optimum of .</p>
+<ul>
+<li><p><strong>Newton-Raphson algorithm.</strong> It suffices to find the root of <span class="math inline">\(\nabla ELBO(m,s^2,\psi) = 0\)</span>. Let <span class="math inline">\(\lambda = (m,s^2,\psi)\in \mathbb{R}^{2K+n(K-1)}\)</span> be a vector of parameters. The Newton-Raphson method uses the iteration
+<span class="math display">\[\lambda^{(t+1)}=\lambda^{(t)}-(D^2 ELBO(\lambda^{(t)}))^{-1}  \nabla ELBO(\lambda^{(t)}),\]</span>
+where <span class="math inline">\(D^2 ELBO(\lambda^{(t)})\)</span> is the Hessian matrix.</p></li>
+<li><p><strong>Gradient ascent algorithm.</strong> It is a first-order iterative optimization algorithm for finding a local maximum. The iteration is
+<span class="math display">\[\lambda^{(t+1)}=\lambda^{(t)} + \eta_t \nabla ELBO(\lambda^{(t)}),\]</span>
+where <span class="math inline">\(\eta_t&gt;0\)</span> is the learning rate.</p></li>
+<li><p><strong>CAVI.</strong> The iteration is
+<span class="math display">\[\begin{align}
+\psi_{t+1,ik} &amp;\propto \exp\{E[\mu_k]x_i-E[\mu_k^2]/2\}\propto \exp\{m_{t,k}x_i-(m_{t,k}^2+s_{t,k}^2)/2\},\\
+m_{t+1,k}&amp;=\frac{\sum_{i=1}^n \psi_{t+1,ik}x_i}{1/\sigma^2+\sum_{i=1}^n\psi_{t+1,ik}}, \label{eq:miter} \\
+s_{t+1,k}^2&amp;=\frac{1}{1/\sigma^2+\sum_{i=1}^n\psi_{t+1,ik}}, k=1,\dots,K, i=1,\dots,n, \label{eq:siter}
+\end{align}\]</span>
+where <span class="math inline">\(\psi_{t,\cdot}, m_{t,\cdot},s^2_{t,\cdot}\)</span> denote the parameters at the step <span class="math inline">\(t\)</span>. Note that the algorithm does not need the initial varitional factors for <span class="math inline">\(\psi_i\)</span>.</p></li>
+</ul>
+<p>Next, we implement the CAVI algorithm for <span class="math inline">\(K=5\)</span> and <span class="math inline">\(n=10^3\)</span>. After a few steps, we can see that the ELBO converges.</p>
+<pre class="r"><code>set.seed(1)
+## data generation
+K = 5 # the number of clusters
+n = 1000 # the number of data x_i
+mu = matrix(rnorm(K,mean=0.2,sd=2),ncol = 1) # the means of the K clusters
+c = sample(1:K,n,replace = T) # the indicator
+x = matrix(mu[c]+rnorm(n),ncol = 1)
+plot(density(x),xlab = &#39;x&#39;,main=&#39;kernel density of the data&#39;)</code></pre>
+<p><img src="/zh/courses/Bayes/VI_files/figure-html/unnamed-chunk-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>sig = 1 # hyperparameter for the variance of mu_i
+## ELBO minus a constant
+elbo &lt;- function(m,s,psi){
+  re = sum(log(s)-(m^2+s^2)/(2*sig^2))- sum(psi%*%(m^2+s^2)/2)+
+    t(x)%*%psi%*%m-sum(log(psi)*psi)
+  return(re)
+}
+## iteration for CAVI
+cavi &lt;- function(m,s){
+  psi = matrix(0,n,K)
+  for(i in 1:n){
+    tmp = x[i]*m-(m^2+s^2)/2
+    mtmp = max(tmp)
+    logsum = mtmp+log(sum(exp(tmp-mtmp)))
+    psi[i,] = exp(tmp-logsum)
+  }
+  de = 1/sig^2+colSums(psi)
+  m = t(x)%*%psi/de
+  s = sqrt(1/de)
+  return(list(m_next=matrix(m,ncol = 1),s_next=matrix(s,ncol = 1),psi_next=psi))
+}
+## initialization
+nstep = 1e4 # maximal steps
+tolerance = 1e-6 # tolerance for the relative change
+m = matrix(rnorm(K,0,1),K,1) 
+s = matrix(5,K,1)
+ELBO = matrix(0,nstep,1)
+step = 1
+relative_change = tolerance+1
+while(TRUE){
+  para = cavi(m,s)
+  m = para$m_next
+  s = para$s_next
+  psi = para$psi_next
+  ELBO[step] = elbo(m,s,psi)
+  if(step&gt;1)
+    relative_change = (ELBO[step]-ELBO[step-1])/ELBO[step]
+  if(step==nstep | abs(relative_change)&lt;tolerance){ # stopping rule
+    break
+  }
+  else{
+    step = step+1
+  }
+}
+hatc = apply(psi, 1,which.max)
+center = cbind(sort(mu),sort(m))
+colnames(center) = c(&#39;True Centers&#39;,&#39;VI Means&#39;)
+knitr::kable(center)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">True Centers</th>
+<th align="right">VI Means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-1.4712572</td>
+<td align="right">-1.5346393</td>
+</tr>
+<tr class="even">
+<td align="right">-1.0529076</td>
+<td align="right">-0.9663787</td>
+</tr>
+<tr class="odd">
+<td align="right">0.5672866</td>
+<td align="right">0.3772178</td>
+</tr>
+<tr class="even">
+<td align="right">0.8590155</td>
+<td align="right">0.9019340</td>
+</tr>
+<tr class="odd">
+<td align="right">3.3905616</td>
+<td align="right">3.4156061</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>plot(1:step,ELBO[1:step],type = &#39;b&#39;,xlab = &#39;Step&#39;,ylab=&#39;ELBO&#39;,pch = 16)</code></pre>
+<p><img src="/zh/courses/Bayes/VI_files/figure-html/unnamed-chunk-1-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot(x,col=hatc)
+abline(h=m,col=1:5,lty=2,lwd=2)</code></pre>
+<p><img src="/zh/courses/Bayes/VI_files/figure-html/unnamed-chunk-1-3.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="exponential-family-conditionals" class="section level2">
+<h2>Exponential Family Conditionals</h2>
+<p>Are there specific forms for the local variational
+approximations in which we can easily compute closed-form conditional ascent updates? Yes, the answer is exponential family conditionals.</p>
+<p>Consider the generic model <span class="math inline">\(p(z,x)\)</span> and suppose each complete conditional is in the exponential family:
+<span class="math display">\[\begin{equation}
+p(z_j|z_{-j},x) = h(z_j)\exp\{\eta_j(z_{-j},x)^\top t(z_j)-a(\eta_j(z_{-j},x))\},
+\end{equation}\]</span>
+where <span class="math inline">\(t(z_j)\)</span> is the sufficient statistic, and <span class="math inline">\(\eta_j(z_{-j},x)\)</span> are the natural parameters.</p>
+<p>Consider mean-field VI for this class of models, where <span class="math inline">\(q(z)\)</span> is given by . The update  becomes
+<span class="math display">\[\begin{align}
+q_j^*(z_j) &amp;\propto \exp\{E_{-j}[\log p(z_j|z_{-j},x)]\}\\
+&amp;=\exp\{\log h(z_j)+ E_{-j}[\eta_j(z_{-j},x)^\top t(z_j)]-E_{-j}[a(\eta_j(z_{-j},x))]\}\\
+&amp;\propto h(z_j)\exp\{E_{-j}[\eta_j(z_{-j},x)]^\top t(z_j)\}.
+\end{align}\]</span>
+This updata reveals the parametric form of the optimal VI factors. Each one is in the same exponential family as its corresponding complete conditional. Let <span class="math inline">\(\nu_j\)</span> denote the variational parameter for the <span class="math inline">\(j\)</span>th variational factor. When we update each factor, we set its parameter equal to the expected parameter of the complete conditional,
+<span class="math display">\[\nu_j = E_{-j}[\eta_j(z_{-j},x)].\]</span></p>
+<p>There are many popular models fall into this category, including:</p>
+<ul>
+<li>Bayesian mixtures of exponential family models with conjugate priors.</li>
+<li>Hierarchical hidden Markov models.</li>
+<li>Kalman filter models and switching Kalman filters.</li>
+<li>Mixed-membership models of exponential families.</li>
+<li>Factorial mixtures / hidden Markov models of exponential families.</li>
+<li>Bayesian linear regression.</li>
+<li>Any model containing only conjugate pairs and multinomials.</li>
+</ul>
+<p>Some popular models do not fall into this category, including:</p>
+<ul>
+<li>Bayesian logistic regression and other nonconjugate Bayesian generalized linear models.</li>
+<li>Correlated topic model, dynamic topic model.</li>
+<li>Discrete choice models.</li>
+<li>Nonlinear matrix factorization models.</li>
+</ul>
+</div>
+<div id="stochastic-gradient-variational-inference" class="section level2">
+<h2>Stochastic Gradient Variational Inference</h2>
+<p>CAVI may require interating thought the entire dataset at each iteration. As the dataset size grows, each
+iteration becomes more computationally expensive (see  and ). In more realistic models, the gradient of the ELBO  is rarely available in closed form. Stochastic gradient methods (Robbins
+and Monro, 1951) are useful for optimizing an objective function whose gradient can be unbiasedly estimated. Stochastic gradient variational inference (SGVI) becomes an alternative to coordinate ascent. SGVI combines gradients and stochastic optimazation.</p>
+<p>Now we rewrite the ELBO as a function of variational parameters <span class="math inline">\(\lambda\)</span> (a vector), denoted by <span class="math inline">\(\mathcal L(\lambda)\)</span>. Let <span class="math inline">\(\nabla_\lambda\mathcal L(\lambda)\)</span> be the gradient vector of <span class="math inline">\(\mathcal L(\lambda)\)</span> w.r.t. <span class="math inline">\(\lambda\)</span>. Gradient ascent algorithm iterates
+<span class="math display">\[\lambda^{(t+1)}=\lambda^{(t)} + \eta_t \nabla_\lambda\mathcal L(\lambda^{(t)}),\quad t=0,\dots,T.\]</span>
+Let <span class="math inline">\(\widehat{\nabla_\lambda\mathcal L(\lambda)}\)</span> be an unibased estimate of <span class="math inline">\(\nabla_\lambda\mathcal L(\lambda)\)</span>. SGVI iterates as follow,
+<span class="math display">\[\begin{equation}
+\lambda^{(t+1)}=\lambda^{(t)} + \eta_t \widehat{\nabla_\lambda\mathcal L(\lambda^{(t)})},\quad t=1,\dots,T.\label{eq:sgdite}
+\end{equation}\]</span>
+Under certain regularity conditions, and the learning rates satisfy the <strong>Robbins-Monro</strong> conditions
+<span class="math display">\[\sum_{t=0}^\infty \eta_t=\infty,\ \sum_{t=0}^\infty \eta_t^2&lt;\infty,\]</span>
+the iterations converge to a local optimum (Robbins and Monro, 1951). Many sequences will satisfy these conditions, for example, <span class="math inline">\(\eta_t=t^{-\kappa}\)</span> for <span class="math inline">\(\kappa\in(0.5,1]\)</span>. Adaptive learning rates are currently
+popular (Duchi et al., 2011; Zeiler, 2012; Kingma and Ba, 2015; Kingma and Ba, 2015). <strong>Adam</strong> is a promising method, which is pulished in</p>
+<blockquote>
+<p>Kingma, D. and Ba, J. (2015). Adam: A method for stochastic optimization. Proceedings of the International Conference on Learning Representations. (Cited by 43201 on 2020/5/27)</p>
+</blockquote>
+<p>The name Adam
+is derived from adaptive moment estimation.</p>
+<p>One important thing is to obtain an unbiased estimate of the gradient <span class="math inline">\(\nabla_\lambda\mathcal L(\lambda)\)</span>.
+The variational density is now written as <span class="math inline">\(q(z;\lambda)\)</span>. Then,
+<span class="math display">\[\nabla_\lambda\mathcal L(\lambda) = \nabla_\lambda E_q[\log p(z,x)]-\nabla_\lambda E_q[\log q(z;\lambda)].\]</span>
+Note that in some cases (such as mean-field variational family with Gaussian or categorical factors) of variational densities, <span class="math inline">\(E_q[\log q(z;\lambda)]\)</span> is analytically solvable, and so does its gradient <span class="math inline">\(\nabla_\lambda E_q[\log q(z;\lambda)]\)</span>. We thus focus on estimating <span class="math inline">\(\nabla_\lambda E_q[\log p(z,x)]\)</span>. Suppose that
+<span class="math inline">\(\nabla_\lambda E_q[\log p(z,x)]\)</span> can be written as an expectation, i.e.,
+<span class="math display">\[\begin{equation}
+\nabla_\lambda E_q[\log p(z,x)]=E[h(z)].\label{eq:expform}
+\end{equation}\]</span>
+Then one can easily find an unbiased estimate of <span class="math inline">\(\nabla_\lambda\mathcal L(\lambda)\)</span>,
+<span class="math display">\[\begin{equation}
+\widehat{\nabla_\lambda\mathcal L(\lambda^{(t)})}=\frac 1 N \sum_{i=1}^N h(z_i) -\nabla_\lambda E_q[\log q(z;\lambda)],\label{eq:sgd}
+\end{equation}\]</span>
+where <span class="math inline">\(z_i\)</span> are Monte Carlo samples or quasi-Monte Carlo samples.</p>
+<p>There are two tricks to obtain the expectation form . Allowing the interchange of integration and differentiation, <strong>the score function gradient method</strong>
+makes use of
+<span class="math display">\[\begin{align}
+\nabla_\lambda E_q[\log p(z,x)]&amp;=\nabla_\lambda\int \log p(z,x) q(z;\lambda)d z\\
+&amp;= \int \log p(z,x) \nabla_\lambda q(z;\lambda)d z\\
+&amp;= \int \log p(z,x) (\nabla_\lambda \log q(z;\lambda)) q(z;\lambda)d z\\
+&amp;=E_q[\log p(z,x) \nabla_\lambda \log q(z;\lambda)],
+\end{align}\]</span>
+achieving the form  with <span class="math inline">\(h(z)=\log p(z,x) \nabla_\lambda \log q(z;\lambda)\)</span> and <span class="math inline">\(z\sim q(z;\lambda)\)</span>. On the other hand, <strong>the reparameterization method</strong> rewrites the expectation <span class="math inline">\(E_q[\log p(z,x)]\)</span>
+as an expectation w.r.t. a density independently of the parameter <span class="math inline">\(\lambda\)</span>, say, <span class="math inline">\(E_{p_0}[\log p(h(z;\lambda),x)]\)</span>, where <span class="math inline">\(h(z;\lambda)\sim q(z;\lambda)\)</span> and <span class="math inline">\(z\sim p_0(z)\)</span> independent of <span class="math inline">\(\lambda\)</span>. As a result,
+by allowing the interchange of integration and differentiation,
+<span class="math display">\[\begin{align}
+\nabla_\lambda E_q[\log p(z,x)]&amp;=\nabla_\lambda E_{p_0}[\log p(h(z;\lambda),x)]\\
+&amp;= \nabla_\lambda \int \log (p(h(z;\lambda),x)) p_0(z) d z\\
+&amp;=  \int \nabla_\lambda \log (p(h(z;\lambda),x)) p_0(z) d z\\
+&amp;=E_{p_0}[\nabla_\lambda \log (p(h(z;\lambda),x))],
+\end{align}\]</span>
+achieving the form  with <span class="math inline">\(h(z)=\nabla_\lambda \log (p(h(z;\lambda),x))\)</span> and <span class="math inline">\(z\sim p_0(z)\)</span>.</p>
+<p>The reparameterization gradient typically exhibits <em>lower variance</em> than the score function gradient but
+is restricted to models where the variational family can be reparametrized via a differentiable mapping. We refer to the article</p>
+<blockquote>
+<p>Xu, M., Quiroz, M., Kohn, R., &amp; Sisson, S. A. (2018). Variance reduction properties of the reparameterization trick. arXiv preprint arXiv:1809.10330.</p>
+</blockquote>
+<p>The convergence of the gradient ascent scheme in  tends
+to be slow when gradient estimators  have a high variance.
+Therefore, various approaches for reducing the variance of
+both gradient estimators exist; e.g. control variates,
+Rao-Blackwellization, importance sampling as well as quasi-Monte Carlo. For the use of qausi-Monte Carlo in VI, we refer to</p>
+<blockquote>
+<p>Buchholz, A., Wenzel, F., &amp; Mandt, S. (2018). Quasi-monte carlo variational inference. arXiv preprint arXiv:1807.01604.</p>
+</blockquote>
+</div>
+<div id="bayesian-multinomial-logistic-regression" class="section level2">
+<h2>Bayesian multinomial logistic regression</h2>
+<p>The famous (Fisher’s or Anderson’s) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.</p>
+<p>Let <span class="math inline">\(y_i\in \{0,\dots,K\}\)</span> be the categorial data, which relates to <span class="math inline">\(x_i = (x_{i1},\dots,x_{ip})^\top\)</span>. The multinomial logistic regression is given by</p>
+<p><span class="math display">\[\begin{equation}
+P(y_i=k|\beta) = \frac{\exp\{x_i^\top \beta_k\}}{\sum_{j=0}^K \exp\{x_i^\top \beta_j\}},\quad k=0,\dots,K,
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\beta_k\in \mathbb{R}^{p\times 1}\)</span> and the parameters are <span class="math inline">\(\beta=(\beta_1,\dots,\beta_K)\)</span>, and we set <span class="math inline">\(\beta_0=0\)</span> for indentifying the model.
+The prior we used is <span class="math inline">\(\beta_k\stackrel{iid}\sim N(0,\sigma_0^2I_p),k=1,\dots,K\)</span>.
+We treated the designed matrix <span class="math inline">\(X\)</span> as a constant matrix.</p>
+<p>The variational density we used is Gaussian, i.e., <span class="math inline">\(q(\beta_{ij})\sim N(\mu_{ij},\sigma_{ij}^2)\)</span>. Let <span class="math inline">\(\psi_{ij}=\log (\sigma_{ij})\)</span> so that <span class="math inline">\(q(\beta_{ij})\sim N(\mu_{ij},\exp(2\psi_{ij})).\)</span> Now the variational parameters are <span class="math inline">\(\mu_{ij}\)</span> and <span class="math inline">\(\psi_{ij}\)</span>. We encapsulate them in a vector <span class="math inline">\(\lambda\)</span>. Denote the ELBO by <span class="math inline">\(L(\lambda)\)</span>. We thus have
+<span class="math display">\[\begin{align}
+L(\lambda) &amp;= E_q[\log p(\beta)] + E_q[\log p(y|\theta)] - E_q[\log q(\beta)]\\
+&amp;=\sum_{ik}\left(\psi_{ik}-\frac {\mu_{ik}^2+\exp(2\psi_{ik})}{2\sigma^2_0}\right) + \sum_{i=1}^n E_q\left[\log \left(\frac{\sum_{k=0}^K\exp\{x_i^\top \beta_k\}1\{y_i=k\}}{\sum_{k=0}^K \exp\{x_i^\top \beta_k\}}\right)\right]+\text{const}\\
+&amp;=L_1(\lambda)+L_2(\lambda)+\text{const}.
+\end{align}\]</span></p>
+<p>It is easy to see that
+<span class="math display">\[\frac{\partial L_1(\lambda)}{\partial \mu_{ik}}=-\frac{\mu_{ik}}{\sigma_0^2},\quad \frac{\partial L_1(\lambda)}{\partial \psi_{ik}}=1-\frac{\exp(2\psi_{ik})}{\sigma_0^2}.\]</span>
+This implies <span class="math inline">\(\nabla_\lambda L_1(\lambda)\)</span> has a close form.</p>
+<p>The score function gradient for <span class="math inline">\(L_2(\lambda)\)</span> is given by
+<span class="math display">\[\nabla_\lambda L_2(\lambda)=\sum_{i=1}^n E_q\left[\log \left(\frac{\sum_{k=0}^K\exp\{x_i^\top \beta_k\}1\{y_i=k\}}{\sum_{k=0}^K \exp\{x_i^\top \beta_k\}}\right)\nabla_\lambda \log q(\beta;\lambda)\right],\]</span>
+where
+<span class="math display">\[\frac{\partial  \log q(\beta;\lambda)}{\partial \mu_{ik}}=\frac{\beta_{ik}-\mu_{ik}}{\exp(2\psi_{ik})},\ \frac{\partial  \log q(\beta;\lambda)}{\partial \psi_{ik}}=\frac{(\beta_{ik}-\mu_{ik})^2}{\exp(2\psi_{ik})}-1.\]</span></p>
+<p>We now rewrites the expectation <span class="math inline">\(L_2(\lambda)\)</span> as
+<span class="math display">\[\begin{align}
+L_2(\lambda)&amp;=\sum_{i=1}^n E_q\left[\log \left(\frac{\sum_{k=0}^K\exp\{x_i^\top \beta_k\}1\{y_i=k\}}{\sum_{k=0}^K \exp\{x_i^\top \beta_k\}}\right)\right]\\
+&amp;=\sum_{i=1}^n E\left[\log \left(\frac{\sum_{k=0}^K\exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}1\{y_i=k\}}{\sum_{k=0}^K \exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}}\right)\right],\\
+\end{align}\]</span>
+where <span class="math inline">\(z_k\stackrel{iid}\sim N(0,I_p)\)</span>.
+The
+reparameterization gradient is given by
+<span class="math display">\[\begin{align}
+\nabla_\lambda L_2(\lambda)&amp;=  \sum_{i=1}^n  E\left[\nabla_\lambda\log \left(\frac{\sum_{k=0}^K\exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}1\{y_i=k\}}{\sum_{k=0}^K \exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}}\right)\right]\\
+&amp;=:\sum_{i=1}^n E[\nabla_\lambda h_{i}(z;\lambda)].
+\end{align}\]</span></p>
+<p>where
+<span class="math display">\[\begin{align}
+\frac{\partial  h_{i}(z;\lambda)}{\mu_{jk}}&amp;= x_{ij}1\{y_i=k\} -\frac{x_{ij}\exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}}{\sum_{k=0}^K \exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}},
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+\frac{\partial  h_{i}(z;\lambda)}{\psi_{jk}}&amp;=x_{ij}z_{jk}\exp(\psi_{jk})1\{y_i=k\}-\frac{x_{ij}z_{jk}\exp(\psi_{jk})\exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}}{\sum_{k=0}^K \exp\{x_i^\top (\mu_{\cdot k}+\text{diag}(\exp(\psi_{\cdot k}))z_k)\}}.
+\end{align}\]</span>
+As a result,</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="iris.png" alt="The species are Iris setosa, versicolor, and virginica." width="80%" />
+<p class="caption">
+Figure 1: The species are Iris setosa, versicolor, and virginica.
+</p>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="right">5.1</td>
+<td align="right">3.5</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="right">4.9</td>
+<td align="right">3.0</td>
+<td align="right">1.4</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="right">4.7</td>
+<td align="right">3.2</td>
+<td align="right">1.3</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="even">
+<td>51</td>
+<td align="right">7.0</td>
+<td align="right">3.2</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td>52</td>
+<td align="right">6.4</td>
+<td align="right">3.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>53</td>
+<td align="right">6.9</td>
+<td align="right">3.1</td>
+<td align="right">4.9</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="odd">
+<td>101</td>
+<td align="right">6.3</td>
+<td align="right">3.3</td>
+<td align="right">6.0</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="even">
+<td>102</td>
+<td align="right">5.8</td>
+<td align="right">2.7</td>
+<td align="right">5.1</td>
+<td align="right">1.9</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td>103</td>
+<td align="right">7.1</td>
+<td align="right">3.0</td>
+<td align="right">5.9</td>
+<td align="right">2.1</td>
+<td align="left">virginica</td>
+</tr>
+</tbody>
+</table>
+<p>We next show the results for the iris data with the score function gradient based Adam algorithm.</p>
+<div style="page-break-after: always;"></div>
+<pre class="r"><code>## data generation
+set.seed(0)
+data(iris)
+n &lt;- nrow(iris)
+p &lt;- ncol(iris)
+K &lt;- nlevels(iris$Species)
+X &lt;- model.matrix(Species ~ ., data=iris) # design matrix
+Y &lt;- model.matrix(~ Species - 1, data=iris)
+
+sigma0 = 10
+elbo_hat&lt;- function(mu,psi,N){
+  L1 = sum(psi-(mu^2+exp(2*psi))/(2*sigma0^2))
+  beta = matrix(0,p,K) # the first column is zero 
+  est = matrix(0,N,1)
+  for (i in 1:N){
+    beta[,-1] = mu + exp(psi) * matrix(rnorm(p*(K-1)),p,K-1)
+    tmp = exp(X%*%beta)
+    den = rowSums(tmp)
+    num = rowSums(tmp*Y)
+    est[i] = sum(log(num/den))
+  }
+  return(mean(est)+L1)
+}
+
+score_fun_gradient &lt;- function(mu,psi,N){
+  dmu = -mu/sigma0^2
+  dpsi = 1-exp(2*psi)/sigma0^2
+  beta = matrix(0,p,K) # the first column is zero 
+  for (i in 1:N){
+    beta[,-1] = mu + exp(psi) * matrix(rnorm(p*(K-1)),p,K-1)
+    tmp = exp(X%*%beta)
+    den = rowSums(tmp)
+    num = rowSums(tmp*Y)
+    sumlog = sum(log(num/den))
+    dmu = dmu + sumlog*(beta[,-1]-mu)/exp(2*psi)/N
+    dpsi = dpsi + sumlog*((beta[,-1]-mu)^2/exp(2*psi)-1)/N
+  }
+  return(list(dmu=-dmu,dpsi=-dpsi)) # return negative gradient for adapting the Adam
+}
+
+#Adam: See the paper &#39;ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION&#39;
+
+alpha = 0.1
+beta1 = 0.9
+beta2 = 0.999
+eps = 1e-8
+
+#initial parameters
+mut = matrix(0,p,K-1)
+psit = matrix(0,p,K-1)
+mu_mt = matrix(0,p,K-1) #first moment
+psi_mt = matrix(0,p,K-1)
+mu_vt = matrix(0,p,K-1) #second moment
+psi_vt = matrix(0,p,K-1)
+T = 500
+Ng = 100 #sample size for gradient
+Nelbo = 10000 #sample size for estimating elbo
+elbo = matrix(0,T,1)
+for(t in 1:T){
+  gt = score_fun_gradient(mut,psit,Ng)
+  mu_mt = beta1*mu_mt + (1-beta1)*gt$dmu
+  mu_vt = beta2*mu_vt + (1-beta2)*gt$dmu^2
+  hat_mu_mt = mu_mt/(1-beta1^t)
+  hat_mu_vt = mu_vt/(1-beta2^t)
+  mut = mut - alpha*hat_mu_mt/(sqrt(hat_mu_vt)+eps)
+  
+  psi_mt = beta1*psi_mt + (1-beta1)*gt$dpsi
+  psi_vt = beta2*psi_vt + (1-beta2)*gt$dpsi^2
+  hat_psi_mt = psi_mt/(1-beta1^t)
+  hat_psi_vt = psi_vt/(1-beta2^t)
+  psit = psit - alpha*hat_psi_mt/(sqrt(hat_psi_vt)+eps) #update the state
+  
+  elbo[t] = elbo_hat(mut,psit,Nelbo)
+}
+plot(elbo,type=&#39;b&#39;,xlab = &#39;Iteration&#39;,ylab=&quot;ELBO&quot;,pch=16)</code></pre>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">上一页</div>
+    <a href="/courses/bayes/chap1/" rel="next">第1章</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">下一页</div>
+    <a href="/courses/bayes/chap10/" rel="prev">第10章</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>最近更新于 May 5, 2019</p>
+
+          
+
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    Zhijian He 2020
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲",
+        'slides' : "演示文稿"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1113 @@
+<!DOCTYPE html><html lang="zh-Hans" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="何志坚">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Introduction to hierarchial modelsMany statistical applications involve multiple parameters (say, \(\theta_1,\dots,\theta_J\)) that can be regarded as related or connected in some way by the structure of the problem.">
+
+  
+  <link rel="alternate" hreflang="en" href="/en/courses/bayes/chap6/">
+  
+  <link rel="alternate" hreflang="zh-Hans" href="/courses/bayes/chap6/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/courses/bayes/chap6/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="何志坚">
+  <meta property="og:url" content="/courses/bayes/chap6/">
+  <meta property="og:title" content="第6章 | 何志坚">
+  <meta property="og:description" content="Introduction to hierarchial modelsMany statistical applications involve multiple parameters (say, \(\theta_1,\dots,\theta_J\)) that can be regarded as related or connected in some way by the structure of the problem."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="zh-Hans">
+  
+    
+      <meta property="article:published_time" content="2019-05-05T00:00:00&#43;01:00">
+    
+    <meta property="article:modified_time" content="2019-05-05T00:00:00&#43;01:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>第6章 | 何志坚</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>搜索</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="搜索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="切换导航">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">何志坚</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post/"><span>博客</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/project/"><span>项目</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/publication/"><span>文章</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/courses/"><span>课程</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>联系方式</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="搜索"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown i18n-dropdown">
+        <a href="#" class="nav-link " data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-globe mr-1" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-item dropdown-item-active">
+            <span>中文 (简体)</span>
+          </div>
+          
+          <a class="dropdown-item" href="/en/courses/bayes/chap6/">
+            <span>English</span>
+          </a>
+          
+        </div>
+      </li>
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+  
+    
+  
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+  <input name="q" type="search" class="form-control" placeholder="搜索..." autocomplete="off">
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+
+  
+  
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/">课程简介</a>
+
+  </div>
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/courses/bayes/chap1/">主要内容</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/courses/bayes/chap1/">第1章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap2/">第2章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap3/">第3章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap4/">第4章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap5/">第5章</a>
+      </li>
+      
+      <li class="active">
+        <a href="/courses/bayes/chap6/">第6章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap10/">第10章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/chap11/">第11章</a>
+      </li>
+      
+      <li >
+        <a href="/courses/bayes/vi/">变分推断</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          <h1>第6章</h1>
+
+          <div class="article-style">
+            
+
+
+<div id="introduction-to-hierarchial-models" class="section level2">
+<h2>Introduction to hierarchial models</h2>
+<p>Many statistical applications involve multiple parameters (say, <span class="math inline">\(\theta_1,\dots,\theta_J\)</span>) that can be regarded as related or connected in some way by the structure of the problem.</p>
+<ul>
+<li><p>for the group <span class="math inline">\(j\in 1{:}J\)</span>, we have the observed data <span class="math inline">\(y_{ij}\)</span>, <span class="math inline">\(i=1,\dots,n_j\)</span> from the population distribution with unknown parameter <span class="math inline">\(\theta_j\)</span></p></li>
+<li><p>we use a prior distribution in which the <span class="math inline">\(\theta_j\)</span>’s are viewed as a sample from a common <em>population distribution</em>, say <span class="math inline">\(p(\theta|\phi)\)</span>, where <span class="math inline">\(\phi\)</span> is known as <em>hyperparameters</em>. Assume that <span class="math inline">\(\theta_j\)</span> are iid, i.e.,
+<span class="math display">\[p(\theta|\phi)=\prod_{j=1}^Jp(\theta_j|\phi)\]</span></p></li>
+</ul>
+</div>
+<div id="hierarchical-model-for-rats-experiment" class="section level2">
+<h2>Hierarchical model for Rats experiment</h2>
+<p>The experiment is used to estimate the probability <span class="math inline">\(\theta\)</span> of tumor in a population of female laboratory rats of type ‘F344’ that receive a zero dose of the drug. The data show that 4 out of 14 rats developed a kind of tumor.</p>
+<ul>
+<li>assume a binomial model for the number of tumors</li>
+<li>select a prior from the conjugate family, i.e., <span class="math inline">\(\theta\sim Beta(\alpha,\beta)\)</span></li>
+<li>the posterior is therefore <span class="math inline">\(Beta(\alpha+1,\beta+10)\)</span></li>
+</ul>
+<p>The question is how to determine the hyperparameters <span class="math inline">\(\phi=(\alpha,\beta)\)</span></p>
+<ul>
+<li>historical data are available on previous experiments on similar groups of rats: in the jth historical experiments, let the number of rats with tumors be <span class="math inline">\(y_j\)</span> and the total number of rats be <span class="math inline">\(n_j\)</span>, the parameters for the populations are <span class="math inline">\(\theta_j\)</span>, <span class="math inline">\(j=1,\dots,70\)</span>.</li>
+<li>for current experiment, let <span class="math inline">\(y_{71},n_{71},\theta_{71}\)</span> be the associated notations.</li>
+</ul>
+</div>
+<div id="historical-data-for-the-70-historical-experiments" class="section level2">
+<h2>Historical data for the 70 historical experiments</h2>
+<pre><code>##  [1]  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2
+## [24]  2  2  2  2  2  2  2  2  1  5  2  5  3  2  7  7  3  3  2  9 10  4  4
+## [47]  4  4  4  4  4 10  4  4  4  5 11 12  5  5  6  5  6  6  6  6 16 15 15
+## [70]  9  4</code></pre>
+<pre><code>##  [1] 20 20 20 20 20 20 20 19 19 19 19 18 18 17 20 20 20 20 19 19 18 18 25
+## [24] 24 23 20 20 20 20 20 20 10 49 19 46 27 17 49 47 20 20 13 48 50 20 20
+## [47] 20 20 20 20 20 48 19 19 19 22 46 49 20 20 23 19 22 20 20 20 52 46 47
+## [70] 24 14</code></pre>
+</div>
+<div id="viewed-as-separate-models-using-uniform-priors" class="section level2">
+<h2>Viewed as separate models using uniform priors</h2>
+<p><img src="/media/img/separate_model.png" /></p>
+</div>
+<div id="viewed-as-a-pooled-model-using-uniform-prior" class="section level2">
+<h2>Viewed as a pooled model using uniform prior</h2>
+<p><img src="/media/img/pool_model.png" /></p>
+</div>
+<div id="using-the-historical-data-to-estimate-the-hyperparameters" class="section level2">
+<h2>Using the historical data to estimate the hyperparameters</h2>
+<ul>
+<li><p>the sample mean and standard deviation of the 70 values <span class="math inline">\(y_i/n_i\)</span> are 0.136 and 0.103</p></li>
+<li><p>let <span class="math inline">\(E[\theta]=\frac{\alpha}{\alpha+\beta}=0.136\)</span> and <span class="math inline">\(Var[\theta]=\frac{E[\theta](1-E[\theta])}{\alpha+\beta+1}=0.103\)</span></p></li>
+<li><p><span class="math inline">\(\hat{\alpha}=1.4,\ \hat{\beta}=8.6\)</span></p></li>
+<li><p>for the current exeriment, the posterior for <span class="math inline">\(\theta\)</span> is <span class="math inline">\(Beta(5.4,18.6)\)</span>, posterior mean is <span class="math inline">\(0.223\)</span>, standard deviation is 0.083.</p></li>
+</ul>
+<p>There are several logical and practical problems with the approach of directly estimating a prior distribution from existing data:</p>
+<ul>
+<li><p>the data will be used twice for inference about the first 70 experiments – overestimate our precision</p></li>
+<li><p>the point estimate for <span class="math inline">\(\alpha,\beta\)</span> seems arbitrary that necessarily ignores some posterior uncertainty</p></li>
+<li><p>this is not the logic of Bayesian inference</p></li>
+</ul>
+</div>
+<div id="the-full-bayesian-treatment-of-the-hierarchical-model" class="section level2">
+<h2>The full Bayesian treatment of the hierarchical model</h2>
+<p>Suppose the hyperparameters <span class="math inline">\(\phi\)</span> has its own prior distribution <span class="math inline">\(p(\phi)\)</span>, which is called <em>hyperprior distribution</em>. The appropriate Bayesian posterior distribution is of the vector <span class="math inline">\((\phi,\theta)\)</span>.</p>
+<ul>
+<li><p>the joint prior distribution is
+<span class="math display">\[p(\phi,\theta)=p(\phi)p(\theta|\phi)\]</span></p></li>
+<li><p>the joint posterior distribution is
+<span class="math display">\[p(\phi,\theta|y)\propto p(\phi,\theta)p(y|\phi,\theta)=p(\phi)p(\theta|\phi)p(y|\theta)\]</span></p></li>
+</ul>
+<p>Previously, we assumed <span class="math inline">\(\phi\)</span> was known, which is unrealistic; now we include the uncertainty in <span class="math inline">\(\phi\)</span> in the model.</p>
+</div>
+<div id="fully-bayesian-analysis-of-conjugate-hierarchical-models" class="section level2">
+<h2>Fully Bayesian analysis of conjugate hierarchical models</h2>
+<p>Consider the setting in which <span class="math inline">\(p(\theta|\phi)\)</span> is conjugate to the likelihood <span class="math inline">\(p(y|\theta)\)</span>. For this case, it is easy to determine analytically <span class="math display">\[p(\theta|\phi,y)\propto p(\theta|\phi)p(y|\theta)\]</span></p>
+<ul>
+<li>the joint posterior density:
+<span class="math display">\[p(\phi,\theta|y)\propto p(\phi)p(\theta|\phi)p(y|\theta)\]</span></li>
+<li>the marginal posterior density <span class="math inline">\(p(\phi|y)\)</span> can be computed via
+<span class="math display">\[p(\phi|y)=\int p(\phi,\theta|y)d \theta\]</span></li>
+</ul>
+<p><span class="math display">\[\text{or }p(\phi|y)=\frac{p(\phi,\theta|y)}{p(\theta|\phi,y)}\]</span></p>
+</div>
+<div id="application-to-the-model-for-rat-tumors" class="section level2">
+<h2>Application to the model for rat tumors</h2>
+<p>The binomial model:
+<span class="math display">\[y_j\sim Bin(n_j,\theta_j),\ j=1,\dots,J=71\]</span></p>
+<p>The parameters <span class="math inline">\(\theta_j\)</span> are assumed to be independent samples from a beta distribution:
+<span class="math display">\[\theta_j\sim Beta(\alpha,\beta)\]</span></p>
+<p>The joint posterior density is
+<span class="math display">\[p(\theta,\alpha,\beta|y)\propto p(\alpha,\beta)p(\theta|\alpha,\beta)p(y|\theta)\]</span>
+<span class="math display">\[\propto p(\alpha,\beta)\prod_{j=1}^J\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta_j^{\alpha-1}(1-\theta_j)^{\beta-1}\prod_{j=1}^J\theta_j^{y_j}(1-\theta_j)^{n_j-y_j}\]</span></p>
+<p><span class="math display">\[p(\theta|\alpha,\beta,y)=\prod_{j=1}^J\frac{\Gamma(\alpha+\beta+n_j)}{\Gamma(\alpha+y_j)\Gamma(\beta+n_j-y_j)}\theta_j^{\alpha+y_i-1}(1-\theta_j)^{\beta+n_j-y_j-1}\]</span></p>
+</div>
+<div id="application-to-the-model-for-rat-tumors-1" class="section level2">
+<h2>Application to the model for rat tumors</h2>
+<p>The marginal posterior density:
+<span class="math display">\[p(\alpha,\beta|y)\propto p(\alpha,\beta)\prod_{j=1}^J\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\frac{\Gamma(\alpha+y_j)\Gamma(\beta+n_j-y_j)}{\Gamma(\alpha+\beta+n_j)}\]</span></p>
+<p>Choosing a noninformative hyperprior distribution:
+<span class="math display">\[p(\alpha,\beta)\propto (\alpha+\beta)^{-5/2}\]</span></p>
+<p>This implies that <span class="math inline">\((\alpha/(\alpha+\beta),(\alpha+\beta)^{-1/2})\)</span> is uniformly distributed.</p>
+<ul>
+<li>the prior mean is <span class="math inline">\(\alpha/(\alpha+\beta)\)</span></li>
+<li>the prior variance is approximately <span class="math inline">\((\alpha+\beta)^{-1}\)</span></li>
+</ul>
+</div>
+<div id="plot-of-the-marginal-posterior-density" class="section level2">
+<h2>Plot of the marginal posterior density</h2>
+<p><img src="/media/img/alphabeta.png" /></p>
+</div>
+<div id="compare-the-separate-model-and-hierarchical-model" class="section level2">
+<h2>Compare the separate model and hierarchical model</h2>
+<p><img src="/media/img/hier_sep.png" /></p>
+</div>
+<div id="hierarchical-model-based-on-normal-distribution" class="section level2">
+<h2>Hierarchical model based on normal distribution</h2>
+<p>Consider <span class="math inline">\(J\)</span> independent experiments, with experiment <span class="math inline">\(j\)</span> estimating <span class="math inline">\(\theta_j\)</span> form <span class="math inline">\(n_j\)</span> independent distributed data points <span class="math inline">\(y_{ij}\)</span>, each with known error variance <span class="math inline">\(\sigma^2\)</span>, that is
+<span class="math display">\[y_{ij}|\theta_j\stackrel{iid}{\sim} N(\theta_j,\sigma^2), \text{ for }i=1,\dots,n_j;\ j=1,\dots,J\]</span></p>
+<ul>
+<li><p>denote the sample mean of each group <span class="math inline">\(j\)</span> as
+<span class="math display">\[\bar{y}_{\cdot j}=\frac 1{n_j}\sum_{i=1}^{n_j}y_{ij}\]</span></p></li>
+<li><p>let <span class="math inline">\(\sigma^2_j=\sigma^2/n_j\)</span></p></li>
+<li><p>the likelihood for each <span class="math inline">\(\theta_j\)</span>:
+<span class="math display">\[\bar{y}_{\cdot j}|\theta_j\sim N(\theta_j,\sigma_j^2)\]</span></p></li>
+</ul>
+</div>
+<div id="hierarchical-model-based-on-normal-distribution-1" class="section level2">
+<h2>Hierarchical model based on normal distribution</h2>
+<ul>
+<li><p>for the convenience of conjugacy, assume the paramerters <span class="math inline">\(\theta_j\)</span> are drawn from a normal distribution with hyperparameters <span class="math inline">\(\mu,\tau\)</span>:
+<span class="math display">\[p(\theta_1,\dots,\theta_J|\mu,\tau)=\prod_{j=1}^J N(\theta_j|\mu,\tau^2)\]</span></p></li>
+<li><p>assign noninformative uniform hyperprior density to <span class="math inline">\(\mu\)</span> given <span class="math inline">\(\tau\)</span>:
+<span class="math display">\[p(\mu,\tau)=p(\mu|\tau)p(\tau)\propto p(\tau)\]</span></p></li>
+<li><p>prior distribution for <span class="math inline">\(\tau\)</span>: <span class="math inline">\(p(\tau)\propto 1\)</span></p></li>
+<li><p>the joint posterior density is
+<span class="math display">\[p(\theta,\mu,\tau|y)\propto p(\mu,\tau)p(\theta|\mu,\tau)p(y|\theta)\]</span></p></li>
+</ul>
+<p><span class="math display">\[p(\theta,\mu,\tau|y)\propto p(\mu,\tau)\prod_{j=1}^J N(\theta_j|\mu,\tau^2)\prod_{j=1}^JN(\bar{y}_{\cdot j}|\theta_j,\sigma_j^2)\]</span></p>
+</div>
+<div id="hierarchical-model-based-on-normal-distribution-2" class="section level2">
+<h2>Hierarchical model based on normal distribution</h2>
+<ul>
+<li>the conditional posterior distirbution:
+<span class="math display">\[\theta_j|\mu,\tau,y\sim N(\hat{\theta}_j,V_j)\]</span></li>
+</ul>
+<p>where
+<span class="math display">\[\hat{\theta}_j=\frac{\frac 1{\sigma^2}\bar{y}_{\cdot j}+\frac 1{\tau^2}\mu}{\frac 1{\sigma^2}+\frac 1{\tau^2}},\ V_j=\frac{1}{\frac 1{\sigma^2}+\frac 1{\tau^2}}\]</span></p>
+<ul>
+<li><p>the marginal posterior density can be computed in a simple way
+<span class="math display">\[p(\mu,\tau|y)\propto p(\mu,\tau)p(y|\mu,\tau)\]</span></p></li>
+<li><p><span class="math inline">\(\bar{y}_{\cdot j}|\mu,\tau\sim N(\mu,\sigma_j^2+\tau^2)\)</span></p></li>
+</ul>
+<p><span class="math display">\[p(\mu,\tau|y)\propto p(\mu,\tau)\prod_{j=1}^JN(\bar{y}_{\cdot j}|\mu,\sigma_j^2+\tau^2)\]</span></p>
+</div>
+<div id="hierarchical-model-based-on-normal-distribution-3" class="section level2">
+<h2>Hierarchical model based on normal distribution</h2>
+<ul>
+<li>posterior distribution of <span class="math inline">\(\mu\)</span> given <span class="math inline">\(\tau\)</span>
+<span class="math display">\[\mu|\tau,y\sim N(\hat{\mu},V_{\mu})\]</span></li>
+</ul>
+<p>where
+<span class="math display">\[\hat{\mu}=\frac{\sum_{j=1}^J \frac 1{\sigma_j^2+\tau^2}\bar{y}_{\cdot j}}{\sum_{j=1}^J \frac 1{\sigma_j^2+\tau^2}},\ V_{\mu}^{-1}=\sum_{j=1}^J \frac 1{\sigma_j^2+\tau^2}\]</span></p>
+<ul>
+<li>posterior distribution of <span class="math inline">\(\tau\)</span>:
+<span class="math display">\[p(\tau|y)=\frac{p(\mu,\tau|y)}{p(\mu|\tau,y)}\propto \frac{p(\tau)\prod_{j=1}^JN(\bar{y}_{\cdot j}|\mu,\sigma_j^2+\tau^2)}{N(\mu|\hat{\mu},V_{\mu})}\]</span></li>
+</ul>
+<p><span class="math display">\[p(\tau|y)\propto p(\tau)V_{\mu}^{1/2}\prod_{j=1}^J(\sigma_j^2+\tau^2)^{-1/2}\exp\left(-\frac{(\bar{y}_{\cdot j}-\hat{\mu})^2}{2(\sigma_j^2+\tau^2)}\right)\]</span></p>
+</div>
+<div id="example-parallel-experiments-in-eight-schools" class="section level2">
+<h2>Example: parallel experiments in eight schools</h2>
+<p>A study was performanced for the Educational Testing Service to analyze the effects of special coaching programs on test scores. Seperate randomized experiments were performed to estimate the effects of coaching programs for the SAT-V (Verbal).</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>School</th>
+<th>Estiamted treatment effect <span class="math inline">\(y_j\)</span></th>
+<th>Standard error of effect estimate <span class="math inline">\(\sigma_j\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>28</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>8</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>-3</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>7</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>-1</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>1</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>G</td>
+<td>18</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>H</td>
+<td>12</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="comparisons" class="section level2">
+<h2>Comparisons</h2>
+<p><img src="/media/img/8schools.png" /></p>
+</div>
+<div id="plot-the-posterior-summaries" class="section level2">
+<h2>Plot the posterior summaries</h2>
+<p><img src="/media/img/8schools2.png" /></p>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">上一页</div>
+    <a href="/courses/bayes/chap5/" rel="next">第5章</a>
+  </div>
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>最近更新于 May 5, 2019</p>
+
+          
+
+
+
+
+
+          
+
+
+          
+
+
+  
+  
+
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    Zhijian He 2020
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"没有找到结果","placeholder":"搜索...","results":"搜索结果"};
+      const content_type = {
+        'post': "文章",
+        'project': "项目",
+        'publication' : "出版物",
+        'talk' : "演讲",
+        'slides' : "演示文稿"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> 复制
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> 下载
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
