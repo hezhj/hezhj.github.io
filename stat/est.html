@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 章 估计 | 数理统计讲义</title>
+  <meta name="description" content="第 2 章 估计 | 数理统计讲义" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 章 估计 | 数理统计讲义" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.jpg" />
+  <meta property="og:description" content="第 2 章 估计 | 数理统计讲义" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 章 估计 | 数理统计讲义" />
+  
+  <meta name="twitter:description" content="第 2 章 估计 | 数理统计讲义" />
+  <meta name="twitter:image" content="images/cover.jpg" />
+
+<meta name="author" content="何志坚" />
+
+
+<meta name="date" content="2020-03-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="test.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">数理统计讲义</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e887b4e8b0a2"><i class="fa fa-check"></i>致谢</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e78988e69d83"><i class="fa fa-check"></i>版权</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 绪论</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> 学科介绍</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#section-1.1.1"><i class="fa fa-check"></i><b>1.1.1</b> 统计学的发展简史</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#section-1.1.2"><i class="fa fa-check"></i><b>1.1.2</b> 频率学派与贝叶斯学派</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#section-1.1.3"><i class="fa fa-check"></i><b>1.1.3</b> 统计学专业</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> 基本概念</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#section-1.2.1"><i class="fa fa-check"></i><b>1.2.1</b> 总体</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#section-1.2.2"><i class="fa fa-check"></i><b>1.2.2</b> 样本</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#section-1.2.3"><i class="fa fa-check"></i><b>1.2.3</b> 简单随机抽样</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#section-1.2.4"><i class="fa fa-check"></i><b>1.2.4</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> 概率分布族</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 常用的参数族</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#section-1.3.2"><i class="fa fa-check"></i><b>1.3.2</b> 伽玛分布族</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#section-1.3.3"><i class="fa fa-check"></i><b>1.3.3</b> 贝塔分布族</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#section-1.3.4"><i class="fa fa-check"></i><b>1.3.4</b> 指数型分布族</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 统计量与估计量</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#section-1.5"><i class="fa fa-check"></i><b>1.5</b> 充分统计量</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#section-1.5.1"><i class="fa fa-check"></i><b>1.5.1</b> 因子分解定理</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#section-1.5.2"><i class="fa fa-check"></i><b>1.5.2</b> 因子分解定理的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#section-1.6"><i class="fa fa-check"></i><b>1.6</b> 抽样分布</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#section-1.6.1"><i class="fa fa-check"></i><b>1.6.1</b> 样本均值的抽样分布</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#section-1.6.2"><i class="fa fa-check"></i><b>1.6.2</b> 卡方分布</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#section-1.6.3"><i class="fa fa-check"></i><b>1.6.3</b> 正态总体抽样分布定理</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#t"><i class="fa fa-check"></i><b>1.6.4</b> t分布</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#section-1.6.5"><i class="fa fa-check"></i><b>1.6.5</b> 样本均值与标准差之比的抽样分布</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#f"><i class="fa fa-check"></i><b>1.6.6</b> F分布</a></li>
+<li class="chapter" data-level="1.6.7" data-path="intro.html"><a href="intro.html#section-1.6.7"><i class="fa fa-check"></i><b>1.6.7</b> 两个独立正态总体的抽样分布</a></li>
+<li class="chapter" data-level="1.6.8" data-path="intro.html"><a href="intro.html#section-1.6.8"><i class="fa fa-check"></i><b>1.6.8</b> 顺序统计量</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#section-1.7"><i class="fa fa-check"></i><b>1.7</b> 分位数</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#ex2"><i class="fa fa-check"></i><b>1.8</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="est.html"><a href="est.html"><i class="fa fa-check"></i><b>2</b> 估计</a><ul>
+<li class="chapter" data-level="2.1" data-path="est.html"><a href="est.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 参数估计</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="est.html"><a href="est.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 矩估计法</a></li>
+<li class="chapter" data-level="2.1.2" data-path="est.html"><a href="est.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 最大似然估计法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="est.html"><a href="est.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 矩估计与最大似然估计的对比</a></li>
+<li class="chapter" data-level="2.1.4" data-path="est.html"><a href="est.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 混合正态分布的参数估计</a></li>
+<li class="chapter" data-level="2.1.5" data-path="est.html"><a href="est.html#em"><i class="fa fa-check"></i><b>2.1.5</b> EM算法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="est.html"><a href="est.html#section-2.2"><i class="fa fa-check"></i><b>2.2</b> 估计的优良性标准</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="est.html"><a href="est.html#section-2.2.1"><i class="fa fa-check"></i><b>2.2.1</b> 无偏性</a></li>
+<li class="chapter" data-level="2.2.2" data-path="est.html"><a href="est.html#section-2.2.2"><i class="fa fa-check"></i><b>2.2.2</b> 均方误差</a></li>
+<li class="chapter" data-level="2.2.3" data-path="est.html"><a href="est.html#section-2.2.3"><i class="fa fa-check"></i><b>2.2.3</b> 一致最小方差无偏估计</a></li>
+<li class="chapter" data-level="2.2.4" data-path="est.html"><a href="est.html#section-2.2.4"><i class="fa fa-check"></i><b>2.2.4</b> 统计量的大样本性质</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="est.html"><a href="est.html#section-2.3"><i class="fa fa-check"></i><b>2.3</b> 区间估计</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="est.html"><a href="est.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 区间估计的定义</a></li>
+<li class="chapter" data-level="2.3.2" data-path="est.html"><a href="est.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 枢轴量法</a></li>
+<li class="chapter" data-level="2.3.3" data-path="est.html"><a href="est.html#section-2.3.3"><i class="fa fa-check"></i><b>2.3.3</b> 单个正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.4" data-path="est.html"><a href="est.html#section-2.3.4"><i class="fa fa-check"></i><b>2.3.4</b> 两个独立正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.5" data-path="est.html"><a href="est.html#section-2.3.5"><i class="fa fa-check"></i><b>2.3.5</b> 非正态总体参数的区间估计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="est.html"><a href="est.html#section-2.4"><i class="fa fa-check"></i><b>2.4</b> 分布的估计</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="est.html"><a href="est.html#section-2.4.1"><i class="fa fa-check"></i><b>2.4.1</b> 分布函数的估计</a></li>
+<li class="chapter" data-level="2.4.2" data-path="est.html"><a href="est.html#section-2.4.2"><i class="fa fa-check"></i><b>2.4.2</b> 直方图法</a></li>
+<li class="chapter" data-level="2.4.3" data-path="est.html"><a href="est.html#section-2.4.3"><i class="fa fa-check"></i><b>2.4.3</b> 核估计法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="est.html"><a href="est.html#ex3"><i class="fa fa-check"></i><b>2.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>3</b> 假设检验</a><ul>
+<li class="chapter" data-level="3.1" data-path="test.html"><a href="test.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 女士品茶</a></li>
+<li class="chapter" data-level="3.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.2</b> 基本概念</a></li>
+<li class="chapter" data-level="3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3</b> UMP检验和似然比检验</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.1</b> UMP检验的定义</a></li>
+<li class="chapter" data-level="3.3.2" data-path="test.html"><a href="test.html#section-3.3.2"><i class="fa fa-check"></i><b>3.3.2</b> 似然比检验方法</a></li>
+<li class="chapter" data-level="3.3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.3</b> 正态分布均值的UMP检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="test.html"><a href="test.html#section-3.4"><i class="fa fa-check"></i><b>3.4</b> 单参数指数型分布族</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="test.html"><a href="test.html#section-3.4.1"><i class="fa fa-check"></i><b>3.4.1</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="test.html"><a href="test.html#section-3.5"><i class="fa fa-check"></i><b>3.5</b> 广义似然比检验</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="test.html"><a href="test.html#section-3.5.1"><i class="fa fa-check"></i><b>3.5.1</b> 正态总体的假设检验</a></li>
+<li class="chapter" data-level="3.5.2" data-path="test.html"><a href="test.html#section-3.5.2"><i class="fa fa-check"></i><b>3.5.2</b> 两个独立正态总体的检验</a></li>
+<li class="chapter" data-level="3.5.3" data-path="test.html"><a href="test.html#section-3.5.3"><i class="fa fa-check"></i><b>3.5.3</b> 案例分析：山鸢尾和杂色鸢尾花差异性比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="test.html"><a href="test.html#section-3.6"><i class="fa fa-check"></i><b>3.6</b> 置信区间与假设检验的联系</a></li>
+<li class="chapter" data-level="3.7" data-path="test.html"><a href="test.html#p"><i class="fa fa-check"></i><b>3.7</b> p值</a></li>
+<li class="chapter" data-level="3.8" data-path="test.html"><a href="test.html#section-3.8"><i class="fa fa-check"></i><b>3.8</b> 多重检验</a></li>
+<li class="chapter" data-level="3.9" data-path="test.html"><a href="test.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 伯努利分布的检验</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="test.html"><a href="test.html#i"><i class="fa fa-check"></i><b>3.9.1</b> 单侧检验I</a></li>
+<li class="chapter" data-level="3.9.2" data-path="test.html"><a href="test.html#section-3.9.2"><i class="fa fa-check"></i><b>3.9.2</b> 女士品茶问题求解</a></li>
+<li class="chapter" data-level="3.9.3" data-path="test.html"><a href="test.html#ii"><i class="fa fa-check"></i><b>3.9.3</b> 单侧检验II</a></li>
+<li class="chapter" data-level="3.9.4" data-path="test.html"><a href="test.html#section-3.9.4"><i class="fa fa-check"></i><b>3.9.4</b> 双侧检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="test.html"><a href="test.html#section-3.10"><i class="fa fa-check"></i><b>3.10</b> 拟合优度检验</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="test.html"><a href="test.html#mendel"><i class="fa fa-check"></i><b>3.10.1</b> Mendel的数据</a></li>
+<li class="chapter" data-level="3.10.2" data-path="test.html"><a href="test.html#section-3.10.2"><i class="fa fa-check"></i><b>3.10.2</b> 卡方检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.11</b> 小结</a></li>
+<li class="chapter" data-level="3.12" data-path="test.html"><a href="test.html#ex4"><i class="fa fa-check"></i><b>3.12</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>4</b> 线性回归</a><ul>
+<li class="chapter" data-level="4.1" data-path="regression.html"><a href="regression.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 一元线性模型</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="regression.html"><a href="regression.html#section-4.1.1"><i class="fa fa-check"></i><b>4.1.1</b> 最小二乘估计</a></li>
+<li class="chapter" data-level="4.1.2" data-path="regression.html"><a href="regression.html#section-4.1.2"><i class="fa fa-check"></i><b>4.1.2</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.1.3" data-path="regression.html"><a href="regression.html#section-4.1.3"><i class="fa fa-check"></i><b>4.1.3</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.1.4" data-path="regression.html"><a href="regression.html#section-4.1.4"><i class="fa fa-check"></i><b>4.1.4</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.1.5" data-path="regression.html"><a href="regression.html#section-4.1.5"><i class="fa fa-check"></i><b>4.1.5</b> 置信区间与假设检验</a></li>
+<li class="chapter" data-level="4.1.6" data-path="regression.html"><a href="regression.html#1"><i class="fa fa-check"></i><b>4.1.6</b> 案例分析1</a></li>
+<li class="chapter" data-level="4.1.7" data-path="regression.html"><a href="regression.html#section-4.1.7"><i class="fa fa-check"></i><b>4.1.7</b> 拟合的评估</a></li>
+<li class="chapter" data-level="4.1.8" data-path="regression.html"><a href="regression.html#section-4.1.8"><i class="fa fa-check"></i><b>4.1.8</b> 预测</a></li>
+<li class="chapter" data-level="4.1.9" data-path="regression.html"><a href="regression.html#section-4.1.9"><i class="fa fa-check"></i><b>4.1.9</b> 控制</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="regression.html"><a href="regression.html#section-4.2"><i class="fa fa-check"></i><b>4.2</b> 多元线性模型</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.1</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.2.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.2</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.2.3" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.3</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.2.4" data-path="regression.html"><a href="regression.html#section-4.2.4"><i class="fa fa-check"></i><b>4.2.4</b> 置信区间和假设检验</a></li>
+<li class="chapter" data-level="4.2.5" data-path="regression.html"><a href="regression.html#section-4.2.5"><i class="fa fa-check"></i><b>4.2.5</b> 模型整体的显著性检验</a></li>
+<li class="chapter" data-level="4.2.6" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.6</b> 预测</a></li>
+<li class="chapter" data-level="4.2.7" data-path="regression.html"><a href="regression.html#2"><i class="fa fa-check"></i><b>4.2.7</b> 案例分析2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regression.html"><a href="regression.html#section-4.3"><i class="fa fa-check"></i><b>4.3</b> 线性模型的推广</a></li>
+<li class="chapter" data-level="4.4" data-path="regression.html"><a href="regression.html#section-4.4"><i class="fa fa-check"></i><b>4.4</b> 回归诊断</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="regression.html"><a href="regression.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 动机</a></li>
+<li class="chapter" data-level="4.4.2" data-path="regression.html"><a href="regression.html#section-4.4.2"><i class="fa fa-check"></i><b>4.4.2</b> 残差的定义和性质</a></li>
+<li class="chapter" data-level="4.4.3" data-path="regression.html"><a href="regression.html#section-4.4.3"><i class="fa fa-check"></i><b>4.4.3</b> 残差图</a></li>
+<li class="chapter" data-level="4.4.4" data-path="regression.html"><a href="regression.html#section-4.4.4"><i class="fa fa-check"></i><b>4.4.4</b> 残差诊断的思路</a></li>
+<li class="chapter" data-level="4.4.5" data-path="regression.html"><a href="regression.html#box-cox"><i class="fa fa-check"></i><b>4.4.5</b> 案例分析：基于Box-Cox变换</a></li>
+<li class="chapter" data-level="4.4.6" data-path="regression.html"><a href="regression.html#section-4.4.6"><i class="fa fa-check"></i><b>4.4.6</b> 离群值</a></li>
+<li class="chapter" data-level="4.4.7" data-path="regression.html"><a href="regression.html#section-4.4.7"><i class="fa fa-check"></i><b>4.4.7</b> 变量选择</a></li>
+<li class="chapter" data-level="4.4.8" data-path="regression.html"><a href="regression.html#lasso"><i class="fa fa-check"></i><b>4.4.8</b> LASSO</a></li>
+<li class="chapter" data-level="4.4.9" data-path="regression.html"><a href="regression.html#section-4.4.9"><i class="fa fa-check"></i><b>4.4.9</b> 回归分析与因果分析</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="regression.html"><a href="regression.html#ex5"><i class="fa fa-check"></i><b>4.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>5</b> 方差分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="anova.html"><a href="anova.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 引言</a></li>
+<li class="chapter" data-level="5.2" data-path="anova.html"><a href="anova.html#section-5.2"><i class="fa fa-check"></i><b>5.2</b> 单因子方差分析</a></li>
+<li class="chapter" data-level="5.3" data-path="anova.html"><a href="anova.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 两因子方差分析</a></li>
+<li class="chapter" data-level="5.4" data-path="anova.html"><a href="anova.html#-2"><i class="fa fa-check"></i><b>5.4</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>6</b> 综合练习</a><ul>
+<li class="chapter" data-level="6.1" data-path="exam.html"><a href="exam.html#section-6.1"><i class="fa fa-check"></i><b>6.1</b> 2018秋季试卷</a></li>
+<li class="chapter" data-level="6.2" data-path="exam.html"><a href="exam.html#section-6.2"><i class="fa fa-check"></i><b>6.2</b> 2018秋季试卷答案</a></li>
+<li class="chapter" data-level="6.3" data-path="exam.html"><a href="exam.html#section-6.3"><i class="fa fa-check"></i><b>6.3</b> 2019春季试卷</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="http://www2.scut.edu.cn/math/2018/0118/c14638a254123/page.htm" target="blank">版权归作者所有</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">数理统计讲义</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="est" class="section level1">
+<h1><span class="header-section-number">第 2 章</span> 估计</h1>
+<div id="section-2.1" class="section level2">
+<h2><span class="header-section-number">2.1</span> 参数估计</h2>
+<p>在实际问题中，对于一个总体<span class="math inline">\(X\)</span>往往是仅知其分布的类型<span class="math inline">\(F_\theta\)</span>，而参数<span class="math inline">\(\theta=(\theta_1,\dots,\theta_m)\in \Theta \subset \mathbb{R}^m\)</span>是未知的。对任给的实值函数</p>
+<p><span class="math display">\[g:\ \mathbb{R}^m\to \mathbb{R},\]</span></p>
+<p>如何根据<span class="math inline">\(X\)</span>的样本<span class="math inline">\(x_1,\dots,x_n\)</span>估计<span class="math inline">\(g( \theta)\)</span>的值呢？这就是统计推断中的“<strong>参数估计</strong>”问题。</p>
+<p><strong>点估计</strong>：寻找一个统计量<span class="math inline">\(\hat{\theta} = T(X_1,\dots,X_n)\)</span>作为<span class="math inline">\(\theta\)</span>的点估计</p>
+<p><strong>区间估计</strong>：寻找两个统计量<span class="math inline">\(\hat{ \theta}_1 = T_1(X_1,\dots,X_n)\)</span>, <span class="math inline">\(\hat{ \theta}_2 = T_2(X_1,\dots,X_n)\)</span>，所构成的区间<span class="math inline">\([\hat{\theta}_1,\hat{\theta}_2]\)</span>作为
+<span class="math inline">\(\theta\)</span>的区间估计</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-56" class="definition"><strong>定义 2.1  </strong></span>假设总体<span class="math inline">\(X\)</span>的分布是<span class="math inline">\(F_\theta\)</span>. 如果存在<span class="math inline">\(\theta_1\neq\theta_2\)</span>使得<span class="math inline">\(F_{\theta_1}=F_{\theta_2}\)</span>，则称<span class="math inline">\(\theta\)</span>对于<span class="math inline">\(X\)</span>是不可识别的(unidentifiable)。
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-57" class="example"><strong>例 2.1  </strong></span>设<span class="math inline">\(X\sim N(\mu_1+\mu_2,\sigma^2)\)</span>, 则不难发现<span class="math inline">\(\theta=(\mu_1,\mu_2,\sigma^2)\)</span>是不可识别的。估计参数<span class="math inline">\(\theta\)</span>是没有统计意义的。</p>
+</div>
+
+<p>考虑一个测量问题（如温度、血压、距离等），记测量对象真实值为<span class="math inline">\(\theta\)</span>，<span class="math inline">\(n\)</span>次测量数据为<span class="math inline">\(x_1,x_2,\dots,x_n\)</span>。相信大部分人都会用样本均值</p>
+<p><span class="math display">\[\bar x = \frac{x_1+\dots+x_n}{n}\]</span>
+来估计<span class="math inline">\(\theta\)</span>。但是，为什么用样本均值估计是合理的呢？这是最好的估计方式吗？这些是本章重点讨论的问题。</p>
+<div id="section-2.1.1" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> 矩估计法</h3>
+<p>矩估计的想法来源于大数定理。如果总体<span class="math inline">\(X\)</span>存在<span class="math inline">\(k\)</span>阶矩，对任意<span class="math inline">\(\epsilon&gt;0\)</span>,</p>
+<p><span class="math display">\[
+\lim_{n\to \infty} P(|\frac 1 n\sum_{i=1}^n X_i^k-E[X^k]|\ge \epsilon )=0.
+\]</span></p>
+<p>这说明，当样本容量<span class="math inline">\(n\)</span>较大时，样本<span class="math inline">\(k\)</span>阶矩与总体<span class="math inline">\(k\)</span>阶矩差别很小。<strong>矩法估计就是用样本<span class="math inline">\(k\)</span>阶矩代替总体的<span class="math inline">\(k\)</span>阶矩。</strong>通常用<span class="math inline">\(\hat{\theta}_M\)</span>表示。一般步骤如下：</p>
+<ul>
+<li><p>列出估计式<span class="math inline">\(E[X^k]=g_k(\theta_1,\dots,\theta_m),\ k=1,\dots,m.\)</span></p></li>
+<li><p>求解关于估计量的方程组<span class="math inline">\(\theta_k = \theta_k(E[X^1],\dots,E[X^m])\)</span></p></li>
+<li><p>用<span class="math inline">\(M_k=\frac 1 n\sum_{i=1}^n X_i^k\)</span>替代<span class="math inline">\(E[X^k]\)</span>得到矩估计<span class="math inline">\(\hat\theta_k = \theta_k(M_1,\dots,M_m)\)</span></p></li>
+</ul>
+
+<div class="example">
+<span id="exm:unnamed-chunk-58" class="example"><strong>例 2.2  </strong></span>求总体<span class="math inline">\(X\)</span>的期望<span class="math inline">\(\mu=E[X]\)</span>与方差<span class="math inline">\(\sigma^2=Var[X]\)</span>的矩估计。
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> (1)列出估计式</p>
+<p><span class="math display">\[
+\begin{cases}
+E[X] &amp;= \mu\\
+E[X^2] &amp;= \mu^2+\sigma^2
+\end{cases}
+\]</span></p>
+<p>(2)求解关于估计量的方程组</p>
+<p><span class="math display">\[
+\begin{cases}
+\mu &amp;= E[X]\\
+\sigma^2 &amp;= E[X^2]-(E[X])^2
+\end{cases}
+\]</span></p>
+所以，<span class="math inline">\(\hat{\mu}_M = \bar X\)</span>, <span class="math inline">\(\hat{\sigma}^2_M = \frac{1}{n}\sum_{i=1}^n X_i^2-(\bar X)^2 = S_n^2.\)</span>
+</div>
+
+<p><strong>注</strong>：不难证明，总体的各阶中心矩的矩估计就是样本各阶中心矩。</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-60" class="example"><strong>例 2.3  </strong></span>设总体<span class="math inline">\(X\sim U[a,b]\)</span>, 求<span class="math inline">\(a,b\)</span>的矩估计。
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 易知，<span class="math inline">\(E[X]=(a+b)/2,\ Var[X]= (b-a)^2/12\)</span>.</p>
+<p>所以，</p>
+<p><span class="math display">\[
+\begin{cases}
+a &amp;= E[X]-\sqrt{3Var[X]}\\
+b &amp;= E[X]+\sqrt{3Var[X]}
+\end{cases}
+\]</span></p>
+<span class="math display">\[
+\begin{cases}
+\hat a_M &amp;= \bar{X}-\sqrt{3}S_n\\
+\hat b_M &amp;= \bar{X}+\sqrt{3}S_n
+\end{cases}
+\]</span>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-62" class="example"><strong>例 2.4  </strong></span>设总体<span class="math inline">\(X\)</span>的分布密度为</p>
+<p><span class="math display">\[
+f(x)=\frac{\theta}{2}e^{-\theta|x|},\ x\in\mathbb{R}, \theta&gt;0.
+\]</span></p>
+求<span class="math inline">\(\theta\)</span>的矩估计。
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> <span class="math display">\[
+E[X]= 0,\ E[X^2]=\int_{-\infty}^{\infty}x^2\frac{\theta}{2}e^{-\theta|x|}d x=\theta\int_{0}^{\infty}x^2e^{-\theta x}d x=\frac{2}{\theta^2}
+\]</span></p>
+<p><span class="math display">\[\hat{\theta}_M=\sqrt{\frac{2n}{\sum_{i=1}^n X_i^2}}.\]</span></p>
+除外，还可以由<span class="math inline">\(E[|X|]=1/\theta\)</span>得到另一种矩估计。
+</div>
+
+</div>
+<div id="section-2.1.2" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> 最大似然估计法</h3>
+<p>最大似然估计法最早由高斯(C.F.Gauss)提出，后来被 Fisher完善。最大似然估计这一名称也是Fisher给的。这是一个目前仍得到广泛应用的方法。它是建立在最大似然原理基础上的一个统计方法。</p>
+<blockquote>
+<p><strong>最大似然原理：最先出现的是概率最大的</strong></p>
+</blockquote>
+
+<div class="example">
+<span id="exm:unnamed-chunk-64" class="example"><strong>例 2.5  </strong></span>设有外形完全相同的两个箱子，甲箱中有99个白球和1个黑球，乙箱中有99个黑球和1个白球，今抽取一箱并从中随机抽取一球，结果取得白球，问这球是从哪个箱子中取出？
+</div>
+
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-65" class="definition"><strong>定义 2.2  </strong></span>假设总体<span class="math inline">\(X\)</span>为离散随机变量，其分布函数记为<span class="math inline">\(P(X=x)=f(x;\theta)\)</span>，与参数<span class="math inline">\(\theta\)</span>相关。设<span class="math inline">\(X_1,\dots,X_n\)</span>为其样本，<span class="math inline">\(x_1,\dots,x_n\)</span>为该样本的观测值。样本的<strong>似然函数(likelihood function)</strong>定义为观测到样本<span class="math inline">\(x_1,\dots,x_n\)</span>的概率</p>
+<span class="math display">\[L(x_1,\dots,x_n;\theta)=P(X_1=x_1,\dots,X_n=x_n)=\prod_{i=1}^{n}f(x_i;\theta).
+\]</span>
+</div>
+
+<p>固定参数<span class="math inline">\(\theta\)</span>，似然函数<span class="math inline">\(L(x_1,\dots,x_n;\theta)\)</span>为样本的概率质量函数(Probability Mass Function, PMF)。另一方面，给定样本观测值<span class="math inline">\(x_1,\dots,x_n\)</span>，似然函数<span class="math inline">\(L(x_1,\dots,x_n;\theta)\)</span>是一个关于<span class="math inline">\(\theta\)</span>的函数，其中<span class="math inline">\(\theta\in\Theta\)</span>，有时简记为<span class="math inline">\(L(\theta)\)</span>。</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-66" class="example"><strong>例 2.6  </strong></span>设总体<span class="math inline">\(X\sim B(1,p)\)</span>, 从中抽取样本的观测值为<span class="math inline">\(1,1,0,0,1\)</span>. 不难计算似然函数为</p>
+<span class="math display">\[L(p)=p^3(1-p)^2,\ p\in (0,1).\]</span>
+</div>
+
+<p>图像如下</p>
+<p><img src="book_files/figure-html/lr-1.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>对于该数据，不同<span class="math inline">\(p\)</span>的值得到不同的概率。现在要估计<span class="math inline">\(p\)</span>的值，一种合理的方式是找出使得该概率最大对应<span class="math inline">\(p\)</span>的值作为估计值。这就是最大似然估计的核心思想。通过简单的计算，可以发现<span class="math inline">\(L(p)\)</span>的最大值点发生在<span class="math inline">\(p=0.6\)</span>. 因此，<span class="math inline">\(0.6\)</span>可以作为<span class="math inline">\(p\)</span>的估计值。</p>
+<p>更一般地，给定样本观测值<span class="math inline">\((x_1,\dots,x_n)\)</span>, 记<span class="math inline">\(L(x_1,\dots,x_n;\theta)\)</span>的最大值点为<span class="math inline">\(\theta=T(x_1,\dots,x_n)\)</span>. 则<span class="math inline">\(\theta\)</span>的最大似然估计量(MLE, maximum likelihood estimator)为
+<span class="math display">\[\hat{\theta}_L=T(X_1,\dots,X_n).\]</span></p>
+<p>对于上述例子，如果观测数据是<span class="math inline">\(x_1,\dots,x_n\)</span>，似然函数则为</p>
+<p><span class="math display">\[ L(x_1,\dots,x_n;p)=\prod_{i=1}^{n}p^{x_i}(1-p)^{1-x_i}=p^{\sum_{i=1}^nx_i}(1-p)^{n-\sum_{i=1}^nx_i}.\]</span></p>
+<p>令<span class="math inline">\(y=\sum_{i=1}^nx_i\)</span>。为了便于计算，对似然函数取对数变换，得到对数似然函数为：</p>
+<p><span class="math display">\[\ln L = y \ln p + (n-y)\ln (1-p).\]</span>
+对数似然函数的极大值点与似然函数的极大值点一致。故求其求导可得，对数似然方程为：</p>
+<p><span class="math display">\[\frac{d \ln L}{d p} = y/p - (n-y)/(1-p)=0.\]</span>
+解得<span class="math inline">\(p= y/n=\frac{1}{n}\sum_{i=1}^nx_i\)</span>. 因为<span class="math inline">\(\frac{d^2\ln L}{d p^2}&lt;0\)</span>, 所以<span class="math inline">\(p= y/n\)</span>是极大值。最大似然估计量为<span class="math inline">\(\hat{p}_L = \bar X.\)</span></p>
+<p>如果<span class="math inline">\(X\)</span>是连续的总体，似然函数该如何定义？此时，若沿用上述定义，由于连续型随机变量在某点发生的概率为零，则有<span class="math inline">\(P(X_1=x_1,\dots,X_n=x_n)=0\)</span>. 然而，在该点一个领域的概率不为零。不妨考虑样本落在观测值点一个小邻域的概率。记<span class="math inline">\(O(x,\delta) = (x-\delta,x+\delta)\)</span>为<span class="math inline">\(x\)</span>的<span class="math inline">\(\delta\)</span>邻域，则当<span class="math inline">\(\delta\)</span>比较小时，</p>
+<p><span class="math display">\[P(X\in O(x,\delta)) = F(x+\delta;\theta)-F(x-\delta;\theta) \approx f(x;\theta)\delta,\]</span>
+其中<span class="math inline">\(F\)</span>和<span class="math inline">\(f\)</span>分别为X的分布函数和密度函数。现考虑样本落在<span class="math inline">\(x_1,\dots,x_n\)</span>的附近的概率，</p>
+<p><span class="math display">\[P(X_1\in  O(x_1,\delta_1),\dots,X_n\in O(x_n,\delta_n))\approx (\prod_{i=1}^n\delta_i)\prod_{i=1}^n  f(x_i;\theta),\]</span>
+其中<span class="math inline">\(\delta_i\)</span>为比较小的常数。从中可以看出，该概率的大小与<span class="math inline">\(\prod_{i=1}^n f(x_i;\theta)\)</span>相关。我们把它定义成连续总体下样本的似然函数，即</p>
+<p><span class="math display">\[L(x_1,\dots,x_n;\theta)=\prod_{i=1}^n  f(x_i;\theta).\]</span>
+此时，样本的似然函数为样本的联合密度函数。</p>
+<blockquote>
+<p>更一般的情形，样本不一定是独立同分布，此时似然函数同样可以定义为该样本的联合密度函数。本质上，似然函数是刻画样本在给定观测值处的“可能性”。PMF/PDF用来衡量这种“可能性”。</p>
+</blockquote>
+<p><strong>最大似然估计的一般步骤归纳如下</strong>：</p>
+<p>第一步：写出似然函数<span class="math inline">\(L(x_1,\dots,x_n;\theta)\)</span></p>
+<p>第二步：若似然函数<span class="math inline">\(L\)</span>是<span class="math inline">\(\theta\)</span>的可微函数，则最大值必然满足<strong>似然方程</strong></p>
+<p><span class="math display">\[\frac{d L}{d \theta}=0\]</span></p>
+<p>解出<span class="math inline">\(\theta\)</span>, 并验证其是否是极大值：<span class="math display">\[\frac{d^2 L}{d \theta^2}&lt;0.\]</span></p>
+<p><strong>注1</strong>：为方便求导，一般求对数似然函数<span class="math inline">\(\ln L(x_1,\dots,x_n;\theta)\)</span>求极大值点</p>
+<p><strong>注2</strong>：若有多个参数<span class="math inline">\(\theta_1,\dots,\theta_m\)</span>，对每个变量求偏导，联立<span class="math inline">\(m\)</span>个方程求解</p>
+<p><strong>注3</strong>：（对数）似然方程的解称为“驻点”(stationary point)，可能为（局部）极大或者极小值点，也可能为鞍点(saddle point)，为了进一步区分需要求
+Hessian矩阵并分析其正定性。</p>
+<div class="figure" style="text-align: center"><span id="fig:saddlepoint"></span>
+<img src="book_files/figure-html/saddlepoint-1.png" alt="三种类型的驻点" width="768" />
+<p class="caption">
+图 2.1: 三种类型的驻点
+</p>
+</div>
+
+<div class="example">
+<span id="exm:unnamed-chunk-67" class="example"><strong>例 2.7  </strong></span>设总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>, 从中抽取样本<span class="math inline">\(X_1,\dots,X_n\)</span>的观测值为<span class="math inline">\(x_1,\dots,x_n\)</span>. 求参数<span class="math inline">\(\mu,\sigma^2\)</span>的最大似然估计。
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 似然函数为</p>
+<p><span class="math display">\[ L(x_1,\dots,x_n;\mu,\sigma^2)=\prod_{i=1}^{n}f(x_i)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma}e^{-(x_i-\mu)^2/(2\sigma^2)}\]</span></p>
+<p>令<span class="math inline">\(\theta_1=\mu,\theta_2=\sigma^2\)</span>, 对数似然函数为：</p>
+<p><span class="math display">\[\ln L = -(n/2)\ln (2\pi)-(n/2)\ln\theta_2-\frac{\sum_{i=1}^n(x_i-\theta_1)^2}{2\theta_2}\]</span></p>
+<p>对数似然方程组为：</p>
+<p><span class="math display">\[
+\begin{cases}
+\frac{\partial \ln L}{\partial \theta_1} &amp;=\frac{\sum_{i=1}^n(x_i-\theta_1)}{\theta_2}=0\\
+\frac{\partial \ln L}{\partial \theta_2} &amp;=-\frac{n}{2\theta_2}+\frac{\sum_{i=1}^n(x_i-\theta_1)^2}{2\theta_2^2}=0
+\end{cases}
+\]</span></p>
+解得<span class="math inline">\(\hat{\mu}_L=\bar X,\ \hat{\sigma}^2_L = S_n^2\)</span>. (可以验证二阶导函数非正定，即取得极大值。)
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-69" class="example"><strong>例 2.8  </strong></span>设总体<span class="math inline">\(X\sim U[a,b]\)</span>, 从中抽取样本<span class="math inline">\(X_1,\dots,X_n\)</span>的观测值为<span class="math inline">\(x_1,\dots,x_n\)</span>. 求参数<span class="math inline">\(a,b\)</span>的最大似然估计。
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>解. </em></span> 似然函数为
+</div>
+
+<p><span class="math display">\[ L(x_1,\dots,x_n;a,b)=\frac{1}{(b-a)^n}\prod_{i=1}^{n} 1\{a\le x_i\le b\}\]</span></p>
+<p>注意到<span class="math inline">\(L\)</span>关于<span class="math inline">\(a,b\)</span>不可微。容易观察到，当<span class="math inline">\(a=\min_{i=1,\dots,n}\{x_i\},\ b=\max_{i=1,\dots,n}\{x_i\}\)</span>时<span class="math inline">\(L\)</span>取得最大值。故</p>
+<p><span class="math display">\[\hat{a}_L = X_{(1)},\ \hat{b}_L = X_{(n)}.\]</span></p>
+<p><strong>关于最大似然估计的一些说明:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>最大似然估计的不变性：如果<span class="math inline">\(\hat{\theta}\)</span>是<span class="math inline">\(\theta\)</span>的最大似然估计，则对任一函数<span class="math inline">\(g(\theta)\)</span>, 其最大似然估计为<span class="math inline">\(g(\hat{\theta})\)</span>.</p></li>
+<li><p>当分布中有<em>多余的参数</em>或者<em>数据为截尾或缺失</em>时，似然函数的求极大值比较困难。针对这种问题，文献</p></li>
+</ol>
+<p>Dempster, A.P.; Laird, N.M.; Rubin, D.B. (1977). <a href="https://www.jianguoyun.com/p/DSfhflcQpvLJBhjv42s">Maximum Likelihood from Incomplete Data via the EM Algorithm</a>. <em>Journal of the Royal Statistical Society, Series B</em>. 39 (1): 1–38. (cited by 54539, 2018/8/18)</p>
+<p>提出了一种有效的<strong>Expectation–Maximization (EM)</strong>算法。</p>
+</div>
+<div id="section-2.1.3" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> 矩估计与最大似然估计的对比</h3>
+<ol style="list-style-type: decimal">
+<li>矩估计法（也称数字特征法）</li>
+</ol>
+<ul>
+<li>直观意义比较明显，但要求总体<span class="math inline">\(k\)</span>阶矩存在。</li>
+<li>缺点是不唯一，此时尽量使用样本低阶矩。</li>
+<li>观测值受异常值影响较大，不够稳健，实际中避免使用样本高阶矩。</li>
+<li>估计值可能不落在参数空间</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>极大似然估计法</li>
+</ol>
+<ul>
+<li>具有一些理论上的优点（不变性、渐近正态性）</li>
+<li>缺点是如果似然函数不可微，没有一般的求解法则。</li>
+</ul>
+<table style="width:100%;">
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>分布名称</td>
+<td>记号</td>
+<td>期望</td>
+<td>方差</td>
+<td>矩估计</td>
+<td>极大似然估计</td>
+</tr>
+<tr class="even">
+<td>0-1分布</td>
+<td><span class="math inline">\(B(1,p)\)</span></td>
+<td><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(pq\)</span></td>
+<td><span class="math inline">\(\hat p_M=\bar{X}\)</span></td>
+<td><span class="math inline">\(\hat p_L=\bar{X}\)</span></td>
+</tr>
+<tr class="odd">
+<td>泊松分布</td>
+<td><span class="math inline">\(Pois(\lambda)\)</span></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><span class="math inline">\(\lambda\)</span></td>
+<td><span class="math inline">\(\hat{\lambda}_M=\bar{X}\)</span></td>
+<td><span class="math inline">\(\hat{\lambda}_L=\bar{X}\)</span></td>
+</tr>
+<tr class="even">
+<td>几何分布</td>
+<td><span class="math inline">\(Geo(p)\)</span></td>
+<td><span class="math inline">\(1/p\)</span></td>
+<td><span class="math inline">\(q/p^2\)</span></td>
+<td><span class="math inline">\(\hat p_M=1/\bar{X}\)</span></td>
+<td><span class="math inline">\(\hat p_L=1/\bar{X}\)</span></td>
+</tr>
+<tr class="odd">
+<td>均匀分布</td>
+<td><span class="math inline">\(\mathbb{U}[a,b]\)</span></td>
+<td><span class="math inline">\((a+b)/2\)</span></td>
+<td><span class="math inline">\((b-a)^2/12\)</span></td>
+<td><span class="math inline">\(\hat{a}_M=\bar X-\sqrt{3}S_n\)</span></td>
+<td><span class="math inline">\(\hat{a}_L=X_{(1)}\)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\hat{b}_M=\bar X+\sqrt{3}S_n\)</span></td>
+<td><span class="math inline">\(\hat{b}_L=X_{(n)}\)</span></td>
+</tr>
+<tr class="odd">
+<td>指数分布</td>
+<td><span class="math inline">\(Exp(\lambda)\)</span></td>
+<td><span class="math inline">\(1/\lambda\)</span></td>
+<td><span class="math inline">\(1/\lambda^2\)</span></td>
+<td><span class="math inline">\(\hat{\lambda}_M=1/\bar{X}\)</span></td>
+<td><span class="math inline">\(\hat{\lambda}_L=1/\bar{X}\)</span></td>
+</tr>
+<tr class="even">
+<td>正态分布</td>
+<td><span class="math inline">\(N(\mu,\sigma^2)\)</span></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+<td><span class="math inline">\(\hat{\mu}_M=\bar X\)</span></td>
+<td><span class="math inline">\(\hat{\mu}_L=\bar X\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><span class="math inline">\(\hat{\sigma}^2_M = S_n^2\)</span></td>
+<td><span class="math inline">\(\hat{\sigma}^2_L = S_n^2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-2.1.4" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> 混合正态分布的参数估计</h3>
+<p>假设总体<span class="math inline">\(X\)</span>的分布为：以概率<span class="math inline">\(\lambda\)</span>服从<span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span>, 以概率<span class="math inline">\(1-\lambda\)</span>服从<span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span>。该混合分布的密度函数为</p>
+<p><span class="math display">\[f(x;\lambda,\mu_1,\sigma_1^2,\mu_2,\sigma_2^2)=\frac{\lambda}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}+\frac{1-\lambda}{\sqrt{2\pi}\sigma_2}e^{-\frac{(x-\mu_2)^2}{2\sigma_2^2}}.\]</span></p>
+<p>样本似然函数为：</p>
+<p><span class="math display">\[L(\lambda,\mu_1,\sigma_1^2,\mu_2,\sigma_2^2) = \prod_{i=1}^n \left[\frac{\lambda}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x_i-\mu_1)^2}{2\sigma_1^2}}+\frac{1-\lambda}{\sqrt{2\pi}\sigma_2}e^{-\frac{(x_i-\mu_2)^2}{2\sigma_2^2}}\right].\]</span></p>
+<p>不难发现，似然函数是无界的（见习题），所以最大似然估计不存在。然而，如果我们有先验的信息：<span class="math inline">\(\sigma_1=k\sigma_2\)</span>，其中<span class="math inline">\(k\)</span>是已知的数（比如1）。似然函数则可表示为：</p>
+<p><span class="math display">\[L(\lambda,\mu_1,\mu_2,\sigma_2^2) =\prod_{i=1}^n\left[ \frac{\lambda}{\sqrt{2\pi}k\sigma_2}e^{-\frac{(x_i-\mu_1)^2}{2k^2\sigma_2^2}}+\frac{1-\lambda}{\sqrt{2\pi}\sigma_2}e^{-\frac{(x_i-\mu_2)^2}{2\sigma_2^2}}\right].
+\]</span></p>
+<p>此时，似然函数是有界的，所以最大似然估计存在。</p>
+<p>设<span class="math inline">\(Y_i=1\)</span>表示<span class="math inline">\(X_i\)</span>来自<span class="math inline">\(N(\mu_1,\sigma_1^2)\)</span>分布，<span class="math inline">\(Y_i=2\)</span>表示<span class="math inline">\(X_i\)</span>来自<span class="math inline">\(N(\mu_2,\sigma_2^2)\)</span>分布。假设我们可以观测<span class="math inline">\(Y_i\)</span>的值，基于样本<span class="math inline">\((X_i,Y_i),i=1,\dots,n\)</span>，我们可以得到<span class="math inline">\(\lambda,\mu_1,\sigma_1^2,\mu_2,\sigma_2^2\)</span>的最大似然估计。</p>
+<p>令<span class="math inline">\(I = \{i=1,\dots,n|y_i=1\}\)</span>, 则似然函数为</p>
+<p><span class="math display">\[\begin{align*}
+L(\lambda,\mu_1,\sigma_1^2,\mu_2,\sigma_2^2)&amp;=\prod_{i\in I} \frac{\lambda}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x_i-\mu_1)^2}{2\sigma_1^2}} \prod_{i\notin I}\frac{1-\lambda}{\sqrt{2\pi}\sigma_2}e^{-\frac{(x_i-\mu_2)^2}{2\sigma_2^2}}\\
+&amp;=\lambda^{|I|}(1-\lambda)^{n-|I|}\prod_{i\in I} \frac{1}{\sqrt{2\pi}\sigma_1}e^{-\frac{(x_i-\mu_1)^2}{2\sigma_1^2}} \prod_{i\notin I}\frac{1}{\sqrt{2\pi}\sigma_2}e^{-\frac{(x_i-\mu_2)^2}{2\sigma_2^2}}.
+\end{align*}\]</span></p>
+<p>则只需分别求出上式中三部分的最大值点即可。对于第一部分，不难发现<span class="math inline">\(\hat\lambda = \frac 1 n\sum_{i=1}^n1\{Y_i=1\}\)</span>. 后两部分等价于求样本为<span class="math inline">\(\{X_i,i\in I\}\)</span>和<span class="math inline">\(\{X_i,i\notin I\}\)</span>时，对应正态总体的最大似然估计，所以最大似然估计分别为</p>
+<p><span class="math display">\[\hat{\mu}_1=\frac{1}{|I|}\sum_{i\in I} X_i=\frac{\sum_{i=1}^nX_i\cdot1\{Y_i=1\}}{\sum_{i=1}^n1\{Y_i=1\}},\]</span></p>
+<p><span class="math display">\[\hat{\sigma_1^2} = \frac{1}{|I|} \sum_{i\in I}(X_i-\hat{\mu}_1)^2=\frac{\sum_{i=1}^n(X_i-\hat\mu_1)^2\cdot1\{Y_i=1\}}{\sum_{i=1}^n1\{Y_i=1\}},\]</span></p>
+<p><span class="math display">\[\hat{\mu}_2=\frac{\sum_{i=1}^nX_i\cdot1\{Y_i=2\}}{\sum_{i=1}^n1\{Y_i=2\}},\ \hat{\sigma_2^2} =\frac{\sum_{i=1}^n(X_i-\hat\mu_2)^2\cdot1\{Y_i=2\}}{\sum_{i=1}^n1\{Y_i=2\}}.\]</span>
+上述三式要求分母，否则相应部分的估计量可以为任意常数。</p>
+<p>上述问题不难推广到<span class="math inline">\(K\ge 3\)</span>个不同正态分布的混合的情形。然而，大部分问题，<span class="math inline">\(Y_i\)</span>是不可观测的（即无标签）。Kiefer (1978) 证明了样本<span class="math inline">\(X_i\)</span>的似然方程的某个解（对应局部极大值）也是有效的估计量，同样会收敛到真值。这说明了，似然方程的极大值点也可以作为一个有效的估计量。如何找到似然方程的极大值点？我们可以利用EM算法找出似然函数局部极大值点。参考：</p>
+<p><a href="http://cs229.stanford.edu/notes/cs229-notes7b.pdf">Andrew Ng’s lecture notes 1</a></p>
+<p><a href="http://cs229.stanford.edu/notes/cs229-notes8.pdf">Andrew Ng’s lecture notes 2</a></p>
+<p>另一方面，对于混合正态分布，我们可以通过矩法得到五个参数的估计量。Cohen (1967)给出了矩法估计的一般公式，转化成求一个9次多项式方程的负根。</p>
+</div>
+<div id="em" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> EM算法</h3>
+<p>Expectation-Maximization (EM) 算法是由Dempster et al. (1977)提出。该算法的推导用到Jensen不等式。</p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-71" class="theorem"><strong>定理 2.1  (Jensen不等式)  </strong></span>设<span class="math inline">\(A\)</span>为<span class="math inline">\(\mathbb{R}^k\)</span>中凸集，<span class="math inline">\(f(x)\)</span>为<span class="math inline">\(A\)</span>上凸函数，即对任意<span class="math inline">\(\lambda\in[0,1], x,y\in A\)</span>，恒有</p>
+<p><span class="math display">\[
+f(\lambda x+(1-\lambda)y)\le \lambda f(x)+(1-\lambda)f(y).
+\]</span>
+如果<span class="math inline">\(k\)</span>维随机向量<span class="math inline">\(X\)</span>满足<span class="math inline">\(P(X\in A)=1\)</span>，则有</p>
+<p><span class="math display">\[f(E[X])\le E[f(X)].\]</span></p>
+<p>进而，如果<span class="math inline">\(f\)</span>为严格凸函数，<span class="math inline">\(f(E[X])=E[f(X)]\)</span>当且仅当<span class="math inline">\(P(X=E[X])=1\)</span>，即<span class="math inline">\(X\)</span>为常数向量。
+换言之，如果<span class="math inline">\(f\)</span>为严格凸函数且<span class="math inline">\(X\)</span>不为常数向量，则<span class="math inline">\(f(E[X])&lt;E[f(X)]\)</span>.</p>
+</div>
+
+<blockquote>
+<p>如果<span class="math inline">\(f\)</span>是凹函数，则定理中的不等式变号。注意到<span class="math inline">\(\ln x\)</span>是<span class="math inline">\((0,\infty)\)</span>上的严格凹函数，应用Jensen不等式得到下面一个结果。</p>
+</blockquote>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-72" class="example"><strong>例 2.9  </strong></span>如果<span class="math inline">\(X\)</span>为一个取值为正的非常数随机变量，则有<span class="math inline">\(E[\ln X]&lt;\ln (E[X])\)</span>.</p>
+</div>
+
+<p>EM算法用于求解不完备数据的极大似然估计。
+设完备数据为<span class="math inline">\(x=(y,z)\)</span>，其中<span class="math inline">\(y\)</span>为观测数据（向量），<span class="math inline">\(z\)</span>不可观测，称为潜变量。直接对观测数据求最大似然估计比较困难。
+注意到观测数据的似然函数为</p>
+<p><span class="math display">\[\begin{align*}
+L(\theta|y) &amp;= \int p(y,z|\theta)dz=\int q(z|\eta)\frac{p(y,z|\theta)}{q(z|\eta)}dz\\
+&amp;=E_{q(z|\eta)}\left[\frac{p(y,z|\theta)}{q(z|\eta)}\right],
+\end{align*}\]</span></p>
+<p>其中<span class="math inline">\(p(y,z|\theta)\)</span>为完全数据的密度函数, <span class="math inline">\(q(z|\eta)\)</span>为密度函数且满足：如果<span class="math inline">\(q(z|\eta)=0\)</span>，则<span class="math inline">\(p(y,z|\theta)=0\)</span>。对数似然函数</p>
+<p><span class="math display">\[\ell(\theta|y)= \ln \left(E_{q(z|\eta)}\left[\frac{p(y,z|\theta)}{q(z|\eta)}\right]\right)\ge E_{q(z|\eta)}\left[\ln \left(\frac{p(y,z|\theta)}{q(z|\eta)}\right)\right]=:Q(q(z|\eta),\theta).\]</span></p>
+<p>上式用到<code>Jensen不等式</code>，当且仅当<span class="math inline">\(p(y,z|\theta)/q(z|\eta)\)</span>为常数（即不依赖<span class="math inline">\(z\)</span>）时，上式等号成立，由于<span class="math inline">\(\int q(z|\eta)dz =1\)</span>，不难得到</p>
+<p><span class="math display">\[q(z|\eta)=\frac{p(y,z|\theta)}{p(y|\theta)}=p(z|y,\theta)=:q^*(z|\theta).\]</span>
+此时，<span class="math inline">\(\ell(\theta|y) = Q(q^*(z|\theta),\theta).\)</span> 否则<span class="math inline">\(\ell(\theta|y)&gt;Q(q(z|\eta),\theta)\)</span>. 假设第<span class="math inline">\(t\)</span>步的估计值为<span class="math inline">\(\theta_t\)</span>，构造如下迭代算法</p>
+<p><span class="math display">\[\theta_{t+1} = \arg\max_{\theta\in\Theta} Q(q^*(z|\theta_t),\theta).\]</span></p>
+<p>注意到，<span class="math inline">\(\ell(\theta_{t+1}|y)\ge Q(q^*(z|\theta_t),\theta_{t+1})\ge Q(q^*(z|\theta_t),\theta_{t})=\ell(\theta_t|y)\)</span>. 如果<span class="math inline">\(p(y,z|\theta_{t+1})/p(y,z|\theta_t)\)</span>与<span class="math inline">\(z\)</span>相关（即不为常数向量），则有<span class="math inline">\(\ell(\theta_{t+1}|y)&gt;\ell(\theta_t|y)\)</span>. 所以，该迭代算法使得似然函数单调递增。如果<span class="math inline">\(\theta_t\)</span>收敛到<span class="math inline">\(\theta^*\)</span>，那么在满足一定条件下，<span class="math inline">\(\theta^*\)</span>为似然函数的驻点。</p>
+<p>注意到</p>
+<p><span class="math display">\[Q(q^*(z|\theta_t),\theta)=E_{p(z|y,\theta_t)}\left[\ln \left(p(y,z|\theta)\right)\right]-E_{p(z|y,\theta_t)}\left[\ln \left(p(z|y,\theta_t)\right)\right].\]</span>
+上式等式最后一项与<span class="math inline">\(\theta\)</span>无关，所以优化问题等价于</p>
+<p><span class="math display">\[\theta_{t+1} = \arg\max_{\theta\in\Theta} E_{p(z|y,\theta_t)}\left[\ln \left(p(y,z|\theta)\right)\right].\]</span></p>
+<p>EM算法包含两步：</p>
+<ol style="list-style-type: decimal">
+<li><p>第一步求期望<span class="math inline">\(E_{p(z|y,\theta_t)}\left[\ln \left(p(y,z|\theta)\right)\right]\)</span>, 该期望称为预期的对数似然函数。</p></li>
+<li><p>第二步则求预期的对数似然函数最大值。</p></li>
+</ol>
+<p>以下定理保证该迭代算法收敛到似然函数的驻点。</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-73" class="theorem"><strong>定理 2.2  </strong></span>如果<span class="math inline">\(E_{p(z|y,\theta_t)}\left[\ln \left(p(y,z|\theta)\right)\right]\)</span>关于<span class="math inline">\(\theta\)</span>和<span class="math inline">\(\theta_t\)</span>连续，则<span class="math inline">\(\theta_{t}\)</span>收敛到似然函数<span class="math inline">\(L(\theta|y)\)</span>的某一驻点（局部极大值点或者鞍点）。
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>证明. </em></span> 证明见Lehmann and Casella的《点估计理论》P460。
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-75" class="example"><strong>例 2.10  </strong></span>假设完备数据<span class="math inline">\((y,z)\)</span>服从指数型分布族</p>
+<p><span class="math display">\[p(y,z|\theta) = c(\theta)\exp\left(\sum_{i=1}^k T_i(y,z)c_i(\theta)\right)h(y,z).\]</span></p>
+<p>则对数似然函数为：
+<span class="math display">\[
+\ln p(y,z|\theta) = \ln c(\theta)+\sum_{i=1}^k T_i(y,z)c_i(\theta)+\ln h(y,z).
+\]</span></p>
+<p>则</p>
+<p><span class="math display">\[\begin{align*}
+\theta_{t+1} &amp;= \arg\max_{\theta\in\Theta} E_{p(z|y,\theta_t)}\left[\ln c(\theta)+\sum_{i=1}^k T_i(y,z)c_i(\theta)+\ln h(y,z)\right]\\
+&amp;=\arg\max_{\theta\in\Theta} \left\lbrace\ln c(\theta)+\sum_{i=1}^k c_i(\theta)E_{p(z|y,\theta_t)}[T_i(y,z)]\right\rbrace.
+\end{align*}\]</span></p>
+<p>要求解该优化问题，只须求<span class="math inline">\(E_{p(z|y,\theta_t)}[T_i(y,z)]=E_{\theta_t}[T_i(y,z)|y]\)</span>的表达式即可。</p>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-76" class="example"><strong>例 2.11  </strong></span>再次考虑混合正态分布。设完全数据<span class="math inline">\(x=((y_i,z_i),i=1,\dots,n)=(y,z)\)</span>，其中<span class="math inline">\(z_i=1\)</span>或者<span class="math inline">\(2\)</span>，
+当<span class="math inline">\(z_i=1\)</span>是表示<span class="math inline">\(Y_i\sim N(\mu_1,\sigma_1^2)\)</span>，当<span class="math inline">\(z_i=2\)</span>是表示<span class="math inline">\(Y_i\sim N(\mu_2,\sigma_2^2)\)</span>.
+这里分类变量<span class="math inline">\(z_i\)</span>是不可以观测。注意到直接对观测数据<span class="math inline">\(y\)</span>构建似然函数，然后求极大值是非常困难的。下面我们通过EM算法求解。记<span class="math inline">\(\theta=(\mu_1,\sigma_1^2,\mu_2,\sigma_2^2,\lambda)\)</span>. 完全数据的对数似然函数为</p>
+<p><span class="math display">\[
+\ln p(y,z|\theta)=\sum_{i=1}^n \ln p(y_i,z_i|\theta) = \sum_{i=1}^n \ln p(y_i|z_i,\theta)+\ln p(z_i|\theta).
+\]</span></p>
+</div>
+
+<p>首先计算</p>
+<p><span class="math display">\[\begin{align*}
+&amp;E_{p(z|y,\theta_t)}[\ln p(y,z|\theta)]=E_{p(z|y,\theta_t)}\left[\sum_{i=1}^n \ln p(y_i|z_i,\theta)+\ln p(z_i|\theta)\right]\\
+&amp;=\sum_{i=1}^n \sum_{j=1}^2 P(z_i=j|y_i,\theta_t)[-\frac 1 2\ln (2\pi)-\ln\sigma_j-\frac{(x_i-\mu_j)^2}{2\sigma_j^2}+\ln p(z_i=j|\theta)]\\
+&amp;=-\frac 12\sum_{i=1}^n \sum_{j=1}^2 w_{ij}[\ln \sigma_j^2+(y_i-\mu_j)^2/\sigma_j^2]+\sum_{i=1}^n [w_{i1}\ln\lambda+w_{i2}\ln(1-\lambda)]\\
+&amp;=s_1(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2)+s_2(\lambda).
+\end{align*}\]</span></p>
+<p>其中，</p>
+<p><span class="math display">\[\begin{align*}
+w_{ij}&amp;= P(z_i=j|y_i,\theta_t)=\frac{p(y_i|z_i=j,\theta_t)p(z_i=j|\theta_t)}{\sum_{j=1}^2p(y_i|z_i=j,\theta_t)p(z_i=j|\theta_t)}\\
+&amp;=\frac{\phi(y_i;\mu_{j,t},\sigma_{j,t}^2)(\lambda_{t}1\{j=1\}+(1-\lambda_{t})1\{j=2\})}{\lambda_{t}\phi(y_i;\mu_{1,t},\sigma_{1,t}^2)+(1-\lambda_{t})\phi(y_i;\mu_{2,t},\sigma_{2,t}^2)},
+\end{align*}\]</span></p>
+<p><span class="math display">\[s_1(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2)=-\frac 12\sum_{i=1}^n \sum_{j=1}^2 w_{ij}[\ln \sigma_j^2+(y_i-\mu_j)^2/\sigma_j^2],\]</span></p>
+<p><span class="math display">\[s_2(\lambda)=\sum_{i=1}^n [w_{i1}\ln\lambda+w_{i2}\ln(1-\lambda)],\]</span></p>
+<p><span class="math inline">\(\phi(x;\mu,\sigma^2)\)</span>为<span class="math inline">\(N(\mu,\sigma^2)\)</span>的密度函数。
+注意到<span class="math inline">\(w_{ij}\)</span>与<span class="math inline">\(\theta\)</span>无关，可视为常数。对<span class="math inline">\(E_{p(z|y,\theta_t)}[\ln p(y,z|\theta)]\)</span>求最大值，等价于分别对<span class="math inline">\(s_1,s_2\)</span>两部分求最大值。先考虑对第一部分<span class="math inline">\(s_1(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2)\)</span>求最大值. 对<span class="math inline">\(\mu_j\)</span>求偏导得到</p>
+<p><span class="math display">\[\frac{\partial s_1(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2)}{\partial \mu_j}=\sum_{i=1}^n  w_{ij}[(y_i-\mu_j)/\sigma_j^2]=0.\]</span>
+于是有</p>
+<p><span class="math display">\[\mu_{j,t+1}=\frac{\sum_{i=1}^nw_{ij}y_{i}}{\sum_{i=1}^nw_{ij}}, j=1,2.\]</span></p>
+<p>对求<span class="math inline">\(\sigma^2_j\)</span>偏导得到</p>
+<p><span class="math display">\[\frac{\partial s_1(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2)}{\partial \sigma^2_j}=-\frac 12\sum_{i=1}^n  w_{ij}\left[\frac 1{\sigma_j^2}-\frac{(y_i-\mu_j)^2}{\sigma_j^4}\right]=0.\]</span></p>
+<p>于是有</p>
+<p><span class="math display">\[\sigma_{j,t+1}^2=\frac{\sum_{i=1}^nw_{ij}(y_i-\mu_{j,t+1})^2}{\sum_{i=1}^nw_{ij}}.\]</span></p>
+<p>考虑第二部分<span class="math inline">\(s_2(\lambda)\)</span>求最大值. 对<span class="math inline">\(\lambda\)</span>求导得，</p>
+<p><span class="math display">\[s_2&#39;(\lambda)=\sum_{i=1}^n\left(\frac{w_{i1}}{\lambda}-\frac{w_{i2}}{1-\lambda}\right)=0.\]</span></p>
+<p>于是有</p>
+<p><span class="math display">\[\lambda_{t+1}=\frac{\sum_{i=1}^nw_{i1}}{\sum_{i=1}^n\sum_{j=1}^2w_{ij}}=\frac{1}{n}\sum_{i=1}^nw_{i1}.\]</span></p>
+<div class="figure" style="text-align: center"><span id="fig:em"></span>
+<img src="book_files/figure-html/em-1.png" alt="EM算法求解混合正态分布，红色为真实值，n=10000" width="768" />
+<p class="caption">
+图 2.2: EM算法求解混合正态分布，红色为真实值，n=10000
+</p>
+</div>
+</div>
+</div>
+<div id="section-2.2" class="section level2">
+<h2><span class="header-section-number">2.2</span> 估计的优良性标准</h2>
+<p>前面介绍了点估计中两种经典的方法，对于同一个问题，两种方法得到的估计量可能不一样。自然要问，哪种最好？
+本节讨论估计量的优良性质。</p>
+<div id="section-2.2.1" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> 无偏性</h3>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-77" class="definition"><strong>定义 2.3  </strong></span>设总体<span class="math inline">\(X\sim F(x;\theta),\theta\in \Theta\)</span>, <span class="math inline">\(T(X_1,\dots,X_n)\)</span>为<span class="math inline">\(g(\theta)\)</span>的估计量。</p>
+<ul>
+<li>无偏估计量：</li>
+</ul>
+<p><span class="math display">\[E[T(X_1,\dots,X_n)]=g(\theta), \forall \theta\in \Theta\]</span></p>
+<ul>
+<li>渐近无偏估计量：</li>
+</ul>
+<span class="math display">\[\lim_{n\to \infty}E[T(X_1,\dots,X_n)]=g(\theta), \forall \theta\in \Theta\]</span>
+</div>
+
+<p>无偏性意味着：虽然估计量<span class="math inline">\(T\)</span>由于随机可能偏离真值<span class="math inline">\(g(\theta)\)</span>, 但取其平均值（期望）却等于<span class="math inline">\(g(\theta)\)</span>. 即没有系统偏差。</p>
+<ul>
+<li><p>样本均值是总体的均值的无偏估计，即<span class="math inline">\(E[\bar X]=E[X]\)</span></p></li>
+<li><p>样本方差是总体方差的渐近无偏估计，即<span class="math inline">\(\lim_{n\to \infty}E[S_n^{2}]=Var[X]\)</span></p></li>
+<li><p>修正样本方差是总体方差的无偏估计，即<span class="math inline">\(E[S_n^{*2}]=Var[X]\)</span></p></li>
+</ul>
+<p>如果<span class="math inline">\(g(\theta)\)</span>存在无偏估计量，则称<span class="math inline">\(g(\theta)\)</span>是可估的。但注意不是所有的参数估计都存在一个无偏估计量。</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-78" class="example"><strong>例 2.12  </strong></span>假设总体<span class="math inline">\(X\sim B(k,\theta)\)</span>, 其中<span class="math inline">\(k\ge 1\)</span>已知，<span class="math inline">\(\theta\in (0,1)\)</span>未知。 证明<span class="math inline">\(1/\theta\)</span>不存在无偏估计量。
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 假设<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为<span class="math inline">\(1/\theta\)</span>无偏估计量。不妨考虑<span class="math inline">\(n=1\)</span>情形，</p>
+<span class="math display">\[E[T] = \sum_{i=0}^k C_k^i \theta^i(1-\theta)^{k-i} T(i)=:h(\theta).\]</span>
+显然当<span class="math inline">\(\theta\to 0\)</span>, <span class="math inline">\(h(\theta)\to T(0)\)</span>, 但<span class="math inline">\(\frac{1}{\theta}\to \infty\)</span>. 所以，<span class="math inline">\(E[T]\neq 1/\theta\)</span>.
+</div>
+
+<p>此外，还应当注意一点是：无偏估计量不一定比有偏的估计量好（如下图所示）。下节给出一个评判标准，并通过一个具体的例子说明有时候有偏估计量更好。</p>
+<div class="figure" style="text-align: center"><span id="fig:bias"></span>
+<img src="book_files/figure-html/bias-1.png" alt="无偏VS有偏" width="672" />
+<p class="caption">
+图 2.3: 无偏VS有偏
+</p>
+</div>
+</div>
+<div id="section-2.2.2" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> 均方误差</h3>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-80" class="definition"><strong>定义 2.4  </strong></span>设<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为<span class="math inline">\(g(\theta)\)</span>的估计量，其均方误差 (mean squared error, MSE)为</p>
+<p><span class="math display">\[M_{\theta}(T):=E_\theta[(T(X_1,\dots,X_n)-g(\theta))^2].\]</span></p>
+<p>均方根误差 (root mean squared error, RMSE)为</p>
+<span class="math display">\[R_{\theta}(T):=\sqrt{E_\theta[(T(X_1,\dots,X_n)-g(\theta))^2]}.\]</span>
+</div>
+
+<p>注意到：</p>
+<p><span class="math display">\[M_{\theta}(T)=(E[T]-g(\theta))^2+Var(T)=\text{偏差}^2+\text{方差}.\]</span></p>
+<p><strong>注</strong>：如果<span class="math inline">\(T\)</span>是<span class="math inline">\(g(\theta)\)</span>的无偏估计，则<span class="math inline">\(M_{\theta}(T)=Var(T)\)</span></p>
+<p><strong>比较两个估计量的优劣</strong></p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-81" class="definition"><strong>定义 2.5  </strong></span>若<span class="math inline">\(T_1(X_1,\dots,X_n)\)</span>和<span class="math inline">\(T_2(X_1,\dots,X_n)\)</span>都为<span class="math inline">\(g(\theta)\)</span>的估计量，</p>
+<ul>
+<li>如果<span class="math inline">\(M_{\theta}(T_1)\le M_{\theta}(T_2),\forall \theta\in \Theta\)</span>, 则称<span class="math inline">\(T_1\)</span>不次于<span class="math inline">\(T_2\)</span>。</li>
+<li>在此基础上，如果存在一个<span class="math inline">\(\theta_0\in\Theta\)</span>使得<span class="math inline">\(M_{\theta_0}(T_1)&lt; M_{\theta_0}(T_2)\)</span>, 则称<span class="math inline">\(T_1\)</span>比<span class="math inline">\(T_2\)</span>有效。</li>
+</ul>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-82" class="example"><strong>例 2.13  </strong></span>设总体<span class="math inline">\(X\)</span>的期望<span class="math inline">\(\mu\)</span>方差为<span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(X_1,\dots,X_n\)</span>为其样本(<span class="math inline">\(n&gt;1\)</span>)，证明下列估计量<span class="math inline">\(\hat{\mu} = \sum_{i=1} C_iX_i\)</span>为<span class="math inline">\(\mu\)</span>的无偏估计的充要条件是<span class="math inline">\(\sum_{i=1}^nC_i = 1.\)</span> 在满足该条件前提下，<span class="math inline">\(C_i\)</span>取何值时，<span class="math inline">\(\hat{\mu}\)</span>的最有效。
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> <span class="math inline">\(E[\hat{\mu}]=\mu\Leftrightarrow \sum_{i=1}^nC_i = 1\)</span></p>
+<p><span class="math display">\[Var[\hat{\mu}]=\sigma^2\sum_{i=1}^nC_i^2\ge \sigma^2\frac{(C_1+\dots+C_n)^2}{n}=\frac{\sigma^2}{n}.\]</span></p>
+而且唯一的最小值在<span class="math inline">\(C_i=1/n,i=1,\dots,n\)</span>处取得。
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-84" class="example"><strong>例 2.14  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>为<span class="math inline">\(N(\mu,\sigma^2)\)</span>分布的样本，参数<span class="math inline">\(\mu,\sigma^2\)</span>未知。样本方差<span class="math inline">\(S_n^2\)</span>与修正样本方差<span class="math inline">\(S_n^{*2}\)</span>作为<span class="math inline">\(\sigma^2\)</span>的两种估计量，哪个更有效？</p>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 
+由于<span class="math inline">\(S_n^{*2}\)</span>是无偏的，所以均方误差</p>
+<p><span class="math display">\[M(S_n^{*2}) = Var[S_n^{*2}]=\frac{2\sigma^4}{n-1}.\]</span></p>
+<p>对<span class="math inline">\(S_n^{2}\)</span>, 其均方误差为</p>
+<p><span class="math display">\[\begin{align*}
+M(S_n) &amp;= Var[S_n^{2}]+(E[S_n^2]-\sigma^2)^2\\
+&amp;=\frac{2(n-1)\sigma^4}{n^2}+(\frac{(n-1)\sigma^2}{n}-\sigma^2)^2
+\\&amp;=\frac{(2n-1)\sigma^4}{n^2}.
+\end{align*}\]</span></p>
+<p>又</p>
+<p><span class="math display">\[\frac{M(S_n^{*2})}{M(S_n^{2})}=\frac{2n^2}{(n-1)(2n-1)}&gt;1\]</span></p>
+<p>所以，<span class="math inline">\(S_n^{2}\)</span>比<span class="math inline">\(S_n^{*2}\)</span>有效。</p>
+<blockquote>
+<p>启发：无偏估计量不一定是最有效的。</p>
+</blockquote>
+</div>
+
+<p><strong>思考</strong>：对于上题，考虑估计量<span class="math inline">\(T_k=k\sum_{i=1}^n(X_i-\bar X)^2\)</span>，其中<span class="math inline">\(k\)</span>为给定常数。特别地，当<span class="math inline">\(k=1/n\)</span>时，<span class="math inline">\(T_k=S_n^2\)</span>；当<span class="math inline">\(k=1/(n-1)\)</span>时，<span class="math inline">\(T_k=S_n^{*2}\)</span>。样本方差<span class="math inline">\(S_n^{2}\)</span>是不是比其它的<span class="math inline">\(T_k\)</span>更有效？如果不是，那么最优的<span class="math inline">\(k\)</span>是多少？</p>
+</div>
+<div id="section-2.2.3" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> 一致最小方差无偏估计</h3>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-86" class="definition"><strong>定义 2.6  </strong></span>如果<span class="math inline">\(T_0(X_1,\dots,X_n)\)</span>为<span class="math inline">\(g(\theta)\)</span>的无偏估计，如果对于<span class="math inline">\(g(\theta)\)</span>的任意无偏估计量<span class="math inline">\(T(X_1,\dots,X_n)\)</span>都有</p>
+<p><span class="math display">\[Var[T_0]\le Var[T],\ \forall\theta\in\Theta,\]</span></p>
+则称<span class="math inline">\(T_0\)</span>为<span class="math inline">\(g(\theta)\)</span>的<strong>一致最小方差无偏估计量</strong> (uniformly minimum-variance unbiased estimator, UMVUE)。
+如果<span class="math inline">\(Var[T_0]\le Var[T]\)</span>在<span class="math inline">\(\theta=\theta_0\)</span>处成立，则称<span class="math inline">\(T_0\)</span>为<span class="math inline">\(g(\theta)\)</span>的<strong>局部最小方差无偏估计量</strong> (locally minimum-variance unbiased estimator, LMVUE)。
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-87" class="example"><strong>例 2.15  </strong></span>令<span class="math inline">\(X\)</span>为取值<span class="math inline">\(-1,0,1,\dots\)</span>的离散型随机变量，分布为</p>
+<p><span class="math display">\[P(X=-1)=p,\ P(X=k)=q^2p^k,\ k=0,1,\dots,\]</span>
+其中<span class="math inline">\(0&lt;p&lt;1,\ q=1-p\)</span>。现考虑用<span class="math inline">\(X\)</span>来估计<span class="math inline">\(p\)</span>和<span class="math inline">\(q^2\)</span>.
+对于估计<span class="math inline">\(p\)</span>，一个简单的无偏估计为</p>
+<span class="math display">\[T_1 = 1\{X=-1\}.\]</span>
+对于估计<span class="math inline">\(q^2\)</span>，一个简单的无偏估计为
+<span class="math display">\[T_2 = 1\{X=0\}.\]</span>
+为求解最小方差估计量，现介绍以下引理。
+</div>
+
+
+<div class="lemma">
+<span id="lem:unnamed-chunk-88" class="lemma"><strong>引理 2.1  </strong></span>设<span class="math inline">\(T_0\)</span>为<span class="math inline">\(g(\theta)\)</span>的任一无偏估计量，则所有的无偏估计量都可以表示为<span class="math inline">\(T=T_0-U\)</span>，其中<span class="math inline">\(U\)</span>为“零”的无偏估计，即<span class="math inline">\(E[U]=0\)</span>.
+</div>
+
+<p>对于上例，考虑“零”的无偏估计<span class="math inline">\(U=U(X)\)</span>。注意到，</p>
+<p><span class="math display">\[\begin{align*}
+E[U]&amp;=\sum_{i=-1}^\infty U(i)P(X=i)\\
+&amp;=pU(-1)+q^2\sum_{i=0}^\infty U(i)p^i=0,\ \forall p\in(0,1).
+\end{align*}\]</span></p>
+<p>令<span class="math inline">\(p\to 0\)</span>, 可得<span class="math inline">\(U(0)=0\)</span>. 于是，</p>
+<p><span class="math display">\[\sum_{k=1}^\infty U(k)p^{k-1} + \frac{U(-1)}{(1-p)^2}=0.\]</span>
+注意到<span class="math inline">\(1/(1-p)^2=\sum_{k=1}^\infty kp^{k-1}\)</span>. 则有</p>
+<p><span class="math display">\[\sum_{k=1}^\infty [U(k)+kU(-1)]p^{k-1} =0.\]</span>
+由于上式对于任意<span class="math inline">\(p\in (0,1)\)</span>，则所有系数应该为零，即<span class="math inline">\(U(k)=-kU(-1),k=1,\dots,\infty\)</span>. 这意味着，<span class="math inline">\(U\)</span>为“零”的无偏估计量当且仅当<span class="math inline">\(U(k)=ak\)</span>对于所有的<span class="math inline">\(k=-1,0,1,\dots\)</span>和某个<span class="math inline">\(a\)</span>。要使方差最小等价于最小化二阶矩：</p>
+<p><span class="math display">\[E[(T_i-U)^2]=\sum_{k=-1}^\infty P(X=k)[T_i(k)-ak]^2,\ i=1,2.\]</span></p>
+<p>两种情况下，最小值点分别为</p>
+<p><span class="math display">\[a_1^* = -\frac{p}{p+q^2\sum_{k=1}^\infty k^2p^k},\ a_2^*=0.\]</span>
+由于<span class="math inline">\(a_2^*\)</span>不依赖<span class="math inline">\(p\)</span>，所以<span class="math inline">\(T_2^*=T_2-a_2^*X=T_2\)</span>是UMUVE. 但<span class="math inline">\(a_1^*\)</span>依赖<span class="math inline">\(p\)</span>，所以<span class="math inline">\(T_1^*=T_1-a_1^*X\)</span>是LMUVE，对于估计<span class="math inline">\(p\)</span>，不存在一致最小方差无偏估计量。</p>
+<p>通过这个例子，我们发现对于同一总体，有些参数估计问题存在UMVUE，有些则不存在。那么自然要问，什么情况下所有可估的参数一定存在UMVUE？Blackwell, Rao, Lehmann, Scheffe等统计学家获得了一系列寻求UMVUE的理论和方法。为解决这个问题，下面先引入完全统计量的概念。</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-89" class="definition"><strong>定义 2.7  </strong></span>设<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为统计量。如果对任何(Borel可测)函数<span class="math inline">\(u(\cdot)\)</span>, 只要<span class="math inline">\(E[u(T)]=0\)</span>(对一切<span class="math inline">\(\theta\)</span>)就可以推出<span class="math inline">\(P(u(T)=0)=1\)</span>, 则称统计量<span class="math inline">\(T\)</span>为参数<span class="math inline">\(\theta\)</span>的<em>完全的统计量</em>。
+</div>
+
+<p>如何理解统计量的完全性？假设非常数统计量<span class="math inline">\(T\)</span>的分布与参数<span class="math inline">\(\theta\)</span>无关，则对于所有的函数<span class="math inline">\(u(x)\)</span>, <span class="math inline">\(E[u(T)]\)</span>的值为常数<span class="math inline">\(c\)</span>，与<span class="math inline">\(\theta\)</span>无关。这表明<span class="math inline">\(E[u(T)-c]=0\)</span>对任意的<span class="math inline">\(\theta\)</span>成立，但由于<span class="math inline">\(u\)</span>的任意性，<span class="math inline">\(u(T)-c\)</span>可以不为零（比如取<span class="math inline">\(u(T)=T\)</span>），故<span class="math inline">\(T\)</span>不可能为完全统计量。如果统计量<span class="math inline">\(T\)</span>的分布与参数<span class="math inline">\(\theta\)</span>无关，我们称此类统计量为<strong>辅助统计量</strong>。这类统计量不包含参数信息，故认为是“辅助的”。完全性排除了非常数辅助统计量。</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-90" class="example"><strong>例 2.16  </strong></span>设<span class="math inline">\(X_1,\dots,X_n\)</span>是来自<span class="math inline">\(N(\mu,1)\)</span>的样本。显然<span class="math inline">\(T_1=X_1-X_2\)</span>, <span class="math inline">\(T_2=X_1-\bar X\)</span>的分布与参数<span class="math inline">\(\mu\)</span>无关，故它们不是完全统计量。
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-91" class="example"><strong>例 2.17  </strong></span>设<span class="math inline">\(X_1,\dots,X_n\)</span>是来自伯努利分布<span class="math inline">\(B(1,p)\)</span>的样本。证明<span class="math inline">\(T=\sum_{i=1}^n X_i\)</span>是参数<span class="math inline">\(p\)</span>的完全统计量。
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 注意到<span class="math inline">\(T\sim B(n,p)\)</span>。假设对一切<span class="math inline">\(p\in(0,1)\)</span>都有<span class="math inline">\(E[u(T)]=0\)</span>，则</p>
+<span class="math display">\[E[u(T)]=\sum_{i=0}^{n}u(i)C_n^ip^i(1-p)^{n-i}= 0.\]</span>
+令<span class="math inline">\(y=p/1-p\)</span>，则对任意<span class="math inline">\(y\in \mathbb{R}\)</span>都有<span class="math inline">\(\sum_{i=0}^n C_n^iu(i)y^i=0\)</span>。等式左边为<span class="math inline">\(y\)</span>的多项式，所以该多项式的所有系数均为0，即<span class="math inline">\(u(i)=0,\ i=0,\dots,n\)</span>. 这意味着<span class="math inline">\(u(T)=0\)</span>. 这就说明<span class="math inline">\(T\)</span>为完全统计量。
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:complete" class="theorem"><strong>定理 2.3  </strong></span>考虑指数型分布族<span class="math inline">\(\mathcal{F}=\{f_\theta(x);\theta\in\Theta\}\)</span>中的分布<span class="math inline">\(f_\theta(x)\)</span>（分布列或者密度函数）都可以表示成如下形式：</p>
+<p><span class="math display">\[f_\theta(x)=c(\theta)\exp\{\sum_{j=1}^kc_j(\theta)T_j(x)\}h(x).\]</span>
+如果<span class="math inline">\(\Theta\)</span>有内点，则该分布族的充分统计量</p>
+<span class="math display">\[\left(\sum_{i=1}^nT_1(x_i),\dots,\sum_{i=1}^nT_k(x_i)\right)\]</span>
+是完全的。
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>证明. </em></span> 证明略。
+</div>
+
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-94" class="theorem"><strong>定理 2.4  (Black-Lehmann-Scheffe定理)  </strong></span>考虑参数分布族<span class="math inline">\(\mathcal{F}=\{f_\theta(x);\theta\in\Theta\}\)</span>，设<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为其完全的充分统计量。则所有的可估参数<span class="math inline">\(g(\theta)\)</span>均存在最小方差无偏估计且可表示为<span class="math inline">\(T\)</span>的一个函数<span class="math inline">\(\psi(T)\)</span>（该表示在概率意义是唯一的）。
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 设<span class="math inline">\(T_1\)</span>为<span class="math inline">\(g(\theta)\)</span>的任意无偏估计量，记<span class="math inline">\(\psi_1(t) = E[T_1|T=t]\)</span>. 由于<span class="math inline">\(T\)</span>是充分统计量，所以<span class="math inline">\(\psi_1(t)\)</span>与参数<span class="math inline">\(\theta\)</span>无关，即<span class="math inline">\(\psi_1(T)=E[T_1|T]\)</span>为一统计量。由<a href="https://en.wikipedia.org/wiki/Law_of_total_expectation">全期望公式</a>知，<span class="math inline">\(E[\psi_1(T)]=E[E[T_1|T]]=E[T_1]=g(\theta)\)</span>. 所以<span class="math inline">\(\psi_1(T)\)</span>为<span class="math inline">\(g(\theta)\)</span>的无偏估计量。
+由<a href="https://en.wikipedia.org/wiki/Law_of_total_variance">全方差公式</a>知，</p>
+<p><span class="math display">\[Var[T_1] = E[Var[T_1|T]]+Var[E[T_1|T]]\ge Var[\psi_1(T)].\]</span></p>
+同理，设<span class="math inline">\(T_2\)</span>为<span class="math inline">\(g(\theta)\)</span>的另一无偏估计量，<span class="math inline">\(\psi_2(T)=E[T_2|T]\)</span>同样是无偏的，且<span class="math inline">\(Var[\psi_2(T)]\le Var[T_2].\)</span>
+令<span class="math inline">\(u(x) = \psi_2(x)-\psi_1(x)\)</span>. 则<span class="math inline">\(E[u(T)]=E[\psi_2(T)]-E[\psi_1(T)]=0\)</span>. 由于<span class="math inline">\(T\)</span>是完全统计量，所以<span class="math inline">\(P(\psi_2(T)=\psi_1(T))=1\)</span>, 这表明<span class="math inline">\(\psi_2(T)\)</span>和<span class="math inline">\(\psi_1(T)\)</span>在概率意义上是相等的，为UMVUE.
+</div>
+
+<p>该定理表明如果存在完全充分统计量<span class="math inline">\(T\)</span>，UMVU估计量必然可以表示为该统计量的函数<span class="math inline">\(\psi(T)\)</span>。根据这个性质可以求解UMVU估计量，即求解方程</p>
+<p><span class="math display">\[E[\psi(T)]=g(\theta), \forall \theta\in\Theta.\]</span></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-96" class="example"><strong>例 2.18  </strong></span>设<span class="math inline">\(X\sim B(1,p)\)</span>，其中<span class="math inline">\(p\in(0,1)\)</span>. 求<span class="math inline">\(g(p)=p(1-p)\)</span>的UMVUE.
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 由定理<a href="est.html#thm:complete">2.3</a>知，<span class="math inline">\(T=\sum_{i=1}^n X_i\)</span>为完全充分统计量。所以，对任意的<span class="math inline">\(p\in(0,1)\)</span>恒有</p>
+<p><span class="math display">\[E[\psi(T)]=\sum_{i=0}^n \psi(i)C_n^i p^i(1-p)^{n-i} = p(1-p).\]</span></p>
+<p>令<span class="math inline">\(\rho = p/(1-p)\)</span>, 则<span class="math inline">\(p = \rho/(1+\rho)\)</span>. 上式等价于</p>
+<p><span class="math display">\[\sum_{i=0}^n \psi(i)C_n^i \rho^i = \rho(1+\rho)^{n-2}=\sum_{i=1}^{n-1}C_{n-2}^{i-1}\rho^i.\]</span></p>
+<p>比较系数可得</p>
+<p><span class="math display">\[\psi(x)=\frac{(n-x)x}{n(n-1)}.\]</span></p>
+<p>所以，<span class="math inline">\(p(1-p)\)</span>的UMUV估计量为<span class="math inline">\(n(1-\bar X)\bar X/(n-1)\)</span>.</p>
+<p>注意到<span class="math inline">\(X_i\)</span>取值为<span class="math inline">\(0,1\)</span>, 所以<span class="math inline">\(X_i=X_i^2\)</span>. 于是，</p>
+<p><span class="math display">\[S_n^2=\frac 1n\sum_{i=1}^n X_i^2-(\bar X)^2=\frac 1n\sum_{i=1}^n X_i-(\bar X)^2=\bar X(1-\bar X).\]</span></p>
+<p>因此，<span class="math inline">\(S_n^{*2}=nS_n^2/(n-1)=n(1-\bar X)\bar X/(n-1)\)</span>为上述推导的UMUVE.</p>
+</div>
+
+<p>另外还可以通过求条件期望的方式得到UMVU估计量。假设<span class="math inline">\(T_1\)</span>是<span class="math inline">\(g(\theta)\)</span>的任意无偏估计量，<span class="math inline">\(T\)</span>为完全充分统计量。则<span class="math inline">\(E[T_1|T]\)</span>为UMVU估计量。这种方法的难点在于计算条件期望。</p>
+<p>对于正态分布总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>，我们知道<span class="math inline">\((\bar X,S_n^2)\)</span>为完全充分统计量。则<span class="math inline">\(\bar X\)</span>为<span class="math inline">\(\mu\)</span>的UMVUE, <span class="math inline">\(S_n^{*2}\)</span>为<span class="math inline">\(\sigma^2\)</span>的UMVUE. 下面考虑其它参数的UMVUE.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-98" class="example"><strong>例 2.19  </strong></span>设总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>，其CDF记为<span class="math inline">\(F(x)\)</span>。</p>
+<ol style="list-style-type: decimal">
+<li><p>给定<span class="math inline">\(\alpha\in (0,1)\)</span>，求分位数<span class="math inline">\(F^{-1}(\alpha)\)</span>的UMVUE.</p></li>
+<li>假设<span class="math inline">\(\sigma=1\)</span>, 给定<span class="math inline">\(u\in \mathbb{R}\)</span>，求<span class="math inline">\(F(u)\)</span>和<span class="math inline">\(F&#39;(u)\)</span>的UMVUE.</li>
+</ol>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 
+（1）注意到<span class="math inline">\(F^{-1}(\alpha)=\mu+u_\alpha \sigma\)</span>. 又<span class="math inline">\(\bar X\)</span>是<span class="math inline">\(\mu\)</span>的无偏估计。现在先求<span class="math inline">\(\sigma\)</span>的无偏估计。由抽样分布定理知，</p>
+<p><span class="math display">\[Y:=\frac{nS_n^2}{\sigma^2}\sim \chi^2(n-1).\]</span></p>
+<p>对任意的<span class="math inline">\(r&gt;1-n\)</span>, 有</p>
+<p><span class="math display">\[\begin{align*}
+E[(S_n/\sigma)^r]&amp;=E[n^{-r/2}Y^{r/2}]=n^{-r/2}\int_0^\infty x^{r/2}\frac{x^{\frac {n-1}2-1}e^{-\frac x2}}{2^{\frac {n-1}2}\Gamma((n-1)/2)}dx\\
+&amp;=\frac{2^{\frac {r+n-1}2}\Gamma((r+n-1)/2)}{n^{r/2}2^{\frac {n-1}2}\Gamma((n-1)/2)}\int_0^\infty \frac{x^{(r+n-1)/2-1}e^{-x/2}}{2^{\frac {r+n-1}2}\Gamma((r+n-1)/2)}dx\\
+&amp;=\frac{2^{\frac {r+n-1}2}\Gamma((r+n-1)/2)}{n^{r/2}2^{\frac {n-1}2}\Gamma((n-1)/2)}\\
+&amp;=\frac{2^{r/2}\Gamma((r+n-1)/2)}{n^{r/2}\Gamma((n-1)/2)}=:K_{n,r}.
+\end{align*}\]</span></p>
+<p>所以，</p>
+<p><span class="math display">\[E[S_n^r]=\left(\frac 2n\right)^{r/2}\frac{\Gamma((r+n-1)/2)}{\Gamma((n-1)/2)}\sigma^r=K_{n,r}\sigma^r.\]</span></p>
+<p>特别地，取<span class="math inline">\(r=1\)</span>，则<span class="math inline">\(E[S_n]=K_{n,1}\sigma\)</span>. 所以<span class="math inline">\(S_n/K_{n,1}\)</span>是<span class="math inline">\(\sigma\)</span>的无偏估计。由此可得，<span class="math inline">\(F^{-1}(\alpha)\)</span>的一个无偏估计量为</p>
+<p><span class="math display">\[\bar X+u_\alpha S_n/K_{n,1}.\]</span></p>
+<p>该统计量为完全充分统计量<span class="math inline">\((\bar X,S_n^2)\)</span>的函数，所以是UMVUE.</p>
+<p>（2）当<span class="math inline">\(\sigma\)</span>已知时，<span class="math inline">\(\bar X\)</span>是<span class="math inline">\(\mu\)</span>的完全充分统计量。令<span class="math inline">\(T_1=1\{X_1\le u\}\)</span>，则有<span class="math inline">\(E(T_1)=P(X_1\le u)=F(u)\)</span>。所以，<span class="math inline">\(T_1\)</span>为<span class="math inline">\(F(u)\)</span>的无偏估计。考虑</p>
+<p><span class="math display">\[\begin{align*}
+E[T_1|\bar X=\bar x]&amp;=P(X_1\le u|\bar X=\bar x)=P(X_1-\bar X\le u-\bar x|\bar X=\bar x)\\
+&amp;=P(X_1-\bar X\le u-\bar x)=\Phi\left[\sqrt{\frac{n}{n-1}}(u-\bar x)\right].
+\end{align*}\]</span></p>
+<p>其中用到<span class="math inline">\(\bar X\)</span>与<span class="math inline">\(X_1-\bar X\)</span>独立，且<span class="math inline">\(X_1-\bar X\sim N(0,(n-1)/n)\)</span>. 因此，<span class="math inline">\(\Phi\left[\sqrt{\frac{n}{n-1}}(u-\bar X)\right]\)</span>为<span class="math inline">\(F(u)\)</span>的UMVUE. 不难发现，</p>
+<p><span class="math display">\[\frac{\partial }{\partial u}\Phi\left[\sqrt{\frac{n}{n-1}}(u-\bar X)\right]=\sqrt{\frac{n}{n-1}}\phi\left[\sqrt{\frac{n}{n-1}}(u-\bar X)\right]\]</span></p>
+<p>是<span class="math inline">\(F&#39;(u)\)</span>的无偏估计量，从而为UMVUE. 这里<span class="math inline">\(\Phi\)</span>和<span class="math inline">\(\phi\)</span>分别为标准正态分布的CDF和PDF.</p>
+</div>
+
+<blockquote>
+<p>上题第二问中，如果<span class="math inline">\(\sigma\)</span>未知，经过柯尔莫哥洛夫(1950)研究，UMVUE同样存在，但推导过程比较繁琐，这里省略。结果见陈家鼎等教材P26-27.</p>
+</blockquote>
+<p>UMVUE考虑无偏估计中最好的一种。注意到在正态总体下，总体方差的UMVUE为修正样本方差，修正样本方差的均方误差却大于样本方差的均方误差。这表明如果考虑所有类型的估计量，UMVUE不一定是最好的。那为什么不在所有的估计量中研究所谓最好的估计量呢？是否可以相应地定义“一致最小均方误差估计量”？然而，这样的估计量是不存在的。不妨<span class="math inline">\(g(\theta)\)</span>不恒为一个常数。假设存在它的估计量<span class="math inline">\(T_0\)</span>，对于所有的估计量<span class="math inline">\(T\)</span>满足<span class="math inline">\(M_\theta (T_0)\le M_\theta(T),\forall\theta\in\Theta\)</span>，即<span class="math inline">\(T_0\)</span>为一致最小均方误差估计量。那么，对任意<span class="math inline">\(\theta_0\in\Theta\)</span>，取<span class="math inline">\(T=g(\theta_0)\)</span>，则<span class="math inline">\(M_{\theta_0} (T_0)\le M_{\theta_0}(T)=0\)</span>, 从而有<span class="math inline">\(P(T_0=g(\theta_0))=1\)</span>. 由于<span class="math inline">\(\theta_0\)</span>的任意性以及<span class="math inline">\(g(\theta)\)</span>不恒为一个常数，这样的<span class="math inline">\(T_0\)</span>是不存在的。这也就是为什么我们在无偏估计量中考虑最优性的原因。</p>
+
+<div class="theorem">
+<p><span id="thm:CR" class="theorem"><strong>定理 2.5  (Cramer-Rao不等式)  </strong></span>设总体<span class="math inline">\(X\)</span>的密度为<span class="math inline">\(f(x;\theta)\)</span>, 参数<span class="math inline">\(\theta\in (a,b)\)</span>. <span class="math inline">\(X_1,\dots,X_n\)</span>为<span class="math inline">\(X\)</span>的样本，<span class="math inline">\(\psi(X_1,\dots,X_n)\)</span>是<span class="math inline">\(g(\theta)\)</span>的一个无偏估计，且满足下列正则性条件：</p>
+<ul>
+<li><span class="math inline">\(X\)</span>的支撑与<span class="math inline">\(\theta\)</span>无关；</li>
+<li><span class="math inline">\(g&#39;(\theta)\)</span>和<span class="math inline">\(\frac{df(x;\theta)}{d\theta}\)</span>都存在且对一切<span class="math inline">\(\theta\)</span>有</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+\int_{-\infty}^\infty \frac{df(x;\theta)}{d\theta} d x &amp;= 0,\\
+\int_{-\infty}^\infty\frac d{d\theta} L(\vec x;\theta) d \vec x&amp;=0,\\
+\frac d{d\theta}\int_{-\infty}^\infty \psi(\vec x) L(\vec x;\theta) d \vec x&amp;=\int_{-\infty}^\infty \psi(\vec x) \frac d{d\theta}L(\vec x;\theta) d \vec x,
+\end{align*}\]</span></p>
+<ul>
+<li><span class="math inline">\(I(\theta):=E[(\frac {d\ln f(X;\theta)}{d\theta})^2]&gt;0\)</span>,</li>
+</ul>
+则有
+<span class="math display">\[Var_\theta[\psi(X_1,\dots,X_n)]\ge \frac{[g&#39;(\theta)]^2}{nI(\theta)}.\]</span>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 
+<span class="math display">\[\begin{align*}
+g&#39;(\theta)  &amp;= dE[\psi(X_1,\dots,X_n)]/d\theta \\
+&amp;=\frac{d}{d\theta}\int \psi(\vec x)L(\vec x;\theta)d \vec x\\
+&amp;=\int \psi(\vec x)\frac{d}{d\theta}L(\vec x;\theta)d \vec x\\
+&amp;=\int [\psi(\vec x)-g(\theta)]\frac{d}{d\theta}L(\vec x;\theta)d \vec x\\
+&amp;=\int [\psi(\vec x)-g(\theta)]\frac{d \ln L(\vec x;\theta)}{d\theta} L(\vec x;\theta)d \vec x\\
+&amp;=E\left[[\psi(\vec X)-g(\theta)]\frac{d \ln L(\vec X;\theta)}{d\theta}\right].
+\end{align*}\]</span></p>
+<p>由<a href="https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality">Cauchy–Schwarz不等式</a>得，</p>
+<p><span class="math display">\[\begin{align*}
+[g&#39;(\theta)]^2 &amp;\le E[[\psi(\vec X)-g(\theta)]^2] E[(\frac{d}{d\theta}\ln L(\vec X;\theta))^2]\\
+&amp;=Var[\psi(\vec X)]E[(\sum_{i=1}^n \frac{d\ln f(X_i;\theta)}{d\theta})^2]\\
+&amp;=Var[\psi(\vec X)] n I(\theta).
+\end{align*}\]</span></p>
+<p>其中用到</p>
+<span class="math display">\[\begin{align*}
+E\left[\frac{d\ln f(X_i;\theta)}{d\theta}\right]&amp;=\int \frac{\frac{df(x;\theta)}{d\theta}}{f(x;\theta)}f(x;\theta)dx\\&amp;=\int \frac{df(x;\theta)}{d\theta}dx=0.
+\end{align*}\]</span>
+</div>
+
+<blockquote>
+<p>C-R不等式给出无偏估计量方差的下界，如果某个无偏估计量达到这个下界且定理<a href="est.html#thm:CR">2.5</a>中的条件对所有的无偏估计成立，则可以说明是该无偏估计量是一致最小方差无偏的。然而，有些情况下，C-R不等式的下界不一定达到，见陈家鼎等编著的教材例2.9, p30. <span class="math inline">\(I(\theta)\)</span>叫做<strong>Fisher信息量</strong>。离散情形有类似的结论。</p>
+</blockquote>
+<blockquote>
+<p>有时候定理<a href="est.html#thm:CR">2.5</a>中的条件并不满足，但C-R不等式的下界还是可以用来刻画模型参数的“可估能力”。该下界越小越容易得到精度更高的估计。</p>
+</blockquote>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-101" class="example"><strong>例 2.20  </strong></span>设<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\mu\)</span>未知，<span class="math inline">\(\sigma\)</span>已知。
+Fisher信息量为</p>
+<p><span class="math display">\[I(\mu) = E\left[(\frac {d\ln f(X;\mu)}{d\mu})^2\right]=\frac 1{\sigma^4}E[(X-\mu)^2]=\frac 1{\sigma^2}.\]</span></p>
+<p><span class="math display">\[Var[\bar X] = \frac{\sigma^2}{n}=\frac{1}{nI(\mu)}\]</span></p>
+<p>样本均值<span class="math inline">\(\bar X\)</span>的方差达到了C-R不等式的下界。</p>
+</div>
+
+<p>试证明：若<span class="math inline">\(\mu\)</span>已知，则<span class="math inline">\(\sigma^2\)</span>的估计量<span class="math inline">\(\frac 1n\sum_{i=1}^n(X_i-\mu)^2\)</span>的方差达到了C-R不等式的下界。</p>
+</div>
+<div id="section-2.2.4" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> 统计量的大样本性质</h3>
+<ol style="list-style-type: decimal">
+<li>统计量的相合性(consistency)</li>
+</ol>
+<p><strong>（弱）相合估计</strong>：称<span class="math inline">\(T_n(X_1,\dots,X_n)\)</span>是<span class="math inline">\(g(\theta)\)</span>的相合估计，如果对任何
+<span class="math inline">\(\epsilon&gt;0\)</span>, 有<span class="math display">\[\lim_{n\to\infty}P(|T_n-g(\theta)|\ge \epsilon)=0.\]</span><br />
+也称<span class="math inline">\(T_n\)</span>依概率收敛到<span class="math inline">\(g(\theta)\)</span>，记为<span class="math inline">\(T_n\stackrel p\to g(\theta)\)</span>.</p>
+<p><strong>强相合估计</strong>：称<span class="math inline">\(T_n(X_1,\dots,X_n)\)</span>是<span class="math inline">\(g(\theta)\)</span>的强相合估计，如果</p>
+<p><span class="math display">\[P(\lim_{n\to\infty}T_n=g(\theta))=1.\]</span>
+也称<span class="math inline">\(T_n\)</span>以概率1收到<span class="math inline">\(g(\theta)\)</span>，记为敛<span class="math inline">\(T_n\stackrel {w.p.1}\to g(\theta)\)</span>.</p>
+<p><strong>说明</strong></p>
+<ul>
+<li>由强大数定理知，矩估计一般是强估计的</li>
+<li>最大似然估计在十分广泛的条件下也是有相合性（见下一节）</li>
+</ul>
+
+<div class="lemma">
+<p><span id="lem:unnamed-chunk-102" class="lemma"><strong>引理 2.2  </strong></span>
+如果<span class="math inline">\(T_n\stackrel p\to a\)</span>，且函数<span class="math inline">\(f(x)\)</span>在<span class="math inline">\(x=a\)</span>处连续，则<span class="math inline">\(f(T_n)\stackrel p\to f(a)\)</span>.</p>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 因为<span class="math inline">\(f(x)\)</span>在<span class="math inline">\(x=a\)</span>处连续，所有对任意<span class="math inline">\(\epsilon&gt;0\)</span>存在<span class="math inline">\(\delta&gt;0\)</span>使得任意<span class="math inline">\(x\)</span>满足<span class="math inline">\(|x-a|&lt;\delta\)</span>，均有<span class="math inline">\(|f(x)-f(a)|&lt;\epsilon\)</span>. 注意到<span class="math inline">\(\{|f(T_n)-f(a)|\ge \epsilon\}\subset \{|T_n-a|\ge \delta\}\)</span>. 所以</p>
+<p><span class="math display">\[0\le \lim_{n\to \infty} P(|f(T_n)-f(a)|\ge \epsilon)\le \lim_{n\to \infty} P(|T_n-a|\ge \delta)=0.\]</span></p>
+<p>这表明<span class="math inline">\(f(T_n)\stackrel p\to f(a)\)</span>.</p>
+</div>
+
+<p>该引理容易推广到多元连续的情形。</p>
+
+<div class="lemma">
+<p><span id="lem:llem1" class="lemma"><strong>引理 2.3  </strong></span>
+如果<span class="math inline">\(T_n^{(i)}\stackrel p\to a_i\)</span>, <span class="math inline">\(i=1,\dots,k\)</span>，且<span class="math inline">\(f(x_1,\dots,x_k)\)</span>在<span class="math inline">\((a_1,\dots,a_k)\)</span>点连续，则<span class="math inline">\(f(T_n^{(1)},\dots,T_n^{(k)})\stackrel p\to f(a_1,\dots,a_k)\)</span>.</p>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-104" class="example"><strong>例 2.21  </strong></span>设总体<span class="math inline">\(X\)</span>的期望<span class="math inline">\(\mu\)</span>方差为<span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(X_1,\dots,X_n\)</span>为其样本，证明
+</div>
+
+<ul>
+<li>样本均值<span class="math inline">\(\bar X\)</span>是<span class="math inline">\(\mu\)</span>的相合估计量；</li>
+<li>样本<span class="math inline">\(k\)</span>阶原点矩<span class="math inline">\(M_k\)</span>是总体<span class="math inline">\(k\)</span>阶原点矩<span class="math inline">\(E[X^k]\)</span>的相合估计量；</li>
+<li>样本方差<span class="math inline">\(S_n^2\)</span>和修正样本方差<span class="math inline">\(S_n^{2*}\)</span>都是<span class="math inline">\(\sigma^2\)</span>的相合估计量。</li>
+</ul>
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 由辛钦大数定律知，<span class="math inline">\(\bar X\stackrel p\to \mu\)</span>, <span class="math inline">\(M_k\stackrel p\to E[X^k]\)</span>. 由引理<a href="est.html#lem:llem1">2.3</a>得</p>
+<p><span class="math display">\[S_n^2 = \frac{1}{n}\sum_{i=1}^nX_i^2-\bar X^2\stackrel p\to E[X^2]-E[X]^2=\sigma^2.\]</span></p>
+同理，<span class="math inline">\(S_n^{2*}=\frac{n-1}{n}S_n^2\stackrel p\to \sigma^2\)</span>.
+</div>
+
+<p>下面给出判断相合估计的一个常用的充分条件。</p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-106" class="theorem"><strong>定理 2.6  </strong></span>设<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为<span class="math inline">\(g(\theta)\)</span>的估计量。如果</p>
+<p><span class="math display">\[\lim_{n\to \infty}E[T(X_1,\dots,X_n)] = g(\theta),\ \lim_{n\to \infty}Var[T(X_1,\dots,X_n)] =0,\]</span></p>
+<p>则<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为<span class="math inline">\(g(\theta)\)</span>的相合估计量。</p>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 令<span class="math inline">\(T_n=T(X_1,\dots,X_n)\)</span>. 注意到</p>
+<p><span class="math display">\[\{|T_n-g(\theta)|\ge \epsilon\}\subset \{|T_n-E[T_n]|\ge \epsilon/2\}\cup \{|E[T_n]-g(\theta)|\ge \epsilon/2\}.\]</span></p>
+<p>对任意<span class="math inline">\(\epsilon&gt;0\)</span>, 存在<span class="math inline">\(N\)</span>, 当<span class="math inline">\(n\ge N\)</span>时，<span class="math inline">\(|E[T_n]-g(\theta)|&lt; \epsilon/2\)</span>.
+此时</p>
+<p><span class="math display">\[\{|T_n-g(\theta)|\ge \epsilon \}\subset \{|T_n-E[T_n]|\ge \epsilon/2\}.\]</span></p>
+<p>所以，</p>
+<p><span class="math display">\[P(|T_n-g(\theta)|\ge \epsilon)\le P(|T_n-E[T_n]|\ge \epsilon/2)\le \frac{4 Var[T_n]}{\epsilon^2}\to 0.\]</span></p>
+<p>此外还可以用Markov不等式（如果<span class="math inline">\(X\)</span>为非负随机变量且<span class="math inline">\(a&gt;0\)</span>，则<span class="math inline">\(P(X\ge a)\le E[X]/a\)</span>）证明。</p>
+<p>所以，</p>
+<p><span class="math display">\[\begin{align*}
+P(|T_n-g(\theta)|\ge \epsilon)&amp;=P((T_n-g(\theta))^2\ge \epsilon^2)\le \frac{E[(T_n-g(\theta))^2]}{\epsilon^2}\\
+&amp;=\frac{Var[T_n]+(E[T_n]-g(\theta))^2}{\epsilon^2}\to 0.
+\end{align*}\]</span></p>
+</div>
+
+<ol start="2" style="list-style-type: decimal">
+<li>统计量的渐近正态性(asymptotic normality)</li>
+</ol>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-108" class="definition"><strong>定义 2.8  </strong></span>设<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为<span class="math inline">\(\theta\)</span>的估计量。如果存在一个趋于零的正数列<span class="math inline">\(\sigma_n(\theta)\)</span>, 使得<span class="math inline">\((T-\theta)/\sigma_n(\theta)\)</span>的分布收敛到标准正态分布，则称<span class="math inline">\(T(X_1,\dots,X_n)\)</span>为<span class="math inline">\(\theta\)</span>的<strong>渐近正态估计</strong>，或称<span class="math inline">\(T\)</span>具备<strong>渐近正态性</strong>，记为</p>
+<span class="math display">\[T\stackrel{\cdot}{\sim} N(\theta, \sigma_n(\theta)^2).\]</span>
+</div>
+
+<p>渐近正态性在构建参数的渐近置信区间中扮演着非常重要的角色。下面定理给出最大似然估计的渐近正态性。</p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-109" class="theorem"><strong>定理 2.7  </strong></span>设<span class="math inline">\(X\)</span>的密度为<span class="math inline">\(f(x;\theta)\)</span>, 其参数空间<span class="math inline">\(\Theta\)</span>是非退化区间，且满足下列正则性条件：</p>
+<ul>
+<li><p>对一切<span class="math inline">\(\theta\in\Theta\)</span>, <span class="math inline">\(\frac{\partial \ln f}{\partial\theta}, \frac{\partial^2 \ln f}{\partial\theta^2}, \frac{\partial^3 \ln f}{\partial\theta^3}\)</span> 都存在</p></li>
+<li><p>对一切<span class="math inline">\(\theta\in\Theta\)</span>, 有<span class="math inline">\(|\frac{\partial \ln f}{\partial\theta}|&lt;F_1(x),\ |\frac{\partial^2 \ln f}{\partial\theta^2}|&lt;F_2(x),\ |\frac{\partial^3 \ln f}{\partial\theta^3}|&lt;H(x),\)</span> 其中<span class="math inline">\(F_1(x),F_2(x)\)</span>在实数轴上可积，且<span class="math inline">\(\int_{-\infty}^\infty H(x)f(x;\theta)dx&lt;M\)</span>, <span class="math inline">\(M\)</span>与<span class="math inline">\(\theta\)</span>无关。</p></li>
+<li><p>对一切<span class="math inline">\(\theta\in\Theta\)</span>, 有<span class="math inline">\(0&lt;I(\theta)=E[(\frac{\partial \ln f}{\partial\theta})^2]&lt;\infty\)</span>.</p></li>
+</ul>
+<p>则在参数真值<span class="math inline">\(\theta\)</span>为<span class="math inline">\(\Theta\)</span>内点的情况下，其似然方程有一个解<span class="math inline">\(\hat{\theta}_L\)</span>存在，且</p>
+<span class="math display">\[\hat{\theta}_L\stackrel{p}{\to}\theta,\ \hat{\theta}_L\stackrel{\cdot}{\sim} N(\theta,[nI(\theta)]^{-1}).\]</span>
+</div>
+
+<blockquote>
+<p>值得注意的是，最大似然估计的渐近方差为C-R不等式的下界，从这个角度可以说明最大似然估计具有良好性质。证明参考：陈希孺. 概率论与数理统计. 中国科技大学出版社, 1992</p>
+</blockquote>
+</div>
+</div>
+<div id="section-2.3" class="section level2">
+<h2><span class="header-section-number">2.3</span> 区间估计</h2>
+<div id="section-2.3.1" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> 区间估计的定义</h3>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-110" class="definition"><strong>定义 2.9  </strong></span>设总体<span class="math inline">\(X\sim F(x;\theta),\ \theta\in \Theta\)</span>. 如果统计量<span class="math inline">\(T_1(X_1,\dots,X_n)\)</span>, <span class="math inline">\(T_2(X_1,\dots,X_n)\)</span>使得对给定的<span class="math inline">\(\alpha\in(0,1)\)</span>有</p>
+<p><span class="math display">\[P(T_1\le g(\theta)\le T_2)=1-\alpha,\ \forall \theta\in\Theta,\]</span></p>
+则称随机区间<span class="math inline">\([T_1,T_2]\)</span>为参数<span class="math inline">\(g(\theta)\)</span>的<strong>置信度（置信概率）</strong>为<span class="math inline">\(1-\alpha\)</span>的<strong>置信区间(Confidence Interval)</strong>，<span class="math inline">\(T_1,T_2\)</span>分别称为<strong>置信下界</strong>和<strong>置信上界</strong>。
+</div>
+
+<p><strong>说明</strong>:</p>
+<ul>
+<li>在一些情况下，定义中的“等式”无解，此时考虑的置信区间<span class="math inline">\([T_1,T_2]\)</span>应满足</li>
+</ul>
+<p><span class="math display">\[P(T_1\le g(\theta)\le T_2)\ge 1-\alpha,\ \forall \theta\in\Theta.\]</span></p>
+<ul>
+<li>这里允许<span class="math inline">\(T_1=-\infty\)</span>或者<span class="math inline">\(T_2=\infty\)</span>，这两种情况为单侧置信区间，否则称为双侧置信区间。</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-111"></span>
+<img src="CI.png" alt="置信区间示意图" width="90%" />
+<p class="caption">
+图 2.4: 置信区间示意图
+</p>
+</div>
+</div>
+<div id="section-2.3.2" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> 枢轴量法</h3>
+<p><strong>目标</strong>：找到<span class="math inline">\(g(\theta)\)</span>的区间估计，置信度为<span class="math inline">\(1-\alpha\)</span>.</p>
+<p>Step 1: 选择恰当的<strong>枢轴量(Pivot quantity)</strong><span class="math inline">\(G(X_1,\dots,X_n;g(\theta))\)</span>，其满足以下性质</p>
+<ul>
+<li><span class="math inline">\(G\)</span>不含有其他未知参数</li>
+<li><span class="math inline">\(G\)</span>的分布确定，即不含未知参数<span class="math inline">\(\theta\)</span></li>
+<li>一般地，<span class="math inline">\(G\)</span>是关于参数<span class="math inline">\(g(\theta)\)</span>的单调函数</li>
+</ul>
+<p>Step 2: 求<span class="math inline">\(a,b\)</span>使得<span class="math inline">\(P(a\le G\le b)=1-\alpha\)</span></p>
+<p>Step 3: 转化不等式<span class="math inline">\(a\le G\le b\)</span>为如下形式：
+<span class="math display">\[
+        T_1 \le g(\theta) \le T_2.
+        \]</span></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-112" class="example"><strong>例 2.22  </strong></span>若总体为指数分布<span class="math inline">\(Exp(\lambda)\)</span>，求未知参数<span class="math inline">\(\lambda\)</span>的置信区间。
+</div>
+
+<p>Step 1: 选择枢轴量</p>
+<p><span class="math display">\[G(X_1,\dots,X_n;\lambda) = 2\lambda  n\bar X\sim Ga(n,1/2)=\chi^2(2n)\]</span></p>
+<p>Step 2: 求<span class="math inline">\(a,b\)</span>使得<span class="math inline">\(P(a\le G\le b)=1-\alpha\)</span>，即</p>
+<p><span class="math display">\[P(a\le 2\lambda  n\bar X\le b)=1-\alpha\]</span></p>
+<p>Step 3: <span class="math inline">\(\lambda\)</span>的置信区间为<span class="math inline">\([a/(2n\bar X),b/(2n\bar X)]\)</span>.</p>
+<p>如何选择<span class="math inline">\(a,b\)</span>?</p>
+<ul>
+<li><p>平分法：<span class="math inline">\(a=\chi^2_{\alpha/2}(2n), b=\chi^2_{1-\alpha/2}(2n)\)</span></p></li>
+<li><p>最优方案？参考书p35</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-113"></span>
+<img src="chiCI.png" alt="平分法示意图" width="90%" />
+<p class="caption">
+图 2.5: 平分法示意图
+</p>
+</div>
+<p>以下通过R模拟来实现这个过程。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"># generate data from exponential distribution</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">lambda &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">n &lt;-<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">X &lt;-<span class="st"> </span><span class="kw">rexp</span>(n,lambda)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># find out the confidence interval (CI)</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">alpha &lt;-<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">a &lt;-<span class="st"> </span><span class="kw">qchisq</span>(<span class="dt">p=</span>alpha<span class="op">/</span><span class="dv">2</span>,<span class="dt">df=</span><span class="dv">2</span><span class="op">*</span>n)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">b &lt;-<span class="st"> </span><span class="kw">qchisq</span>(<span class="dt">p=</span><span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>,<span class="dt">df=</span><span class="dv">2</span><span class="op">*</span>n)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">CI &lt;-<span class="st"> </span><span class="kw">c</span>(a<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(X),b<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(X))</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="kw">cat</span>((<span class="dv">1</span><span class="op">-</span>alpha)<span class="op">*</span><span class="dv">100</span>,<span class="st">&quot;% CI is [&quot;</span>,CI[<span class="dv">1</span>],<span class="st">&quot;, &quot;</span>, CI[<span class="dv">2</span>],<span class="st">&quot;]&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<pre><code>## 95% CI is [1.824, 2.065]</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># generate R batches of the data</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">R &lt;-<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">CIs &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,R,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>R){</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  X &lt;-<span class="st"> </span><span class="kw">rexp</span>(n,lambda)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">  CIs[i,] =<span class="st"> </span><span class="kw">c</span>(a<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(X),<span class="dv">1</span><span class="op">/</span><span class="kw">mean</span>(X),b<span class="op">/</span><span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(X))</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">## plot the CIs</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="kw">plot</span>(<span class="dv">0</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>, R), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="kw">min</span>(CIs)<span class="op">-</span><span class="fl">0.02</span>,</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">      <span class="kw">max</span>(CIs)<span class="op">+</span><span class="fl">0.02</span>), <span class="dt">type=</span><span class="st">&quot;n&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Sample ID&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">count &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(CIs)) {</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">  <span class="cf">if</span> (CIs[i, <span class="dv">1</span>]<span class="op">&gt;</span>lambda <span class="op">|</span><span class="st"> </span>CIs[i, <span class="dv">3</span>]<span class="op">&lt;</span>lambda){</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">    color =<span class="st"> &quot;red&quot;</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    count =<span class="st"> </span>count <span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">    <span class="cf">if</span>(CIs[i, <span class="dv">1</span>]<span class="op">&gt;</span>lambda)</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">      <span class="kw">text</span>(i,CIs[i, <span class="dv">3</span>]<span class="op">+</span><span class="fl">0.02</span>,count)</a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="cf">else</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">      <span class="kw">text</span>(i,CIs[i, <span class="dv">1</span>]<span class="op">-</span><span class="fl">0.02</span>,count)</a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">    color =<span class="st"> &quot;blue&quot;</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">  }</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">  <span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">rep</span>(i, <span class="dv">2</span>), <span class="dt">y=</span><span class="kw">c</span>(CIs[i, <span class="dv">1</span>], CIs[i, <span class="dv">3</span>]))</a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">  <span class="kw">points</span>(<span class="dt">x=</span>i, <span class="dt">y=</span>CIs[i,<span class="dv">2</span>], <span class="dt">pch=</span><span class="dv">16</span>, <span class="dt">col=</span>color)</a>
+<a class="sourceLine" id="cb3-26" data-line-number="26">}</a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="kw">abline</span>(<span class="dt">h=</span>lambda,<span class="dt">lty =</span> <span class="dv">3</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="book_files/figure-html/cisimu-1.png" width="672" /></p>
+</div>
+<div id="section-2.3.3" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> 单个正态总体的区间估计</h3>
+<p>设总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>, 如何找出未知参数<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma^2\)</span>的置信区间？</p>
+<ul>
+<li><p>已知<span class="math inline">\(\sigma^2\)</span>, 找出<span class="math inline">\(\mu\)</span>的置信区间</p></li>
+<li><p>未知<span class="math inline">\(\sigma^2\)</span>, 找出<span class="math inline">\(\mu\)</span>的置信区间</p></li>
+<li><p>已知<span class="math inline">\(\mu\)</span>, 找出<span class="math inline">\(\sigma^2\)</span>的置信区间</p></li>
+<li><p>未知<span class="math inline">\(\mu\)</span>, 找出<span class="math inline">\(\sigma^2\)</span>的置信区间</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>已知方差，求期望的置信区间</li>
+</ol>
+<p>由抽样定理知，<span class="math inline">\(\bar{X}\sim N(\mu,\sigma^2/n)\)</span>. 因此
+<span class="math inline">\(U = \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)\)</span></p>
+<p><span class="math display">\[P\left(a\le \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\le b\right) = 1-\alpha\]</span></p>
+<p><span class="math inline">\(\mu\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为</p>
+<p><span class="math display">\[\left[\bar{X}-b\frac{\sigma}{\sqrt{n}},\  \bar{X}-a\frac{\sigma}{\sqrt{n}}\right]\]</span></p>
+<p><strong>最优的选择</strong>：<span class="math inline">\(b=-a=u_{1-\alpha/2}\)</span>, 此时置信区间为：</p>
+<p><span class="math display">\[\left[\bar{X}-u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},\  \bar{X}+u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\right]=\bar{X}\pm u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>方差未知，求期望的置信区间</li>
+</ol>
+<p>由抽样定理知，</p>
+<p><span class="math display">\[T = \frac{\bar{X}-\mu}{S_n/\sqrt{n-1}}= \frac{\bar{X}-\mu}{S_n^*/\sqrt{n}}\sim t(n-1)\]</span></p>
+<p><span class="math display">\[P\left(a\le \frac{\bar{X}-\mu}{S_n^*/\sqrt{n}}\le b\right) = 1-\alpha\]</span></p>
+<p><span class="math inline">\(\mu\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为：</p>
+<p><span class="math display">\[\left[\bar{X}-b\frac{S_n^*}{\sqrt{n}},\  \bar{X}-a\frac{S_n^*}{\sqrt{n}}\right]=\left[\bar{X}-b\frac{S_n}{\sqrt{n-1}},\  \bar{X}-a\frac{S_n}{\sqrt{n-1}}\right]\]</span></p>
+<p><strong>最优的选择</strong>：<span class="math inline">\(b=-a=t_{1-\alpha/2}(n-1)\)</span>, 此时置信区间为：</p>
+<p><span class="math display">\[\left[\bar{X}-t_{1-\alpha/2}(n-1)\frac{S_n^*}{\sqrt{n}},\  \bar{X}+t_{1-\alpha/2}(n-1)\frac{S_n^*}{\sqrt{n}}\right].\]</span>
+也可以表示为<span class="math inline">\(\bar{X}\pm t_{1-\alpha/2}(n-1)S_n^*/\sqrt{n}\)</span>.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-114" class="example"><strong>例 2.23  </strong></span>假设OPPO手机充电五分钟通话时间<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>. 随机抽取6部手机测试通话时间（单位：小时）为</p>
+<span class="math display">\[1.6,\ 2.1,\ 1.9,\ 1.8,\ 2.2,\ 2.1,\]</span>
+</div>
+
+<ul>
+<li><p>已知<span class="math inline">\(\sigma^2=0.06\)</span>, 求<span class="math inline">\(\mu\)</span>的置信度为<span class="math inline">\(95\%\)</span>的置信区间。</p></li>
+<li><p><span class="math inline">\(\sigma^2\)</span>未知, 求<span class="math inline">\(\mu\)</span>的置信度为<span class="math inline">\(95\%\)</span>的置信区间。</p></li>
+</ul>
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 查表知，<span class="math inline">\(u_{1-\alpha/2}=u_{0.975}=1.96,\ t_{1-\alpha/2}=t_{0.975}=2.5706\)</span>. 且<span class="math inline">\(\bar X = 1.95,\ S_n=0.206\)</span>.</p>
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\left[1.95-1.96\frac{\sqrt{0.06}}{\sqrt{6}},\  1.95+1.96\frac{\sqrt{0.06}}{\sqrt{6}}\right]=[1.754,\ 2.146]\)</span>.</p></li>
+<li><p><span class="math inline">\(\left[1.95-2.5706\frac{0.206}{\sqrt{6-1}},\  1.95+2.5706\frac{0.206}{\sqrt{6-1}}\right]=[1.713,\ 2.187]\)</span>.</p></li>
+</ol>
+<p><strong>一些思考</strong></p>
+<ul>
+<li><p>分析这两种的结果会发现，由同一组样本观察值，按同样的置信概率，对<span class="math inline">\(\mu\)</span>计算出的置信区间因为<span class="math inline">\(\sigma\)</span>的是否已知会不一样。这因为：当<span class="math inline">\(\sigma\)</span>为已知时，我们掌握的信息多一些，在其他条件相同的情况下，对<span class="math inline">\(\mu\)</span>的估计精度要高一些，即表现为<span class="math inline">\(\mu\)</span>的置信区间长度要小些。反之，当<span class="math inline">\(\sigma\)</span>为未知时，对<span class="math inline">\(\mu\)</span>的估计精度要低一些，即表现为<span class="math inline">\(\mu\)</span>的置信区间长度在大一些。这是因为当<span class="math inline">\(n\)</span>比较小时，<span class="math inline">\(t_{1-\alpha/2}(n-1)&gt;u_{1-\alpha/2}\)</span>.</p></li>
+<li><p>还可以发现，当样本量<span class="math inline">\(n\)</span>不断增大时，两种情况下的置信区间会慢慢接近。
+也就意味着大样本信息可以弥补<span class="math inline">\(\sigma\)</span>的缺失带来的偏差（<strong>大数定律</strong>）。</p></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>已知期望，求方差的置信区间</li>
+</ol>
+<p>选择枢轴量</p>
+<p><span class="math display">\[T =\sum_{i=1}^n\frac{(X_i-\mu)^2}{\sigma^2}\sim \chi^2(n)\]</span></p>
+<p><span class="math display">\[P\left(\chi^2_{\alpha/2}(n)\le\sum_{i=1}^n\frac{(X_i-\mu)^2}{\sigma^2}\le \chi^2_{1-\alpha/2}(n)\right) = 1-\alpha\]</span></p>
+<p><span class="math inline">\(\sigma^2\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为：</p>
+<p><span class="math display">\[\left[\frac{\sum_{i=1}^n(X_i-\mu)^2}{\chi^2_{1-\alpha/2}(n)},\  \frac{\sum_{i=1}^n(X_i-\mu)^2}{\chi^2_{\alpha/2}(n)}\right]\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>期望未知，求方差的置信区间</li>
+</ol>
+<p>选择枢轴量</p>
+<p><span class="math display">\[T =\frac{nS_n^2}{\sigma^2}=\sum_{i=1}^n\frac{(X_i-\bar X)^2}{\sigma^2}\sim \chi^2(n-1)\]</span>
+<span class="math display">\[P\left(\chi^2_{\alpha/2}(n-1)\le\sum_{i=1}^n\frac{(X_i-\bar X)^2}{\sigma^2}\le \chi^2_{1-\alpha/2}(n-1)\right) = 1-\alpha\]</span></p>
+<p><span class="math inline">\(\sigma^2\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为：</p>
+<p><span class="math display">\[\left[\frac{\sum_{i=1}^n(X_i-\bar X)^2}{\chi^2_{1-\alpha/2}(n-1)},\  \frac{\sum_{i=1}^n(X_i-\bar X)^2}{\chi^2_{\alpha/2}(n-1)}\right]=\left[\frac{nS_n^2}{\chi^2_{1-\alpha/2}(n-1)},\  \frac{nS_n^2}{\chi^2_{\alpha/2}(n-1)}\right]\]</span></p>
+</div>
+<div id="section-2.3.4" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> 两个独立正态总体的区间估计</h3>
+<p>设两个独立总体<span class="math inline">\(X\sim N(\mu_1,\sigma_1^2)\)</span>, <span class="math inline">\(Y\sim N(\mu_2,\sigma^2)\)</span>, 如何找出未知参数<span class="math inline">\(\mu\)</span>和<span class="math inline">\(\sigma^2\)</span>的置信区间？其中<span class="math inline">\(X\)</span>的样本为<span class="math inline">\(X_1,\dots,X_m\)</span>, 样本方差为<span class="math inline">\(S_{1m}^2\)</span>; <span class="math inline">\(Y\)</span>的样本为<span class="math inline">\(Y_1,\dots,Y_n\)</span>, 样本方差为<span class="math inline">\(S_{2n}^2\)</span></p>
+<ul>
+<li><p>已知<span class="math inline">\(\sigma_1^2,\sigma_2^2\)</span>, 找出<span class="math inline">\(\mu_1-\mu_2\)</span>的置信区间</p></li>
+<li><p>以知<span class="math inline">\(\sigma_1^2=\sigma_2^2=\sigma^2\)</span>, 找出<span class="math inline">\(\mu_1-\mu_2\)</span>的置信区间</p></li>
+<li><p>已知<span class="math inline">\(\mu_1,\mu_2\)</span>, 找出<span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span>的置信区间</p></li>
+<li><p>未知<span class="math inline">\(\mu_1,\mu_2\)</span>, 找出<span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span>的置信区间</p></li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>比较男生、女生两个群体的身高/体重/成绩平均水平的差异</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>已知方差，求均值差的置信区间</li>
+</ol>
+<p>选择枢轴量：</p>
+<p><span class="math display">\[U=\frac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}}\sim N(0,1).\]</span></p>
+<p><span class="math inline">\(\mu_1-\mu_2\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为：</p>
+<p><span class="math display">\[\left[(\bar{X}-\bar{Y})-u_{1-\alpha/2}\sqrt{\frac{\sigma_1^2}m+\frac{\sigma_2^2}n},\  (\bar{X}-\bar{Y})+u_{1-\alpha/2}\sqrt{\frac{\sigma_1^2}m+\frac{\sigma_2^2}n}\right]\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>已知方差相同，求均值差的置信区间</li>
+</ol>
+<p>选择枢轴量：</p>
+<p><span class="math display">\[T=\frac{(\bar X-\bar Y)-(\mu_1-\mu_2)}{S_w\sqrt{1/m+1/n}}\sim t(m+n-2).\]</span></p>
+<p>其中<span class="math inline">\(S_w =\sqrt{(mS_{1m}^2+nS_{2n}^2)/(m+n-2)}.\)</span></p>
+<p>令<span class="math inline">\(t_{1-\alpha/2}(m+n-2)=t_{1-\alpha/2}\)</span>，<span class="math inline">\(\mu_1-\mu_2\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为：</p>
+<p><span class="math display">\[\left[(\bar{X}-\bar{Y})-t_{1-\alpha/2}S_w\sqrt{\frac 1m+\frac 1n},\  (\bar{X}-\bar{Y})+t_{1-\alpha/2}S_w\sqrt{\frac 1m+\frac 1n}\right]\]</span></p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-116" class="example"><strong>例 2.24  </strong></span>假设OPPO手机充电五分钟通话时间<span class="math inline">\(X\sim N(\mu_1,\sigma_1^2)\)</span>, VIVO手机充电五分钟通话时间<span class="math inline">\(Y\sim N(\mu_2,\sigma_2^2)\)</span>. 随机抽取6部手机测试通话时间（单位：小时）为</p>
+<p><span class="math display">\[\text{OPPO}:\ 1.6,\   2.1,\  1.9,\  1.8,\   2.2,\   2.1\]</span></p>
+<p><span class="math display">\[\text{VIVO}:\ 1.8,\   2.2,\ 1.5,\   1.4,\   2.0,\   1.7\]</span></p>
+<p>求<span class="math inline">\(\mu_1-\mu_2\)</span>的置信度为<span class="math inline">\(95\%\)</span>的置信区间:</p>
+</div>
+
+<ul>
+<li>已知<span class="math inline">\(\sigma_1^2 = 0.06,\ \sigma_2^2 = 0.08\)</span>.</li>
+<li>已知<span class="math inline">\(\sigma_1^2 =\sigma_2^2\)</span>.</li>
+</ul>
+
+<div class="solution">
+ <span class="solution"><em>解. </em></span> <span class="math inline">\(m=n=6\)</span>, <span class="math inline">\(\bar{X}=1.95,\ \bar{Y}=1.77\)</span>, <span class="math inline">\(S_{1m}^2=0.042, S_{2n}^2=0.064, S_w = 0.252.\)</span> 查表知，<span class="math inline">\(u_{0.975}=1.96\)</span>,
+<span class="math inline">\(t_{0.975}(10)=2.23\)</span>.
+</div>
+
+<ul>
+<li>第一种情况为<span class="math inline">\([-0.12,\ 0.48]\)</span></li>
+<li>第二种情况为<span class="math inline">\([-0.14,\ 0.50]\)</span></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>已知均值，求方差比的置信区间</li>
+</ol>
+<p><span class="math display">\[T_1 =\sum_{i=1}^m\frac{(X_i-\mu_1)^2}{\sigma_1^2}\sim \chi^2(m),\ T_2 =\sum_{i=1}^n\frac{(Y_i-\mu_2)^2}{\sigma_2^2}\sim \chi^2(n)\]</span></p>
+<p><span class="math display">\[\frac{T_1/m}{T_2/n}=\frac{\frac 1 m\sum_{i=1}^m(X_i-\mu_1)^2}{\frac 1 n\sum_{i=1}^n(Y_i-\mu_2)^2}\frac{\sigma_2^2}{\sigma_1^2}\sim F(m,n)\]</span></p>
+<p><span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为：</p>
+<p><span class="math display">\[\left[\frac{1}{F_{1-\alpha/2}(m,n)}\frac{\frac 1 m\sum_{i=1}^m(X_i-\mu_1)^2}{\frac 1 n\sum_{i=1}^n(Y_i-\mu_2)^2},\ \frac{1}{F_{\alpha/2}(m,n)}\frac{\frac 1 m\sum_{i=1}^m(X_i-\mu_1)^2}{\frac 1 n\sum_{i=1}^n(Y_i-\mu_2)^2}  \right]\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>均值未知，求方差比的置信区间</li>
+</ol>
+<p><span class="math display">\[T_1=\frac{(m-1)S_{1m}^{*2}}{\sigma_1^2}=\sum_{i=1}^m\frac{(X_i-\bar X)^2}{\sigma_1^2}\sim \chi^2(m-1)\]</span></p>
+<p><span class="math display">\[T_2=\frac{(n-1)S_{2n}^{*2}}{\sigma_2^2}=\sum_{i=1}^n\frac{(Y_i-\bar Y)^2}{\sigma_2^2}\sim \chi^2(n-1)\]</span></p>
+<p><span class="math display">\[\frac{T_1/(m-1)}{T_2/(n-1)}=\frac{S_{1m}^{*2}}{S_{2n}^{*2}}\frac{\sigma_2^2}{\sigma_1^2}\sim F(m-1,n-1)\]</span>
+<span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的置信区间为：</p>
+<p><span class="math display">\[\left[\frac{1}{F_{1-\alpha/2}(m-1,n-1)}\frac{S_{1m}^{*2}}{S_{2n}^{*2}},\ \frac{1}{F_{\alpha/2}(m-1,n-1)}\frac{S_{1m}^{*2}}{S_{2n}^{*2}}  \right]\]</span></p>
+<p><strong>一些说明</strong></p>
+<ul>
+<li><p>枢轴量法的难点在于寻找枢轴量，没有统一的方法。正态总体下的应用应当熟练掌握。</p></li>
+<li><p>另外一种求置信区间方法叫<strong>统计量方法</strong>，不作要求，感兴趣陈家鼎等编著的教材pp42-46.</p></li>
+<li><p>“最优的置信区间”是否存在？目前尚缺乏对置信区间的优良性讨论。</p></li>
+</ul>
+</div>
+<div id="section-2.3.5" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> 非正态总体参数的区间估计</h3>
+<p>令<span class="math inline">\(\mu=E[X],\sigma^2=Var[X]\)</span>分别为总体<span class="math inline">\(X\)</span>的期望和方差。
+由中心极限定理，</p>
+<p><span class="math display">\[\frac{\bar X-\mu}{\sigma/\sqrt{n}}\stackrel{\cdot}\sim N(0,1).\]</span>
+当<span class="math inline">\(\sigma\)</span>已知时，总体期望<span class="math inline">\(\mu\)</span>的置信度为<span class="math inline">\(1-\alpha\)</span>的区间估计可以近似为</p>
+<p><span class="math display">\[\left[\bar X-u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}, \bar X+u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\right].\]</span>
+如果<span class="math inline">\(\sigma\)</span>未知，可以用样本标准差<span class="math inline">\(S_n\)</span>（或者修正样本差<span class="math inline">\(S_n^*\)</span>）替代<span class="math inline">\(\sigma\)</span>，</p>
+<p><span class="math display">\[\left[\bar X-u_{1-\alpha/2}\frac{S_n}{\sqrt{n}}, \bar X+u_{1-\alpha/2}\frac{S_n}{\sqrt{n}}\right].\]</span></p>
+</div>
+</div>
+<div id="section-2.4" class="section level2">
+<h2><span class="header-section-number">2.4</span> 分布的估计</h2>
+<p>本节考虑分布函数和密度函数的估计，目标是通过样本的观测值构造一种函数来近似这两种函数。本节所介绍的方法不需要知道总体的具体的分布类型，属于非参统计方法。</p>
+<div id="section-2.4.1" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> 分布函数的估计</h3>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-118" class="definition"><strong>定义 2.10  </strong></span>设总体<span class="math inline">\(X\)</span>的样本<span class="math inline">\((X_1,\dots,X_n)\)</span>的一次观测值<span class="math inline">\((x_1,\dots,x_n)\)</span>, 并将它们由小到大排列<span class="math inline">\(x_{(1)}\le x_{(2)}\le \dots\le x_{(n)}\)</span>, 经验分布函数(或称样本分布函数)定义为</p>
+<span class="math display">\[
+F_n(x) =\frac{1}{n}\sum_{i=1}^n 1\{x_i\le x\} = \begin{cases}
+0,&amp;\ x&lt;x_{(1)}\\
+1/n,&amp;\ x_{(1)}\le x&lt;x_{(2)}\\
+2/n,&amp;\ x_{(2)}\le x&lt;x_{(3)}\\
+&amp;\vdots\\
+k/n,&amp;\ x_{(k)}\le x&lt;x_{(k+1)}\\
+&amp;\vdots\\
+1,&amp;\ x&gt;x_{(n)}\\
+\end{cases}.
+\]</span>
+</div>
+
+<p><strong>经验分布函数示意图</strong></p>
+<p><img src="book_files/figure-html/ecdf-1.png" width="672" /></p>
+<p><strong>经验分布函数的性质</strong>
+固定的<span class="math inline">\(x\)</span>和<span class="math inline">\(n\)</span>，<span class="math inline">\(F_n(x)\)</span>表示事件<span class="math inline">\(\{X\le x\}\)</span>的频率，由强大数定律知，</p>
+<p><span class="math display">\[F_n(x)\to P(X\le x)=F(x),\]</span>
+即</p>
+<p><span class="math display">\[P\left(\lim_{n\to\infty}F_n(x)=F(x)\right)=1.\]</span></p>
+<p><strong>格里汶科定理</strong>给出更强的结果（几乎处处一致收敛）:</p>
+<p><span class="math display">\[P\left(\lim_{n\to\infty}\sup_{x\in \mathbb{R}}|F_n(x)-F(x)|=0\right)=1.\]</span></p>
+<p><strong>注</strong>：由此可见，当<span class="math inline">\(n\)</span>相当大时，经验分布函数<span class="math inline">\(F_n(x)\)</span>是母体分布函数<span class="math inline">\(F(x)\)</span>的一个良好近似。数理统计学中一切都以样本为依据，其理由就在于此。</p>
+</div>
+<div id="section-2.4.2" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> 直方图法</h3>
+<p>只考虑一维连续型总体<span class="math inline">\(X\sim f(x)\)</span>。设<span class="math inline">\(X_1,\dots,X_n\)</span>为样本，<span class="math inline">\(R_n(a,b)\)</span>表示落在区间<span class="math inline">\((a,b]\)</span>中的个数。由中值定理得，存在<span class="math inline">\(x_0\in(a,b]\)</span>使得</p>
+<p><span class="math display">\[f(x_0)=\frac 1{b-a}\int_a^b f(x)dx\approx \frac {R_n(a,b)}{n(b-a)}\]</span></p>
+<p>设<span class="math inline">\(-\infty&lt;t_0&lt;t_1&lt;\dots&lt;t_m&lt;\infty\)</span>，<span class="math inline">\(t_{i+1}-t_i=h&gt;0\)</span>. 直方图法的密度估计为：</p>
+<p><span class="math display">\[
+f_n(x)=
+\begin{cases}
+\frac{R_n(t_i,t_{i+1})}{nh},\ x\in(t_i,t_{i+1}],i=0,\dots,m-1\\
+0, x\le t_0,x&gt;t_m
+\end{cases}
+\]</span></p>
+<p>实际上选取<span class="math inline">\(t_0\)</span>为比<span class="math inline">\(X_{(1)}\)</span>略小的数，选取<span class="math inline">\(t_m\)</span>为比<span class="math inline">\(X_{(n)}\)</span>略大的数。<strong>经验法则</strong>：<span class="math inline">\(m\approx 1+3.322\log_{10} n.\)</span></p>
+<p><code>案例</code>：身高数据</p>
+<pre><code>## Warning: package &#39;dslabs&#39; was built under R version
+## 3.5.3</code></pre>
+<p><img src="book_files/figure-html/histplot-1.png" width="672" /></p>
+<p><strong>直方图法的相合性</strong></p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-119" class="theorem"><strong>定理 2.8  </strong></span>设<span class="math inline">\(f(\cdot)\)</span>在点<span class="math inline">\(x\)</span>连续且<span class="math inline">\(\lim_n h_n=0,\lim_n nh_n=\infty\)</span>, 则对任何<span class="math inline">\(\epsilon&gt;0\)</span>有</p>
+<span class="math display">\[\lim_{n\to\infty} P(|f_n(x)-f(x)|\ge \epsilon)=0.\]</span>
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-120" class="theorem"><strong>定理 2.9  </strong></span>设<span class="math inline">\(f(\cdot)\)</span>在<span class="math inline">\(\mathbb{R}\)</span>上一致连续，<span class="math inline">\(\int_{-\infty}^\infty |x|^\delta d x&lt;\infty\)</span>(对某个<span class="math inline">\(\delta&gt;0\)</span>), 且<span class="math inline">\(\lim_n h_n=0,h_n\ge (\ln n)^2/n\)</span>, 则</p>
+<span class="math display">\[P(\lim_{n\to\infty} \sup_x|f_n(x)-f(x)|=0)=1.\]</span>
+</div>
+
+<p>证明陈家鼎等编著的教材pp54-55.</p>
+</div>
+<div id="section-2.4.3" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> 核估计法</h3>
+<p><strong>中心差分</strong>：</p>
+<p><span class="math display">\[f(x)\approx \frac{F(x+h)-F(x-h)}{2h}\approx \frac{F_n(x+h)-F_n(x-h)}{2h}\]</span></p>
+<p><span class="math display">\[\hat{f}_n(x) = \frac{1}{2hn}\sum_{i=1}^n 1\{x-h&lt;X_i\le x+h\}=\frac{1}{2hn}\sum_{i=1}^n K_0\left(\frac{x-X_i}{h}\right)\]</span></p>
+<p>其中</p>
+<p><span class="math display">\[K_0(x)= \frac 12 1\{-1\le x&lt;1\}\]</span></p>
+<p><strong>核函数</strong>：<span class="math inline">\(K(x)\)</span>是<span class="math inline">\(\mathbb{R}\)</span>上的非负函数且满足<span class="math inline">\(\int_{-\infty}^\infty K(x)=1\)</span>.</p>
+<p><strong>核估计</strong>：<span class="math inline">\(\hat{f}_n(x) = \frac{1}{2hn}\sum_{i=1}^n K\left(\frac{x-X_i}{h}\right)\)</span></p>
+<p><strong>常用的核函数</strong></p>
+<ol style="list-style-type: decimal">
+<li>均匀核函数：</li>
+</ol>
+<p><span class="math display">\[K_0(x)= \frac 12 1\{-1\le x\le1\}\]</span></p>
+<p><span class="math display">\[K_1(x)= 1\{-1/2\le x\le1/2\}\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>正态核函数：</li>
+</ol>
+<p><span class="math display">\[K_2(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2}\]</span></p>
+<p><strong>核估计的相合性</strong></p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-121" class="theorem"><strong>定理 2.10  </strong></span>设核函数<span class="math inline">\(K(x)\)</span>满足条件</p>
+<p><span class="math display">\[\int_{-\infty}^\infty (K(x))^2 dx&lt;\infty,\ \lim_{|x|\to \infty} |x|K(x)=0,\]</span></p>
+<p>又密度函数<span class="math inline">\(f\)</span>在点<span class="math inline">\(x\)</span>处连续，且<span class="math inline">\(h_n\to 0\)</span>, <span class="math inline">\(nh_n\to\infty\)</span>, 则对一切<span class="math inline">\(\epsilon&gt;0\)</span>, 有</p>
+<span class="math display">\[\lim_{n\to\infty} P(|\hat{f}_n(x)-f(x)|\ge \epsilon) = 0.\]</span>
+</div>
+
+<p>证明见pp56-58.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-122" class="example"><strong>例 2.25  </strong></span>R软件包<code>dslabs</code>收集了男生和女生的身高数据（单位英寸），由此估计男女身高总体的密度函数。</p>
+</div>
+
+<p><img src="book_files/figure-html/simCI-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="book_files/figure-html/heightplot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><strong>一些说明</strong></p>
+<ol style="list-style-type: decimal">
+<li>收敛速度的比较：在满足一些正则性的条件（如，<span class="math inline">\(h_n\to 0\)</span>, <span class="math inline">\(nh_n\to\infty\)</span>）下，可以证明</li>
+</ol>
+<ul>
+<li>直方图法的均方误差为<span class="math inline">\(O(n^{-2/3})\)</span></li>
+<li>核估计的均方误差为<span class="math inline">\(O(n^{-4/5})\)</span></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>核估计的带宽(bandwidth) <span class="math inline">\(h_n\)</span>如何选取?</li>
+</ol>
+<ul>
+<li>如果选择正态核函数，<strong>经验法则</strong>：<span class="math inline">\(h_n\approx 1.06S_nn^{-1/5}\)</span></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>延伸阅读</li>
+</ol>
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Kernel_density_estimation" class="uri">https://en.wikipedia.org/wiki/Kernel_density_estimation</a></p></li>
+<li><p>Kernel smoothing techniques used in finance</p></li>
+<li><p>used in Approximate Bayesian Computation (ABC)</p></li>
+</ul>
+</div>
+</div>
+<div id="ex3" class="section level2">
+<h2><span class="header-section-number">2.5</span> 本章习题</h2>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-123" class="exercise"><strong>习题 2.1  </strong></span>
+设<span class="math inline">\(X\)</span>的分布密度函数为</p>
+<p><span class="math display">\[f(x)=\frac{1}{2\sigma} e^{-|x|/\sigma}\ (\sigma&gt;0),\]</span></p>
+<p><span class="math inline">\(X_1,\dots,X_n\)</span>是<span class="math inline">\(X\)</span>的样本，求<span class="math inline">\(\sigma\)</span>的最大似然估计。</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-124" class="exercise"><strong>习题 2.2  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>是来自<span class="math inline">\([\theta,\theta+1]\)</span>上均匀分布的样本，其中<span class="math inline">\(\theta\in\mathbb{R}\)</span>, 证明<span class="math inline">\(\theta\)</span>的最大似然估计不止一个，并求出所有的最大似然估计。</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-125" class="exercise"><strong>习题 2.3  </strong></span>
+设随机变量<span class="math inline">\(X\)</span>以均等机会按<span class="math inline">\(N(0,1)\)</span>分布取值和按<span class="math inline">\(N(\mu,\sigma^2)\)</span>分布取值，其中<span class="math inline">\(\mu\in \mathbb{R},\sigma^2&gt;0\)</span>. 这时<span class="math inline">\(X\)</span>的分布密度函数为这两个分布的密度的平均，即</p>
+<p><span class="math display">\[f(x;\mu,\sigma^2) = \frac 12\frac{1}{\sqrt{2\pi}}e^{-x^2/2}+\frac 12\frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/(2\sigma^2)},\]</span></p>
+<p>设<span class="math inline">\(X_1,\dots,X_n\)</span>为此混合分布的简单随机样本，证明<span class="math inline">\(\mu,\sigma^2\)</span>不存在最大似然估计。能否通过矩法估计<span class="math inline">\(\mu,\sigma^2\)</span>？</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-126" class="exercise"><strong>习题 2.4  </strong></span>
+（附加题I，选做）考虑上题的模型。设<span class="math inline">\(Y\)</span>为一随机变量，<span class="math inline">\(Y=1\)</span>表示<span class="math inline">\(X\)</span>来自<span class="math inline">\(N(0,1)\)</span>分布，<span class="math inline">\(Y=0\)</span>表示<span class="math inline">\(X\)</span>来自<span class="math inline">\(N(\mu,\sigma^2)\)</span>分布，即<span class="math inline">\(Y\sim b(1,0.5)\)</span>. 假设我们可以观测<span class="math inline">\(Y_i\)</span>的值，基于样本<span class="math inline">\((X_i,Y_i),i=1,\dots,n\)</span>，是否可以求出<span class="math inline">\(\mu,\sigma^2\)</span>的最大似然估计？事实上，<span class="math inline">\(Y_i\)</span>的值不可观测（通常称为潜变量），此时你有没有更好的办法估计<span class="math inline">\(\mu,\sigma^2\)</span>？</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-127" class="exercise"><strong>习题 2.5  </strong></span>
+（附加题II，选做）若考虑更一般的混合分布：</p>
+<p><span class="math display">\[f(x;\lambda,\mu_1,\sigma_1^2,\mu_2,\sigma_2^2)=\frac{\lambda}{\sqrt{2\pi}\sigma_1}e^{-(x-\mu_1)^2/(2\sigma_1^2)}+\frac{1-\lambda}{\sqrt{2\pi}\sigma_2}e^{-(x-\mu_2)^2/(2\sigma_2^2)}\]</span></p>
+其中<span class="math inline">\(\lambda\in[0,1],\mu_1,\mu_2\in \mathbb{R},\sigma_1^2,\sigma_2^2&gt;0\)</span>, 你能求出未知参数<span class="math inline">\(\lambda,\mu_1,\sigma_1^2,\mu_2,\sigma_2^2\)</span>的矩估计吗？
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-128" class="exercise"><strong>习题 2.6  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>是来自分布密度为</p>
+<p><span class="math display">\[f(x;\theta)=\frac{\Gamma(\theta+1)}{\Gamma(\theta)\Gamma(1)}x^{\theta-1}1\{0\le x\le 1\}\]</span></p>
+<p>的总体的样本，其中<span class="math inline">\(\theta&gt;0\)</span>, 试用矩法估计<span class="math inline">\(\theta\)</span>.</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-129" class="exercise"><strong>习题 2.7  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>是来自分布密度为</p>
+<p><span class="math display">\[f(x;c,\theta)=\frac{1}{2\theta}1\{c-\theta\le x\le c+\theta\}\]</span></p>
+<p>的总体的样本，其中<span class="math inline">\(\theta&gt;0,c\in\mathbb{R}\)</span>, 试用矩法估计<span class="math inline">\(c,\theta\)</span>.</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-130" class="exercise"><strong>习题 2.8  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>为来自参数为<span class="math inline">\(\lambda\)</span>的Poisson分布的样本. 在下列选项中选出用于估计参数<span class="math inline">\(\lambda\)</span>的无偏估计量。( )</p>
+<p>A. <span class="math inline">\(\bar X\)</span></p>
+<p>B. <span class="math inline">\(S_n^{*2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2\)</span></p>
+<p>C. <span class="math inline">\(\frac 1 {n-1}\sum_{i=1}^{n-1}X_i\)</span></p>
+<p>D. <span class="math inline">\(S_n^2=\frac{1}{n}\sum_{i=1}^n(X_i-\bar X)^2\)</span></p>
+<p>E. <span class="math inline">\(\frac{1}2 \bar X + \frac 12 S_n^{*2}\)</span></p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-131" class="exercise"><strong>习题 2.9  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>为来自参数为<span class="math inline">\(\lambda\)</span>的Poisson分布的样本, 已知<span class="math inline">\(\bar X\)</span>是未知参数<span class="math inline">\(\lambda\)</span>的完全统计量。在下列选项中选出用于估计参数<span class="math inline">\(\lambda\)</span>的最有效的估计量。 ( )</p>
+<p>A. <span class="math inline">\(\bar X\)</span></p>
+<p>B. <span class="math inline">\(S_n^{*2}=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar X)^2\)</span></p>
+<p>C. <span class="math inline">\(\frac 1 {n-1}\sum_{i=1}^{n-1}X_i\)</span></p>
+<p>D. <span class="math inline">\(\frac{1}2 \bar X + \frac 12 S_n^{*2}\)</span></p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-132" class="exercise"><strong>习题 2.10  </strong></span>
+设<span class="math inline">\(X,\dots,X_n\)</span>为来自参数为<span class="math inline">\(\lambda\)</span>的Poisson分布的样本，求<span class="math inline">\(\lambda^2\)</span>的无偏估计。已知<span class="math inline">\(\bar X\)</span>是参数<span class="math inline">\(\lambda\)</span>的完全统计量，能否找到<span class="math inline">\(\lambda^2\)</span>的最小方差无偏估计量？</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-133" class="exercise"><strong>习题 2.11  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>为<span class="math inline">\(N(\mu,\sigma^2)\)</span>分布的样本，参数<span class="math inline">\(\mu,\sigma^2\)</span>未知。证明样本方差<span class="math inline">\(S_n^2\)</span>与修正样本方差<span class="math inline">\(S_n^{*2}\)</span>均为<span class="math inline">\(\sigma^2\)</span>的弱相合估计量。</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-134" class="exercise"><strong>习题 2.12  </strong></span>
+设<span class="math inline">\(X_1,\dots,X_n\)</span>为总体<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\mu\)</span>已知，<span class="math inline">\(\sigma^2\)</span>未知。证明<span class="math inline">\(\sigma^2\)</span>的估计量</p>
+<p><span class="math display">\[T(X_1,\dots,X_n)=\frac 1n\sum_{i=1}^n(X_i-\mu)^2\]</span>
+的方差达到C-R不等式的下界。</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-135" class="exercise"><strong>习题 2.13  </strong></span>
+Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a simple random sample taken from the density</p>
+<p><span class="math display">\[f(x;\theta)=\frac{2x}{\theta^2},\quad 0\le x\le \theta.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Find an expression for <span class="math inline">\(\hat\theta_L\)</span>, the maximum likelihood estimator (MLE) for <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Find an expression for <span class="math inline">\(\hat\theta_M\)</span>, the method of moments estimator for <span class="math inline">\(\theta\)</span>.</p></li>
+<li>For the two estimators <span class="math inline">\(\hat\theta_L\)</span> and <span class="math inline">\(\hat\theta_M\)</span>, which one is more efficient in terms of mean squared error (MSE)?</li>
+</ol>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-136" class="exercise"><strong>习题 2.14  </strong></span>设<span class="math inline">\(X_1,\dots,X_n\)</span>是<span class="math inline">\(U(0,\theta)\)</span>的样本，求<span class="math inline">\(\theta\)</span>的置信水平为<span class="math inline">\(1-\alpha\)</span>的置信区间。设得到了<span class="math inline">\(5\)</span>个样本值<span class="math inline">\(0.08,0.28,0.53,0.91,0.89\)</span>, 求<span class="math inline">\(\theta\)</span>的置信水平为<span class="math inline">\(0.95\)</span>的置信区间。</p>
+</div>
+
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-137" class="exercise"><strong>习题 2.15  </strong></span>陈家鼎等编著教材P62第27题
+</div>
+
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-138" class="exercise"><strong>习题 2.16  </strong></span>陈家鼎等编著教材P62第28题
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-139" class="exercise"><strong>习题 2.17  </strong></span>
+分析R软件的<code>dslabs</code>包中的身高数据heights, 利用R软件完成以下问题。</p>
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p>假设整个总体服从正态分布，求期望和方差的95%置信区间。</p></li>
+<li><p>为了判断“正态总体”的假设的合理性，画图比较核估计密度与正态分布密度的差异？</p></li>
+<li><p>假设男生总体与女生总体均服从正态分布（方差相同）且独立，求这两个总体平均水平的差的95%置信区间。可否认为男生总体的平均身高大于女生总体的平均身高？你的理由是什么？</p></li>
+<li><p>为了考察第3问中“男女总体的方差相同”的假设是否合理，不妨求这两个总体的方差比的95%置信区间。并观察该置信区间是否包含1？</p></li>
+</ol>
+<blockquote>
+<p>若无法安装R的包“dslabs”，直接导入数据<a href="data.RData" class="uri">data.RData</a>即可。</p>
+</blockquote>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="test.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

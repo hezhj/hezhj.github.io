@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>数理统计 | Zhijian He</title>
-    <link>/en/courses/stat/</link>
-      <atom:link href="/en/courses/stat/index.xml" rel="self" type="application/rss+xml" />
+    <title>数理统计 | 何志坚</title>
+    <link>/courses/stat/</link>
+      <atom:link href="/courses/stat/index.xml" rel="self" type="application/rss+xml" />
     <description>数理统计</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>Zhijian He 2020</copyright><lastBuildDate>Sun, 09 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>zh-Hans</language><copyright>Zhijian He 2020</copyright><lastBuildDate>Sun, 09 Aug 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>数理统计</title>
-      <link>/en/courses/stat/</link>
+      <link>/courses/stat/</link>
     </image>
     
     <item>
       <title>数理统计</title>
-      <link>/en/courses/stat/hw/</link>
+      <link>/courses/stat/hw/</link>
       <pubDate>Mon, 24 Aug 2020 00:00:00 +0100</pubDate>
-      <guid>/en/courses/stat/hw/</guid>
+      <guid>/courses/stat/hw/</guid>
       <description>&lt;h2 id=&#34;作业说明-&#34;&gt;作业说明 💬&lt;/h2&gt;
 &lt;p&gt;通过长江雨课堂提交作业，一般为每周一次作业，有相应的deadline。学生通过雨课堂（公众号/小程序/电脑端）提交作业。&lt;/p&gt;
 &lt;ul&gt;

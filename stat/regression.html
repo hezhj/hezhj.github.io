@@ -1,0 +1,2974 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 4 章 线性回归 | 数理统计讲义</title>
+  <meta name="description" content="第 4 章 线性回归 | 数理统计讲义" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 4 章 线性回归 | 数理统计讲义" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.jpg" />
+  <meta property="og:description" content="第 4 章 线性回归 | 数理统计讲义" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 4 章 线性回归 | 数理统计讲义" />
+  
+  <meta name="twitter:description" content="第 4 章 线性回归 | 数理统计讲义" />
+  <meta name="twitter:image" content="images/cover.jpg" />
+
+<meta name="author" content="何志坚" />
+
+
+<meta name="date" content="2020-03-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="test.html"/>
+<link rel="next" href="anova.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">数理统计讲义</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e887b4e8b0a2"><i class="fa fa-check"></i>致谢</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e78988e69d83"><i class="fa fa-check"></i>版权</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 绪论</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> 学科介绍</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#section-1.1.1"><i class="fa fa-check"></i><b>1.1.1</b> 统计学的发展简史</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#section-1.1.2"><i class="fa fa-check"></i><b>1.1.2</b> 频率学派与贝叶斯学派</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#section-1.1.3"><i class="fa fa-check"></i><b>1.1.3</b> 统计学专业</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> 基本概念</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#section-1.2.1"><i class="fa fa-check"></i><b>1.2.1</b> 总体</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#section-1.2.2"><i class="fa fa-check"></i><b>1.2.2</b> 样本</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#section-1.2.3"><i class="fa fa-check"></i><b>1.2.3</b> 简单随机抽样</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#section-1.2.4"><i class="fa fa-check"></i><b>1.2.4</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> 概率分布族</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 常用的参数族</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#section-1.3.2"><i class="fa fa-check"></i><b>1.3.2</b> 伽玛分布族</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#section-1.3.3"><i class="fa fa-check"></i><b>1.3.3</b> 贝塔分布族</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#section-1.3.4"><i class="fa fa-check"></i><b>1.3.4</b> 指数型分布族</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 统计量与估计量</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#section-1.5"><i class="fa fa-check"></i><b>1.5</b> 充分统计量</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#section-1.5.1"><i class="fa fa-check"></i><b>1.5.1</b> 因子分解定理</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#section-1.5.2"><i class="fa fa-check"></i><b>1.5.2</b> 因子分解定理的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#section-1.6"><i class="fa fa-check"></i><b>1.6</b> 抽样分布</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#section-1.6.1"><i class="fa fa-check"></i><b>1.6.1</b> 样本均值的抽样分布</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#section-1.6.2"><i class="fa fa-check"></i><b>1.6.2</b> 卡方分布</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#section-1.6.3"><i class="fa fa-check"></i><b>1.6.3</b> 正态总体抽样分布定理</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#t"><i class="fa fa-check"></i><b>1.6.4</b> t分布</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#section-1.6.5"><i class="fa fa-check"></i><b>1.6.5</b> 样本均值与标准差之比的抽样分布</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#f"><i class="fa fa-check"></i><b>1.6.6</b> F分布</a></li>
+<li class="chapter" data-level="1.6.7" data-path="intro.html"><a href="intro.html#section-1.6.7"><i class="fa fa-check"></i><b>1.6.7</b> 两个独立正态总体的抽样分布</a></li>
+<li class="chapter" data-level="1.6.8" data-path="intro.html"><a href="intro.html#section-1.6.8"><i class="fa fa-check"></i><b>1.6.8</b> 顺序统计量</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#section-1.7"><i class="fa fa-check"></i><b>1.7</b> 分位数</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#ex2"><i class="fa fa-check"></i><b>1.8</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="est.html"><a href="est.html"><i class="fa fa-check"></i><b>2</b> 估计</a><ul>
+<li class="chapter" data-level="2.1" data-path="est.html"><a href="est.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 参数估计</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="est.html"><a href="est.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 矩估计法</a></li>
+<li class="chapter" data-level="2.1.2" data-path="est.html"><a href="est.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 最大似然估计法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="est.html"><a href="est.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 矩估计与最大似然估计的对比</a></li>
+<li class="chapter" data-level="2.1.4" data-path="est.html"><a href="est.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 混合正态分布的参数估计</a></li>
+<li class="chapter" data-level="2.1.5" data-path="est.html"><a href="est.html#em"><i class="fa fa-check"></i><b>2.1.5</b> EM算法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="est.html"><a href="est.html#section-2.2"><i class="fa fa-check"></i><b>2.2</b> 估计的优良性标准</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="est.html"><a href="est.html#section-2.2.1"><i class="fa fa-check"></i><b>2.2.1</b> 无偏性</a></li>
+<li class="chapter" data-level="2.2.2" data-path="est.html"><a href="est.html#section-2.2.2"><i class="fa fa-check"></i><b>2.2.2</b> 均方误差</a></li>
+<li class="chapter" data-level="2.2.3" data-path="est.html"><a href="est.html#section-2.2.3"><i class="fa fa-check"></i><b>2.2.3</b> 一致最小方差无偏估计</a></li>
+<li class="chapter" data-level="2.2.4" data-path="est.html"><a href="est.html#section-2.2.4"><i class="fa fa-check"></i><b>2.2.4</b> 统计量的大样本性质</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="est.html"><a href="est.html#section-2.3"><i class="fa fa-check"></i><b>2.3</b> 区间估计</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="est.html"><a href="est.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 区间估计的定义</a></li>
+<li class="chapter" data-level="2.3.2" data-path="est.html"><a href="est.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 枢轴量法</a></li>
+<li class="chapter" data-level="2.3.3" data-path="est.html"><a href="est.html#section-2.3.3"><i class="fa fa-check"></i><b>2.3.3</b> 单个正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.4" data-path="est.html"><a href="est.html#section-2.3.4"><i class="fa fa-check"></i><b>2.3.4</b> 两个独立正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.5" data-path="est.html"><a href="est.html#section-2.3.5"><i class="fa fa-check"></i><b>2.3.5</b> 非正态总体参数的区间估计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="est.html"><a href="est.html#section-2.4"><i class="fa fa-check"></i><b>2.4</b> 分布的估计</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="est.html"><a href="est.html#section-2.4.1"><i class="fa fa-check"></i><b>2.4.1</b> 分布函数的估计</a></li>
+<li class="chapter" data-level="2.4.2" data-path="est.html"><a href="est.html#section-2.4.2"><i class="fa fa-check"></i><b>2.4.2</b> 直方图法</a></li>
+<li class="chapter" data-level="2.4.3" data-path="est.html"><a href="est.html#section-2.4.3"><i class="fa fa-check"></i><b>2.4.3</b> 核估计法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="est.html"><a href="est.html#ex3"><i class="fa fa-check"></i><b>2.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>3</b> 假设检验</a><ul>
+<li class="chapter" data-level="3.1" data-path="test.html"><a href="test.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 女士品茶</a></li>
+<li class="chapter" data-level="3.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.2</b> 基本概念</a></li>
+<li class="chapter" data-level="3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3</b> UMP检验和似然比检验</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.1</b> UMP检验的定义</a></li>
+<li class="chapter" data-level="3.3.2" data-path="test.html"><a href="test.html#section-3.3.2"><i class="fa fa-check"></i><b>3.3.2</b> 似然比检验方法</a></li>
+<li class="chapter" data-level="3.3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.3</b> 正态分布均值的UMP检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="test.html"><a href="test.html#section-3.4"><i class="fa fa-check"></i><b>3.4</b> 单参数指数型分布族</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="test.html"><a href="test.html#section-3.4.1"><i class="fa fa-check"></i><b>3.4.1</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="test.html"><a href="test.html#section-3.5"><i class="fa fa-check"></i><b>3.5</b> 广义似然比检验</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="test.html"><a href="test.html#section-3.5.1"><i class="fa fa-check"></i><b>3.5.1</b> 正态总体的假设检验</a></li>
+<li class="chapter" data-level="3.5.2" data-path="test.html"><a href="test.html#section-3.5.2"><i class="fa fa-check"></i><b>3.5.2</b> 两个独立正态总体的检验</a></li>
+<li class="chapter" data-level="3.5.3" data-path="test.html"><a href="test.html#section-3.5.3"><i class="fa fa-check"></i><b>3.5.3</b> 案例分析：山鸢尾和杂色鸢尾花差异性比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="test.html"><a href="test.html#section-3.6"><i class="fa fa-check"></i><b>3.6</b> 置信区间与假设检验的联系</a></li>
+<li class="chapter" data-level="3.7" data-path="test.html"><a href="test.html#p"><i class="fa fa-check"></i><b>3.7</b> p值</a></li>
+<li class="chapter" data-level="3.8" data-path="test.html"><a href="test.html#section-3.8"><i class="fa fa-check"></i><b>3.8</b> 多重检验</a></li>
+<li class="chapter" data-level="3.9" data-path="test.html"><a href="test.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 伯努利分布的检验</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="test.html"><a href="test.html#i"><i class="fa fa-check"></i><b>3.9.1</b> 单侧检验I</a></li>
+<li class="chapter" data-level="3.9.2" data-path="test.html"><a href="test.html#section-3.9.2"><i class="fa fa-check"></i><b>3.9.2</b> 女士品茶问题求解</a></li>
+<li class="chapter" data-level="3.9.3" data-path="test.html"><a href="test.html#ii"><i class="fa fa-check"></i><b>3.9.3</b> 单侧检验II</a></li>
+<li class="chapter" data-level="3.9.4" data-path="test.html"><a href="test.html#section-3.9.4"><i class="fa fa-check"></i><b>3.9.4</b> 双侧检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="test.html"><a href="test.html#section-3.10"><i class="fa fa-check"></i><b>3.10</b> 拟合优度检验</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="test.html"><a href="test.html#mendel"><i class="fa fa-check"></i><b>3.10.1</b> Mendel的数据</a></li>
+<li class="chapter" data-level="3.10.2" data-path="test.html"><a href="test.html#section-3.10.2"><i class="fa fa-check"></i><b>3.10.2</b> 卡方检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.11</b> 小结</a></li>
+<li class="chapter" data-level="3.12" data-path="test.html"><a href="test.html#ex4"><i class="fa fa-check"></i><b>3.12</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>4</b> 线性回归</a><ul>
+<li class="chapter" data-level="4.1" data-path="regression.html"><a href="regression.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 一元线性模型</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="regression.html"><a href="regression.html#section-4.1.1"><i class="fa fa-check"></i><b>4.1.1</b> 最小二乘估计</a></li>
+<li class="chapter" data-level="4.1.2" data-path="regression.html"><a href="regression.html#section-4.1.2"><i class="fa fa-check"></i><b>4.1.2</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.1.3" data-path="regression.html"><a href="regression.html#section-4.1.3"><i class="fa fa-check"></i><b>4.1.3</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.1.4" data-path="regression.html"><a href="regression.html#section-4.1.4"><i class="fa fa-check"></i><b>4.1.4</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.1.5" data-path="regression.html"><a href="regression.html#section-4.1.5"><i class="fa fa-check"></i><b>4.1.5</b> 置信区间与假设检验</a></li>
+<li class="chapter" data-level="4.1.6" data-path="regression.html"><a href="regression.html#1"><i class="fa fa-check"></i><b>4.1.6</b> 案例分析1</a></li>
+<li class="chapter" data-level="4.1.7" data-path="regression.html"><a href="regression.html#section-4.1.7"><i class="fa fa-check"></i><b>4.1.7</b> 拟合的评估</a></li>
+<li class="chapter" data-level="4.1.8" data-path="regression.html"><a href="regression.html#section-4.1.8"><i class="fa fa-check"></i><b>4.1.8</b> 预测</a></li>
+<li class="chapter" data-level="4.1.9" data-path="regression.html"><a href="regression.html#section-4.1.9"><i class="fa fa-check"></i><b>4.1.9</b> 控制</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="regression.html"><a href="regression.html#section-4.2"><i class="fa fa-check"></i><b>4.2</b> 多元线性模型</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.1</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.2.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.2</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.2.3" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.3</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.2.4" data-path="regression.html"><a href="regression.html#section-4.2.4"><i class="fa fa-check"></i><b>4.2.4</b> 置信区间和假设检验</a></li>
+<li class="chapter" data-level="4.2.5" data-path="regression.html"><a href="regression.html#section-4.2.5"><i class="fa fa-check"></i><b>4.2.5</b> 模型整体的显著性检验</a></li>
+<li class="chapter" data-level="4.2.6" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.6</b> 预测</a></li>
+<li class="chapter" data-level="4.2.7" data-path="regression.html"><a href="regression.html#2"><i class="fa fa-check"></i><b>4.2.7</b> 案例分析2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regression.html"><a href="regression.html#section-4.3"><i class="fa fa-check"></i><b>4.3</b> 线性模型的推广</a></li>
+<li class="chapter" data-level="4.4" data-path="regression.html"><a href="regression.html#section-4.4"><i class="fa fa-check"></i><b>4.4</b> 回归诊断</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="regression.html"><a href="regression.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 动机</a></li>
+<li class="chapter" data-level="4.4.2" data-path="regression.html"><a href="regression.html#section-4.4.2"><i class="fa fa-check"></i><b>4.4.2</b> 残差的定义和性质</a></li>
+<li class="chapter" data-level="4.4.3" data-path="regression.html"><a href="regression.html#section-4.4.3"><i class="fa fa-check"></i><b>4.4.3</b> 残差图</a></li>
+<li class="chapter" data-level="4.4.4" data-path="regression.html"><a href="regression.html#section-4.4.4"><i class="fa fa-check"></i><b>4.4.4</b> 残差诊断的思路</a></li>
+<li class="chapter" data-level="4.4.5" data-path="regression.html"><a href="regression.html#box-cox"><i class="fa fa-check"></i><b>4.4.5</b> 案例分析：基于Box-Cox变换</a></li>
+<li class="chapter" data-level="4.4.6" data-path="regression.html"><a href="regression.html#section-4.4.6"><i class="fa fa-check"></i><b>4.4.6</b> 离群值</a></li>
+<li class="chapter" data-level="4.4.7" data-path="regression.html"><a href="regression.html#section-4.4.7"><i class="fa fa-check"></i><b>4.4.7</b> 变量选择</a></li>
+<li class="chapter" data-level="4.4.8" data-path="regression.html"><a href="regression.html#lasso"><i class="fa fa-check"></i><b>4.4.8</b> LASSO</a></li>
+<li class="chapter" data-level="4.4.9" data-path="regression.html"><a href="regression.html#section-4.4.9"><i class="fa fa-check"></i><b>4.4.9</b> 回归分析与因果分析</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="regression.html"><a href="regression.html#ex5"><i class="fa fa-check"></i><b>4.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>5</b> 方差分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="anova.html"><a href="anova.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 引言</a></li>
+<li class="chapter" data-level="5.2" data-path="anova.html"><a href="anova.html#section-5.2"><i class="fa fa-check"></i><b>5.2</b> 单因子方差分析</a></li>
+<li class="chapter" data-level="5.3" data-path="anova.html"><a href="anova.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 两因子方差分析</a></li>
+<li class="chapter" data-level="5.4" data-path="anova.html"><a href="anova.html#-2"><i class="fa fa-check"></i><b>5.4</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>6</b> 综合练习</a><ul>
+<li class="chapter" data-level="6.1" data-path="exam.html"><a href="exam.html#section-6.1"><i class="fa fa-check"></i><b>6.1</b> 2018秋季试卷</a></li>
+<li class="chapter" data-level="6.2" data-path="exam.html"><a href="exam.html#section-6.2"><i class="fa fa-check"></i><b>6.2</b> 2018秋季试卷答案</a></li>
+<li class="chapter" data-level="6.3" data-path="exam.html"><a href="exam.html#section-6.3"><i class="fa fa-check"></i><b>6.3</b> 2019春季试卷</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="http://www2.scut.edu.cn/math/2018/0118/c14638a254123/page.htm" target="blank">版权归作者所有</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">数理统计讲义</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regression" class="section level1">
+<h1><span class="header-section-number">第 4 章</span> 线性回归</h1>
+<p>本章的R代码见：<a href="https://rstudio.cloud/project/798623">https://rstudio.cloud/project/798617</a></p>
+<div id="section-4.1" class="section level2">
+<h2><span class="header-section-number">4.1</span> 一元线性模型</h2>
+<p>The linear model is given by</p>
+<p><span class="math display">\[y_i=\beta_0+\beta_1x_i+\epsilon_i,\ i=1,\dots,n.\]</span></p>
+<ul>
+<li><span class="math inline">\(\epsilon_i\)</span> are random (need some assumptions)</li>
+<li><span class="math inline">\(x_i\)</span> are <strong>fixed</strong> (<em>independent/predictor</em> variable)</li>
+<li><span class="math inline">\(y_i\)</span> are random (<em>dependent/response</em> variable)</li>
+<li><span class="math inline">\(\beta_0\)</span> is the <em>intercept</em></li>
+<li><span class="math inline">\(\beta_1\)</span> is the <em>slope</em></li>
+</ul>
+<div id="section-4.1.1" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> 最小二乘估计</h3>
+<p>Choose <span class="math inline">\(\beta_0,\beta_1\)</span> to minimize</p>
+<p><span class="math display">\[Q(\beta_0,\beta_1) = \sum_{i=1}^n(y_i-\beta_0-\beta_1x_i)^2.\]</span></p>
+<p>The minimizers <span class="math inline">\(\hat\beta_0,\hat\beta_1\)</span> satisfy</p>
+<p><span class="math display">\[
+\begin{cases}
+\frac{\partial Q}{\partial \beta_0} = -2\sum_{i=1}^n(y_i-\hat\beta_0-\hat\beta_1x_i)=0\\
+\frac{\partial Q}{\partial \beta_1} = -2\sum_{i=1}^n(y_i-\hat\beta_0-\hat\beta_1x_i)x_i=0
+\end{cases}
+\]</span></p>
+<p>This gives</p>
+<p><span class="math display">\[\hat\beta_1 = \frac{\sum_{i=1}^n(y_i-\bar y)x_i}{\sum_{i=1}^n(x_i-\bar x)x_i},\ \hat\beta_0=\bar y-\hat\beta_1\bar x.\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[\ell_{xx} = \sum_{i=1}^n(x_i-\bar x)^2,\]</span> <span class="math display">\[\ell_{yy} = \sum_{i=1}^n(y_i-\bar y)^2,\]</span> <span class="math display">\[\ell_{xy} = \sum_{i=1}^n(x_i-\bar x)(y_i-\bar y).\]</span></p>
+<p>We thus have</p>
+<p><span class="math display">\[\hat\beta_1 = \frac{\sum_{i=1}^n(y_i-\bar y)(x_i-\bar x)}{\sum_{i=1}^n(x_i-\bar x)(x_i-\bar x)}=\frac{\ell_{xy}}{\ell_{xx}}=\frac{1}{\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)y_i.\]</span></p>
+<p><code>Regression function</code>: <span class="math inline">\(\hat y=\hat\beta_0+\hat\beta_1x\)</span>.</p>
+</div>
+<div id="section-4.1.2" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> 期望和方差</h3>
+<p><strong>Assumption A1</strong>: <span class="math inline">\(E[\epsilon_i]=0,i=1,\dots,n\)</span>.</p>
+
+<div class="theorem">
+<span id="thm:thm1" class="theorem"><strong>定理 4.1  </strong></span>Under Assumption A1, <span class="math inline">\(\hat\beta_0,\hat\beta_1\)</span> are unbiased estimators for <span class="math inline">\(\beta_0,\beta_1\)</span>, respectively.
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 
+<span class="math display">\[\begin{align*}
+E[\hat \beta_1] &amp;= \frac{1}{\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)E[y_i]\\
+&amp;=\frac{1}{\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)(\beta_0+\beta_1x_i)\\
+&amp;=\frac{\beta_0}{\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)+\frac{\beta_1}{\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)x_i\\
+&amp;=\frac{\beta_1}{\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)(x_i-\bar x)\\
+&amp;=\beta_1
+\end{align*}\]</span></p>
+<p><span class="math display">\[\begin{align*}
+E[\hat \beta_0] &amp;= E[\bar y-\hat\beta_1\bar x]=E[\bar y]-\beta_1\bar x=\beta_0+\beta_1\bar x-\beta_1\bar x=\beta_0.
+\end{align*}\]</span></p>
+</div>
+
+<p><strong>Assumption A2</strong>: <span class="math inline">\(Cov(\epsilon_i,\epsilon_j)=\sigma^21\{i=j\}\)</span>.</p>
+
+<div class="theorem">
+<p><span id="thm:thm2" class="theorem"><strong>定理 4.2  </strong></span>Under Assumption A2, we have</p>
+<p><span class="math display">\[Var[\hat\beta_0] = \left(\frac 1n+\frac{\bar x^2}{\ell_{xx}}\right)\sigma^2,\]</span></p>
+<p><span class="math display">\[Var[\hat\beta_1] =\frac{\sigma^2}{\ell_{xx}},\]</span></p>
+<p><span class="math display">\[Cov(\hat\beta_0,\hat\beta_1) = \frac{-\bar x}{\ell_{xx}}\sigma^2.\]</span></p>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 
+Since <span class="math inline">\(Cov(\epsilon_i,\epsilon_j)=0\)</span> for any <span class="math inline">\(i\neq j\)</span>, <span class="math inline">\(Cov(y_i,y_j)=0\)</span>. We thus have</p>
+<p><span class="math display">\[\begin{align*}
+Var[\hat\beta_1] &amp;= \frac{1}{\ell_{xx}^2}\sum_{i=1}^n(x_i-\bar x)^2Var[y_i]\\
+&amp;= \frac{\sigma^2}{\ell_{xx}^2}\sum_{i=1}^n(x_i-\bar x)^2=\frac{\sigma^2}{\ell_{xx}}.
+\end{align*}\]</span></p>
+<p>We next show that <span class="math inline">\(Cov(\bar y,\hat \beta_1)=0\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+Cov(\bar y,\hat \beta_1) &amp;= Cov\left(\frac{1}{n}\sum_{i=1}^n y_i,\frac{1}{\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)y_i\right)\\
+&amp;=\frac{1}{n\ell_{xx}}Cov\left(\sum_{i=1}^n y_i,\sum_{i=1}^n(x_i-\bar x)y_i\right)\\
+&amp;=\frac{1}{n\ell_{xx}}\sum_{i=1}^nCov(y_i,(x_i-\bar x)y_i)\\
+&amp;=\frac{1}{n\ell_{xx}}\sum_{i=1}^n(x_i-\bar x)\sigma^2 = 0.
+\end{align*}\]</span></p>
+<p><span class="math display">\[Var[\hat\beta_0] = Var[\bar y-\hat\beta_1\bar x]=Var[\bar y]+Var[\hat \beta_1\bar x]=\frac{\sigma^2}{n}+\frac{\bar x^2\sigma^2}{\ell_{xx}}.\]</span></p>
+<p><span class="math display">\[Cov(\hat\beta_0,\hat\beta_1) = Cov(\bar y-\hat\beta_1\bar x,\hat\beta_1) = -\bar x Var[\hat\beta_1]=\frac{-\bar x}{\ell_{xx}}\sigma^2.\]</span></p>
+</div>
+
+<blockquote>
+<p>So bigger <span class="math inline">\(n\)</span> is better. Get a bigger sample size if you can. Smaller <span class="math inline">\(\sigma\)</span> is better. The most interesting one is that bigger <span class="math inline">\(\ell_{xx}\)</span> is better. The more spread out the <span class="math inline">\(x_i\)</span> are the better we can
+estimate the slope <span class="math inline">\(\beta_1\)</span>. When you’re picking the <span class="math inline">\(x_i\)</span>, if you can spread them out more, then it is more informative.</p>
+</blockquote>
+</div>
+<div id="section-4.1.3" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> 误差项的方差的估计</h3>
+<p>For Assumption A2, it is common that the variance <span class="math inline">\(\sigma^2\)</span> is unknown.
+The next theorem gives an unbiased estimate of <span class="math inline">\(\sigma^2\)</span>.</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-191" class="definition"><strong>定义 4.1  </strong></span>The sum of squared errors (SSE) is defined by</p>
+<p><span class="math display">\[S_e^2 = \sum_{i=1}^n(y_i-\hat\beta_0-\hat\beta_1x_i)^2.\]</span></p>
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:thm3" class="theorem"><strong>定理 4.3  </strong></span>Let</p>
+<span class="math display">\[\hat{\sigma}^2 := \frac{Q(\hat \beta_0,\hat\beta_1)}{n-2}=\frac{\sum_{i=1}^n(y_i-\hat\beta_0-\hat\beta_1x_i)^2}{n-2}=\frac{S_e^2}{n-2}.\]</span>
+Under Assumptions A1 and A2, we have <span class="math inline">\(E[\hat\sigma^2]=\sigma^2\)</span>.
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> Let <span class="math inline">\(\hat y_i = \hat\beta_0+\hat\beta_1x_i=\bar y+\hat\beta_1(x_i-\bar x)\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+E[Q(\hat \beta_0,\hat\beta_1)] &amp;= \sum_{i=1}^nE[(y_i-\hat y_i)^2]=\sum_{i=1}^nVar[y_i-\hat y_i]+(E[y_i]-E[\hat y_i])^2\\
+&amp;=\sum_{i=1}^n[Var[y_i]+Var[\hat y_i]-2Cov(y_i,\hat y_i)].
+\end{align*}\]</span></p>
+<p><span class="math display">\[\begin{align*}
+Var[\hat y_i]&amp;= Var[\hat\beta_0+\hat\beta_1x_i]=Var[\bar y+\hat\beta_1(x_i-\bar x)]\\
+&amp;=Var[\bar y]+(x_i-\bar x)^2Var[\hat\beta_1]\\
+&amp;=\frac{\sigma^2}{n}+\frac{(x_i-\bar x)^2\sigma^2}{\ell_{xx}}.
+\end{align*}\]</span></p>
+<p><span class="math display">\[\begin{align*}
+Cov(y_i,\hat y_i)  &amp;= Cov(\beta_0+\beta_1x_i+\epsilon_i, \bar y+\hat\beta_1(x_i-\bar x))\\
+&amp;=Cov(\epsilon_i,\bar y)+(x_i-\bar x)Cov(\epsilon_i,\hat\beta_1)\\
+&amp;=\frac{\sigma^2}{n}+\frac{(x_i-\bar x)^2\sigma^2}{\ell_{xx}}.
+\end{align*}\]</span></p>
+<p>As a result, we have</p>
+<p><span class="math display">\[E[Q(\hat \beta_0,\hat\beta_1)] = \sum_{i=1}^n \left[\sigma^2-\frac{\sigma^2}{n}-\frac{(x_i-\bar x)^2\sigma^2}{\ell_{xx}}\right]=(n-2)\sigma^2.\]</span></p>
+</div>
+
+</div>
+<div id="section-4.1.4" class="section level3">
+<h3><span class="header-section-number">4.1.4</span> 抽样分布定理</h3>
+<p><strong>Assumption B</strong>: <span class="math inline">\(\epsilon_i\stackrel{iid}{\sim}N(0,\sigma^2),i=1,\dots,n\)</span>.</p>
+<blockquote>
+<p>Assumption B leads to Assumptions A1 and A2.</p>
+</blockquote>
+
+<div class="theorem">
+<p><span id="thm:thm4" class="theorem"><strong>定理 4.4  </strong></span>Under Assumption B, we have</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\hat\beta_0\sim N(\beta_0,(\frac 1n+\frac{\bar x^2}{\ell_{xx}})\sigma^2)\)</span></p></li>
+<li><p><span class="math inline">\(\hat\beta_1\sim N(\beta_1,\frac{\sigma^2}{\ell_{xx}})\)</span></p></li>
+<li><p><span class="math inline">\(\frac{(n-2)\hat\sigma^2}{\sigma^2}=\frac{S_e^2}{\sigma^2}\sim \chi^2(n-2)\)</span></p></li>
+<li><span class="math inline">\(\hat\sigma^2\)</span> is independent of <span class="math inline">\((\hat\beta_0,\hat\beta_1)\)</span>.</li>
+</ol>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>证明. </em></span> Under Assumption B, <span class="math inline">\(y_i=\beta_0+\beta_1x_i+\epsilon_i\sim N(\beta_0+\beta_1x_i,\sigma^2)\)</span> independently. Both <span class="math inline">\(\hat\beta_0,\hat\beta_1\)</span> are linear combinations of <span class="math inline">\(y_i\)</span>s. Consequently, they are normally distributed. We have known their expected values and variances from Theorems <a href="regression.html#thm:thm1">4.1</a> and <a href="regression.html#thm:thm2">4.2</a>. The claims (1) and (2) are thus verified. The proofs of claims (3) and (4) are deferred to the general case.
+</div>
+
+<blockquote>
+<p>It is <span class="math inline">\(n-2\)</span> degrees of freedom because we have fit two parameters to the <span class="math inline">\(n\)</span> data points.</p>
+</blockquote>
+</div>
+<div id="section-4.1.5" class="section level3">
+<h3><span class="header-section-number">4.1.5</span> 置信区间与假设检验</h3>
+<p>For known <span class="math inline">\(\sigma\)</span> we can make tests and confidence
+intervals using</p>
+<p><span class="math display">\[\frac{\hat\beta_1-\beta_1}{\sigma/\sqrt{\ell_{xx}}}\sim N(0,1).\]</span></p>
+<p>The <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval for <span class="math inline">\(\beta_1\)</span> is given by <span class="math inline">\(\hat\beta_1\pm u_{1-\alpha/2}\sigma/\sqrt{\ell_{xx}}\)</span>. For testing</p>
+<p><span class="math display">\[H_0:\beta_1=\beta_1^*\ vs.\ H_1:\beta_1\neq\beta_1^*,\]</span></p>
+<p>we reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|\hat\beta_1-\beta_1^*|&gt;u_{1-\alpha/2}\sigma/\sqrt{\ell_{xx}}\)</span> with the most popular hypothesized value being <span class="math inline">\(\beta_1^*=0\)</span> (i.e., the regession function is <strong>significant</strong> or not at significance level <span class="math inline">\(\alpha\)</span>.)</p>
+<p>In the more realistic setting of unknown <span class="math inline">\(\sigma\)</span>, so long as <span class="math inline">\(n \ge 3\)</span>, using claims (2-4) gives</p>
+<p><span class="math display">\[\frac{\hat\beta_1-\beta_1}{\hat{\sigma}/\sqrt{\ell_{xx}}}\sim t(n-2).\]</span></p>
+<p>The <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval for <span class="math inline">\(\beta_1\)</span> is <span class="math inline">\(\hat\beta_1\pm t_{1-\alpha/2}(n-2)\hat{\sigma}/\sqrt{\ell_{xx}}\)</span>. For testing</p>
+<p><span class="math display">\[H_0:\beta_1=\beta_1^*\ vs.\ H_1:\beta_1\neq\beta_1^*,\]</span></p>
+<p>we reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|\hat\beta_1-\beta_1^*|&gt;t_{1-\alpha/2}(n-2)\hat\sigma/\sqrt{\ell_{xx}}\)</span>.</p>
+<p>For drawing inferences about <span class="math inline">\(\beta_0\)</span>, we can use
+<span class="math display">\[\frac{\hat\beta_0-\beta_0}{\sigma\sqrt{1/n+\bar x^2/\ell_{xx}}}\sim N(0,1),\]</span></p>
+<p><span class="math display">\[\frac{\hat\beta_0-\beta_0}{\hat\sigma\sqrt{1/n+\bar x^2/\ell_{xx}}}\sim t(n-2).\]</span></p>
+<p>The <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval for <span class="math inline">\(\sigma^2\)</span> is</p>
+<p><span class="math display">\[\left[\frac{(n-2)\hat\sigma^2}{\chi_{1-\alpha/2}^2(n-2)},\frac{(n-2)\hat\sigma^2}{\chi_{\alpha/2}^2(n-2)}\right]=\left[\frac{S_e^2}{\chi_{1-\alpha/2}^2(n-2)},\frac{S_e^2}{\chi_{\alpha/2}^2(n-2)}\right].\]</span></p>
+</div>
+<div id="1" class="section level3">
+<h3><span class="header-section-number">4.1.6</span> 案例分析1</h3>
+<p>A manufacturer of air conditioning units is having assembly problems due to
+the failure of a connecting rod (连接杆) to meet finished-weight specifications. Too many
+rods are being completely tooled, then rejected as overweight. To reduce that
+cost, the company’s quality-control department wants to quantify the relationship
+between the weight of the <strong>finished rod</strong>, <span class="math inline">\(y\)</span>, and that of the <strong>rough casting</strong> (毛坯铸件), <span class="math inline">\(x\)</span>. Castings likely to produce rods that are too heavy can then be discarded
+before undergoing the final (and costly) tooling process. The data are displayed below.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">rod =<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">  <span class="dt">id =</span> <span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>),</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">  <span class="dt">rough_weight =</span> <span class="kw">c</span>(<span class="fl">2.745</span>, <span class="fl">2.700</span>, <span class="fl">2.690</span>, <span class="fl">2.680</span>, <span class="fl">2.675</span>,                        </a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">                   <span class="fl">2.670</span>, <span class="fl">2.665</span>, <span class="fl">2.660</span>, <span class="fl">2.655</span>, <span class="fl">2.655</span>,                        </a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">                   <span class="fl">2.650</span>, <span class="fl">2.650</span>, <span class="fl">2.645</span>, <span class="fl">2.635</span>, <span class="fl">2.630</span>,</a>
+<a class="sourceLine" id="cb26-6" data-line-number="6">                   <span class="fl">2.625</span>, <span class="fl">2.625</span>, <span class="fl">2.620</span>, <span class="fl">2.615</span>, <span class="fl">2.615</span>,                        </a>
+<a class="sourceLine" id="cb26-7" data-line-number="7">                   <span class="fl">2.615</span>, <span class="fl">2.610</span>, <span class="fl">2.590</span>, <span class="fl">2.590</span>, <span class="fl">2.565</span>),</a>
+<a class="sourceLine" id="cb26-8" data-line-number="8"><span class="dt">finished_weight =</span> <span class="kw">c</span>(<span class="fl">2.080</span>, <span class="fl">2.045</span>, <span class="fl">2.050</span>, <span class="fl">2.005</span>, <span class="fl">2.035</span>,                        </a>
+<a class="sourceLine" id="cb26-9" data-line-number="9">                    <span class="fl">2.035</span>, <span class="fl">2.020</span>, <span class="fl">2.005</span>, <span class="fl">2.010</span>, <span class="fl">2.000</span>, </a>
+<a class="sourceLine" id="cb26-10" data-line-number="10">                    <span class="fl">2.000</span>, <span class="fl">2.005</span>, <span class="fl">2.015</span>, <span class="fl">1.990</span>, <span class="fl">1.990</span>, </a>
+<a class="sourceLine" id="cb26-11" data-line-number="11">                    <span class="fl">1.995</span>, <span class="fl">1.985</span>, <span class="fl">1.970</span>, <span class="fl">1.985</span>, <span class="fl">1.990</span>,                        </a>
+<a class="sourceLine" id="cb26-12" data-line-number="12">                    <span class="fl">1.995</span>, <span class="fl">1.990</span>, <span class="fl">1.975</span>, <span class="fl">1.995</span>, <span class="fl">1.955</span>)</a>
+<a class="sourceLine" id="cb26-13" data-line-number="13">)</a>
+<a class="sourceLine" id="cb26-14" data-line-number="14">knitr<span class="op">::</span><span class="kw">kable</span>(rod, <span class="dt">caption =</span> <span class="st">&quot;rough weight vs. finished weight&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:roddata">表 4.1: </span>rough weight vs. finished weight</caption>
+<thead>
+<tr class="header">
+<th align="right">id</th>
+<th align="right">rough_weight</th>
+<th align="right">finished_weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2.745</td>
+<td align="right">2.080</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">2.700</td>
+<td align="right">2.045</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2.690</td>
+<td align="right">2.050</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2.680</td>
+<td align="right">2.005</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">2.675</td>
+<td align="right">2.035</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">2.670</td>
+<td align="right">2.035</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">2.665</td>
+<td align="right">2.020</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">2.660</td>
+<td align="right">2.005</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">2.655</td>
+<td align="right">2.010</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">2.655</td>
+<td align="right">2.000</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">2.650</td>
+<td align="right">2.000</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">2.650</td>
+<td align="right">2.005</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">2.645</td>
+<td align="right">2.015</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">2.635</td>
+<td align="right">1.990</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">2.630</td>
+<td align="right">1.990</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">2.625</td>
+<td align="right">1.995</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">2.625</td>
+<td align="right">1.985</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">2.620</td>
+<td align="right">1.970</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">2.615</td>
+<td align="right">1.985</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">2.615</td>
+<td align="right">1.990</td>
+</tr>
+<tr class="odd">
+<td align="right">21</td>
+<td align="right">2.615</td>
+<td align="right">1.995</td>
+</tr>
+<tr class="even">
+<td align="right">22</td>
+<td align="right">2.610</td>
+<td align="right">1.990</td>
+</tr>
+<tr class="odd">
+<td align="right">23</td>
+<td align="right">2.590</td>
+<td align="right">1.975</td>
+</tr>
+<tr class="even">
+<td align="right">24</td>
+<td align="right">2.590</td>
+<td align="right">1.995</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">2.565</td>
+<td align="right">1.955</td>
+</tr>
+</tbody>
+</table>
+<p>Consider the linear model</p>
+<p><span class="math display">\[y_i=\beta_0+\beta_1x_i+\epsilon_i,\ \epsilon_i\stackrel{iid}{\sim}N(0,\sigma^2).\]</span></p>
+<p>The observed data gives <span class="math inline">\(\bar x = 2.643\)</span>, <span class="math inline">\(\bar y=2.0048\)</span>, <span class="math inline">\(\ell_{xx}=0.0367\)</span>, <span class="math inline">\(\ell_{xy}=0.023565\)</span>, <span class="math inline">\(\hat\sigma = 0.0113\)</span>.
+The least square estimates are</p>
+<p><span class="math display">\[\hat\beta_1=\frac{\ell_{xy}}{\ell_{xx}}=\frac{0.023565}{0.0367}=0.642,\ \hat\beta_0=\bar y-\hat\beta_1\bar x=0.308.\]</span></p>
+<p>The regession function <span class="math inline">\(\hat y = 0.308+0.642 x\)</span>; see the blue line given below.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">attach</span>(rod)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw">plot</span>(rough_weight,finished_weight,<span class="dt">type=</span><span class="st">&quot;p&quot;</span>,<span class="dt">pch=</span><span class="dv">16</span>,</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">     <span class="dt">xlab =</span> <span class="st">&quot;Rough Weight&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Finished Weight&quot;</span>)</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">lm.rod =<span class="st"> </span><span class="kw">lm</span>(finished_weight<span class="op">~</span>rough_weight)</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="kw">abline</span>(<span class="kw">coef</span>(lm.rod),<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="book_files/figure-html/summaryrod-1.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">summary</span>(lm.rod) <span class="co">#output the results</span></a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = finished_weight ~ rough_weight)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.02356 -0.00824  0.00107  0.00818  0.02423 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     0.308      0.156    1.97    0.061 .  
+## rough_weight    0.642      0.059   10.87  1.5e-10 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.0113 on 23 degrees of freedom
+## Multiple R-squared:  0.837,  Adjusted R-squared:  0.83 
+## F-statistic:  118 on 1 and 23 DF,  p-value: 1.54e-10</code></pre>
+</div>
+<div id="section-4.1.7" class="section level3">
+<h3><span class="header-section-number">4.1.7</span> 拟合的评估</h3>
+<p>As an aid in assessing the quality of the fit, we will make extensive use of the residuals,
+which are the differences between the observed and fitted values:</p>
+<p><span class="math display">\[\hat \epsilon_i = y_i-\hat\beta_0-\hat\beta_1x_i,\ i=1,\dots,n.\]</span></p>
+<p>It is most useful to examine the residuals graphically. Plots of the residuals versus the
+<span class="math inline">\(x\)</span> values may reveal systematic misfit or ways in which the data do not conform to
+the fitted model. Ideally, the residuals should show no relation to the <span class="math inline">\(x\)</span> values, and the plot should look like a horizontal blur. The residuals for case study 1 are plotted below.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">plot</span>(lm.rod<span class="op">$</span>fitted.values,lm.rod<span class="op">$</span>residuals,<span class="st">&quot;p&quot;</span>,</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">     <span class="dt">xlab=</span><span class="st">&quot;Fitted values&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Residuals&quot;</span>)</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-194-1.png" width="672" />
+Standardized Residuals are graphed below. The key command is <code>rstandard</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">plot</span>(lm.rod<span class="op">$</span>fitted.values,<span class="kw">rstandard</span>(lm.rod),<span class="st">&quot;p&quot;</span>,</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">     <span class="dt">xlab=</span><span class="st">&quot;Fitted values&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;Standardized Residuals&quot;</span>)</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">5</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-195-1.png" width="672" /></p>
+</div>
+<div id="section-4.1.8" class="section level3">
+<h3><span class="header-section-number">4.1.8</span> 预测</h3>
+<p><strong>Drawing Inferences about <span class="math inline">\(E[y_{n+1}]\)</span></strong></p>
+<p>For a given <span class="math inline">\(x_{n+1}\)</span>, we want to estimate the expected value of <span class="math inline">\(y_{n+1}\)</span>, i.e., <span class="math inline">\(E[y_{n+1}]=\beta_0+\beta_1x_{n+1}.\)</span> A natural unbiased estimate is <span class="math inline">\(\hat y_{n+1} = \hat\beta_0+\hat\beta_1x_{n+1}\)</span>. From the proof of Theorem <a href="regression.html#thm:thm3">4.3</a>, we have the variance</p>
+<p><span class="math display">\[Var[\hat y_{n+1}] = \left(\frac{1}{n}+\frac{(x_{n+1}-\bar x)^2}{\ell_{xx}}\right)\sigma^2.\]</span></p>
+<p>Under Assumption B, by Theorem <a href="regression.html#thm:thm4">4.4</a>, we have</p>
+<p><span class="math display">\[\hat y_{n+1}\sim N(\beta_0+\beta_1x_{n+1},(1/n+(x_{n+1}-\bar x)^2/\ell_{xx})\sigma^2),\]</span></p>
+<p><span class="math display">\[\frac{\hat y_{n+1}-E[y_{n+1}]}{\hat{\sigma}\sqrt{1/n+(x_{n+1}-\bar x)^2/\ell_{xx}}}\sim t(n-2)\]</span></p>
+<p>We thus have the following results.</p>
+
+<div class="theorem">
+<p><span id="thm:thm5" class="theorem"><strong>定理 4.5  </strong></span>Suppose Assumption B is satisfied. Then we have</p>
+<p><span class="math display">\[\hat y_{n+1} = \hat\beta_0+\hat\beta_1x_{n+1} \sim N(\beta_0+\beta_1x_{n+1},[1/n+(x_{n+1}-\bar x)^2/\ell_{xx}]\sigma^2).\]</span></p>
+</div>
+
+<p>A <span class="math inline">\(100(1−\alpha)\%\)</span> confidence interval for <span class="math inline">\(E[y_{n+1}]=\beta_0+\beta_1x_{n+1}\)</span> is
+given by</p>
+<p><span class="math display">\[\hat y_{n+1}\pm t_{1-\alpha/2}(n-2)\hat{\sigma}\sqrt{\frac{1}{n}+\frac{(x_{n+1}-\bar x)^2}{\ell_{xx}}}.\]</span></p>
+<blockquote>
+<p>Notice from the formula in Theorem <a href="regression.html#thm:thm5">4.5</a> that the width of a confidence
+interval for <span class="math inline">\(E[y_{n+1}]\)</span> increases as the value of <span class="math inline">\(x_{n+1}\)</span> becomes more extreme. That
+is, we are better able to predict the location of the regression line for an <span class="math inline">\(x_{n+1}\)</span>-value
+close to <span class="math inline">\(\bar x\)</span> than we are for <span class="math inline">\(x_{n+1}\)</span>-values that are either very small or very large.</p>
+</blockquote>
+<p>For case study 1, we plot the lower and upper limits for the <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(E[y_{n+1}]\)</span>.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">x =<span class="st"> </span><span class="kw">seq</span>(<span class="fl">2.5</span>,<span class="fl">2.8</span>,<span class="dt">by=</span><span class="fl">0.001</span>)</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">newdata =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">rough_weight=</span> x)</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">pred_x =<span class="st"> </span><span class="kw">predict</span>(lm.rod,newdata,<span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb32-5" data-line-number="5"><span class="kw">matplot</span>(x,pred_x,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>),<span class="dt">lwd=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb32-7" data-line-number="7">        <span class="dt">xlab=</span><span class="st">&quot;Rough Weight&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Finished Weight&quot;</span>)</a>
+<a class="sourceLine" id="cb32-8" data-line-number="8"><span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">mean</span>(rough_weight),<span class="dt">lty=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb32-9" data-line-number="9"><span class="kw">points</span>(rough_weight,finished_weight,<span class="dt">pch=</span><span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb32-10" data-line-number="10"><span class="kw">legend</span>(<span class="fl">2.5</span>,<span class="fl">2.1</span>,<span class="kw">c</span>(<span class="st">&quot;Fitted&quot;</span>,<span class="st">&quot;Lower limit&quot;</span>,<span class="st">&quot;Upper limit&quot;</span>),</a>
+<a class="sourceLine" id="cb32-11" data-line-number="11">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/cibynormal-1.png" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="kw">ggplot</span>(rod,<span class="kw">aes</span>(<span class="dt">x=</span>rough_weight,<span class="dt">y=</span>finished_weight)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm) <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="figure"><span id="fig:cibyggplot"></span>
+<img src="book_files/figure-html/cibyggplot-1.png" alt="CI by ggplot" width="672" />
+<p class="caption">
+图 4.1: CI by ggplot
+</p>
+</div>
+<p><strong>Drawing Inferences about Future Observations</strong></p>
+<p>We now give a <strong>prediction interval</strong> for the future observation <span class="math inline">\(y_{n+1}\)</span> rather than its expected value <span class="math inline">\(E[y_{n+1}]\)</span>. Note that here <span class="math inline">\(y_{n+1}\)</span> is no longer a fixed parameter, which is assumed to be independent of <span class="math inline">\(y_i\)</span>’s. A prediction interval is a range of numbers that
+contains <span class="math inline">\(y_{n+1}\)</span> with a specified probability. Consider <span class="math inline">\(y_{n+1}-\hat y_{n+1}\)</span>. If Assumption A1 is satisfied, then</p>
+<p><span class="math display">\[E[y_{n+1}-\hat y_{n+1}] = E[y_{n+1}]-E[\hat y_{n+1}]= 0.\]</span></p>
+<p>If Assumption A2 is satisfied, then</p>
+<p><span class="math display">\[Var[y_{n+1}-\hat y_{n+1}] = Var[y_{n+1}]+Var[\hat y_{n+1}]=\left(1+\frac{1}{n}+\frac{(x_{n+1}-\bar x)^2}{\ell_{xx}}\right)\sigma^2.\]</span></p>
+<p>If Assumption B is satisfied, <span class="math inline">\(y_{n+1}-\hat y_{n+1}\)</span> is then normally distributed.</p>
+
+<div class="theorem">
+<p><span id="thm:thm6" class="theorem"><strong>定理 4.6  </strong></span>Suppose Assumption B is satisfied. Let <span class="math inline">\(y_{n+1}=\beta_0+\beta_1x_{n+1}+\epsilon\)</span>, where <span class="math inline">\(\epsilon\sim N(0,\sigma^2)\)</span> is independent of <span class="math inline">\(\epsilon_i\)</span>’s. A <span class="math inline">\(100(1−\alpha)\%\)</span> prediction interval for <span class="math inline">\(y\)</span> is given by</p>
+<p><span class="math display">\[\hat y_{n+1}\pm t_{1-\alpha/2}(n-2)\hat{\sigma}\sqrt{1+\frac{1}{n}+\frac{(x_{n+1}-\bar x)^2}{\ell_{xx}}}.\]</span></p>
+</div>
+
+<p>For case study 1, we plot the lower and upper limits for the <span class="math inline">\(95\%\)</span> prediction interval for <span class="math inline">\(y_{n+1}\)</span>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">x =<span class="st"> </span><span class="kw">seq</span>(<span class="fl">2.5</span>,<span class="fl">2.8</span>,<span class="dt">by=</span><span class="fl">0.001</span>)</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">newdata =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">rough_weight=</span> x)</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">pred_x =<span class="st"> </span><span class="kw">predict</span>(lm.rod,newdata,<span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="kw">matplot</span>(x,pred_x,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>),<span class="dt">lwd=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">        <span class="dt">xlab=</span><span class="st">&quot;Rough Weight&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Finished Weight&quot;</span>)</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">mean</span>(rough_weight),<span class="dt">lty=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="kw">points</span>(rough_weight,finished_weight,<span class="dt">pch=</span><span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="kw">legend</span>(<span class="fl">2.5</span>,<span class="fl">2.1</span>,<span class="kw">c</span>(<span class="st">&quot;Fitted&quot;</span>,<span class="st">&quot;Lower limit&quot;</span>,<span class="st">&quot;Upper limit&quot;</span>),</a>
+<a class="sourceLine" id="cb34-11" data-line-number="11">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">5</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/control-1.png" width="672" /></p>
+</div>
+<div id="section-4.1.9" class="section level3">
+<h3><span class="header-section-number">4.1.9</span> 控制</h3>
+<p><strong>How to control <span class="math inline">\(y_{n+1}\)</span>?</strong></p>
+<p>Consider case study 1 again. Castings likely to produce rods that are too heavy can then be discarded before undergoing the final (and costly) tooling process. The company’s quality-control department wants to produce the rod <span class="math inline">\(y_{n+1}\)</span> with weights no large than 2.05 with probablity no less than 0.95. How to choose the rough casting?</p>
+<p>Now we want <span class="math inline">\(y_{n+1}\le y_0=2.05\)</span> with probability <span class="math inline">\(1-\alpha\)</span>. Similarly to Theorem <a href="regression.html#thm:thm6">4.6</a>, we can construct one-side confidence interval for <span class="math inline">\(y_{n+1}\)</span>, that is</p>
+<p><span class="math display">\[\bigg(-\infty,\hat y_{n+1}+t_{1-\alpha}(n-2)\hat{\sigma}\sqrt{1+\frac{1}{n}+\frac{(x_{n+1}-\bar x)^2}{\ell_{xx}}}\bigg].\]</span>
+This implies <span class="math display">\[\hat\beta_0+\hat\beta_1x_{n+1}+t_{1-\alpha}(n-2)\hat{\sigma}\sqrt{1+\frac{1}{n}+\frac{(x_{n+1}-\bar x)^2}{\ell_{xx}}}\le y_0.\]</span></p>
+<p><img src="book_files/figure-html/thcontrol-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-4.2" class="section level2">
+<h2><span class="header-section-number">4.2</span> 多元线性模型</h2>
+<p>With problems more complex than fitting a straight line, it is very useful to approach the linear least squares analysis via linear algebra.
+Consider a model of the form</p>
+<p><span class="math display">\[y_i=\beta_0+\beta_1x_{i1}+\beta_2x_{i2}+\dots+\beta_{p-1}x_{i,p-1}+\epsilon_i,\ i=1,\dots,n.\]</span></p>
+<p>Let <span class="math inline">\(Y=(y_1,\dots,y_n)^\top\)</span>, <span class="math inline">\(\beta=(\beta_0,\dots,\beta_{p-1})^\top\)</span>, <span class="math inline">\(\epsilon=(\epsilon_1,\dots,\epsilon_n)^\top\)</span>, and let <span class="math inline">\(X\)</span> be the <span class="math inline">\(n\times p\)</span> matrix</p>
+<p><span class="math display">\[
+X=
+\left[
+\begin{matrix}
+1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1,p-1}\\
+1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2,p-1}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \\
+1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{n,p-1}\\
+\end{matrix}
+\right].
+\]</span></p>
+<p>The model can be rewritten as <span class="math display">\[Y=X\beta+\epsilon,\]</span></p>
+<ul>
+<li><p>the matrix <span class="math inline">\(X\)</span> is called the <strong>design matrix</strong>,</p></li>
+<li><p>assume that <span class="math inline">\(p&lt;n\)</span>.</p></li>
+</ul>
+<p>The least squares problem can then be phrased as follows: Find <span class="math inline">\(\beta\)</span> to minimize</p>
+<p><span class="math display">\[Q(\beta)=\sum_{i=1}^n(y_i-\beta_0-\beta_1x_{i1}-\dots-\beta_{p-1}x_{i,p-1})^2:=||Y-X\beta||^2,\]</span></p>
+<p>where <span class="math inline">\(||\cdot||\)</span> is the Euclidean norm.</p>
+<p>Note that <span class="math display">\[Q=(Y-X\beta)^\top(Y-X\beta) = Y^\top Y-2Y^\top X\beta+\beta^\top X^\top X\beta.\]</span>
+If we differentiate <span class="math inline">\(Q\)</span> with respect to each <span class="math inline">\(\beta_i\)</span> and set the derivatives equal to zero, we see that the minimizers <span class="math inline">\(\hat\beta_0,\dots,\hat\beta_{p-1}\)</span> satisfy</p>
+<p><span class="math display">\[\frac{\partial Q}{\partial \beta_i}=-2(Y^\top X)_i+2(X^{\top}X)_{i\cdot}\hat\beta=0.\]</span></p>
+<p>We thus arrive at the so-called <strong>normal equations</strong>:
+<span class="math display">\[X^\top X\hat\beta = X^\top Y.\]</span></p>
+<p>If the design matrix <span class="math inline">\(X^\top X\)</span> is <strong>nonsingular</strong>, the formal solution is</p>
+<p><span class="math display">\[\hat\beta = (X^\top X)^{-1}X^\top Y.\]</span></p>
+<p>The following lemma gives a criterion for the existence and uniqueness of solutions
+of the normal equations.</p>
+
+<div class="lemma">
+<span id="lem:lem1" class="lemma"><strong>引理 4.1  </strong></span>The matrix <span class="math inline">\(X^\top X\)</span> is nonsingular if and only if <span class="math inline">\(\mathrm{rank}(X)=p\)</span>.
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> First suppose that <span class="math inline">\(X^\top X\)</span> is singular. There exists a nonzero vector <span class="math inline">\(u\)</span> such that
+<span class="math inline">\(X^\top Xu = 0\)</span>. Multiplying the left-hand side of this equation by <span class="math inline">\(u^\top\)</span>, we have <span class="math inline">\(0=u^\top X^\top Xu=(Xu)^\top (Xu)\)</span>
+So <span class="math inline">\(Xu=0\)</span>, the columns of <span class="math inline">\(X\)</span> are linearly dependent, and the rank of <span class="math inline">\(X\)</span> is less
+than <span class="math inline">\(p\)</span>.</p>
+Next, suppose that the rank of <span class="math inline">\(X\)</span> is less than <span class="math inline">\(p\)</span> so that there exists a nonzero
+vector <span class="math inline">\(u\)</span> such that <span class="math inline">\(Xu = 0\)</span>. Then <span class="math inline">\(X^\top Xu = 0\)</span>, and hence <span class="math inline">\(X^\top X\)</span> is singular.
+</div>
+
+<blockquote>
+<p>In what follows, we assume that <span class="math inline">\(\mathrm{rank}(X)=p&lt;n\)</span>.</p>
+</blockquote>
+<div id="-1" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> 期望和方差</h3>
+<p><strong>Assumption A</strong>: Assume that <span class="math inline">\(E[\epsilon]=0\)</span> and <span class="math inline">\(Var[\epsilon]=\sigma^2I_n\)</span>.</p>
+
+<div class="theorem">
+<p><span id="thm:thm7" class="theorem"><strong>定理 4.7  </strong></span>Suppose that Assumption A is satisfied and <span class="math inline">\(\mathrm{rank}(X)=p&lt;n\)</span>, we have</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(E[\hat\beta]=\beta,\)</span></p></li>
+<li><span class="math inline">\(Var[\hat\beta]=\sigma^2(X^\top X)^{-1}\)</span>.</li>
+</ol>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 
+<span class="math display">\[\begin{align*}
+E[\hat\beta]&amp;= E[(X^\top X)^{-1}X^{\top}Y] \\
+&amp;= (X^\top X)^{-1}X^{\top}E[Y]\\
+&amp;=(X^\top X)^{-1}X^{\top}(X\beta)=\beta.
+\end{align*}\]</span></p>
+<p><span class="math display">\[\begin{align*}
+Var[\hat\beta] &amp;= Var[(X^\top X)^{-1}X^{\top}Y]\\
+&amp;=(X^\top X)^{-1}X^{\top}Var(Y)X(X^\top X)^{-1}\\
+&amp;=\sigma^2(X^\top X)^{-1}.
+\end{align*}\]</span></p>
+<p>We used the fact that <span class="math inline">\(Var(AY) = AVar(Y)A^\top\)</span> for any fixed matrix <span class="math inline">\(A\)</span>, and <span class="math inline">\(X^\top X\)</span> and therefore <span class="math inline">\((X^\top X)^{-1}\)</span> are symmetric.</p>
+</div>
+
+</div>
+<div id="-1" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> 误差项的方差的估计</h3>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-198" class="definition"><strong>定义 4.2  </strong></span>
+We give the following concepts.</p>
+<ul>
+<li><p><strong>The fitted values</strong>: <span class="math inline">\(\hat Y = X\hat\beta\)</span></p></li>
+<li><p><strong>The vector of residuals</strong>: <span class="math inline">\(\hat\epsilon = Y-\hat Y\)</span></p></li>
+<li><strong>The sum of squared errors (SSE)</strong>: <span class="math inline">\(S_e^2=Q(\hat\beta)=||Y-\hat Y||^2=||\hat\epsilon||^2\)</span></li>
+</ul>
+</div>
+
+<p>Note that</p>
+<p><span class="math display">\[\hat Y = X\hat\beta=X(X^\top X)^{-1}X^\top Y=:PY.\]</span></p>
+<p><strong>The projection matrix</strong>: <span class="math inline">\(P = X(X^\top X)^{-1}X^\top\)</span></p>
+<p>The vector of residuals is then <span class="math inline">\(\hat\epsilon=(I_n-P)Y\)</span>. Two useful properties of <span class="math inline">\(P\)</span> are given in the following lemma.</p>
+
+<div class="lemma">
+<p><span id="lem:lem2" class="lemma"><strong>引理 4.2  </strong></span>Let <span class="math inline">\(P\)</span> be defined as before. Then</p>
+<p><span class="math display">\[P = P^\top=P^2,\]</span></p>
+<p><span class="math display">\[I_n-P = (I_n-P)^\top=(I_n-P)^2.\]</span></p>
+</div>
+
+<blockquote>
+<p>We may think geometrically of the fitted values, <span class="math inline">\(\hat Y=X\hat\beta=PY\)</span>, as being the projection of <span class="math inline">\(Y\)</span> onto the subspace
+spanned by the columns of <span class="math inline">\(X\)</span>.</p>
+</blockquote>
+<p>The sum of squared residuals is then</p>
+<p><span class="math display">\[\begin{align*}
+S_e^2 := ||\hat \epsilon||^2 = Y^\top(I_n-P)^\top(I_n-P)Y=Y^\top(I_n-P)Y.
+\end{align*}\]</span></p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-199" class="definition"><strong>定义 4.3  </strong></span>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n\times n\)</span> matrix. The trace of the matrix <span class="math inline">\(A\)</span> is defined as <span class="math inline">\(tr(A) = \sum_{i=1}^n a_{ii}\)</span>, where <span class="math inline">\(a_{ii}\)</span> are the elements on the main diagonal.
+</div>
+
+
+<div class="lemma">
+<span id="lem:lem3" class="lemma"><strong>引理 4.3  </strong></span>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> matrix and <span class="math inline">\(B\)</span> is an <span class="math inline">\(n \times m\)</span> matrix, then <span class="math display">\[tr(AB)=tr(BA).\]</span> This is the cyclic property of the trace.
+</div>
+
+<p>Using Lemma <a href="regression.html#lem:lem3">4.3</a>, we have</p>
+<p><span class="math display">\[\begin{align*}
+E[S_e^2]&amp;= E[Y^\top(I_n-P)Y]=E[tr(Y^\top(I_n-P)Y)] \\&amp;= E[tr((I_n-P)YY^\top)]=tr((I_n-P)E[YY^\top])\\
+&amp;=tr((I_n-P)(Var[Y]+E[Y]E[Y^\top]))\\
+&amp;=tr((I_n-P)(\sigma^2 I_n))+tr((I_n-P)X\beta\beta^\top X^\top)\\
+&amp;=\sigma^2(n-tr(P)),
+\end{align*}\]</span></p>
+<p>where we used <span class="math inline">\((I_n-P)X=X-X(X^\top X)^{-1}X^\top X=0\)</span>. Using the cyclic property of the trace again gives</p>
+<p><span class="math display">\[\begin{align*}
+tr(P)&amp;= tr(X(X^\top X)^{-1}X^\top)\\
+&amp;=tr(X^\top X(X^\top X)^{-1})=tr(I_p)=p.
+\end{align*}\]</span></p>
+<p>We therefore have <span class="math inline">\(E[S_e^2]=(n-p)\sigma^2\)</span>.</p>
+
+<div class="theorem">
+<p><span id="thm:thm8" class="theorem"><strong>定理 4.8  </strong></span>Suppose that Assumption A is satisfied and <span class="math inline">\(\mathrm{rank}(X)=p&lt;n\)</span>. Then</p>
+<p><span class="math display">\[\hat\sigma^2 = \frac{S_e^2}{n-p}\]</span></p>
+<p>is an unbiased estimate of <span class="math inline">\(\sigma^2\)</span>.</p>
+</div>
+
+</div>
+<div id="-1" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> 抽样分布定理</h3>
+<p><strong>Assumption B</strong>: Assume that <span class="math inline">\(\epsilon\sim N(0,\sigma^2I_n)\)</span>.</p>
+
+<div class="theorem">
+<p><span id="thm:thm9" class="theorem"><strong>定理 4.9  </strong></span>Suppose that Assumption B is satisfied and <span class="math inline">\(\mathrm{rank}(X)=p&lt;n\)</span>, we have</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\hat\beta \sim N(\beta, \sigma^2(X^\top X)^{-1})\)</span>,</p></li>
+<li><p><span class="math inline">\(\frac{(n-p)\hat\sigma^2}{\sigma^2}=\frac{S_e^2}{\sigma^2}\sim \chi^2(n-p)\)</span>,</p></li>
+<li><p><span class="math inline">\(\hat\epsilon\)</span> is independent of <span class="math inline">\(\hat Y\)</span>,</p></li>
+<li><span class="math inline">\(S_e^2\)</span> (or equivalently <span class="math inline">\(\hat\sigma^2\)</span>) is independent of <span class="math inline">\(\hat\beta\)</span>.</li>
+</ol>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> If Assumption B is satisfied, then <span class="math inline">\(Y = X\beta+\epsilon\sim N(X\beta,\sigma^2I_n)\)</span>. Recall that <span class="math inline">\(\hat\beta = (X^\top X)^{-1}X^\top Y\)</span> is normally distributed. The mean and covariance are given in Theorem <a href="regression.html#thm:thm7">4.7</a> since Assumption A is satisfied.</p>
+<p>Let <span class="math inline">\(\xi_1,\dots,\xi_p\)</span> be the orthonormal basis (标准正交基) of the subspace <span class="math inline">\(\mathrm{span}(X)\)</span> of <span class="math inline">\(\mathbb{R}^n\)</span> generated by the <span class="math inline">\(p\)</span> columns of the matrix <span class="math inline">\(X\)</span>, and <span class="math inline">\(\xi_{p+1},\dots,\xi_n\)</span> be the orthonormal basis of the orthogonal complement <span class="math inline">\(\mathrm{span}(X)^\perp\)</span>. Since <span class="math inline">\(\hat Y = X\hat\beta\in \mathrm{span}(X)\)</span>, there exists <span class="math inline">\(z_1,\dots,z_p\)</span> such that</p>
+<p><span class="math display">\[\hat Y = \sum_{i=1}^p z_i\xi_i.\]</span></p>
+<p>On the other hand, by Lemma <a href="regression.html#lem:lem2">4.2</a>, we have</p>
+<p><span class="math display">\[\hat \epsilon^\top X  = Y^\top(I_n-P)^\top X= Y^\top (X-P X) = 0.\]</span>
+As a result, <span class="math inline">\(\hat \epsilon\in \mathrm{span}(X)^\perp\)</span>. So there exsits <span class="math inline">\(z_{p+1},\dots,z_n\)</span> such that</p>
+<p><span class="math display">\[\hat \epsilon = \sum_{i=p+1}^n z_i\xi_i.\]</span></p>
+<p>Let <span class="math inline">\(U = (\xi_1,\dots,\xi_n)\)</span>, then <span class="math inline">\(U\)</span> is an orthogonal matrix, and let <span class="math inline">\(z=(z_1,\dots,z_n)^\top\)</span>. We thus have</p>
+<p><span class="math display">\[Y = \hat Y+\hat\epsilon =\sum_{i=1}^nz_i\xi_i=Uz.\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[z=U^{-1}Y=U^\top Y\sim N(U^\top X\beta,U^\top(\sigma^2 I_n)U)=N(U^\top X\beta,\sigma^2 I_n).\]</span></p>
+<p>This implies that <span class="math inline">\(z_i\)</span> are independently normally distributed. So <span class="math inline">\(\hat Y\)</span> and <span class="math inline">\(\hat\epsilon\)</span> are independent. We next prove that <span class="math inline">\(E[z_i]=0\)</span> for all <span class="math inline">\(i&gt;p\)</span>. Let <span class="math inline">\(A=(\xi_{p+1},\dots,\xi_{n})\)</span>, then</p>
+<p><span class="math display">\[A(z_{p+1},\dots,z_{n})^\top = \hat\epsilon=(I_n-P)Y.\]</span></p>
+<p>This gives</p>
+<p><span class="math display">\[\begin{align*}
+E[(z_{p+1},\dots,z_{n})^\top] &amp;= E[A^\top (I_n-P)Y]\\
+&amp;=A^\top (I_n-P)E[Y]=A^\top (I_n-P)X\beta=0.
+\end{align*}\]</span></p>
+<p>Consequently, <span class="math inline">\(z_i\stackrel{iid}{\sim} N(0,\sigma^2),i=p+1,\dots,n\)</span>, implying</p>
+<p><span class="math display">\[S_e^2/\sigma^2 = \hat\epsilon^\top\hat\epsilon/\sigma^2 = \sum_{i=p+1}^n (z_i/\sigma)^2\sim \chi^2(n-p).\]</span></p>
+<p>Note that <span class="math inline">\(S_e^2\)</span> is a function of <span class="math inline">\(\hat\epsilon_i\)</span> and <span class="math inline">\(\hat \beta = (X^\top X)^{-1}X^\top Y =(X^\top X)^{-1} X^\top \hat Y\)</span> are linear conbinations of <span class="math inline">\(\hat y_i\)</span>. So <span class="math inline">\(S_e^2\)</span> and <span class="math inline">\(\hat\beta\)</span> are independent.</p>
+</div>
+
+</div>
+<div id="section-4.2.4" class="section level3">
+<h3><span class="header-section-number">4.2.4</span> 置信区间和假设检验</h3>
+<p>Let <span class="math inline">\(C=(X^\top X)^{-1}\)</span> with entries <span class="math inline">\(c_{ij}\)</span>. Suppose that Assumption B is satisfied and <span class="math inline">\(\mathrm{rank}(X)=p&lt;n\)</span>. If <span class="math inline">\(\sigma^2\)</span> is known, for each <span class="math inline">\(\beta_i\)</span>, the <span class="math inline">\(100(1-\alpha)\%\)</span> CI is</p>
+<p><span class="math display">\[\hat\beta_i \pm u_{1-\alpha/2}\sigma\sqrt{c_{i+1,i+1}},\ i=0,\dots,p-1.\]</span></p>
+<p>If <span class="math inline">\(\sigma^2\)</span> is unknown, for each <span class="math inline">\(\beta_i\)</span>, the <span class="math inline">\(100(1-\alpha)\%\)</span> CI is</p>
+<p><span class="math display">\[\hat\beta_i \pm t_{1-\alpha/2}(n-p)\hat\sigma\sqrt{c_{i+1,i+1}}.\]</span></p>
+<p>For testing hypothesis <span class="math inline">\(H_0:\beta_i= 0\ vs.\ H_1:\beta_i\neq 0\)</span>, the rejection region is</p>
+<p><span class="math display">\[W = \{|\hat\beta_i|&gt;t_{1-\alpha/2}(n-p)\hat\sigma\sqrt{c_{i+1,i+1}}\}.\]</span></p>
+<p>The <span class="math inline">\(100(1-\alpha)\%\)</span> CI for <span class="math inline">\(\sigma^2\)</span> is</p>
+<p><span class="math display">\[\left[\frac{(n-p)\hat\sigma^2}{\chi_{1-\alpha/2}^2(n-p)},\frac{(n-p)\hat\sigma^2}{\chi_{\alpha/2}^2(n-p)}\right]=\left[\frac{S_e^2}{\chi_{1-\alpha/2}^2(n-p)},\frac{S_e^2}{\chi_{\alpha/2}^2(n-p)}\right].\]</span></p>
+</div>
+<div id="section-4.2.5" class="section level3">
+<h3><span class="header-section-number">4.2.5</span> 模型整体的显著性检验</h3>
+<p>Consider the hypothesis test:</p>
+<p><span class="math display">\[H_0:\beta_1=\dots=\beta_{p-1}=0\ vs.\ H_1: \beta_{i^*}\neq 0\text{ for some }i^*\ge 1.\]</span></p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-201" class="definition"><strong>定义 4.4  </strong></span>
+We have the following concepts.</p>
+<ul>
+<li><strong>The total sum of squares (SST)</strong>:</li>
+</ul>
+<p><span class="math display">\[S_T^2 = \sum_{i=1}^n(y_i-\bar Y)^2\]</span></p>
+<ul>
+<li><strong>The sum of squares due to regression (SSR)</strong>:</li>
+</ul>
+<p><span class="math display">\[S_R^2  = \sum_{i=1}^n(\hat y_i-\bar Y)^2\]</span></p>
+<ul>
+<li><strong>The sum of squared errors (SSE)</strong>:</li>
+</ul>
+<span class="math display">\[S_e^2 = \sum_{i=1}^n(y_i-\hat y_i)^2\]</span>
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:thm10" class="theorem"><strong>定理 4.10  </strong></span>We have the following decomposition:</p>
+<span class="math display">\[S_T^2=S_R^2+S_e^2.\]</span>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> It is easy to see that</p>
+<p><span class="math display">\[\begin{align*}
+S_T^2&amp;=\sum_{i=1}^n (y_i-\bar Y)^2 = \sum_{i=1}^n (y_i-\hat y_i+\hat y_i-\bar Y)^2\\
+&amp;=\sum_{i=1}^n [(y_i-\hat y_i)^2+(\hat y_i-\bar Y)^2+2(y_i-\hat y_i)(\hat y_i-\bar Y)]\\
+&amp;=S_R^2+S_e^2 +2\sum_{i=1}^n (y_i-\hat y_i)(\hat y_i-\bar Y)
+\end{align*}\]</span></p>
+<p>Using Lemma <a href="regression.html#lem:lem2">4.2</a>, we have</p>
+<p><span class="math display">\[\begin{align*}
+\sum_{i=1}^n (y_i-\hat y_i)(\hat y_i-\bar Y) &amp;= \hat\epsilon^\top\hat Y-\bar Y\sum_{i=1}^n \hat\epsilon_i\\
+&amp;= [(I_n-P)Y]^\top PY-\bar Y(1,1,\dots,1) (I_n-P)Y\\
+&amp;=Y^\top (I_n-P)PY - \bar Y[(1,1,\dots,1)-(1,1,\dots,1)P]Y\\
+&amp;= 0.
+\end{align*}\]</span></p>
+This is because <span class="math inline">\(PX = X\)</span> and the first column of <span class="math inline">\(X\)</span> is <span class="math inline">\((1,1,\dots,1)^\top\)</span>. This implies that <span class="math inline">\(P(1,1,\dots,1)^\top = (1,1,\dots,1)^\top\)</span>.
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:thm11" class="theorem"><strong>定理 4.11  </strong></span>Suppose that Assumption B is satisfied and <span class="math inline">\(\mathrm{rank}(X)=p&lt;n\)</span>, we have</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(S_R^2,S_e^2,\bar Y\)</span> are independent, and</p></li>
+<li>if the null <span class="math inline">\(H_0:\beta_1=\dots=\beta_{p-1}=0\)</span> is true, <span class="math inline">\(S_R^2/\sigma^2\sim\chi^2(p-1)\)</span>.</li>
+</ol>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> Using the same notations in the proof of Theorem <a href="regression.html#thm:thm9">4.9</a>. Since <span class="math inline">\((1,\dots,1)^\top\in \mathrm{span}(X)\)</span>, we set <span class="math inline">\(\xi_1 = (1/\sqrt{n},1/\sqrt{n},\dots,1/\sqrt{n})^\top\)</span>. Recall that</p>
+<p><span class="math display">\[Y = \sum_{i=1}^n z_i\xi_i = Uz.\]</span></p>
+<p>The average <span class="math inline">\(\bar Y = (1/n,\dots,1/n)Y = (1/n,\dots,1/n)Uz=z_1/\sqrt{n},\)</span> where we used the fact that <span class="math inline">\(U\)</span> is orthogonal matrix and the first colum of <span class="math inline">\(U\)</span> is <span class="math inline">\(\xi_1 = (1/\sqrt{n},1/\sqrt{n},\dots,1/\sqrt{n})^\top\)</span>.</p>
+<p>Recall that <span class="math inline">\(\hat Y = \sum_{i=1}^p z_i\xi_i = (z_1/\sqrt{n},z_1/\sqrt{n},\dots,z_1/\sqrt{n})^\top+\sum_{i=2}^p z_i\xi_i\)</span>.
+This implies that</p>
+<p><span class="math display">\[(\hat y_1-\bar Y,\dots,\hat y_n-\bar Y)^\top = \sum_{i=2}^p z_i\xi_i.\]</span></p>
+<p>As a result, <span class="math inline">\(S_R^2 = \sum_{i=2}^p z_i^2\)</span>. Recall that <span class="math inline">\(S_e^2=\sum_{i=p+1}^n z_i^2\)</span>. Since <span class="math inline">\(z_i\)</span> are independent, <span class="math inline">\(S_R^2,S_e^2,\bar Y\)</span> are independent.</p>
+<p>If <span class="math inline">\(\beta_1=\dots=\beta_{p-1}=0\)</span>, we have</p>
+<p><span class="math display">\[E[z] = U^\top X\beta = U^\top (\beta_0,\dots,\beta_0)^\top.\]</span></p>
+<p><span class="math display">\[E[z^\top]=\beta_0(1,1,\dots,1) U = \beta_0(\sqrt{n},0,\dots,0).\]</span></p>
+<p>We therefore have <span class="math inline">\(z_i\sim N(0,\sigma^2)\)</span> for <span class="math inline">\(i=2,\dots,n\)</span>. So</p>
+<p><span class="math display">\[S_R^2/\sigma^2 = \sum_{i=2}^p (z_i/\sigma)^2\sim \chi^2(p-1).\]</span></p>
+</div>
+
+<p>We now use generalized likelihood ratio (GLR) test. The likelihood function for <span class="math inline">\(Y\)</span> is given by</p>
+<p><span class="math display">\[L(\beta,\sigma^2) = (2\pi \sigma^2)^{-n/2} e^{-\frac{||Y-X\beta||^2}{2\sigma^2}}.\]</span></p>
+<p>The maximizers for <span class="math inline">\(L(\beta,\sigma^2)\)</span> over the parameter space <span class="math inline">\(\Theta=\{(\beta,\sigma^2)|\beta\in \mathbb{R}^p,\sigma^2&gt;0\}\)</span> are</p>
+<p><span class="math display">\[\hat\beta = (X^\top X)^{-1}X^\top Y,\ \hat\sigma^2 = \frac{||Y-X\hat \beta||}{n}=\frac{S_e^2}{n}.\]</span></p>
+<p>The maximizers for <span class="math inline">\(L(\beta,\sigma^2)\)</span> over the sub-space <span class="math inline">\(\Theta_0=\{(\beta,\sigma^2)|\beta_i=0,i\ge 1,\sigma^2&gt;0\}\)</span> are</p>
+<p><span class="math display">\[\hat\beta^* = (\bar Y,0,\dots,0)^\top,\ \hat\sigma^{*2} = \frac{||Y-X\hat \beta^*||}{n}=\frac{S_T^2}{n}.\]</span></p>
+<p>The likelihood ratio is then given by</p>
+<p><span class="math display">\[\lambda = \frac{\sup_{\theta\in\Theta}L(\beta,\sigma^2)}{\sup_{\theta\in\Theta_0}L(\beta,\sigma^2)} = \frac{L(\hat\beta,\hat\sigma^2)}{L(\hat\beta^*,\hat\sigma^{*2})}= \left(\frac{S_T^2}{S_e^2}\right)^{n/2}= \left(1+\frac{S_R^2}{S_e^2}\right)^{n/2}.\]</span></p>
+<p>By Theorems <a href="regression.html#thm:thm9">4.9</a> and <a href="regression.html#thm:thm11">4.11</a>, if the null is true we have</p>
+<p><span class="math display">\[F=\frac{S_R^2/(p-1)}{S_e^2/(n-p)}\sim F(p-1,n-p).\]</span></p>
+<p>We take <span class="math inline">\(F\)</span> as the test statistic. The rejection region is <span class="math inline">\(W=\{F&gt;C\}\)</span>, where the critical value <span class="math inline">\(C = F_{1-\alpha}(p-1,n-p)\)</span> so that <span class="math inline">\(\sup_{\theta\in\Theta_0}P_\theta(F&gt;C)=\alpha\)</span>.</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-204" class="definition"><strong>定义 4.5  </strong></span>The <strong>coefficient of determination</strong> is sometimes used as a crude measure of the strength of a relationship that has been
+fit by least squares. This coefficient is defined as</p>
+<p><span class="math display">\[R^2 =\frac{S_R^2}{S_T^2}=1-\frac{S_e^2}{S_T^2}.\]</span></p>
+</div>
+
+<p>It can be interpreted as the proportion of the variability of the dependent variable that
+can be explained by the independent variables.</p>
+<p>注意到，回归变量越多，残差平方和<span class="math inline">\(S_e^2\)</span>越小，<span class="math inline">\(R^2\)</span>自然变大。所以用<span class="math inline">\(R^2\)</span>衡量模型拟合程度显然不合适，没有考虑过度拟合的情况。另一方面，随机项的方差的估计<span class="math inline">\(\hat\sigma^2=S_e^2/(n-p)\)</span>并不一定随着<span class="math inline">\(S_e^2\)</span>越小而变小，因为变量个数<span class="math inline">\(p\)</span>变大，该估计量的分母变小。于是，有人提出对<span class="math inline">\(R^2\)</span>进行调整，调整的决定系数(adjusted R-squared)为</p>
+<p><span class="math display">\[\tilde{R}^2 = 1-\frac{S_e^2/(n-p)}{S_T^2/(n-1)}=1-\frac{(n-1)S_e^2}{(n-p)S_T^2}.\]</span></p>
+<p>不难看出<span class="math inline">\(\tilde{R}^2&lt;R^2\)</span>，这是因为<span class="math inline">\(p&gt;1\)</span>. 调整的决定系数<span class="math inline">\(\tilde{R}^2\)</span>综合考虑了模型变量个数<span class="math inline">\(p\)</span>的影响。</p>
+<p>It is easy to see that</p>
+<p><span class="math display">\[F = \frac{S_T^2 R^2/(p-1)}{S_T^2(1-R^2)/(n-p)}=\frac{ R^2/(p-1)}{(1-R^2)/(n-p)}.\]</span></p>
+<p>For the simple linear model <span class="math inline">\(p=2\)</span>, we have</p>
+<p><span class="math display">\[S_R^2 = \sum_{i=1}^n(\hat y_i-\bar y)^2 = \hat\beta_1^2\sum_{i=1}^n(x_i-\bar x)^2 = \frac{\ell_{xy}^2}{\ell_{xx}}.\]</span></p>
+<p>This gives</p>
+<p><span class="math display">\[R^2 = \frac{\ell_{xy}^2}{\ell_{xx}\ell_{yy}} = \rho^2,\]</span></p>
+<p>where</p>
+<p><span class="math display">\[\rho = \frac{\ell_{xy}}{\sqrt{\ell_{xx}\ell_{yy}}}=\frac{\frac 1 n\sum_{i=1}^n(x_i-\bar x)(y_i-\bar y)}{\sqrt{\frac 1 n\sum_{i=1}^n(x_i-\bar x)^2}\sqrt{\frac 1 n\sum_{i=1}^n(y_i-\bar y)^2}}\]</span></p>
+<p>is the <strong>sample correlation coefficient</strong> between <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span>.</p>
+</div>
+<div id="-1" class="section level3">
+<h3><span class="header-section-number">4.2.6</span> 预测</h3>
+<p><strong>Confidence interval for <span class="math inline">\(E[y_{n+1}]\)</span></strong></p>
+<p>Consider</p>
+<p><span class="math display">\[y_{n+1} = \beta_0+\beta_1x_{n+1,1}+\dots+\beta_{p-1}x_{n+1,p-1}+\epsilon_{n+1}.\]</span></p>
+<p>Under Assumption B, <span class="math inline">\(y_{n+1}=v^\top \beta+\epsilon_{n+1}\sim N(v^\top \beta,\sigma^2)\)</span> , where <span class="math inline">\(v = (1,x_{n+1,1},x_{n+1,2},\dots,x_{n+1,p-1})^\top\)</span>. An unbiased estimate of the expected value of <span class="math inline">\(E[y_{n+1}]=v^\top \beta\)</span> is the fitted value</p>
+<p><span class="math display">\[\hat y_{n+1} = v^\top \hat\beta \sim N(v^\top \beta, \sigma^2 v^\top(X^\top X)^{-1}v).\]</span></p>
+<p>By Theorem <a href="regression.html#thm:thm9">4.9</a>, we have</p>
+<p><span class="math display">\[\frac{\hat y_{n+1}-v^\top \beta}{\hat\sigma\sqrt{v^\top(X^\top X)^{-1}v}}\sim t(n-p).\]</span></p>
+<p>The <span class="math inline">\(100(1-\alpha)\%\)</span> CI for <span class="math inline">\(E[y_{n+1}]\)</span> is</p>
+<p><span class="math display">\[\hat y_{n+1}\pm t_{1-\alpha/2}(n-p)\hat{\sigma}\sqrt{v^\top(X^\top X)^{-1}v}.\]</span></p>
+<p><strong>Prediction interval for <span class="math inline">\(y_{n+1}\)</span></strong></p>
+<p>Similarly,</p>
+<p><span class="math display">\[\frac{y_{n+1}-\hat y_{n+1}}{\hat{\sigma}\sqrt{1+v^\top(X^\top X)^{-1}v}}\sim t(n-p).\]</span></p>
+<p>The <span class="math inline">\(100(1-\alpha)\%\)</span> prediction interval for <span class="math inline">\(y\)</span> is</p>
+<p><span class="math display">\[\hat y_{n+1}\pm t_{1-\alpha/2}(n-p)\hat{\sigma}\sqrt{1+v^\top(X^\top X)^{-1}v}.\]</span></p>
+</div>
+<div id="2" class="section level3">
+<h3><span class="header-section-number">4.2.7</span> 案例分析2</h3>
+<p>It is found that the systolic pressure is linked to the weight and the age. We now have the following data.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">blood=<span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="dt">weight=</span><span class="kw">c</span>(<span class="fl">76.0</span>,<span class="fl">91.5</span>,<span class="fl">85.5</span>,<span class="fl">82.5</span>,<span class="fl">79.0</span>,<span class="fl">80.5</span>,<span class="fl">74.5</span>,</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">         <span class="fl">79.0</span>,<span class="fl">85.0</span>,<span class="fl">76.5</span>,<span class="fl">82.0</span>,<span class="fl">95.0</span>,<span class="fl">92.5</span>),</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="dt">age=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">60</span>,<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">55</span>,<span class="dv">40</span>,<span class="dv">40</span>,<span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="dt">pressure=</span><span class="kw">c</span>(<span class="dv">120</span>,<span class="dv">141</span>,<span class="dv">124</span>,<span class="dv">126</span>,<span class="dv">117</span>,<span class="dv">125</span>,<span class="dv">123</span>,<span class="dv">125</span>,</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">           <span class="dv">132</span>,<span class="dv">123</span>,<span class="dv">132</span>,<span class="dv">155</span>,<span class="dv">147</span>))</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">knitr<span class="op">::</span><span class="kw">kable</span>(blood,<span class="dt">caption=</span><span class="st">&quot;systolic pressure&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-205">表 4.2: </span>systolic pressure</caption>
+<thead>
+<tr class="header">
+<th align="right">weight</th>
+<th align="right">age</th>
+<th align="right">pressure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">76.0</td>
+<td align="right">50</td>
+<td align="right">120</td>
+</tr>
+<tr class="even">
+<td align="right">91.5</td>
+<td align="right">20</td>
+<td align="right">141</td>
+</tr>
+<tr class="odd">
+<td align="right">85.5</td>
+<td align="right">20</td>
+<td align="right">124</td>
+</tr>
+<tr class="even">
+<td align="right">82.5</td>
+<td align="right">30</td>
+<td align="right">126</td>
+</tr>
+<tr class="odd">
+<td align="right">79.0</td>
+<td align="right">30</td>
+<td align="right">117</td>
+</tr>
+<tr class="even">
+<td align="right">80.5</td>
+<td align="right">50</td>
+<td align="right">125</td>
+</tr>
+<tr class="odd">
+<td align="right">74.5</td>
+<td align="right">60</td>
+<td align="right">123</td>
+</tr>
+<tr class="even">
+<td align="right">79.0</td>
+<td align="right">50</td>
+<td align="right">125</td>
+</tr>
+<tr class="odd">
+<td align="right">85.0</td>
+<td align="right">40</td>
+<td align="right">132</td>
+</tr>
+<tr class="even">
+<td align="right">76.5</td>
+<td align="right">55</td>
+<td align="right">123</td>
+</tr>
+<tr class="odd">
+<td align="right">82.0</td>
+<td align="right">40</td>
+<td align="right">132</td>
+</tr>
+<tr class="even">
+<td align="right">95.0</td>
+<td align="right">40</td>
+<td align="right">155</td>
+</tr>
+<tr class="odd">
+<td align="right">92.5</td>
+<td align="right">20</td>
+<td align="right">147</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">plot</span>(blood)</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-205-1.png" width="672" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">lm.blood=<span class="kw">lm</span>(pressure<span class="op">~</span>weight<span class="op">+</span>age,<span class="dt">data=</span>blood)</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2"><span class="kw">summary</span>(lm.blood)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = pressure ~ weight + age, data = blood)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -4.040 -1.018  0.464  0.691  4.327 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -62.9634    16.9998   -3.70  0.00408 ** 
+## weight        2.1366     0.1753   12.19  2.5e-07 ***
+## age           0.4002     0.0832    4.81  0.00071 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.85 on 10 degrees of freedom
+## Multiple R-squared:  0.946,  Adjusted R-squared:  0.935 
+## F-statistic: 87.8 on 2 and 10 DF,  p-value: 4.53e-07</code></pre>
+<p>The regression function is</p>
+<p><span class="math display">\[\hat y = -62.96336 + 2.13656 x_1+ 0.40022 x_2.\]</span></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">n =<span class="st"> </span><span class="kw">length</span>(blood<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">X =<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">intercept=</span><span class="kw">rep</span>(<span class="dv">1</span>,n),<span class="dt">weight=</span>blood<span class="op">$</span>weight,<span class="dt">age=</span>blood<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">C =<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X)<span class="op">%*%</span>X)</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">SSE =<span class="st"> </span><span class="kw">sum</span>(lm.blood<span class="op">$</span>residuals<span class="op">^</span><span class="dv">2</span>) <span class="co"># sum of squared errors</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="co"># SST = var(blood$pressure)*(n-1)</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"><span class="co"># SSR = SST-SSE</span></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co"># Fstat = SSR/(3-1)/(SSE/(n-3))</span></a>
+<a class="sourceLine" id="cb39-8" data-line-number="8">cov =<span class="st"> </span>SSE<span class="op">/</span>(n<span class="dv">-3</span>)<span class="op">*</span>C</a>
+<a class="sourceLine" id="cb39-9" data-line-number="9">knitr<span class="op">::</span><span class="kw">kable</span>(cov, <span class="dt">caption =</span> <span class="st">&quot;Estimated Covariance Matrix&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-206">表 4.3: </span>Estimated Covariance Matrix</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">intercept</th>
+<th align="right">weight</th>
+<th align="right">age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>intercept</td>
+<td align="right">288.992</td>
+<td align="right">-2.9499</td>
+<td align="right">-1.1174</td>
+</tr>
+<tr class="even">
+<td>weight</td>
+<td align="right">-2.950</td>
+<td align="right">0.0307</td>
+<td align="right">0.0102</td>
+</tr>
+<tr class="odd">
+<td>age</td>
+<td align="right">-1.117</td>
+<td align="right">0.0102</td>
+<td align="right">0.0069</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly to the simple linear model, we can construct the confidence intervals and prediction intervals for <span class="math inline">\(E[y]\)</span> and <span class="math inline">\(y\)</span>, respectively.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">newdata =<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb40-2" data-line-number="2">        <span class="dt">age =</span> <span class="kw">rep</span>(<span class="dv">31</span>,<span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">        <span class="dt">weight =</span> <span class="kw">seq</span>(<span class="dv">70</span>,<span class="dv">100</span>,<span class="dt">length.out =</span> <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">CI =<span class="st"> </span><span class="kw">predict</span>(lm.blood,newdata,<span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">Pred =<span class="st"> </span><span class="kw">predict</span>(lm.blood,newdata,<span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb40-8" data-line-number="8"><span class="kw">matplot</span>(newdata<span class="op">$</span>weight,<span class="kw">cbind</span>(CI,Pred[,<span class="op">-</span><span class="dv">1</span>]),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb40-9" data-line-number="9">        <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb40-10" data-line-number="10">        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;brown&quot;</span>,<span class="st">&quot;brown&quot;</span>),<span class="dt">lwd=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb40-11" data-line-number="11">        <span class="dt">xlab=</span><span class="st">&quot;Weight&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Pressure&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Age = 31&quot;</span>)</a>
+<a class="sourceLine" id="cb40-12" data-line-number="12"><span class="kw">legend</span>(<span class="dv">70</span>,<span class="dv">160</span>,<span class="kw">c</span>(<span class="st">&quot;Fitted&quot;</span>,<span class="st">&quot;Confidence&quot;</span>,<span class="st">&quot;Prediction&quot;</span>),</a>
+<a class="sourceLine" id="cb40-13" data-line-number="13">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;brown&quot;</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-207-1.png" width="672" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">newdata =<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">        <span class="dt">weight =</span> <span class="kw">rep</span>(<span class="dv">85</span>,<span class="dv">41</span>),</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">        <span class="dt">age =</span> <span class="kw">seq</span>(<span class="dv">20</span>,<span class="dv">60</span>)</a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">)</a>
+<a class="sourceLine" id="cb41-5" data-line-number="5">CI =<span class="st"> </span><span class="kw">predict</span>(lm.blood,newdata,<span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>)</a>
+<a class="sourceLine" id="cb41-6" data-line-number="6">Pred =<span class="st"> </span><span class="kw">predict</span>(lm.blood,newdata,<span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>)</a>
+<a class="sourceLine" id="cb41-7" data-line-number="7"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb41-8" data-line-number="8"><span class="kw">matplot</span>(newdata<span class="op">$</span>age,<span class="kw">cbind</span>(CI,Pred[,<span class="op">-</span><span class="dv">1</span>]),<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,</a>
+<a class="sourceLine" id="cb41-9" data-line-number="9">        <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb41-10" data-line-number="10">        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;brown&quot;</span>,<span class="st">&quot;brown&quot;</span>),<span class="dt">lwd=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb41-11" data-line-number="11">        <span class="dt">xlab=</span><span class="st">&quot;Age&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Pressure&quot;</span>,<span class="dt">main =</span> <span class="st">&quot;Weight = 85&quot;</span>)</a>
+<a class="sourceLine" id="cb41-12" data-line-number="12"><span class="kw">legend</span>(<span class="dv">20</span>,<span class="dv">150</span>,<span class="kw">c</span>(<span class="st">&quot;Fitted&quot;</span>,<span class="st">&quot;Confidence&quot;</span>,<span class="st">&quot;Prediction&quot;</span>),</a>
+<a class="sourceLine" id="cb41-13" data-line-number="13">       <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">2</span>),<span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;brown&quot;</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-208-1.png" width="672" /></p>
+</div>
+</div>
+<div id="section-4.3" class="section level2">
+<h2><span class="header-section-number">4.3</span> 线性模型的推广</h2>
+<p><strong>Inherently Linear models</strong>:</p>
+<p><span class="math display">\[\begin{align*}
+f(y) &amp;= \beta_0+\beta_1 g_1(x_1,\dots,x_{p-1})+\dots\\&amp;+\beta_{k-1} g_{k-1}(x_1,\dots,x_{p-1})+\epsilon
+\end{align*}\]</span></p>
+<p>Let <span class="math inline">\(y^*=f(y),\ x_i^*=g_i(x_1,\dots,x_{p-1})\)</span>. The transformed model is linear</p>
+<p><span class="math display">\[y^*=\beta_0+\beta_1 x_1^*+\dots+\beta_{k-1} x_{k-1}^{*}+\epsilon.\]</span></p>
+<p>Below are some examples.</p>
+<ul>
+<li>Polynomial models:</li>
+</ul>
+<p><span class="math display">\[y = \beta_0+\beta_1x+\beta_2x^2+\beta_{p-1}x^p+\epsilon\]</span></p>
+<ul>
+<li>Interaction models:</li>
+</ul>
+<p><span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2^2+\beta_{3}x_1x_2+\epsilon\]</span></p>
+<ul>
+<li>Multiplicative models:</li>
+</ul>
+<p><span class="math display">\[y = \gamma_1X_1^{\gamma_2}X_2^{\gamma_3}\epsilon^*\]</span></p>
+<ul>
+<li>Exponential models:</li>
+</ul>
+<p><span class="math display">\[y = \exp\{\beta_0+\beta_1x_1+\beta_2x_2\}+\epsilon^*\]</span></p>
+<ul>
+<li>Reciprocal models:</li>
+</ul>
+<p><span class="math display">\[y=\frac{1}{\beta_0+\beta_1x+\beta_2x^2+\beta_{p-1}x^p+\epsilon}\]</span></p>
+<ul>
+<li>Semilog models:</li>
+</ul>
+<p><span class="math display">\[y = \beta_0+\beta_1\log(x)+\epsilon\]</span></p>
+<ul>
+<li>Logit models:</li>
+</ul>
+<p><span class="math display">\[\log\left(\frac{y}{1-y}\right) = \beta_0+\beta_1 x+\epsilon\]</span></p>
+<ul>
+<li>Probit models: <span class="math inline">\(\Phi^{-1}(y) = \beta_0+\beta_1 x+\epsilon\)</span>, where <span class="math inline">\(\Phi\)</span> is the CDF of <span class="math inline">\(N(0,1)\)</span>.</li>
+</ul>
+</div>
+<div id="section-4.4" class="section level2">
+<h2><span class="header-section-number">4.4</span> 回归诊断</h2>
+<div id="section-4.4.1" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> 动机</h3>
+<p>先考虑这样一个例子：</p>
+<p>Anscombe在1973年构造了4组数据，每组数据都是由11对点<span class="math inline">\((x_i,y_i)\)</span>组成，试分析4组数据是否通过回归方程的检验。</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(anscombe), </a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">             <span class="dt">caption =</span> <span class="st">&#39;Anscombe的数据&#39;</span>, </a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">             <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:anscombe">表 4.4: </span>Anscombe的数据</caption>
+<thead>
+<tr class="header">
+<th align="right">x1</th>
+<th align="right">x2</th>
+<th align="right">x3</th>
+<th align="right">x4</th>
+<th align="right">y1</th>
+<th align="right">y2</th>
+<th align="right">y3</th>
+<th align="right">y4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">8</td>
+<td align="right">8.04</td>
+<td align="right">9.14</td>
+<td align="right">7.46</td>
+<td align="right">6.58</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">6.95</td>
+<td align="right">8.14</td>
+<td align="right">6.77</td>
+<td align="right">5.76</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">8</td>
+<td align="right">7.58</td>
+<td align="right">8.74</td>
+<td align="right">12.74</td>
+<td align="right">7.71</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">8</td>
+<td align="right">8.81</td>
+<td align="right">8.77</td>
+<td align="right">7.11</td>
+<td align="right">8.84</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">8</td>
+<td align="right">8.33</td>
+<td align="right">9.26</td>
+<td align="right">7.81</td>
+<td align="right">8.47</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">8</td>
+<td align="right">9.96</td>
+<td align="right">8.10</td>
+<td align="right">8.84</td>
+<td align="right">7.04</td>
+</tr>
+</tbody>
+</table>
+<p>回归结果如下所示，从中发现这四组数据得到的回归结果非常相似，各项检验也是显著的。这是否意味着所建立的回归模型都是合理的呢？</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">coef.list =<span class="st"> </span><span class="kw">data.frame</span>()</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">{</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">  ff =<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste0</span>(<span class="st">&quot;y&quot;</span>,i,<span class="st">&quot;~&quot;</span>,<span class="st">&quot;x&quot;</span>,i))</a>
+<a class="sourceLine" id="cb43-5" data-line-number="5">  lmi =<span class="st"> </span><span class="kw">lm</span>(ff,<span class="dt">data =</span> anscombe)</a>
+<a class="sourceLine" id="cb43-6" data-line-number="6">  slmi =<span class="st"> </span><span class="kw">summary</span>(lmi)</a>
+<a class="sourceLine" id="cb43-7" data-line-number="7">  pvalue =<span class="st"> </span><span class="dv">1</span><span class="op">-</span><span class="kw">pf</span>(slmi<span class="op">$</span>fstatistic[<span class="dv">1</span>],slmi<span class="op">$</span>fstatistic[<span class="dv">2</span>],slmi<span class="op">$</span>fstatistic[<span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb43-8" data-line-number="8">  df =<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(slmi<span class="op">$</span>coef,<span class="dt">p_value =</span> <span class="kw">c</span>(pvalue,<span class="ot">NA</span>)))</a>
+<a class="sourceLine" id="cb43-9" data-line-number="9">  <span class="kw">row.names</span>(df)[<span class="dv">1</span>] =<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">row.names</span>(df)[<span class="dv">1</span>],i)</a>
+<a class="sourceLine" id="cb43-10" data-line-number="10">  coef.list =<span class="st"> </span><span class="kw">rbind</span>(coef.list,df)</a>
+<a class="sourceLine" id="cb43-11" data-line-number="11">}</a>
+<a class="sourceLine" id="cb43-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb43-13" data-line-number="13">knitr<span class="op">::</span><span class="kw">kable</span>(coef.list,<span class="dt">caption =</span> <span class="st">&quot;四种情况的回归结果，最后一列为F检验p值&quot;</span>)</a></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-209">表 4.5: </span>四种情况的回归结果，最后一列为F检验p值</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Estimate</th>
+<th align="right">Std. Error</th>
+<th align="right">t value</th>
+<th align="right">Pr(&gt;|t|)</th>
+<th align="right">p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)1</td>
+<td align="right">3.0001</td>
+<td align="right">1.1247</td>
+<td align="right">2.667</td>
+<td align="right">0.0257</td>
+<td align="right">0.0022</td>
+</tr>
+<tr class="even">
+<td>x1</td>
+<td align="right">0.5001</td>
+<td align="right">0.1179</td>
+<td align="right">4.242</td>
+<td align="right">0.0022</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>(Intercept)2</td>
+<td align="right">3.0009</td>
+<td align="right">1.1253</td>
+<td align="right">2.667</td>
+<td align="right">0.0258</td>
+<td align="right">0.0022</td>
+</tr>
+<tr class="even">
+<td>x2</td>
+<td align="right">0.5000</td>
+<td align="right">0.1180</td>
+<td align="right">4.239</td>
+<td align="right">0.0022</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>(Intercept)3</td>
+<td align="right">3.0025</td>
+<td align="right">1.1245</td>
+<td align="right">2.670</td>
+<td align="right">0.0256</td>
+<td align="right">0.0022</td>
+</tr>
+<tr class="even">
+<td>x3</td>
+<td align="right">0.4997</td>
+<td align="right">0.1179</td>
+<td align="right">4.239</td>
+<td align="right">0.0022</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td>(Intercept)4</td>
+<td align="right">3.0017</td>
+<td align="right">1.1239</td>
+<td align="right">2.671</td>
+<td align="right">0.0256</td>
+<td align="right">0.0022</td>
+</tr>
+<tr class="even">
+<td>x4</td>
+<td align="right">0.4999</td>
+<td align="right">0.1178</td>
+<td align="right">4.243</td>
+<td align="right">0.0022</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>答案是否定的！不妨画出原始数据与回归直线。从中发现，
+第一幅图用该线性回归方程较为合适，但其它三幅图则不然。</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="op">+</span>.<span class="dv">1</span>,<span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">{</a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">  ff =<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste0</span>(<span class="st">&quot;y&quot;</span>,i,<span class="st">&quot;~&quot;</span>,<span class="st">&quot;x&quot;</span>,i))</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5">  lmi =<span class="st"> </span><span class="kw">lm</span>(ff,<span class="dt">data =</span> anscombe)</a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">  <span class="kw">plot</span>(ff,<span class="dt">data =</span> anscombe,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">pch =</span> <span class="dv">21</span>,<span class="dt">bg=</span><span class="st">&quot;orange&quot;</span>,</a>
+<a class="sourceLine" id="cb44-7" data-line-number="7">       <span class="dt">cex =</span> <span class="fl">1.2</span>,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">19</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">13</span>))</a>
+<a class="sourceLine" id="cb44-8" data-line-number="8">  <span class="kw">abline</span>(<span class="kw">coef</span>(lmi),<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb44-9" data-line-number="9">}</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-210"></span>
+<img src="book_files/figure-html/unnamed-chunk-210-1.png" alt="回归直线" width="672" />
+<p class="caption">
+图 4.2: 回归直线
+</p>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">rn =<span class="st"> </span><span class="kw">colnames</span>(anscombe)</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">  <span class="dt">type =</span> <span class="kw">rep</span>(rn[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],<span class="dt">each=</span><span class="kw">nrow</span>(anscombe)),</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">  <span class="dt">x =</span> <span class="kw">c</span>(anscombe<span class="op">$</span>x1,anscombe<span class="op">$</span>x2,anscombe<span class="op">$</span>x3,anscombe<span class="op">$</span>x4),</a>
+<a class="sourceLine" id="cb45-6" data-line-number="6">  <span class="dt">y =</span> <span class="kw">c</span>(anscombe<span class="op">$</span>y1,anscombe<span class="op">$</span>y2,anscombe<span class="op">$</span>y3,anscombe<span class="op">$</span>y4)</a>
+<a class="sourceLine" id="cb45-7" data-line-number="7">  )</a>
+<a class="sourceLine" id="cb45-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(x, y, <span class="dt">color=</span>type)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm, <span class="dt">se=</span>F) <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb45-12" data-line-number="12"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">vars</span>(type))</a></code></pre></div>
+<p><img src="book_files/figure-html/ggans-1.png" width="672" /></p>
+<p>对于一元回归问题，我们或许可以通过画图观察自变量和因变量是否可以用线性模型刻画。但是，对于多元回归模型，试图通过画图的方式来判断线性关系是不可行的。那么，一般情况下，我们如何验证线性模型的合理性呢？这个时候就需要对所建立模型进行误差诊断，通过分析其残差来判断回归分析的基本假设是否成立。如发现果不成立，那么所有的区间估计、显著性检验都是不可靠的！</p>
+</div>
+<div id="section-4.4.2" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> 残差的定义和性质</h3>
+<p>回归分析都是基于误差项的假定进行的，最常见的假设</p>
+<p><span class="math display">\[\epsilon_i\stackrel{iid}{\sim}N(0,\sigma^2).\]</span></p>
+<ul>
+<li><p>如何考察数据基本上满足这些假设？自然从残差的角度来解决问题，这种方法叫<strong>残差分析</strong>。</p></li>
+<li><p>研究那些数据对统计推断（估计、检验、预测和控制）有较大影响的点，这样的点叫做<strong>影响点</strong>。剔除那些有较强影响的异常/离群(outlier)数据，这就是所谓的影响分析(influence analysis).</p></li>
+</ul>
+<p>残差的定义为</p>
+<p><span class="math display">\[\hat\epsilon = Y-\hat Y\]</span></p>
+<p><strong>残差的性质</strong>如下：</p>
+
+<div class="theorem">
+<p><span id="thm:thm12" class="theorem"><strong>定理 4.12  </strong></span>在假设<span class="math inline">\(\epsilon\sim N(0,\sigma^2I_n)\)</span>下，</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\hat\epsilon \sim N(0,\sigma^2(I_n-P))\)</span></p></li>
+<li><p><span class="math inline">\(Cov(\hat Y,\hat\epsilon) = 0\)</span></p></li>
+<li><span class="math inline">\(1^\top\hat\epsilon = 0\)</span></li>
+</ol>
+</div>
+
+<p>从中可以看出，<span class="math inline">\(Var[\hat\epsilon_i] = \sigma^2(1-p_{ii})\)</span>, 其中<span class="math inline">\(p_{ij}\)</span>为投影矩阵的元素。该方差与<span class="math inline">\(\sigma^2\)</span>以及<span class="math inline">\(p_{ii}\)</span>有关，因此直接比较残差<span class="math inline">\(\hat\epsilon_i\)</span>是不恰当的。</p>
+<p>为此，将残差标准化：</p>
+<p><span class="math display">\[\frac{\hat\epsilon_i-E[\hat\epsilon_i]}{\sqrt{Var[\hat\epsilon_i}]}= \frac{\hat\epsilon_i}{\sigma\sqrt{1-p_{ii}}},\ i=1,\dots,n\]</span></p>
+<p>由于<span class="math inline">\(\sigma\)</span>是未知的，所以用<span class="math inline">\(\hat\sigma\)</span>来代替，其中<span class="math inline">\(\hat\sigma^2 = S_e^2/(n-p)\)</span>. 于是得到学生化(studentized residuals)</p>
+<p><span class="math display">\[t_i = \frac{\hat\epsilon_i}{\hat{\sigma}\sqrt{1-p_{ii}}}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(t_i\)</span>虽然是<span class="math inline">\(\hat\epsilon_i\)</span>的学生化，但它的分布并不服从<span class="math inline">\(t\)</span>分布，它的分布通常比较复杂</p></li>
+<li><p><span class="math inline">\(t_1,\dots,t_n\)</span>通常是不独立的</p></li>
+<li><p>在实际应用中，可以近似认为：<span class="math inline">\(t_1,\dots,t_n\)</span>是相互独立，服从<span class="math inline">\(N(0,1)\)</span>分布</p></li>
+<li><p>在实际应用中使用的残差图就是根据上述假定来对模型合理性进行诊断的。</p></li>
+</ul>
+</div>
+<div id="section-4.4.3" class="section level3">
+<h3><span class="header-section-number">4.4.3</span> 残差图</h3>
+<p>残差图：以残差为纵坐标，其他的量（一般为拟合值<span class="math inline">\(\hat y_i\)</span>）为横坐标的散点图。</p>
+<p>由于可以近似认为：<span class="math inline">\(t_1,\dots,t_n\)</span>是相互独立，服从<span class="math inline">\(N(0,1)\)</span>分布，所以可以把它们看作来自<span class="math inline">\(N(0,1)\)</span>的iid样本</p>
+<p>根据标准正态的性质，大概有<span class="math inline">\(95\%\)</span>的<span class="math inline">\(t_i\)</span>落入区间<span class="math inline">\([-2,2]\)</span>中。由于<span class="math inline">\(\hat Y\)</span>与<span class="math inline">\(\hat\epsilon\)</span>不相关，所以<span class="math inline">\(\hat y_i\)</span>与学生化残差<span class="math inline">\(t_i\)</span>的相关性也很小。</p>
+<p>这样在残差图中，点<span class="math inline">\((\hat y_i,t_i),i=1,\dots,n\)</span>大致应该落在宽度为4的水平带<span class="math inline">\(|t_i|\le 2\)</span>的区域内，且<strong>不呈现任何趋势</strong>。</p>
+<div class="figure"><span id="fig:unnamed-chunk-211"></span>
+<img src="error1.png" alt="正常的残差图" width="90%" />
+<p class="caption">
+图 4.3: 正常的残差图
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-212"></span>
+<img src="error2.png" alt="误差随着横坐标的增加而增加" width="90%" />
+<p class="caption">
+图 4.4: 误差随着横坐标的增加而增加
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-213"></span>
+<img src="error3.png" alt="误差随着横坐标的增加而减少" width="90%" />
+<p class="caption">
+图 4.5: 误差随着横坐标的增加而减少
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-214"></span>
+<img src="error4.png" alt="误差中间大，两端小" width="90%" />
+<p class="caption">
+图 4.6: 误差中间大，两端小
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-215"></span>
+<img src="error5.png" alt="回归函数可能非线性，或者误差相关或者漏掉重要的自变量" width="90%" />
+<p class="caption">
+图 4.7: 回归函数可能非线性，或者误差相关或者漏掉重要的自变量
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-216"></span>
+<img src="error6.png" alt="回归函数可能非线性" width="90%" />
+<p class="caption">
+图 4.8: 回归函数可能非线性
+</p>
+</div>
+<p>案例里面四组数据的残差图如下，从中发现只有第一组数据的残差较为合理。</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>)<span class="op">+</span>.<span class="dv">1</span>,<span class="dt">oma=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">{</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">  ff =<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste0</span>(<span class="st">&quot;y&quot;</span>,i,<span class="st">&quot;~&quot;</span>,<span class="st">&quot;x&quot;</span>,i))</a>
+<a class="sourceLine" id="cb46-5" data-line-number="5">  lmi =<span class="st"> </span><span class="kw">lm</span>(ff,<span class="dt">data =</span> anscombe)</a>
+<a class="sourceLine" id="cb46-6" data-line-number="6">  <span class="kw">plot</span>(lmi<span class="op">$</span>fitted.values,<span class="kw">rstandard</span>(lmi),<span class="dt">pch =</span> <span class="dv">21</span>,<span class="dt">bg=</span><span class="st">&quot;orange&quot;</span>,</a>
+<a class="sourceLine" id="cb46-7" data-line-number="7">       <span class="dt">cex =</span> <span class="fl">1.2</span>,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">15</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb46-8" data-line-number="8">       <span class="dt">xlab =</span> <span class="st">&quot;fitted values&quot;</span>,</a>
+<a class="sourceLine" id="cb46-9" data-line-number="9">       <span class="dt">ylab =</span> <span class="st">&quot;standardized residuals&quot;</span>)</a>
+<a class="sourceLine" id="cb46-10" data-line-number="10">  <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>),<span class="dt">lty=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb46-11" data-line-number="11">}</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-217"></span>
+<img src="book_files/figure-html/unnamed-chunk-217-1.png" alt="残差图" width="672" />
+<p class="caption">
+图 4.9: 残差图
+</p>
+</div>
+</div>
+<div id="section-4.4.4" class="section level3">
+<h3><span class="header-section-number">4.4.4</span> 残差诊断的思路</h3>
+<ul>
+<li><p>如果残差图中显示非线性，可适当增加自变量的二次项或者交叉项。具体问题具体分析。</p></li>
+<li><p>如果残差图中显示误差方差不相等(heterogeneity, 方差非齐性)，可以对变量做适当的变换，使得变换后的相应变量具有近似相等的方差(homogeneity, 方差齐性)。最著名的方法是<strong>Box-Cox变换</strong>，对因变量（响应变量）进行如下变换</p></li>
+</ul>
+<p><span class="math display">\[Y{(\lambda)} = 
+\begin{cases}
+\frac 1\lambda (Y^{\lambda}-1),&amp;\ \lambda\neq 0\\
+\log Y,&amp;\ \lambda=0，
+\end{cases}
+\]</span></p>
+<p>其中<span class="math inline">\(\lambda\)</span>是待定的变换参数，可由极大似然法估计。注意此变换只是针对<span class="math inline">\(Y\)</span>为正数的情况。如果出现负数时，需要作出调整。</p>
+<p>在R中使用命令<code>boxcox()</code> (需要首先运行<code>library(MASS)</code>)</p>
+<p>详情见综述论文：</p>
+<p>R. M. Sakia. The Box-Cox Transformation Technique: A Review. The Statistician, 41: 169-178, 1992.</p>
+</div>
+<div id="box-cox" class="section level3">
+<h3><span class="header-section-number">4.4.5</span> 案例分析：基于Box-Cox变换</h3>
+<p>已知某公司从2000年1月至2005年5月的逐月销售量，利用所学的统计知识对所建立的模型进行诊断。</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">sales&lt;-<span class="kw">c</span>(<span class="dv">154</span>,<span class="dv">96</span>,<span class="dv">73</span>,<span class="dv">49</span>,<span class="dv">36</span>,<span class="dv">59</span>,<span class="dv">95</span>,<span class="dv">169</span>,<span class="dv">210</span>,<span class="dv">278</span>,<span class="dv">298</span>,<span class="dv">245</span>,</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">         <span class="dv">200</span>,<span class="dv">118</span>,<span class="dv">90</span>,<span class="dv">79</span>,<span class="dv">78</span>,<span class="dv">91</span>,<span class="dv">167</span>,<span class="dv">169</span>,<span class="dv">289</span>,<span class="dv">347</span>,<span class="dv">375</span>,</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">         <span class="dv">203</span>,<span class="dv">223</span>,<span class="dv">104</span>,<span class="dv">107</span>,<span class="dv">85</span>,<span class="dv">75</span>,<span class="dv">99</span>,<span class="dv">135</span>,<span class="dv">211</span>,<span class="dv">335</span>,<span class="dv">460</span>,</a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">         <span class="dv">488</span>,<span class="dv">326</span>,<span class="dv">518</span>,<span class="dv">404</span>,<span class="dv">300</span>,<span class="dv">210</span>,<span class="dv">196</span>,<span class="dv">186</span>,<span class="dv">247</span>,<span class="dv">343</span>,</a>
+<a class="sourceLine" id="cb47-5" data-line-number="5">         <span class="dv">464</span>,<span class="dv">680</span>,<span class="dv">711</span>,<span class="dv">610</span>,<span class="dv">613</span>,<span class="dv">392</span>,<span class="dv">273</span>,<span class="dv">322</span>,<span class="dv">189</span>,<span class="dv">257</span>,</a>
+<a class="sourceLine" id="cb47-6" data-line-number="6">         <span class="dv">324</span>,<span class="dv">404</span>,<span class="dv">677</span>,<span class="dv">858</span>,<span class="dv">895</span>,<span class="dv">664</span>,<span class="dv">628</span>,<span class="dv">308</span>,<span class="dv">324</span>,<span class="dv">248</span>,<span class="dv">272</span>)</a>
+<a class="sourceLine" id="cb47-7" data-line-number="7">X&lt;-<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(sales)</a>
+<a class="sourceLine" id="cb47-8" data-line-number="8"><span class="kw">plot</span>(X,sales,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Original values&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;sales&quot;</span>)</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">model1&lt;-<span class="kw">lm</span>(sales<span class="op">~</span>X)</a></code></pre></div>
+<p>对原始数据跑回归，得到如下结果</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">summary</span>(model1)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = sales ~ X)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -262.6 -123.8  -28.6   97.1  419.3 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    64.19      39.68    1.62     0.11    
+## X               6.97       1.05    6.67  7.4e-09 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 158 on 63 degrees of freedom
+## Multiple R-squared:  0.414,  Adjusted R-squared:  0.405 
+## F-statistic: 44.5 on 1 and 63 DF,  p-value: 7.43e-09</code></pre>
+<p>残差图如下，发现异方差情形。</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">predict</span>(model1),<span class="kw">rstandard</span>(model1),<span class="dt">main=</span><span class="st">&quot;Standardized Residuals&quot;</span>,</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">     <span class="dt">xlab=</span><span class="st">&quot;Fitted values&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;residual values&quot;</span>)</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
+<p>进行Box-Cox变换前，通过寻找似然函数最大值求出最优的<span class="math inline">\(\lambda\)</span>:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb52-2" data-line-number="2">bc&lt;-<span class="kw">boxcox</span>(model1,<span class="dt">lambda=</span><span class="kw">seq</span>(<span class="op">-</span><span class="fl">0.13</span>,<span class="fl">1.2</span>,<span class="dt">by=</span><span class="fl">0.01</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">lambda&lt;-bc<span class="op">$</span>x[<span class="kw">which.max</span>(bc<span class="op">$</span>y)]</a>
+<a class="sourceLine" id="cb53-2" data-line-number="2"><span class="kw">cat</span>(<span class="st">&#39;The optimal lambda is&#39;</span>,lambda)</a></code></pre></div>
+<pre><code>## The optimal lambda is 0.15</code></pre>
+<p>得到最优<span class="math inline">\(\lambda=0.15\)</span>后，对因变量进行Box-Cox变换，再一次跑回归，结果如下，从中发现回归系数和回归方程是显著的。</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">model2&lt;-<span class="kw">update</span>(model1,(.<span class="op">^</span>lambda<span class="dv">-1</span>)<span class="op">/</span>lambda<span class="op">~</span>.)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"><span class="kw">summary</span>(model2)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = (sales^lambda - 1)/lambda ~ X)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.1685 -1.1171  0.0347  1.0952  1.8648 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  6.46276    0.30703   21.05  &lt; 2e-16 ***
+## X            0.06135    0.00809    7.58  1.9e-10 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.22 on 63 degrees of freedom
+## Multiple R-squared:  0.477,  Adjusted R-squared:  0.469 
+## F-statistic: 57.5 on 1 and 63 DF,  p-value: 1.9e-10</code></pre>
+<p>比较变换之前和变换之后的残差图：</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb57-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">predict</span>(model1),<span class="kw">rstandard</span>(model1),<span class="dt">main=</span><span class="st">&quot;before boxcox&quot;</span>,</a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">     <span class="dt">xlab=</span><span class="st">&quot;Fitted values&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;residual values&quot;</span>,<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb57-4" data-line-number="4"><span class="kw">plot</span>(<span class="kw">predict</span>(model2),<span class="kw">rstandard</span>(model2),<span class="dt">main=</span><span class="st">&quot;after boxcox&quot;</span>,</a>
+<a class="sourceLine" id="cb57-5" data-line-number="5">     <span class="dt">xlab=</span><span class="st">&quot;Fitted values&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;residual values&quot;</span>,<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
+</div>
+<div id="section-4.4.6" class="section level3">
+<h3><span class="header-section-number">4.4.6</span> 离群值</h3>
+<p>产生离群/异常值(outlier)的原因：</p>
+<ol style="list-style-type: decimal">
+<li>主观原因：收集和记录数据时出现错误</li>
+<li>客观原因：重尾分布（比如，<span class="math inline">\(t\)</span>分布）和混合分布</li>
+</ol>
+<p>离群值的简单判断：</p>
+<ol style="list-style-type: decimal">
+<li><p>数据散点图</p></li>
+<li><p>学生化残差图，如果<span class="math inline">\(|t_i|&gt;3\)</span> (或者2.5,2)，则对应的数据判定为离群值。</p></li>
+<li><p>离群值的统计检验方法，M-估计(Maximum likelihood type estimators)</p></li>
+<li><p>利用<a href="https://en.wikipedia.org/wiki/Cook%27s_distance">Cook距离</a>，其定义为：</p></li>
+</ol>
+<p><span class="math display">\[D_i = \frac{(\hat\beta-\hat\beta_{(i)})^\top X^\top X(\hat\beta-\hat\beta_{(i)}) }{p\hat\sigma^2},i=1,\dots,n,\]</span></p>
+<ul>
+<li><p>其中<span class="math inline">\(\hat\beta_{(i)}\)</span>为剔除第<span class="math inline">\(i\)</span>个数据得到<span class="math inline">\(\beta\)</span>的最小二乘估计</p></li>
+<li><p>在R中用命令<code>cooks.distance()</code>可以得到Cook统计量的值</p></li>
+</ul>
+<p>如果发现特别大的<span class="math inline">\(D_i\)</span>一定要特别注意：</p>
+<ul>
+<li><p>检查原始数据是否有误，如有，改正后重新计算；否则，剔除对应的数据</p></li>
+<li><p>如果没有足够理由剔除影响大的数据，就应该采取收集更多的数据或者采用更加稳健的方法以降低强影响数据对估计和推断的影响，从而得到比较稳定的回归方程。</p></li>
+</ul>
+<p>下面通过两组数据比较离群值的影响，第二组数据在第一组数据上面添加了一个异常数据。观察发现，添加了一个异常数据导致回归系数有较大的变化。</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">lm1 =<span class="st"> </span><span class="kw">lm</span>(y1<span class="op">~</span>x1,<span class="dt">data =</span> anscombe)</a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">x =<span class="st"> </span><span class="kw">c</span>(anscombe<span class="op">$</span>x1, <span class="dv">18</span>) <span class="co"># 人为添加异常数据</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">y =<span class="st"> </span><span class="kw">c</span>(anscombe<span class="op">$</span>y1,<span class="dv">30</span>) <span class="co"># 人为添加异常数据</span></a>
+<a class="sourceLine" id="cb58-4" data-line-number="4">lm.xy =<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span>x)</a>
+<a class="sourceLine" id="cb58-5" data-line-number="5"><span class="kw">plot</span>(x,y,<span class="dt">pch =</span> <span class="dv">21</span>,<span class="dt">bg=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;black&quot;</span>,<span class="dv">11</span>),<span class="st">&quot;red&quot;</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</a>
+<a class="sourceLine" id="cb58-6" data-line-number="6"><span class="kw">abline</span>(<span class="kw">coef</span>(lm.xy),<span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb58-7" data-line-number="7"><span class="kw">abline</span>(<span class="kw">coef</span>(lm1),<span class="dt">lty=</span><span class="dv">2</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
+<p>观察残差图和Cook距离，容易发现异常数据。</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">c</span>(<span class="kw">fitted</span>(lm1),<span class="kw">fitted</span>(lm.xy)),</a>
+<a class="sourceLine" id="cb59-3" data-line-number="3">     <span class="kw">c</span>(<span class="kw">rstandard</span>(lm1),<span class="kw">rstandard</span>(lm.xy)),</a>
+<a class="sourceLine" id="cb59-4" data-line-number="4">     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>),<span class="dt">pch =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">21</span>,<span class="dv">11</span>),<span class="kw">rep</span>(<span class="dv">22</span>,<span class="dv">12</span>)),</a>
+<a class="sourceLine" id="cb59-5" data-line-number="5">     <span class="dt">bg =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;blue&quot;</span>,<span class="dv">11</span>),<span class="kw">rep</span>(<span class="st">&quot;red&quot;</span>,<span class="dv">12</span>)),</a>
+<a class="sourceLine" id="cb59-6" data-line-number="6">     <span class="dt">xlab =</span> <span class="st">&quot;fitted values&quot;</span>,</a>
+<a class="sourceLine" id="cb59-7" data-line-number="7">     <span class="dt">ylab=</span><span class="st">&quot;standardized residuals&quot;</span>)</a>
+<a class="sourceLine" id="cb59-8" data-line-number="8"><span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">lty=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb59-9" data-line-number="9"><span class="kw">plot</span>(lm.xy,<span class="dv">4</span>) <span class="co">#画出第二组数据的cook距离</span></a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
+</div>
+<div id="section-4.4.7" class="section level3">
+<h3><span class="header-section-number">4.4.7</span> 变量选择</h3>
+<p>常见的变量选择如下：</p>
+<ul>
+<li><p>完全子集法</p></li>
+<li><p>向前回归法（每步只能增加）</p></li>
+<li><p>向后回归法（每步只能剔除）</p></li>
+<li><p>逐步回归法（可剔除也可增加，详细见陈家鼎编著教材P208-214）</p></li>
+</ul>
+<p>“添加”或者“删除”变量依赖某个准则，常见的准则有</p>
+<ul>
+<li>AIC准则(Akaike information criterion)：由日本统计学家Hirotugu Akaike提出并命名</li>
+</ul>
+<p><span class="math display">\[AIC(A) = \ln Q(A) +\frac{\color{red} 2}{n} \#(A)\]</span></p>
+<ul>
+<li>BIC准则(Bayesian information criterion)：由Gideon E. Schwarz (1978, Ann. Stat.)提出</li>
+</ul>
+<p><span class="math display">\[BIC(A) = \ln Q(A) +\frac{\color{red}{\log n}}{n} \#(A)\]</span></p>
+<p>其中<span class="math inline">\(A\subset\{1,\dots,p-1\}\)</span>，<span class="math inline">\(Q(A)\)</span>为选择子集<span class="math inline">\(A\)</span>中变量跑回归的残差平方和，<span class="math inline">\(\#(A)\)</span>表示<span class="math inline">\(A\)</span>中元素的个数。<strong>AIC/BIC越小越好</strong>。“添加”或者“剔除”变量操作取决于相应的AIC/BIC是否达到最小值。</p>
+<p>下面通过一个例子展示如何进行逐步回归分析。</p>
+<p>某种水泥在凝固时放出的热量<span class="math inline">\(Y\)</span>与水泥中四种化学成分<span class="math inline">\(X_1\)</span>, <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>, <span class="math inline">\(X_4\)</span>有关，现测得13组数据，如表所示。希望从中选出主要的变量，建立<span class="math inline">\(Y\)</span>关于它们的线性回归方程。</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">cement=<span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">  <span class="dt">x1=</span><span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">7</span>,<span class="dv">11</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">21</span>,<span class="dv">1</span>,<span class="dv">11</span>,<span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">  <span class="dt">x2=</span><span class="kw">c</span>(<span class="dv">26</span>,<span class="dv">29</span>,<span class="dv">56</span>,<span class="dv">31</span>,<span class="dv">52</span>,<span class="dv">55</span>,<span class="dv">71</span>,<span class="dv">31</span>,<span class="dv">54</span>,<span class="dv">47</span>,<span class="dv">40</span>,<span class="dv">66</span>,<span class="dv">68</span>),</a>
+<a class="sourceLine" id="cb60-4" data-line-number="4">  <span class="dt">x3=</span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">17</span>,<span class="dv">22</span>,<span class="dv">18</span>,<span class="dv">4</span>,<span class="dv">23</span>,<span class="dv">9</span>,<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb60-5" data-line-number="5">  <span class="dt">x4=</span><span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">52</span>,<span class="dv">20</span>,<span class="dv">47</span>,<span class="dv">33</span>,<span class="dv">22</span>,<span class="dv">6</span>,<span class="dv">44</span>,<span class="dv">22</span>,<span class="dv">26</span>,<span class="dv">34</span>,<span class="dv">12</span>,<span class="dv">12</span>),</a>
+<a class="sourceLine" id="cb60-6" data-line-number="6">  <span class="dt">y=</span><span class="kw">c</span>(<span class="fl">78.5</span>,<span class="fl">74.3</span>,<span class="fl">104.3</span>,<span class="fl">87.6</span>,<span class="fl">95.9</span>,<span class="fl">109.2</span>,<span class="fl">102.7</span>,<span class="fl">72.5</span>,</a>
+<a class="sourceLine" id="cb60-7" data-line-number="7">      <span class="fl">93.1</span>,<span class="fl">115.9</span>,<span class="fl">83.8</span>,<span class="fl">113.3</span>,<span class="fl">109.4</span>))</a>
+<a class="sourceLine" id="cb60-8" data-line-number="8">knitr<span class="op">::</span><span class="kw">kable</span>(cement)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">x1</th>
+<th align="right">x2</th>
+<th align="right">x3</th>
+<th align="right">x4</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">26</td>
+<td align="right">6</td>
+<td align="right">60</td>
+<td align="right">78.5</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">29</td>
+<td align="right">15</td>
+<td align="right">52</td>
+<td align="right">74.3</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">56</td>
+<td align="right">8</td>
+<td align="right">20</td>
+<td align="right">104.3</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">31</td>
+<td align="right">8</td>
+<td align="right">47</td>
+<td align="right">87.6</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">52</td>
+<td align="right">6</td>
+<td align="right">33</td>
+<td align="right">95.9</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">55</td>
+<td align="right">9</td>
+<td align="right">22</td>
+<td align="right">109.2</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">71</td>
+<td align="right">17</td>
+<td align="right">6</td>
+<td align="right">102.7</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">31</td>
+<td align="right">22</td>
+<td align="right">44</td>
+<td align="right">72.5</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">54</td>
+<td align="right">18</td>
+<td align="right">22</td>
+<td align="right">93.1</td>
+</tr>
+<tr class="even">
+<td align="right">21</td>
+<td align="right">47</td>
+<td align="right">4</td>
+<td align="right">26</td>
+<td align="right">115.9</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">40</td>
+<td align="right">23</td>
+<td align="right">34</td>
+<td align="right">83.8</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">66</td>
+<td align="right">9</td>
+<td align="right">12</td>
+<td align="right">113.3</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">68</td>
+<td align="right">8</td>
+<td align="right">12</td>
+<td align="right">109.4</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">lm_all=<span class="kw">lm</span>(y<span class="op">~</span>x1<span class="op">+</span>x2<span class="op">+</span>x3<span class="op">+</span>x4,<span class="dt">data=</span>cement)</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw">summary</span>(lm_all)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x1 + x2 + x3 + x4, data = cement)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -3.175 -1.671  0.251  1.378  3.925 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   62.405     70.071    0.89    0.399  
+## x1             1.551      0.745    2.08    0.071 .
+## x2             0.510      0.724    0.70    0.501  
+## x3             0.102      0.755    0.14    0.896  
+## x4            -0.144      0.709   -0.20    0.844  
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.45 on 8 degrees of freedom
+## Multiple R-squared:  0.982,  Adjusted R-squared:  0.974 
+## F-statistic:  111 on 4 and 8 DF,  p-value: 4.76e-07</code></pre>
+<p>所有变量参与回归分析，得到如下结果。虽然回归方程整体检验是显著的，但是大部分系数的检验都是不显著的，因此需要进行变量选择。
+R语言关键命令为</p>
+<pre><code>step(object, scope, scale = 0,
+     direction = c(&quot;both&quot;, &quot;backward&quot;, &quot;forward&quot;),
+     trace = 1, keep = NULL, steps = 1000, k = 2, ...)</code></pre>
+<ul>
+<li>object: 初始回归模型，比如<code>object = lm(y=1,data=cement)</code></li>
+<li>scope: 为逐步回归搜索区域，比如<code>scope = ~x1+x2+x3+x4</code></li>
+<li>trace: 表示是否保留逐步回归过程，默认保留</li>
+<li>direction: 搜索方向，默认为“both”</li>
+<li>k: 为AIC惩罚因子，即<span class="math inline">\(AIC(A) = \ln Q(A) +\frac{\color{red} k}{n} \#(A)\)</span>，默认<span class="math inline">\(k=2\)</span>，当<span class="math inline">\(k=\log n\)</span>是为BIC准则。</li>
+</ul>
+<p>逐步回归的筛选过程如下：</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">lm0 =<span class="st"> </span><span class="kw">lm</span>(y<span class="op">~</span><span class="dv">1</span>,<span class="dt">data=</span>cement) <span class="co">#只有截距项作为初始模型</span></a>
+<a class="sourceLine" id="cb64-2" data-line-number="2">lm.step =<span class="st"> </span><span class="kw">step</span>(lm0,<span class="dt">scope =</span> <span class="op">~</span>x1<span class="op">+</span>x2<span class="op">+</span>x3<span class="op">+</span>x4)</a></code></pre></div>
+<pre><code>## Start:  AIC=71.44
+## y ~ 1
+## 
+##        Df Sum of Sq  RSS  AIC
+## + x4    1      1832  884 58.9
+## + x2    1      1809  906 59.2
+## + x1    1      1450 1266 63.5
+## + x3    1       776 1939 69.1
+## &lt;none&gt;              2716 71.4
+## 
+## Step:  AIC=58.85
+## y ~ x4
+## 
+##        Df Sum of Sq  RSS  AIC
+## + x1    1       809   75 28.7
+## + x3    1       708  176 39.9
+## &lt;none&gt;               884 58.9
+## + x2    1        15  869 60.6
+## - x4    1      1832 2716 71.4
+## 
+## Step:  AIC=28.74
+## y ~ x4 + x1
+## 
+##        Df Sum of Sq  RSS  AIC
+## + x2    1        27   48 25.0
+## + x3    1        24   51 25.7
+## &lt;none&gt;                75 28.7
+## - x1    1       809  884 58.9
+## - x4    1      1191 1266 63.5
+## 
+## Step:  AIC=24.97
+## y ~ x4 + x1 + x2
+## 
+##        Df Sum of Sq RSS  AIC
+## &lt;none&gt;               48 25.0
+## - x4    1        10  58 25.4
+## + x3    1         0  48 26.9
+## - x2    1        27  75 28.7
+## - x1    1       821 869 60.6</code></pre>
+<p>逐步回归剔除了第三个变量，得到的回归结果如下，从中发现变量<span class="math inline">\(X_4\)</span>是不显著的。为此，我们手工剔除该变量，以改进模型。</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">summary</span>(lm.step)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x4 + x1 + x2, data = cement)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -3.092 -1.802  0.256  1.282  3.898 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   71.648     14.142    5.07  0.00068 ***
+## x4            -0.237      0.173   -1.37  0.20540    
+## x1             1.452      0.117   12.41  5.8e-07 ***
+## x2             0.416      0.186    2.24  0.05169 .  
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.31 on 9 degrees of freedom
+## Multiple R-squared:  0.982,  Adjusted R-squared:  0.976 
+## F-statistic:  167 on 3 and 9 DF,  p-value: 3.32e-08</code></pre>
+<p>剔除第四个变量后的结果如下，所有的检验都是显著的，残差诊断也合理。</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">lm_final =<span class="st"> </span><span class="kw">update</span>(lm.step,.<span class="op">~</span>.<span class="op">-</span>x4)</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="kw">summary</span>(lm_final)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x1 + x2, data = cement)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -2.89  -1.57  -1.30   1.36   4.05 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  52.5773     2.2862    23.0  5.5e-10 ***
+## x1            1.4683     0.1213    12.1  2.7e-07 ***
+## x2            0.6623     0.0459    14.4  5.0e-08 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.41 on 10 degrees of freedom
+## Multiple R-squared:  0.979,  Adjusted R-squared:  0.974 
+## F-statistic:  230 on 2 and 10 DF,  p-value: 4.41e-09</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">plot</span>(<span class="kw">predict</span>(lm_final),<span class="kw">rstandard</span>(lm_final),<span class="dt">main=</span><span class="st">&quot;new model&quot;</span>,</a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">     <span class="dt">xlab=</span><span class="st">&quot;Fitted values&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;residual values&quot;</span>,<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>))</a></code></pre></div>
+<p><img src="book_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+</div>
+<div id="lasso" class="section level3">
+<h3><span class="header-section-number">4.4.8</span> LASSO</h3>
+<p>现代变量选择方法：LASSO (Least Absolute Shrinkage &amp; Selection Operator)是斯坦福大学统计系Tibshirani于1996年发表的著名论文“<a href="http://statweb.stanford.edu/~tibs/lasso/lasso.pdf">Regreesion shrinkage and selection via the LASSO</a>” (Journal of Royal Statistical Society, Seriers B, 58, 267-288)中所提出的一种变量选择方法。</p>
+<p><img src="rob.jpg" /></p>
+<p>Professor Rob Tibshirani: <a href="https://statweb.stanford.edu/~tibs/" class="uri">https://statweb.stanford.edu/~tibs/</a></p>
+<p><span class="math display">\[\hat\beta_{LASSO} = \arg\min ||Y-X\beta||^2 \text{ subject to } \sum_{i=0}^{p-1}|\beta_i|\le t,\]</span></p>
+<p>等价于</p>
+<p><span class="math display">\[\hat\beta_{LASSO} = \arg\min ||Y-X\beta||^2+ \lambda\sum_{i=0}^{p-1}|\beta_i|.\]</span></p>
+<p>在R语言中可以使用<code>glmnet</code>包来实施LASSO算法。</p>
+</div>
+<div id="section-4.4.9" class="section level3">
+<h3><span class="header-section-number">4.4.9</span> 回归分析与因果分析</h3>
+<p>即使建立了回归关系式并且统计检验证明相关关系成立，也只能说明研究的变量是统计相关的，而<strong>不能就此断定变量之间有因果关系</strong>。</p>
+<p>案例(Ice Cream Causes Polio)：小儿麻痹症疫苗发明前，美国北卡罗来纳州卫生部研究人员通过分析冰淇淋消费量和小儿麻痹症的关系发现当冰淇淋消费量增加时，小儿麻痹疾病也增加。州卫生部发生警告反对吃冰淇淋来试图阻止这种疾病的传播。</p>
+<p><strong>没有观察的混杂因素——温度</strong></p>
+<p>Polio and ice cream consumption both increase in the summertime. Summer is when the polio virus thrived.</p>
+<div class="figure"><span id="fig:unnamed-chunk-230"></span>
+<img src="ice.jpg" alt="The danger of mixing up causality and correlation" width="60%" />
+<p class="caption">
+图 4.10: The danger of mixing up causality and correlation
+</p>
+</div>
+</div>
+</div>
+<div id="ex5" class="section level2">
+<h2><span class="header-section-number">4.5</span> 本章习题</h2>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-231" class="exercise"><strong>习题 4.1  </strong></span>Consider the linear model</p>
+<span class="math display">\[y_i=\beta_0+\beta_1x_i+\epsilon_i,\ \epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2), i=1,\dots,n.\]</span>
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p>Derive the maximum likelihood estimators (MLE) for <span class="math inline">\(\beta_0,\beta_1\)</span>. Are they consistent with the least square estimators (LSE)?</p></li>
+<li><p>Derive the MLE for <span class="math inline">\(\sigma^2\)</span> and look at its unbiasedness.</p></li>
+<li><p>A very slippery point is whether to treat the <span class="math inline">\(x_i\)</span> as fixed numbers or as random variables. In the class, we treated the predictors <span class="math inline">\(x_i\)</span> as fixed numbers for sake of convenience. Now suppose that the predictors <span class="math inline">\(x_i\)</span> are iid random variables (independent of <span class="math inline">\(\epsilon_i\)</span>) with density <span class="math inline">\(f_X(x;\theta)\)</span> for some parameter <span class="math inline">\(\theta\)</span>. Write down the likelihood function for all of our data <span class="math inline">\((x_i,y_i),i=1,\dots,n\)</span>. Derive the MLE for <span class="math inline">\(\beta_0,\beta_1\)</span> and see whether the MLE changes if we work with the setting of random predictors?</p></li>
+</ol>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-232" class="exercise"><strong>习题 4.2  </strong></span>Consider the linear model without intercept</p>
+<p><span class="math display">\[y_i  = \beta x_i+\epsilon_i,\ i=1,\dots,n,\]</span></p>
+where <span class="math inline">\(\epsilon_i\)</span> are independent with <span class="math inline">\(E[\epsilon_i]=0\)</span> and <span class="math inline">\(Var[\epsilon_i]=\sigma^2\)</span>.
+</div>
+
+<ul>
+<li><p>Write down the least square estimator <span class="math inline">\(\hat \beta\)</span> for <span class="math inline">\(\beta\)</span>, and derive an unbiased estiamtor for <span class="math inline">\(\sigma^2\)</span>.</p></li>
+<li><p>For fixed <span class="math inline">\(x_0\)</span>, let <span class="math inline">\(\hat{y}_0=\hat\beta x_0\)</span>. Work out <span class="math inline">\(Var[\hat{y}_0]\)</span>.</p></li>
+</ul>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-233" class="exercise"><strong>习题 4.3  </strong></span><code>Case study</code>: Genetic variability is thought to be a key factor in the survival of a species, the idea
+being that “diverse” populations should have a better chance of coping with changing
+environments. Table below summarizes the results of a study designed to test
+that hypothesis experimentally. Two populations of fruit flies (Drosophila serrata)-one that was cross-bred (Strain A) and the other,
+in-bred (Strain B)-were put into sealed containers where food and space were kept
+to a minimum. Recorded every hundred days were the numbers of Drosophila alive
+in each population.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Date</th>
+<th>Day number</th>
+<th>Strain A</th>
+<th>Strain B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Feb 2</td>
+<td>0</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>May 13</td>
+<td>100</td>
+<td>250</td>
+<td>203</td>
+</tr>
+<tr class="odd">
+<td>Aug 21</td>
+<td>200</td>
+<td>304</td>
+<td>214</td>
+</tr>
+<tr class="even">
+<td>Nov 29</td>
+<td>300</td>
+<td>403</td>
+<td>295</td>
+</tr>
+<tr class="odd">
+<td>Mar 8</td>
+<td>400</td>
+<td>446</td>
+<td>330</td>
+</tr>
+<tr class="even">
+<td>Jun 16</td>
+<td>500</td>
+<td>482</td>
+<td>324</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ul>
+<li><p>Plot day numbers versus population sizes for Strain A and Strain B, respectively. Does the plot look linear? If so, please use least squares to figure out the coefficients and
+their standard errors, and plot the two regression lines.</p></li>
+<li><p>Let <span class="math inline">\(\beta_1^A\)</span> and <span class="math inline">\(\beta_1^B\)</span> be the true slopes (i.e., growth rates) for Strain A and Strain B, respectively. Assume the population sizes for the two strains are independent. Under the same assumptions of <span class="math inline">\(\epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2)\)</span> for both strains, do we have enough evidence here
+to reject the null hypothesis that <span class="math inline">\(\beta_1^A\le \beta_1^B\)</span> (significance level <span class="math inline">\(\alpha=0.05\)</span>)? Or equivalently, do these data support the theory that genetically mixed populations have a
+better chance of survival in hostile environments. (提示：仿照方差相同的两个正态总体均值差的假设检验，构造相应的t检验统计量)</p></li>
+</ul>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-234" class="exercise"><strong>习题 4.4  </strong></span>Let us consider fitting a straight line, <span class="math inline">\(y = \beta_0+\beta_1x\)</span>, to points <span class="math inline">\((x_i,y_i)\)</span>, where <span class="math inline">\(i=1,\dots,n\)</span>.
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p>Write down the normal equations for the simple linear model via the matrix formalism.</p></li>
+<li><p>Solve the normal equations by tha matrix approach and see whether the solutions agree with the earlier calculation derived in the simple linear models.</p></li>
+</ol>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-235" class="exercise"><strong>习题 4.5  </strong></span>Prove that the projection matrix <span class="math inline">\(P=X(X^\top X)^{-1} X^\top\)</span> has an eigenvalue 1, and
+<span class="math inline">\((1,\dots,1)^\top\)</span> is one of the associated eigenvectors.
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-236" class="exercise"><strong>习题 4.6  </strong></span>(The QR Method) This problem outlines the basic ideas of an alternative method,
+the QR method, of finding the least squares estimate <span class="math inline">\(\hat \beta\)</span>. An advantage of the
+method is that it does not include forming the matrix <span class="math inline">\(X^\top X\)</span>, a process that tends
+to increase rounding error. The essential ingredient of the method is that if <span class="math inline">\(X_{n\times p}\)</span>
+has <span class="math inline">\(p\)</span> linearly independent columns, it may be factored in the form</p>
+<p><span class="math display">\[\begin{align*}
+X\quad &amp;=\quad Q\quad \quad R\\
+n\times p &amp;\quad  n\times p\quad p\times p
+\end{align*}\]</span></p>
+<p>where the columns of <span class="math inline">\(Q\)</span> are orthogonal (<span class="math inline">\(Q^\top Q = I_p\)</span>) and <span class="math inline">\(R\)</span> is upper-triangular
+(<span class="math inline">\(r_{ij} = 0\)</span>, for <span class="math inline">\(i &gt; j\)</span>) and nonsingular. For a discussion of this decomposition and
+its relationship to the Gram-Schmidt process, see <a href="https://en.wikipedia.org/wiki/QR_decomposition" class="uri">https://en.wikipedia.org/wiki/QR_decomposition</a>.</p>
+<p>Show that <span class="math inline">\(\hat \beta = (X^\top X)^{-1}X^\top Y\)</span> may also be expressed as <span class="math inline">\(\hat \beta = R^{-1}Q^\top Y\)</span>,
+or <span class="math inline">\(R\hat \beta = Q^\top Y\)</span>. Indicate how this last equation may be solved for <span class="math inline">\(\hat \beta\)</span> by back-substitution, using that <span class="math inline">\(R\)</span> is upper-triangular, and show that it is thus unnecessary
+to invert <span class="math inline">\(R\)</span>.</p>
+</div>
+
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-237" class="exercise"><strong>习题 4.7  </strong></span>Consider fitting the curve <span class="math inline">\(y = \beta_0x+\beta_1x^2\)</span> to points (<span class="math inline">\(x_i,y_i\)</span>), where <span class="math inline">\(i = 1,\dots,n\)</span>.
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p>Use the matrix formalism to find expressions for the least squares estimates
+of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p></li>
+<li><p>Find an expression for the covariance matrix of the estimates.</p></li>
+</ol>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-238" class="exercise"><strong>习题 4.8  </strong></span>Consider the simple linear model</p>
+<p><span class="math display">\[y_i= \beta_0+\beta_1x_i+\epsilon_i,\ \epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2).\]</span></p>
+Use the F-test method derived in the multiple linear model to test the hypothesis <span class="math inline">\(H_0:\beta_1=0\ vs.\ H_1:\beta_1\neq 0\)</span>, and see whether the F-test agrees with the earlier t-test derived in the simple linear models.
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-239" class="exercise"><strong>习题 4.9  </strong></span>The following table shows the monthly returns of stock in Disney, MacDonalds,
+Schlumberger, and Haliburton for January through May 1998. Fit a multiple regression
+to predict Disney returns from those of the other stocks. What is the
+standard deviation of the residuals? What is <span class="math inline">\(R^2\)</span>?</p>
+<table>
+<thead>
+<tr class="header">
+<th>Disney</th>
+<th>MacDonalds</th>
+<th>Schlumberger</th>
+<th>Haliburton</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.08088</td>
+<td>-0.01309</td>
+<td>-0.08463</td>
+<td>-0.13373</td>
+</tr>
+<tr class="even">
+<td>0.04737</td>
+<td>0.15958</td>
+<td>0.02884</td>
+<td>0.03616</td>
+</tr>
+<tr class="odd">
+<td>-0.04634</td>
+<td>0.09966</td>
+<td>0.00165</td>
+<td>0.07919</td>
+</tr>
+<tr class="even">
+<td>0.16834</td>
+<td>0.03125</td>
+<td>0.09571</td>
+<td>0.09227</td>
+</tr>
+<tr class="odd">
+<td>-0.09082</td>
+<td>0.06206</td>
+<td>-0.05723</td>
+<td>-0.13242</td>
+</tr>
+</tbody>
+</table>
+<p>Next, using the regression equation you have just found, carry out the predictions
+for January through May of 1999 and compare to the actual data listed
+below. What is the standard deviation of the prediction error? How can the comparison
+with the results from 1998 be explained? Is a reasonable explanation that
+the fundamental nature of the relationships changed in the one year period? (最后一问选做)</p>
+<table>
+<thead>
+<tr class="header">
+<th>Disney</th>
+<th>MacDonalds</th>
+<th>Schlumberger</th>
+<th>Haliburton</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1</td>
+<td>0.02604</td>
+<td>0.02695</td>
+<td>0.00211</td>
+</tr>
+<tr class="even">
+<td>0.06629</td>
+<td>0.07851</td>
+<td>0.02362</td>
+<td>-0.04</td>
+</tr>
+<tr class="odd">
+<td>-0.11545</td>
+<td>0.06732</td>
+<td>0.23938</td>
+<td>0.35526</td>
+</tr>
+<tr class="even">
+<td>0.02008</td>
+<td>-0.06483</td>
+<td>0.06127</td>
+<td>0.10714</td>
+</tr>
+<tr class="odd">
+<td>-0.08268</td>
+<td>-0.09029</td>
+<td>-0.05773</td>
+<td>-0.02933</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-240" class="exercise"><strong>习题 4.10  </strong></span>Consider the multiple linear regression model
+<span class="math display">\[
+\boldsymbol{Y} = \boldsymbol{X}\boldsymbol {\beta} + \boldsymbol\epsilon,
+\]</span>
+where <span class="math inline">\(\boldsymbol Y=(y_1,\dots,y_n)^\top\)</span>, <span class="math inline">\(\boldsymbol\beta=(\beta_0,\dots,\beta_{p-1})^\top\)</span>, <span class="math inline">\(\boldsymbol X\)</span> is the <span class="math inline">\(n\times p\)</span> design matrix, and <span class="math inline">\(\boldsymbol\epsilon=(\epsilon_1,\dots,\epsilon_n)^\top\)</span>. Assume that <span class="math inline">\(\mathrm{rank}(X)=p&lt;n\)</span>, <span class="math inline">\(E[\boldsymbol\epsilon]=\boldsymbol 0\)</span>, and <span class="math inline">\(\mathrm{Var}[\boldsymbol\epsilon]= \sigma^2 I_n\)</span> with <span class="math inline">\(\sigma&gt;0\)</span>.</p>
+<p>(a). Show that the covariance matrix of the least squares estimates is diagonal if and only if the columns of <span class="math inline">\(\boldsymbol{X}\)</span>, <span class="math inline">\(\boldsymbol{X}_1,\dots,\boldsymbol{X}_p\)</span>, are orthogonal, that is <span class="math inline">\(\boldsymbol{X}_i^\top \boldsymbol{X}_j=0\)</span> for <span class="math inline">\(i\neq j\)</span>.</p>
+<p>(b). Let <span class="math inline">\(\hat y_i\)</span> and <span class="math inline">\(\hat\epsilon_i\)</span> be the fitted values and the residuals, respectively. Show that <span class="math inline">\(n\sigma^2 = \sum_{i=1}^n \mathrm{Var}[\hat y_i]+\sum_{i=1}^n\mathrm{Var}[\hat\epsilon_i]\)</span>.</p>
+<p>(c). Suppose further that <span class="math inline">\(\boldsymbol\epsilon\sim N(\boldsymbol 0,\sigma^2 I_n)\)</span>. Use the generalized likelihood ratio method to test the hypothesis</p>
+<p><span class="math display">\[H_0: \beta_1=\beta_2=\dots=\beta_{p-1}=0\ vs.\ H_1:\sum_{i=1}^{p-1} \beta_i^2\neq0.\]</span>
+If the coefficient of determination <span class="math inline">\(R^2=0.58\)</span>, <span class="math inline">\(p = 5\)</span> and <span class="math inline">\(n=15\)</span>, is the null rejected at the significance level <span class="math inline">\(\alpha =0.05\)</span>?</p>
+(<span class="math inline">\(F_{0.95}(4,10)=3.48,F_{0.95}(5,10)=3.33,t_{0.95}(10)=1.81\)</span>)
+</div>
+
+<!--
+
+## 习题答案
+
+1.
+
+\BeginKnitrBlock{solution}<div class="solution">\iffalse{} <span class="solution"><em>解. </em></span>  \fi{}Note that $y_i\sim N(\beta_0+\beta_1 x_i,\sigma^2)$ independently. The likelihood function is
+
+$$L(\beta_0,\beta_1,\sigma^2) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y_i-\beta_0-\beta_1x_i)^2}{2\sigma^2}}=(2\pi\sigma^2)^{-n/2}e^{-\frac{Q(\beta_0,\beta_1)}{2\sigma^2}},$$
+  
+where $Q(\beta_0,\beta_1) = \sum_{i=1}^n (y_i-\beta_0-\beta_1x_i)^2$.
+For given $\sigma^2$, to maximize $L(\beta_0,\beta_1,\sigma^2)$, it suffices to minimize $Q(\beta_0,\beta_1)$. So the MLEs for $\beta_0,\beta_1$ are consistent with the LSEs, i.e.,
+
+$$\hat\beta_1 = \frac{\ell_{xy}}{\ell_{xx}}=\frac{\sum_{i=1}^n (y_i-\bar y)(x_i-\bar x)}{\sum_{i=1}^n(x_i-\bar x)^2},\ \hat\beta_0 = \bar y -\hat\beta_1\bar x.$$
+
+We then choose $\sigma^2$ to maximize $L(\hat\beta_0,\hat\beta_1,\sigma^2) = (2\pi\sigma^2)^{-n/2}e^{-\frac{Q(\hat\beta_0,\hat\beta_1)}{2\sigma^2}}$.
+It is easy to see that the maximizer is 
+
+$$\hat\sigma^2_{MLE} = \frac{Q(\hat\beta_0,\hat\beta_1)}{n}=\frac{S_e^2}{n}.$$
+
+We have proved that $E[S_e^2] = (n-2)\sigma^2$. So $E[\hat\sigma^2_{MLE}] = \frac{n-2}{n}\sigma^2$, which is NOT an unbiased estimate of $\sigma^2$.
+
+If $x_i$ are random variables with density $f_X(x;\theta)$. The likelihood function for $(x_i,y_i)$ is 
+
+\begin{align*}
+L(\beta_0,\beta_1,\sigma^2,\theta) &=\prod_{i=1}^nf_X(x_i;\theta) f(y_i|x_i) \\
+&= \prod_{i=1}^n\left[f_X(x_i;\theta) \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(y_i-\beta_0-\beta_1x_i)^2}{2\sigma^2}}\right]\\ &=(2\pi\sigma^2)^{-n/2}e^{-\frac{Q(\beta_0,\beta_1)}{2\sigma^2}}\prod_{i=1}^n f_X(x_i;\theta).
+\end{align*}
+
+For fixed $\theta,\sigma^2$, to maximize $L(\beta_0,\beta_1,\sigma^2,\theta)$, it suffices to minimize $Q(\beta_0,\beta_1)$. So the MLE does not changes if we work with the setting of random predictors. 
+
+You can imagine that $(x_i,y_i)$ pairs are generated somewhere and on one day you're given $x_1,\dots,x_n$ independent draws from $f_X$. At that point the data have not told you anything about $\beta_0$ or $\beta_1$. The next
+day $y_i|x_i$ are revealed to you. That is informative about $\beta_0$ and $\beta_1$ using $f_{Y|X}(y_i|x_i;\beta_0,\beta_1,\sigma^2)$.
+The easier analysis is with $x_i$ fixed, so that is the one we'll do.
+</div>\EndKnitrBlock{solution}
+
+2. 
+
+\BeginKnitrBlock{solution}<div class="solution">\iffalse{} <span class="solution"><em>解. </em></span>  \fi{}Let $Q(\beta)= \sum_{i=1}^n (y_i-\beta x_i)^2$. Then we have
+
+$$Q'(\beta) = -\sum_{i=1}^n 2x_i(y_i-\beta x_i).$$
+
+Letting $Q'(\beta) = 0$, we work out the LSE for $\beta$, i.e.,
+
+$$\hat\beta = \frac{\sum_{i=1}^n x_iy_i}{\sum_{i=1}^n x_i^2}.$$
+
+Note that
+
+\begin{align*}
+E[Q(\hat\beta)]&= E[\sum_{i=1}^n y_i^2+\hat\beta^2\sum_{i=1}^n x_i^2-2\hat\beta\sum_{i=1}^n x_iy_i]\\
+&= \sum_{i=1}^n \lbrace Var[y_i]+(E[y_i])^2\rbrace-E[\hat\beta\sum_{i=1}^n x_iy_i]\\
+&=\sum_{i=1}^n (\sigma^2+\beta^2 x_i^2)-\frac{E[(\sum_{i=1}^n x_iy_i)^2]}{\sum_{i=1}^n x_i^2}\\
+&= n\sigma^2+\beta^2\sum_{i=1}^n x_i^2-\frac{Var[\sum_{i=1}^n x_iy_i]+\lbrace E[\sum_{i=1}^n x_iy_i]\rbrace^2}{\sum_{i=1}^n x_i^2}\\
+&=(n-1)\sigma^2.
+\end{align*}
+
+
+So $\hat\sigma^2 = Q(\hat\beta)/(n-1)$ is an unbiased estimate of $\sigma^2$.
+
+
+\begin{align*}
+Var[\hat y_0] &= Var[x_0\hat\beta] = x_0^2Var[\hat\beta]\\
+&=x_0^2Var\left[\frac{\sum_{i=1}^n x_iy_i}{\sum_{i=1}^n x_i^2}\right]\\&=\frac{x_0^2}{(\sum_{i=1}^n x_i^2)^2}\sum_{i=1}^n Var[x_i y_i]\\
+&=\frac{x_0^2}{(\sum_{i=1}^n x_i^2)^2}\sum_{i=1}^n x_i^2\sigma^2\\
+&=\frac{x_0^2\sigma^2}{\sum_{i=1}^n x_i^2}
+\end{align*}
+
+</div>\EndKnitrBlock{solution}
+
+3.
+
+
+
+```r
+day = seq(0,500,by=100)
+A = c(100,250,304,403,446,482)
+B = c(100,203,214,295,330,324)
+matplot(day,cbind(A,B),pch=1:2,ylab="population size",
+        ylim = c(100,550))
+legend(0,550,c("Strain A", "Strain B"),pch = 1:2,
+       col=c("black","red"))
+lm.A = lm(A~day)
+lm.B = lm(B~day)
+abline(coef(lm.A),lty=2)
+abline(coef(lm.B),lty=2,col="red")
+text(120,300,expression(hat(y)[A] == 145.3 + 0.742 * x))
+text(300,200,expression(hat(y)[B] == 131.3 + 0.452 * x),
+     col="red")
+```
+
+<img src="book_files/figure-html/unnamed-chunk-243-1.png" width="672" />
+
+```r
+output = rbind(summary(lm.A)$coef,summary(lm.B)$coef)
+row.names(output) = c("A-Intercept","A-Slope",
+                      "B-Intercept","B-Slope")
+knitr::kable(output, 
+             caption = 'The coefficients and their standard errors')
+```
+
+
+
+Table: (\#tab:unnamed-chunk-243)The coefficients and their standard errors
+
+               Estimate   Std. Error   t value   Pr(>|t|)
+------------  ---------  -----------  --------  ---------
+A-Intercept     145.333      26.8668     5.409     0.0057
+A-Slope           0.742       0.0887     8.362     0.0011
+B-Intercept     131.333      22.7725     5.767     0.0045
+B-Slope           0.452       0.0752     6.009     0.0039
+
+
+We now test 
+
+$$H_0:\beta_1\le \beta_1^*,\ H_1:\beta_1>\beta_1^*.$$
+
+Note that $\hat\beta_1 \sim N(\beta_1,\sigma^2/\ell_{xx})$ and $S_{e}^2/\sigma^2\sim \chi^2(n-2)$, where $S_2^2$ is the sum of squared errors for Strain A. Similarly, $\hat\beta_1^* \sim N(\beta_1^*,\sigma^2/\ell_{xx})$ and $\tilde{S}_{e}^2/\sigma^2\sim \chi^2(n-2)$, where $\tilde{S}_{e}^2$ is the sum of squared errors for Strain B. By independence of A and B, we have
+
+$$\hat\beta_1-\hat\beta_1^*\sim N(\beta_1-\beta_1^*,2\sigma^2/\ell_{xx}),$$
+
+$$\frac{S_{e}^2+\tilde{S}_{e}^2}{\sigma^2}\sim \chi^2(2n-4).$$
+
+As a result,
+
+$$\frac{\hat\beta_1-\hat\beta_1^*-(\beta_1-\beta_1^*)}{\sqrt{ \frac{S_{e}^2+\tilde{S}_{e}^2}{(n-2)\ell_{xx}} }}\sim t(2n-4).$$
+
+We thus choose the test statistic
+
+$$T = \frac{\hat\beta_1-\hat\beta_1^*}{\sqrt{ \frac{S_{e}^2+\tilde{S}_{e}^2}{(n-2)\ell_{xx}} }}.$$
+
+If $\beta_1=\beta_1^*$, we have $T\sim t(2n-4)$. The rejection region is $W = \{T>C\}$, where $C$ is satisfied 
+
+$$\sup_{\beta_1\le\beta_1^*}P(T>C|\beta_1,\beta_1^*)=P(T>C|\beta_1=\beta_1^*)=\alpha.$$
+
+We used the fact that the maximum is attainable at the boundary $\beta_1=\beta_1^*$ (WHY?), under which $T\sim t(2n-4)$. So the critical value $C=t_{1-\alpha}(2n-4)$. The observed test statistic is  
+
+$$t = \frac{0.742   -0.452  }{\sqrt{ \frac{5512.14+3960.14}{(6-2)\times 175000} }}=2.50>t_{0.95}(8)=1.8595.$$
+
+We therefore reject the null. These data, then, **do** support the theory that genetically mixed populations have a
+better chance of survival in hostile environments.
+
+
+4.
+
+
+
+
+1. Let $Y=(y_1,\dots,y_n)^\top$, $\beta=(\beta_0,\dots,\beta_{p-1})^\top$,
+$\epsilon=(\epsilon_1,\dots,\epsilon_n)^\top$, and let $X$ be the $n\times 2$ matrix
+
+$$
+X=
+\left[
+\begin{matrix}
+1 & x_1\\
+1 & x_2\\
+\vdots & \\
+1 & x_n\\
+\end{matrix}
+\right].
+$$
+
+The model can be rewritten as $$Y=X\beta+\epsilon.$$
+
+The normal equations are $(X^\top X) \hat\beta = X^\top Y$. By simple algebra, we have
+
+$$X^\top X = \left[
+\begin{matrix}
+1 & 1 & \dots & 1\\
+x_1 & x_2 &\dots & x_n\\
+\end{matrix}
+\right]\left[
+\begin{matrix}
+1 & x_1\\
+1 & x_2\\
+\vdots & \\
+1 & x_n\\
+\end{matrix}
+\right]=\left[
+\begin{matrix}
+n & \sum_{i=1}^n x_i\\
+\sum_{i=1}^n x_i & \sum_{i=1}^n x_i^2
+\end{matrix}
+\right]$$
+
+$$X^\top Y=\left[\begin{matrix}
+1 & 1 & \dots & 1\\
+x_1 & x_2 &\dots & x_n\\
+\end{matrix}
+\right]\left[\begin{matrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{matrix}
+\right]=\left[\begin{matrix}
+\sum_{i=1}^n y_i\\
+\sum_{i=1}^n x_iy_i
+\end{matrix}
+\right].
+$$
+
+The normal equations turn out to be
+
+$$\left[
+\begin{matrix}
+n & \sum_{i=1}^n x_i\\
+\sum_{i=1}^n x_i & \sum_{i=1}^n x_i^2
+\end{matrix}
+\right]\left[\begin{matrix}
+\hat\beta_0\\
+\hat\beta_1
+\end{matrix}
+\right]=\left[\begin{matrix}
+\sum_{i=1}^n y_i\\
+\sum_{i=1}^n x_iy_i
+\end{matrix}
+\right]$$
+
+As a result,
+
+
+\begin{align*}
+\left[\begin{matrix}
+\hat\beta_0\\
+\hat\beta_1
+\end{matrix}
+\right]&=\left[\begin{matrix}
+n & \sum_{i=1}^n x_i\\
+\sum_{i=1}^n x_i & \sum_{i=1}^n x_i^2
+\end{matrix}
+\right]^{-1}\left[\begin{matrix}
+\sum_{i=1}^n y_i\\
+\sum_{i=1}^n x_iy_i
+\end{matrix}
+\right]\\
+&=\frac{1}{n\sum_{i=1}^n x_i^2-(\sum_{i=1}^n x_i)^2}\left[\begin{matrix}
+\sum_{i=1}^n x_i^2 & -\sum_{i=1}^n x_i\\
+-\sum_{i=1}^n x_i & n
+\end{matrix}
+\right]\left[\begin{matrix}
+\sum_{i=1}^n y_i\\
+\sum_{i=1}^n x_iy_i
+\end{matrix}
+\right]\\
+&=\frac{1}{n\sum_{i=1}^n x_i^2-(\sum_{i=1}^n x_i)^2}\left[\begin{matrix}
+\sum_{i=1}^n x_i^2\sum_{i=1}^n y_i-\sum_{i=1}^n x_i\sum_{i=1}^n x_iy_i\\
+n\sum_{i=1}^n x_iy_i-\sum_{i=1}^n x_i\sum_{i=1}^n y_i
+\end{matrix}
+\right]\\
+&=\frac{1}{\ell_{xx}}\left[\begin{matrix}
+\bar y\sum_{i=1}^n x_i^2-\bar x\sum_{i=1}^n x_iy_i\\
+\ell_{xy}
+\end{matrix}
+\right]\\
+&=\frac{1}{\ell_{xx}}\left[\begin{matrix}
+\bar y\ell_{xx}-\bar x\ell_{xy}\\
+\ell_{xy}
+\end{matrix}
+\right]=\left[\begin{matrix}
+\bar y-\bar x\ell_{xy}/\ell_{xx}\\
+\ell_{xy}/\ell_{xx}
+\end{matrix}
+\right],
+\end{align*}
+
+
+where $\ell_{xx} = \sum_{i=1}^n(x_i-\bar x)^2,$ $\ell_{yy} = \sum_{i=1}^n(y_i-\bar y)^2,$ $\ell_{xy} = \sum_{i=1}^n(x_i-\bar x)(y_i-\bar y).$
+
+The solutions agree with the earlier calculation derived in the simple linear models.
+
+
+
+5.
+
+\BeginKnitrBlock{proof}<div class="proof">\iffalse{} <span class="proof"><em>证明. </em></span>  \fi{}Note that $PX = X(X^\top X)^{-1} X^\top X  = X$. The first column of $X$ is $\mathbf{1}:=(1,\dots,1)^\top$. This implies that $P \mathbf{1} = \mathbf{1}$, which completes the proof.</div>\EndKnitrBlock{proof}
+
+6.
+
+
+
+\BeginKnitrBlock{solution}<div class="solution">\iffalse{} <span class="solution"><em>解. </em></span>  \fi{}Since $X=QR$, 
+
+$$(X^\top X)^{-1}X^\top = (R^\top Q^\top  QR)^{-1} R^\top Q^\top =(R^\top R)^{-1} R^\top Q^\top =R^{-1}  Q^\top.$$
+
+Therefore, $\hat \beta = R^{-1}  Q^\top Y$, or equivalently, $R\hat\beta = Q^\top Y=:b=(b_1,\dots,b_p)^\top$. Since $R$ is upper-triangular, then the normal equations are
+
+
+\begin{align*}
+r_{pp} \hat\beta_{p-1} &= b_p\\
+r_{p-1,p-1} \hat\beta_{p-2}+ r_{p-1,p}\hat\beta_{p-1} &= b_{p-1}\\
+\vdots&\\
+r_{11} \hat\beta_{0}+ r_{12}\hat\beta_{1} +\dots +r_{1p}\hat\beta_{p-1}&= b_{1}.
+\end{align*}
+
+
+This can be sloved by back-substitution:
+
+\begin{align*}
+\hat\beta_{p-1} &= \frac{b_p}{r_{pp}}\\
+ \hat\beta_{i} &=\frac{b_{i+1}}{r_{i+1,i+1}} - \frac{1}{r_{i+1,i+1}}\sum_{j=i+2}^p r_{i+1,j}\hat\beta_{j-1},\ i=p-2,\dots,0.
+\end{align*}</div>\EndKnitrBlock{solution}
+
+7.
+
+\BeginKnitrBlock{solution}<div class="solution">\iffalse{} <span class="solution"><em>解. </em></span>  \fi{}Let $Y=(y_1,\dots,y_n)^\top$, $\beta=(\beta_0,\dots,\beta_{p-1})^\top$, $\epsilon=(\epsilon_1,\dots,\epsilon_n)^\top$, and let $X$ be the $n\times 2$ matrix
+
+$$
+X=
+\left[
+\begin{matrix}
+x_1 & x_1^2\\
+x_2 & x_2^2\\
+\vdots & \\
+x_n & x_n^2\\
+\end{matrix}
+\right].
+$$
+
+The model can be rewritten as $$Y=X\beta+\epsilon.$$
+
+The normal equations are $(X^\top X) \hat\beta = X^\top Y$. By simple algebra, we have
+
+$$X^\top X = \left[
+\begin{matrix}
+x_1 & x_2 & \dots & x_n\\
+x_1^2 & x_2^2 &\dots & x_n^2\\
+\end{matrix}
+\right]\left[
+\begin{matrix}
+x_1 & x_1^2\\
+x_2 & x_2^2\\
+\vdots & \\
+x_n & x_n^2\\
+\end{matrix}
+\right]=\left[
+\begin{matrix}
+\sum_{i=1}^n x_i^2 & \sum_{i=1}^n x_i^3\\
+\sum_{i=1}^n x_i^3 & \sum_{i=1}^n x_i^4
+\end{matrix}
+\right]$$
+
+$$X^\top Y=\left[\begin{matrix}
+x_1 & x_2 & \dots & x_n\\
+x_1^2 & x_2^2 &\dots & x_n^2\\
+\end{matrix}
+\right]\left[\begin{matrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{matrix}
+\right]=\left[\begin{matrix}
+\sum_{i=1}^n x_iy_i\\
+\sum_{i=1}^n x_i^2y_i
+\end{matrix}
+\right].
+$$
+
+The normal equations turn out to be
+
+$$\left[
+\begin{matrix}
+\sum_{i=1}^n x_i^2 & \sum_{i=1}^n x_i^3\\
+\sum_{i=1}^n x_i^3 & \sum_{i=1}^n x_i^4
+\end{matrix}
+\right]\left[\begin{matrix}
+\hat\beta_0\\
+\hat\beta_1
+\end{matrix}
+\right]=\left[\begin{matrix}
+\sum_{i=1}^n x_iy_i\\
+\sum_{i=1}^n x_i^2y_i
+\end{matrix}
+\right]$$
+
+Let $s_x^k = \sum_{i=1}^n x_i^k$, $s_y^k = \sum_{i=1}^n y_i^k$, $s_{xy}^{jk}=\sum_{i=1}^n x_i^jy_i^k$.
+As a result,
+
+
+\begin{align*}
+\left[\begin{matrix}
+\hat\beta_0\\
+\hat\beta_1
+\end{matrix}
+\right]&=\left[
+\begin{matrix}
+s_x^2 & s_x^3\\
+s_x^3 & s_x^4
+\end{matrix}
+\right]^{-1}\left[\begin{matrix}
+s_{xy}^{11}\\
+s_{xy}^{21}
+\end{matrix}
+\right]\\
+&=\frac{1}{s_x^2s_x^4-(s_x^3)^2}\left[\begin{matrix}
+s_x^4 & -s_x^3\\
+-s_x^3 & s_x^2
+\end{matrix}
+\right]\left[\begin{matrix}
+s_{xy}^{11}\\
+s_{xy}^{21}
+\end{matrix}
+\right]\\
+&=\left[\begin{matrix}
+\frac{s_x^4s_{xy}^{11}-s_x^3s_{xy}^{21}}{s_x^2s_x^4-(s_x^3)^2}\\
+\frac{s_x^2s_{xy}^{21}-s_x^3s_{xy}^{11}}{s_x^2s_x^4-(s_x^3)^2}
+\end{matrix}
+\right].
+\end{align*}
+
+
+Note that
+
+$$Var[\hat\beta] = Var[(X^\top X)^{-1} X^\top Y]=(X^\top X)^{-1} X^\top Var[\epsilon] X(X^\top X)^{-1}.$$
+
+For the usual assumption $Var[\epsilon] =\sigma^2 I_n$, then 
+
+$$Var[\hat\beta]=\sigma^2 (X^\top X)^{-1} =\frac{\sigma^2}{s_x^2s_x^4-(s_x^3)^2}\left[\begin{matrix}
+s_x^4 & -s_x^3\\
+-s_x^3 & s_x^2
+\end{matrix}
+\right].$$</div>\EndKnitrBlock{solution}
+  
+8.
+
+
+
+```solution
+The F test statistic is given by
+
+$$F = \frac{S_R^2/(p-1)}{S_e^2/(n-p)}=\frac{S_R^2}{S_e^2/(n-p)},$$
+
+where 
+
+$$S_R^2=\sum_{i=1}^n(\hat y_i-\bar y)^2=\sum_{i=1}^n(\hat\beta_0-\hat\beta_1x_i-\bar y) = \sum_{i=1}^n(\bar y-\hat\beta_1\bar x-\hat\beta_1x_i-\bar y)^2=\hat\beta_1^2\sum_{i=1}^n(x_i-\bar x)^2=\hat\beta_1^2\ell_{xx}.$$
+
+The t test statistic is given by
+
+$$T=\frac{\hat\beta_1}{\sqrt{\frac{S_e^2}{(n-p)\ell_{xx}}}}.$$
+
+As a result, $T^2=F$. Under $H_0$, $T\sim t(n-p)$ and $F\sim F(1,n-p)$. The rejection region for F-test is $W_1=\{F>F_{1-\alpha}(1,n-p)\}$, and the rejection region for t-test is $W_2=\{|T|>t_{1-\alpha/2}(n-p)\}$. Note that $P(|T|>t_{1-\alpha/2}(n-p)|H_0) = P(T^2>t_{1-\alpha/2}(n-p)^2|H_0) =1-\alpha$. Since $T^2\sim F(1,n-p)$ under $H_0$, we have $t_{1-\alpha/2}(n-p)^2=F_{1-\alpha}(1,n-p)$. This implies $W_1=W_2$, i.e., the two tests are the same.
+```
+
+9.
+
+
+`Solution`: 
+
+
+
+```r
+stock=data.frame(Mac=c(-0.01309,0.15958,0.09966,0.03125,0.06206),
+                 Sch=c(-0.08463,0.02884,0.00165,0.09571,-0.05723),
+                 Hali=c(-0.13373,0.03616,0.07919,0.09227,-0.13242),
+                Disney=c(0.08088,0.04737,-0.04634,0.16834,-0.09082))
+lm.stock = lm(Disney~Mac+Sch+Hali,data=stock)
+summary(lm.stock)
+```
+
+```
+## 
+## Call:
+## lm(formula = Disney ~ Mac + Sch + Hali, data = stock)
+## 
+## Residuals:
+##        1        2        3        4        5 
+##  0.06385  0.06246 -0.04091 -0.00796 -0.07744 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)
+## (Intercept)   0.0938     0.0981    0.96     0.51
+## Mac          -0.8812     1.1045   -0.80     0.57
+## Sch           1.3151     1.9877    0.66     0.63
+## Hali         -0.1717     1.3442   -0.13     0.92
+## 
+## Residual standard error: 0.125 on 1 degrees of freedom
+## Multiple R-squared:  0.63,   Adjusted R-squared:  -0.481 
+## F-statistic: 0.567 on 3 and 1 DF,  p-value: 0.724
+```
+
+```r
+knitr::kable(summary(lm.stock)$coef, caption = "summary table")
+```
+
+
+
+Table: (\#tab:unnamed-chunk-248)summary table
+
+               Estimate   Std. Error   t value   Pr(>|t|)
+------------  ---------  -----------  --------  ---------
+(Intercept)      0.0938       0.0981    0.9560     0.5143
+Mac             -0.8812       1.1045   -0.7979     0.5713
+Sch              1.3151       1.9877    0.6616     0.6279
+Hali            -0.1717       1.3442   -0.1278     0.9191
+
+
+
+The regression function is 
+
+$$Disney = 0.0938-0.8812\times MacDonalds   +1.3151\times Schlumberger-0.1717\times Haliburton$$
+
+
+The $R^2= 0.6298$, and the standard deviation of the residuals is $\hat\sigma=0.1253$.
+
+
+
+```r
+newdata = data.frame(
+  Mac=c(0.02604,0.07851,0.06732,-0.06483,-0.09029),
+ Sch=c(0.02695,0.02362,0.23938,0.06127,-0.05773),
+ Hali=c(0.00211,-0.04,0.35526,0.10714,-0.02933))
+truevalue = c(0.1,0.06629,-0.11545,0.02008,-0.08268)
+pre = predict(lm.stock,newdata,interval = "prediction")
+knitr::kable(pre, caption = "predicted values and CI")
+```
+
+
+
+Table: (\#tab:unnamed-chunk-249)predicted values and CI
+
+    fit      lwr     upr
+-------  -------  ------
+ 0.1060   -1.799   2.011
+ 0.0626   -2.043   2.168
+ 0.2883   -3.186   3.763
+ 0.2131   -2.823   3.250
+ 0.1025   -3.055   3.260
+
+```r
+pre_error = sd(pre[,1]-truevalue)
+cat("The standard deviation of the prediction error is ", pre_error,".")
+```
+
+```
+## The standard deviation of the prediction error is  0.167 .
+```
+
+
+> 对于这道题来讲，多元线性模型非常不显著，所以预测就没有太多意义了。这时，我们应该改进我们模型。比如，去掉不显著的项、添加高阶项或者交叉项。但注意，由于这个问题数据量为5，所以未知参数的个数不应该超过4，否则出现完全拟合的情况了。例如，下面的回归模型比之前的模型显著多了：
+
+
+
+
+```r
+lm.stock2 = lm(Disney~Sch+Mac+I(Sch*Mac),data=stock)##添加交叉项用I(Sch*Mac)表示
+summary(lm.stock2)
+```
+
+```
+## 
+## Call:
+## lm(formula = Disney ~ Sch + Mac + I(Sch * Mac), data = stock)
+## 
+## Residuals:
+##        1        2        3        4        5 
+## -0.00192  0.00882 -0.02360  0.00378  0.01292 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)
+## (Intercept)    0.0787     0.0210    3.75     0.17
+## Sch            0.4499     0.2601    1.73     0.33
+## Mac           -1.0672     0.2329   -4.58     0.14
+## I(Sch * Mac)  25.4657     5.9227    4.30     0.15
+## 
+## Residual standard error: 0.0286 on 1 degrees of freedom
+## Multiple R-squared:  0.981,  Adjusted R-squared:  0.923 
+## F-statistic: 16.9 on 3 and 1 DF,  p-value: 0.176
+```
+
+```r
+knitr::kable(summary(lm.stock2)$coef, caption = "improved model")
+```
+
+
+
+Table: (\#tab:unnamed-chunk-250)improved model
+
+                Estimate   Std. Error   t value   Pr(>|t|)
+-------------  ---------  -----------  --------  ---------
+(Intercept)       0.0787       0.0210     3.753     0.1658
+Sch               0.4499       0.2601     1.730     0.3337
+Mac              -1.0672       0.2329    -4.581     0.1368
+I(Sch * Mac)     25.4657       5.9227     4.300     0.1455
+
+
+
+> 在实际使用多元线性回归过程中，如何确定自变量和因变量之前的关系尤为重要。因为不是所有的自变量都可能用得上，而且可能出现非线性项（高阶项、交叉项）。这属于变量选择问题，也是线性回归中非常重要的主题。感兴趣的同学可以查阅课本208页。
+
+
+
+
+10.
+
+
+\BeginKnitrBlock{solution}<div class="solution">\iffalse{} <span class="solution"><em>解. </em></span>  \fi{}</div>\EndKnitrBlock{solution}
+(a). $Y=X\beta$, the LSE is $\hat\beta = (X^\top X)^{-1} X^\top Y$. It is requried that
+that $\text{rank} (X) = p$. $Var[\hat\beta]=\sigma^2(X^\top X)^{-1}$. If $Var[\hat\beta]$ is diagonal, then $X^\top X$ is diagonal, which implies that the columns of $\boldsymbol{X}$ is  orthogonal.
+
+(b). $\hat\epsilon = Y-X\hat \beta = Y-X(X^\top X)^{-1} X^\top Y=(I_n-P)Y$, where $P=X(X^\top X)^{-1} X$. Then $Var[\hat\epsilon]=\sigma^2 (I_n-P)$. Also, $Var[\hat Y]=\sigma^2 P$. So $Var[\hat\epsilon]+Var[\hat Y]=\sigma^2 I_n$. Therefore, $\sum_{i=1}^n \mathrm{Var}[\hat y_i]+\sum_{i=1}^n\mathrm{Var}[\hat\epsilon_i]=\mathrm{tr}(\sigma^2 I_n)=n\sigma^2$.
+
+(C). The test statistic is 
+
+\begin{align*}
+F &=\frac{S_R^2/(p-1)}{S_e^2/(n-p)}
+\\&=\frac{R^2/(p-1)}{(1-R^2)/(n-p)}
+\\&=\frac{0.58/2}{(1-0.58)/10}
+\\&=3.45<F_{0.95}(4,10)=3.48.
+\end{align*}
+We therefore accept the null.
+
+-->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="test.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

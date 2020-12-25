@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 5 章 方差分析 | 数理统计讲义</title>
+  <meta name="description" content="第 5 章 方差分析 | 数理统计讲义" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 5 章 方差分析 | 数理统计讲义" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.jpg" />
+  <meta property="og:description" content="第 5 章 方差分析 | 数理统计讲义" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 5 章 方差分析 | 数理统计讲义" />
+  
+  <meta name="twitter:description" content="第 5 章 方差分析 | 数理统计讲义" />
+  <meta name="twitter:image" content="images/cover.jpg" />
+
+<meta name="author" content="何志坚" />
+
+
+<meta name="date" content="2020-03-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regression.html"/>
+<link rel="next" href="exam.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">数理统计讲义</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e887b4e8b0a2"><i class="fa fa-check"></i>致谢</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e78988e69d83"><i class="fa fa-check"></i>版权</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 绪论</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> 学科介绍</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#section-1.1.1"><i class="fa fa-check"></i><b>1.1.1</b> 统计学的发展简史</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#section-1.1.2"><i class="fa fa-check"></i><b>1.1.2</b> 频率学派与贝叶斯学派</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#section-1.1.3"><i class="fa fa-check"></i><b>1.1.3</b> 统计学专业</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> 基本概念</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#section-1.2.1"><i class="fa fa-check"></i><b>1.2.1</b> 总体</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#section-1.2.2"><i class="fa fa-check"></i><b>1.2.2</b> 样本</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#section-1.2.3"><i class="fa fa-check"></i><b>1.2.3</b> 简单随机抽样</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#section-1.2.4"><i class="fa fa-check"></i><b>1.2.4</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> 概率分布族</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 常用的参数族</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#section-1.3.2"><i class="fa fa-check"></i><b>1.3.2</b> 伽玛分布族</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#section-1.3.3"><i class="fa fa-check"></i><b>1.3.3</b> 贝塔分布族</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#section-1.3.4"><i class="fa fa-check"></i><b>1.3.4</b> 指数型分布族</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 统计量与估计量</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#section-1.5"><i class="fa fa-check"></i><b>1.5</b> 充分统计量</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#section-1.5.1"><i class="fa fa-check"></i><b>1.5.1</b> 因子分解定理</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#section-1.5.2"><i class="fa fa-check"></i><b>1.5.2</b> 因子分解定理的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#section-1.6"><i class="fa fa-check"></i><b>1.6</b> 抽样分布</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#section-1.6.1"><i class="fa fa-check"></i><b>1.6.1</b> 样本均值的抽样分布</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#section-1.6.2"><i class="fa fa-check"></i><b>1.6.2</b> 卡方分布</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#section-1.6.3"><i class="fa fa-check"></i><b>1.6.3</b> 正态总体抽样分布定理</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#t"><i class="fa fa-check"></i><b>1.6.4</b> t分布</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#section-1.6.5"><i class="fa fa-check"></i><b>1.6.5</b> 样本均值与标准差之比的抽样分布</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#f"><i class="fa fa-check"></i><b>1.6.6</b> F分布</a></li>
+<li class="chapter" data-level="1.6.7" data-path="intro.html"><a href="intro.html#section-1.6.7"><i class="fa fa-check"></i><b>1.6.7</b> 两个独立正态总体的抽样分布</a></li>
+<li class="chapter" data-level="1.6.8" data-path="intro.html"><a href="intro.html#section-1.6.8"><i class="fa fa-check"></i><b>1.6.8</b> 顺序统计量</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#section-1.7"><i class="fa fa-check"></i><b>1.7</b> 分位数</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#ex2"><i class="fa fa-check"></i><b>1.8</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="est.html"><a href="est.html"><i class="fa fa-check"></i><b>2</b> 估计</a><ul>
+<li class="chapter" data-level="2.1" data-path="est.html"><a href="est.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 参数估计</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="est.html"><a href="est.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 矩估计法</a></li>
+<li class="chapter" data-level="2.1.2" data-path="est.html"><a href="est.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 最大似然估计法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="est.html"><a href="est.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 矩估计与最大似然估计的对比</a></li>
+<li class="chapter" data-level="2.1.4" data-path="est.html"><a href="est.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 混合正态分布的参数估计</a></li>
+<li class="chapter" data-level="2.1.5" data-path="est.html"><a href="est.html#em"><i class="fa fa-check"></i><b>2.1.5</b> EM算法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="est.html"><a href="est.html#section-2.2"><i class="fa fa-check"></i><b>2.2</b> 估计的优良性标准</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="est.html"><a href="est.html#section-2.2.1"><i class="fa fa-check"></i><b>2.2.1</b> 无偏性</a></li>
+<li class="chapter" data-level="2.2.2" data-path="est.html"><a href="est.html#section-2.2.2"><i class="fa fa-check"></i><b>2.2.2</b> 均方误差</a></li>
+<li class="chapter" data-level="2.2.3" data-path="est.html"><a href="est.html#section-2.2.3"><i class="fa fa-check"></i><b>2.2.3</b> 一致最小方差无偏估计</a></li>
+<li class="chapter" data-level="2.2.4" data-path="est.html"><a href="est.html#section-2.2.4"><i class="fa fa-check"></i><b>2.2.4</b> 统计量的大样本性质</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="est.html"><a href="est.html#section-2.3"><i class="fa fa-check"></i><b>2.3</b> 区间估计</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="est.html"><a href="est.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 区间估计的定义</a></li>
+<li class="chapter" data-level="2.3.2" data-path="est.html"><a href="est.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 枢轴量法</a></li>
+<li class="chapter" data-level="2.3.3" data-path="est.html"><a href="est.html#section-2.3.3"><i class="fa fa-check"></i><b>2.3.3</b> 单个正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.4" data-path="est.html"><a href="est.html#section-2.3.4"><i class="fa fa-check"></i><b>2.3.4</b> 两个独立正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.5" data-path="est.html"><a href="est.html#section-2.3.5"><i class="fa fa-check"></i><b>2.3.5</b> 非正态总体参数的区间估计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="est.html"><a href="est.html#section-2.4"><i class="fa fa-check"></i><b>2.4</b> 分布的估计</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="est.html"><a href="est.html#section-2.4.1"><i class="fa fa-check"></i><b>2.4.1</b> 分布函数的估计</a></li>
+<li class="chapter" data-level="2.4.2" data-path="est.html"><a href="est.html#section-2.4.2"><i class="fa fa-check"></i><b>2.4.2</b> 直方图法</a></li>
+<li class="chapter" data-level="2.4.3" data-path="est.html"><a href="est.html#section-2.4.3"><i class="fa fa-check"></i><b>2.4.3</b> 核估计法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="est.html"><a href="est.html#ex3"><i class="fa fa-check"></i><b>2.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>3</b> 假设检验</a><ul>
+<li class="chapter" data-level="3.1" data-path="test.html"><a href="test.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 女士品茶</a></li>
+<li class="chapter" data-level="3.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.2</b> 基本概念</a></li>
+<li class="chapter" data-level="3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3</b> UMP检验和似然比检验</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.1</b> UMP检验的定义</a></li>
+<li class="chapter" data-level="3.3.2" data-path="test.html"><a href="test.html#section-3.3.2"><i class="fa fa-check"></i><b>3.3.2</b> 似然比检验方法</a></li>
+<li class="chapter" data-level="3.3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.3</b> 正态分布均值的UMP检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="test.html"><a href="test.html#section-3.4"><i class="fa fa-check"></i><b>3.4</b> 单参数指数型分布族</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="test.html"><a href="test.html#section-3.4.1"><i class="fa fa-check"></i><b>3.4.1</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="test.html"><a href="test.html#section-3.5"><i class="fa fa-check"></i><b>3.5</b> 广义似然比检验</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="test.html"><a href="test.html#section-3.5.1"><i class="fa fa-check"></i><b>3.5.1</b> 正态总体的假设检验</a></li>
+<li class="chapter" data-level="3.5.2" data-path="test.html"><a href="test.html#section-3.5.2"><i class="fa fa-check"></i><b>3.5.2</b> 两个独立正态总体的检验</a></li>
+<li class="chapter" data-level="3.5.3" data-path="test.html"><a href="test.html#section-3.5.3"><i class="fa fa-check"></i><b>3.5.3</b> 案例分析：山鸢尾和杂色鸢尾花差异性比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="test.html"><a href="test.html#section-3.6"><i class="fa fa-check"></i><b>3.6</b> 置信区间与假设检验的联系</a></li>
+<li class="chapter" data-level="3.7" data-path="test.html"><a href="test.html#p"><i class="fa fa-check"></i><b>3.7</b> p值</a></li>
+<li class="chapter" data-level="3.8" data-path="test.html"><a href="test.html#section-3.8"><i class="fa fa-check"></i><b>3.8</b> 多重检验</a></li>
+<li class="chapter" data-level="3.9" data-path="test.html"><a href="test.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 伯努利分布的检验</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="test.html"><a href="test.html#i"><i class="fa fa-check"></i><b>3.9.1</b> 单侧检验I</a></li>
+<li class="chapter" data-level="3.9.2" data-path="test.html"><a href="test.html#section-3.9.2"><i class="fa fa-check"></i><b>3.9.2</b> 女士品茶问题求解</a></li>
+<li class="chapter" data-level="3.9.3" data-path="test.html"><a href="test.html#ii"><i class="fa fa-check"></i><b>3.9.3</b> 单侧检验II</a></li>
+<li class="chapter" data-level="3.9.4" data-path="test.html"><a href="test.html#section-3.9.4"><i class="fa fa-check"></i><b>3.9.4</b> 双侧检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="test.html"><a href="test.html#section-3.10"><i class="fa fa-check"></i><b>3.10</b> 拟合优度检验</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="test.html"><a href="test.html#mendel"><i class="fa fa-check"></i><b>3.10.1</b> Mendel的数据</a></li>
+<li class="chapter" data-level="3.10.2" data-path="test.html"><a href="test.html#section-3.10.2"><i class="fa fa-check"></i><b>3.10.2</b> 卡方检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.11</b> 小结</a></li>
+<li class="chapter" data-level="3.12" data-path="test.html"><a href="test.html#ex4"><i class="fa fa-check"></i><b>3.12</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>4</b> 线性回归</a><ul>
+<li class="chapter" data-level="4.1" data-path="regression.html"><a href="regression.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 一元线性模型</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="regression.html"><a href="regression.html#section-4.1.1"><i class="fa fa-check"></i><b>4.1.1</b> 最小二乘估计</a></li>
+<li class="chapter" data-level="4.1.2" data-path="regression.html"><a href="regression.html#section-4.1.2"><i class="fa fa-check"></i><b>4.1.2</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.1.3" data-path="regression.html"><a href="regression.html#section-4.1.3"><i class="fa fa-check"></i><b>4.1.3</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.1.4" data-path="regression.html"><a href="regression.html#section-4.1.4"><i class="fa fa-check"></i><b>4.1.4</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.1.5" data-path="regression.html"><a href="regression.html#section-4.1.5"><i class="fa fa-check"></i><b>4.1.5</b> 置信区间与假设检验</a></li>
+<li class="chapter" data-level="4.1.6" data-path="regression.html"><a href="regression.html#1"><i class="fa fa-check"></i><b>4.1.6</b> 案例分析1</a></li>
+<li class="chapter" data-level="4.1.7" data-path="regression.html"><a href="regression.html#section-4.1.7"><i class="fa fa-check"></i><b>4.1.7</b> 拟合的评估</a></li>
+<li class="chapter" data-level="4.1.8" data-path="regression.html"><a href="regression.html#section-4.1.8"><i class="fa fa-check"></i><b>4.1.8</b> 预测</a></li>
+<li class="chapter" data-level="4.1.9" data-path="regression.html"><a href="regression.html#section-4.1.9"><i class="fa fa-check"></i><b>4.1.9</b> 控制</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="regression.html"><a href="regression.html#section-4.2"><i class="fa fa-check"></i><b>4.2</b> 多元线性模型</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.1</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.2.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.2</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.2.3" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.3</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.2.4" data-path="regression.html"><a href="regression.html#section-4.2.4"><i class="fa fa-check"></i><b>4.2.4</b> 置信区间和假设检验</a></li>
+<li class="chapter" data-level="4.2.5" data-path="regression.html"><a href="regression.html#section-4.2.5"><i class="fa fa-check"></i><b>4.2.5</b> 模型整体的显著性检验</a></li>
+<li class="chapter" data-level="4.2.6" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.6</b> 预测</a></li>
+<li class="chapter" data-level="4.2.7" data-path="regression.html"><a href="regression.html#2"><i class="fa fa-check"></i><b>4.2.7</b> 案例分析2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regression.html"><a href="regression.html#section-4.3"><i class="fa fa-check"></i><b>4.3</b> 线性模型的推广</a></li>
+<li class="chapter" data-level="4.4" data-path="regression.html"><a href="regression.html#section-4.4"><i class="fa fa-check"></i><b>4.4</b> 回归诊断</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="regression.html"><a href="regression.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 动机</a></li>
+<li class="chapter" data-level="4.4.2" data-path="regression.html"><a href="regression.html#section-4.4.2"><i class="fa fa-check"></i><b>4.4.2</b> 残差的定义和性质</a></li>
+<li class="chapter" data-level="4.4.3" data-path="regression.html"><a href="regression.html#section-4.4.3"><i class="fa fa-check"></i><b>4.4.3</b> 残差图</a></li>
+<li class="chapter" data-level="4.4.4" data-path="regression.html"><a href="regression.html#section-4.4.4"><i class="fa fa-check"></i><b>4.4.4</b> 残差诊断的思路</a></li>
+<li class="chapter" data-level="4.4.5" data-path="regression.html"><a href="regression.html#box-cox"><i class="fa fa-check"></i><b>4.4.5</b> 案例分析：基于Box-Cox变换</a></li>
+<li class="chapter" data-level="4.4.6" data-path="regression.html"><a href="regression.html#section-4.4.6"><i class="fa fa-check"></i><b>4.4.6</b> 离群值</a></li>
+<li class="chapter" data-level="4.4.7" data-path="regression.html"><a href="regression.html#section-4.4.7"><i class="fa fa-check"></i><b>4.4.7</b> 变量选择</a></li>
+<li class="chapter" data-level="4.4.8" data-path="regression.html"><a href="regression.html#lasso"><i class="fa fa-check"></i><b>4.4.8</b> LASSO</a></li>
+<li class="chapter" data-level="4.4.9" data-path="regression.html"><a href="regression.html#section-4.4.9"><i class="fa fa-check"></i><b>4.4.9</b> 回归分析与因果分析</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="regression.html"><a href="regression.html#ex5"><i class="fa fa-check"></i><b>4.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>5</b> 方差分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="anova.html"><a href="anova.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 引言</a></li>
+<li class="chapter" data-level="5.2" data-path="anova.html"><a href="anova.html#section-5.2"><i class="fa fa-check"></i><b>5.2</b> 单因子方差分析</a></li>
+<li class="chapter" data-level="5.3" data-path="anova.html"><a href="anova.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 两因子方差分析</a></li>
+<li class="chapter" data-level="5.4" data-path="anova.html"><a href="anova.html#-2"><i class="fa fa-check"></i><b>5.4</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>6</b> 综合练习</a><ul>
+<li class="chapter" data-level="6.1" data-path="exam.html"><a href="exam.html#section-6.1"><i class="fa fa-check"></i><b>6.1</b> 2018秋季试卷</a></li>
+<li class="chapter" data-level="6.2" data-path="exam.html"><a href="exam.html#section-6.2"><i class="fa fa-check"></i><b>6.2</b> 2018秋季试卷答案</a></li>
+<li class="chapter" data-level="6.3" data-path="exam.html"><a href="exam.html#section-6.3"><i class="fa fa-check"></i><b>6.3</b> 2019春季试卷</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="http://www2.scut.edu.cn/math/2018/0118/c14638a254123/page.htm" target="blank">版权归作者所有</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">数理统计讲义</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="anova" class="section level1">
+<h1><span class="header-section-number">第 5 章</span> 方差分析</h1>
+<div id="section-5.1" class="section level2">
+<h2><span class="header-section-number">5.1</span> 引言</h2>
+<p>在工业生产或者实验中经常要比较若干个因素对业务指标的影响。比如，为了比较药物A,B,C对治疗某疾病的疗效，我们将实验对象分成三组，分别记录服用三种药物的治疗效果，得到三组样本</p>
+<p><span class="math display">\[X_1,\dots,X_{n_1};\ Y_1,\dots,Y_{n_2};\ Z_1,\dots,Z_{n_3}.\]</span></p>
+<p>通过这些实验数据，我们希望回答：</p>
+<ol style="list-style-type: decimal">
+<li><p>这三种药物对治疗该疾病有没有显著差异；</p></li>
+<li><p>如果有差异，哪种药物治疗效果最好？</p></li>
+</ol>
+<p>这个例子中，药物称为<strong>因子</strong>，A,B,C称为该因子的<strong>水平</strong>。</p>
+<p>由于这个实验只涉及单个因子——“药物”，我们称之为<strong>单因子实验</strong>。此外，如果比较不同的药物和性别对疗效的影响，这就是<strong>两因子实验</strong>。不难推广到<strong>多因子实验</strong>。</p>
+<p>本章介绍<strong>方差分析方法</strong>(Analysis of Variance, ANOVA)，研究因子不同水平的差异性，不同因子交互作用的显著性。这些研究有助于搭配有利于指标的不同因子的水平。虽然本章叫做方差分析，但实际上关心的是不同总体的均值比较，而不是它们的方差。</p>
+</div>
+<div id="section-5.2" class="section level2">
+<h2><span class="header-section-number">5.2</span> 单因子方差分析</h2>
+<p>单因子实验设计(one-way layout)在一个因子的不同水平下分别进行独立的观测，是两个独立样本比较方法的推广。</p>
+<p><strong>模型假设</strong>：考虑一个因子A，有<span class="math inline">\(r\)</span>个水平<span class="math inline">\(A_1,\dots,A_r\)</span>, <span class="math inline">\(r\ge 2\)</span>. 设在水平<span class="math inline">\(A_i\)</span>下重复进行了<span class="math inline">\(n_i\)</span>次实验(<span class="math inline">\(n_i\ge2\)</span>)，数据是<span class="math inline">\(y_{i1},y_{i2},\dots,y_{in_i}\)</span>. 假设这些数据之间相互独立且<span class="math inline">\(y_{ij}\sim N(\mu_i,\sigma^2)\)</span>，其中<span class="math inline">\(\sigma\)</span>未知。我们关心的问题是<span class="math inline">\(\mu_i\)</span>是否全相等，即要检验</p>
+<p><span class="math display">\[H_0:\mu_1=\dots=\mu_r\ vs.\ H_1:\mu_i\text{不全相等}.\]</span></p>
+<p>令<span class="math inline">\(n=\sum_{i=1}^r n_i\)</span>，</p>
+<p><span class="math display">\[\bar y = \frac{1}{n}\sum_{i=1}^r\sum_{j=1}^{n_i}y_{ij},\ \bar y_{i\cdot}=\frac 1{n_i}\sum_{j=1}^{n_i}y_{ij},i=1,\dots,r.\]</span></p>
+<p>这里<span class="math inline">\(\bar y\)</span>表示所有观测的平均值，<span class="math inline">\(\bar y_{i\cdot}\)</span>表示水平<span class="math inline">\(A_i\)</span>下的观测平均值。令</p>
+<p><span class="math display">\[S_T^2=\sum_{i=1}^r\sum_{j=1}^{n_i}(y_{ij}-\bar y )^2,\ S_e^2=\sum_{i=1}^r\sum_{j=1}^{n_i}(y_{ij}-\bar y_{i\cdot} )^2,\]</span></p>
+<p><span class="math display">\[S_A^2 = \sum_{i=1}^r n_i(\bar y_{i\cdot} -\bar y)^2.\]</span></p>
+<p>其中，<span class="math inline">\(S_T^2\)</span>刻画全部数据的波动程度，<span class="math inline">\(S_e^2\)</span>刻画组内数据的波动程度，<span class="math inline">\(S_A^2\)</span>刻画不同组均值的差异引起的波动程度。这三者满足以下三角分解：</p>
+<p><span class="math display">\[S_T^2 = S_e^2+S_A^2.\]</span></p>
+<p>这是由于</p>
+<p><span class="math display">\[\begin{align*}
+S_T^2&amp;=\sum_{i=1}^r\sum_{j=1}^{n_i}(y_{ij}-\bar y_{i\cdot}+\bar y_{i\cdot}-\bar y )^2\\
+&amp;=\sum_{i=1}^r\sum_{j=1}^{n_i}(y_{ij}-\bar y_{i\cdot})^2+\sum_{i=1}^r\sum_{j=1}^{n_i}(\bar y_{i\cdot}-\bar y )^2+2\sum_{i=1}^r(\bar y_{i\cdot}-\bar y )\sum_{j=1}^{n_i}(y_{ij}-\bar y_{i\cdot})\\
+&amp;=S_e^2+S_A^2.
+\end{align*}\]</span></p>
+<p>这表明，总的平方和等于组内平方和加上组间平方和。注意到<span class="math inline">\(\bar y_{i\cdot}\)</span>是<span class="math inline">\(\mu_i\)</span>的无偏估计，如果<span class="math inline">\(H_0\)</span>成立，<span class="math inline">\(\bar y_{i\cdot}\)</span>应该接近，那么<span class="math inline">\(S_A^2\)</span>相对<span class="math inline">\(S_e^2\)</span>小得多。也就意味着两者的比值<span class="math inline">\(S_A^2/S_e^2\)</span>大到一定程度就有理由拒绝<span class="math inline">\(H_0\)</span>. 为给出确切的拒绝域，
+我们需要知道在<span class="math inline">\(H_0\)</span>成立下，<span class="math inline">\((S_A^2, S_e^2)\)</span>的分布。</p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-252" class="theorem"><strong>定理 5.1  </strong></span>考虑上述模型假设，有<span class="math inline">\(S_e^2/\sigma^2\sim \chi^2(n-r)\)</span>且<span class="math inline">\(S_e^2\)</span>与<span class="math inline">\(S_A^2\)</span>独立。如果<span class="math inline">\(H_0:\mu_1=\dots=\mu_r\)</span>成立，则有</p>
+<p><span class="math display">\[\frac{S_A^2}{\sigma^2}\sim \chi^2(r-1),\ F=\frac{S_A^2/(r-1)}{S_e^2/(n-r)}\sim F(r-1,n-r).\]</span></p>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 由单个正态总体的抽样分布定理有，</p>
+<p><span class="math display">\[V_i:=\frac{1}{\sigma^2} \sum_{j=1}^{n_i}(y_{ij}-\bar y_{i\cdot} )^2\sim \chi^2(n_i-1).\]</span></p>
+<p>由于<span class="math inline">\(y_{ij}\)</span>之间独立， 所以<span class="math inline">\(V_i\)</span>相互独立。由卡方分布的可加性，我们有<span class="math inline">\(S_e^2/\sigma^2=\sum_{i=1}^r V_i\sim \chi^2(n-r)\)</span>.
+此外，<span class="math inline">\(\{V_1,\dots,V_r\}\)</span>与<span class="math inline">\((\bar y_{1\cdot},\dots,\bar y_{r\cdot})\)</span>独立。注意到<span class="math inline">\(S_A^2\)</span>为<span class="math inline">\(\bar y_{i\cdot}\)</span>的函数，所以<span class="math inline">\(S_e^2\)</span>与<span class="math inline">\(S_A^2\)</span>独立。
+当<span class="math inline">\(\mu_1=\dots=\mu_r=\mu\)</span>成立时，<span class="math inline">\(\bar y_{i\cdot}\stackrel{iid}{\sim} N(\mu,\sigma^2/n_i)\)</span>. 令<span class="math inline">\(x_i = \sqrt{n_i}(\bar y_{i\cdot}-\mu)/\sigma\stackrel{iid}\sim N(0,1)\)</span>. 注意到，</p>
+<p><span class="math display">\[\begin{align*}
+S_A^2&amp;=\frac{\sum_{i=1}^rn_i(\bar y_{i\cdot} -\bar y)^2}{\sigma^2}\\
+&amp;=\frac{\sum_{i=1}^r(\sqrt{n_i}\bar y_{i\cdot} -\sqrt{n_i}\sum_{j=1}^r \frac{n_j}{n}\bar y_{j\cdot} )^2}{\sigma^2}\\
+&amp;=\frac{\sum_{i=1}^r[\sqrt{n_i}(\bar y_{i\cdot}-\mu) -\sqrt{n_i}\sum_{j=1}^r \frac{n_j}{n}(\bar y_{j\cdot}-\mu) ]^2}{\sigma^2}\\
+&amp;=\sum_{i=1}^r(x_i-\sqrt{n_i}\sum_{j=1}^r \frac{\sqrt{n_j}}{n}x_j)^2\\
+&amp;=\sum_{i=1}^rx_i^2-(\sum_{i=1}^r\sqrt{n_i/n} x_i)^2\\
+&amp;=||x_{1{:}r}||^2-(\alpha^\top x_{1{:}r})^2,
+\end{align*}\]</span>
+其中<span class="math inline">\(\alpha=(\sqrt{n_1/n},\dots,\sqrt{n_r/n})^\top\)</span>. 注意到<span class="math inline">\(||\alpha||=1\)</span>，参考定理1.4的证明，可以构造一个正交矩阵<span class="math inline">\(A\)</span>使得<span class="math inline">\(A\)</span>的第一行为<span class="math inline">\(\alpha^\top\)</span>。令<span class="math inline">\(z_{1{:}r}=Ax_{1{:}r}\sim N(0,I_r)\)</span>，此时，<span class="math inline">\(||z_{1{:}r}||^2=||x_{1{:}r}||^2\)</span>, <span class="math inline">\(z_1=\alpha^\top x_{1{:}r}\)</span>. 所以，</p>
+<p><span class="math display">\[S_A^2=||z_{1{:}r}||^2-z_1^2=\sum_{i=2}^r z_i^2\sim \chi^2(r-1).\]</span></p>
+由于<span class="math inline">\(S_e^2\)</span>与<span class="math inline">\(S_A^2\)</span>独立，所以<span class="math inline">\(F\sim F(r-1,n-r).\)</span>
+</div>
+
+<p>为此，我们采用F检验，拒绝域为<span class="math inline">\(W=\{F&gt;F_{1-\alpha}(r-1,n-r)\}\)</span>. 这种方法为方差分析法，是R. A. Fisher在1923年提出来的。在实践中常用以下方差分析表格。</p>
+<table style="width:100%;">
+<colgroup>
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">来源</th>
+<th align="center">自由度</th>
+<th align="center">平方和</th>
+<th align="center">均方和</th>
+<th align="center"><span class="math inline">\(F\)</span>值</th>
+<th align="center">P值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">因子A</td>
+<td align="center"><span class="math inline">\(r-1\)</span></td>
+<td align="center"><span class="math inline">\(S_A^2=\sum_{i=1}^r n_i(\bar y_{i\cdot} -\bar y)^2\)</span></td>
+<td align="center"><span class="math inline">\(S_A^2/(r-1)\)</span></td>
+<td align="center"><span class="math inline">\(\frac{S_A^2/(r-1)}{S_e^2/(n-r)}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">误差</td>
+<td align="center"><span class="math inline">\(n-r\)</span></td>
+<td align="center"><span class="math inline">\(S_e^2=\sum_{i=1}^r\sum_{j=1}^{n_i}(y_{ij}-\bar y_{i\cdot} )^2\)</span></td>
+<td align="center"><span class="math inline">\(S_e^2/(n-r)\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">总和</td>
+<td align="center"><span class="math inline">\(n-1\)</span></td>
+<td align="center"><span class="math inline">\(S_T^2=\sum_{i=1}^I\sum_{j=1}^{n_i}(y_{ij}-\bar y )^2\)</span></td>
+<td align="center"><span class="math inline">\(S_T^2/(n-1)\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<div class="example">
+<span id="exm:unnamed-chunk-254" class="example"><strong>例 5.1  </strong></span>小白鼠在接种了三种不同类型的伤寒杆菌后的存活天数如下。判断小白鼠被注射三种菌型后的平均存活天数有没有显著差异？
+</div>
+
+<table>
+<thead>
+<tr class="header">
+<th align="center">菌型</th>
+<th align="right"></th>
+<th align="right"></th>
+<th align="right"></th>
+<th align="right"></th>
+<th align="right">存</th>
+<th align="right">活</th>
+<th align="right">天</th>
+<th align="right">数</th>
+<th align="right"></th>
+<th align="right"></th>
+<th align="right"></th>
+<th align="right"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="right">5</td>
+<td align="right">6</td>
+<td align="right">8</td>
+<td align="right">5</td>
+<td align="right">10</td>
+<td align="right">7</td>
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="right">7</td>
+<td align="right">11</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">7</td>
+<td align="right">9</td>
+<td align="right">5</td>
+<td align="right">5</td>
+<td align="right">10</td>
+<td align="right">6</td>
+<td align="right">3</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<p>方差分析R的关键命令为<code>aov(model,data....)</code>与<code>lm</code>类似，详细如下：</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb71-2" data-line-number="2">mouse &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb71-3" data-line-number="3">  <span class="dt">X =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, </a>
+<a class="sourceLine" id="cb71-4" data-line-number="4">        <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">6</span>, <span class="dv">6</span>, </a>
+<a class="sourceLine" id="cb71-5" data-line-number="5">        <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb71-6" data-line-number="6">  <span class="dt">A =</span> <span class="kw">factor</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,<span class="kw">c</span>(<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">12</span>)))</a>
+<a class="sourceLine" id="cb71-7" data-line-number="7">)</a>
+<a class="sourceLine" id="cb71-8" data-line-number="8"><span class="kw">ggplot</span>(mouse,<span class="kw">aes</span>(A,X,<span class="dt">fill=</span>A)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:anova"></span>
+<img src="book_files/figure-html/anova-1.png" alt="箱线图" width="672" />
+<p class="caption">
+图 5.1: 箱线图
+</p>
+</div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">mouse.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(X<span class="op">~</span>A, <span class="dt">data=</span>mouse)</a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"><span class="kw">summary</span>(mouse.aov)</a></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)   
+## A            2   94.3    47.1    8.48 0.0012 **
+## Residuals   30  166.7     5.6                  
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>从中发现，<span class="math inline">\(p=0.0012\)</span>，在显著水平<span class="math inline">\(\alpha=0.05\)</span>下拒绝<span class="math inline">\(H_0\)</span>，即认为注射三种菌型后的平均存活天数有显著差异。</p>
+</div>
+<div id="section-5.3" class="section level2">
+<h2><span class="header-section-number">5.3</span> 两因子方差分析</h2>
+<p>两因子实验设计(two-way layout)研究两个因子在不同水平下的交互作用。</p>
+<p><strong>模型假设</strong>：考虑因子A有<span class="math inline">\(r\)</span>个水平：<span class="math inline">\(A_1,\dots,A_r\)</span>, <span class="math inline">\(r\ge 2\)</span>，因子B有<span class="math inline">\(s\)</span>个水平：<span class="math inline">\(B_1,\dots,B_s\)</span>, <span class="math inline">\(s\ge 2\)</span>。 设在水平<span class="math inline">\((A_i,B_j)\)</span>下重复进行了<span class="math inline">\(n_{ij}\)</span>次实验(<span class="math inline">\(n_{ij}\ge2\)</span>)，数据是<span class="math inline">\(y_{ij1},y_{ij2},\dots,y_{ijn_{ij}}\)</span>. 假设这些数据之间相互独立且<span class="math inline">\(y_{ijk}\sim N(\mu_{ij} ,\sigma^2)\)</span>，其中<span class="math inline">\(\sigma\)</span>未知。为分析各个因子对指标的影响，令</p>
+<p><span class="math display">\[\mu = \frac{1}{rs}\sum_{i=1}^r\sum_{j=1}^s \mu_{ij},\]</span></p>
+<p><span class="math display">\[\alpha_i = \frac 1 s\sum_{j=1}^s \mu_{ij}-\mu,\ i=1,\dots,r,\]</span></p>
+<p><span class="math display">\[\beta_j = \frac 1 r \sum_{i=1}^r \mu_{ij}-\mu,\ j=1,\dots,s,\]</span></p>
+<p><span class="math display">\[\lambda_{ij} = \mu_{ij}-\mu-\alpha_i-\beta_j.\]</span></p>
+<p>于是，模型可以表示为</p>
+<p><span class="math display">\[y_{ijk} = \mu+ \alpha_i+\beta_j +\lambda_{ij}+\epsilon_{ijk},\ \epsilon_{ijk}\stackrel{iid}{\sim}N(0,\sigma^2),\]</span></p>
+<p>其中<span class="math inline">\(\alpha_i\)</span>表示因子A的第<span class="math inline">\(i\)</span>个水平<span class="math inline">\(A_i\)</span>的“主效应”，<span class="math inline">\(\beta_j\)</span>表示因子B的第<span class="math inline">\(j\)</span>个水平<span class="math inline">\(B_j\)</span>的“主效应”，<span class="math inline">\(\lambda_{ij}\)</span>表示<span class="math inline">\(A_i\)</span>和<span class="math inline">\(B_j\)</span>下的交互作用的效应。</p>
+<p>我们关心因子A或者因子B或者它们的交互作用（记为<span class="math inline">\(A\times B\)</span>）对指标有没有影响。对应的检验问题为</p>
+<p><span class="math display">\[H_0:\alpha_1=\dots=\alpha_r=0\ vs.\ H_1:\alpha_i\text{不全为0},\]</span></p>
+<p><span class="math display">\[H_0:\beta_1=\dots=\beta_s=0\ vs.\ H_1:\beta_j\text{不全为0},\]</span></p>
+<p><span class="math display">\[H_0:\lambda_{11}=\dots=\lambda_{rs}=0\ vs.\ H_1:\lambda_{ij}\text{不全为0}.\]</span></p>
+<p>记<span class="math inline">\(n_{i\cdot} = \sum_{j=1}^s n_{ij},\ n_{\cdot j} =\sum_{i=1}^r n_{ij},\ n = \sum_{i=1}^r\sum_{j=1}^s n_{ij}\)</span>. 类似地，我们有相应的方差分析表：</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">来源</th>
+<th align="center">自由度</th>
+<th align="center">平方和</th>
+<th align="center"><span class="math inline">\(F\)</span>值</th>
+<th align="center">P值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">A</td>
+<td align="center"><span class="math inline">\(r-1\)</span></td>
+<td align="center"><span class="math inline">\(S_A^2=\sum_{i=1}^r n_{i\cdot}(\bar y_{i\cdot\cdot} -\bar y)^2\)</span></td>
+<td align="center"><span class="math inline">\(\frac{S_A^2/(r-1)}{S_e^2(n-rs)}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">B</td>
+<td align="center"><span class="math inline">\(s-1\)</span></td>
+<td align="center"><span class="math inline">\(S_B^2=\sum_{j=1}^s n_{\cdot j}(\bar y_{\cdot j\cdot} -\bar y)^2\)</span></td>
+<td align="center"><span class="math inline">\(\frac{S_B^2/(s-1)}{S_e^2/(n-rs)}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(A\times B\)</span></td>
+<td align="center"><span class="math inline">\((r-1)(s-1)\)</span></td>
+<td align="center"><span class="math inline">\(S_{AB}^2=\sum_{i=1}^r\sum_{j=1}^s n_{ij}(\bar y_{ij\cdot} -\bar y)^2\)</span></td>
+<td align="center"><span class="math inline">\(\frac{S_{AB}^2/[(r-1)(s-1)]}{S_e^2/(n-rs)}\)</span></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">误差</td>
+<td align="center"><span class="math inline">\(n-rs\)</span></td>
+<td align="center"><span class="math inline">\(S_e^2=\sum_{i=1}^r\sum_{j=1}^{s}\sum_{k=1}^{n_{ij}}(y_{ijk}-\bar y_{ij\cdot})^2\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">总和</td>
+<td align="center"><span class="math inline">\(n-1\)</span></td>
+<td align="center"><span class="math inline">\(S_T^2=\sum_{i=1}^r\sum_{j=1}^{s}\sum_{k=1}^{n_{ij}}(y_{ijk}-\bar y )^2\)</span></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+<div class="example">
+<span id="exm:unnamed-chunk-255" class="example"><strong>例 5.2  </strong></span>研究树种与地理位置对松树生长的影响。以下有4个地区<span class="math inline">\(B_1-B_4\)</span>，3种同龄松树<span class="math inline">\(A_1-A_3\)</span>的直径测量数据（单位：厘米），请对实验结果做分析。
+</div>
+
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center"><span class="math inline">\(A_1\)</span></th>
+<th align="center"><span class="math inline">\(A_2\)</span></th>
+<th align="center"><span class="math inline">\(A_3\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(B_1\)</span></td>
+<td align="center">23, 25, 21, 14, 15</td>
+<td align="center">28, 30, 19, 17, 22</td>
+<td align="center">18, 15, 23, 18, 10</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(B_2\)</span></td>
+<td align="center">20, 17, 11, 26, 21</td>
+<td align="center">26, 24, 21, 25, 26</td>
+<td align="center">21, 25, 12, 12, 22</td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(B_3\)</span></td>
+<td align="center">16, 19, 13, 16, 24</td>
+<td align="center">19, 18, 19, 20, 25</td>
+<td align="center">19, 23, 22, 14, 13</td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(B_4\)</span></td>
+<td align="center">20, 21, 18, 27, 24</td>
+<td align="center">26, 26, 28, 29, 23</td>
+<td align="center">22, 13, 12, 22, 19</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">tree &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2">  <span class="dt">Y =</span> <span class="kw">c</span>(<span class="dv">23</span>, <span class="dv">25</span>, <span class="dv">21</span>, <span class="dv">14</span>, <span class="dv">15</span>,</a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">   <span class="dv">28</span>, <span class="dv">30</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">22</span>,</a>
+<a class="sourceLine" id="cb74-4" data-line-number="4">   <span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">23</span>, <span class="dv">18</span>, <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb74-5" data-line-number="5">   <span class="dv">20</span>, <span class="dv">17</span>, <span class="dv">11</span>, <span class="dv">26</span>, <span class="dv">21</span>,</a>
+<a class="sourceLine" id="cb74-6" data-line-number="6">   <span class="dv">26</span>, <span class="dv">24</span>, <span class="dv">21</span>, <span class="dv">25</span>, <span class="dv">26</span>,</a>
+<a class="sourceLine" id="cb74-7" data-line-number="7">   <span class="dv">21</span>, <span class="dv">25</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">22</span>,</a>
+<a class="sourceLine" id="cb74-8" data-line-number="8">   <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">13</span>, <span class="dv">16</span>, <span class="dv">24</span>,</a>
+<a class="sourceLine" id="cb74-9" data-line-number="9">   <span class="dv">19</span>, <span class="dv">18</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">25</span>,</a>
+<a class="sourceLine" id="cb74-10" data-line-number="10">   <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">14</span>, <span class="dv">13</span>,</a>
+<a class="sourceLine" id="cb74-11" data-line-number="11">   <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">18</span>, <span class="dv">27</span>, <span class="dv">24</span>,</a>
+<a class="sourceLine" id="cb74-12" data-line-number="12">   <span class="dv">26</span>, <span class="dv">26</span>, <span class="dv">28</span>, <span class="dv">29</span>, <span class="dv">23</span>,</a>
+<a class="sourceLine" id="cb74-13" data-line-number="13">   <span class="dv">22</span>, <span class="dv">13</span>, <span class="dv">12</span>, <span class="dv">22</span>, <span class="dv">19</span>),</a>
+<a class="sourceLine" id="cb74-14" data-line-number="14">  <span class="dt">A =</span> <span class="kw">gl</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">60</span>,<span class="dt">labels =</span> <span class="kw">paste0</span>(<span class="st">&quot;A&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)),</a>
+<a class="sourceLine" id="cb74-15" data-line-number="15">  <span class="dt">B =</span> <span class="kw">gl</span>(<span class="dv">4</span>,<span class="dv">15</span>,<span class="dv">60</span>,<span class="dt">labels =</span> <span class="kw">paste0</span>(<span class="st">&quot;B&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb74-16" data-line-number="16">)</a>
+<a class="sourceLine" id="cb74-17" data-line-number="17">tree.aov &lt;-<span class="st"> </span><span class="kw">aov</span>(Y<span class="op">~</span>A<span class="op">*</span>B,tree)</a>
+<a class="sourceLine" id="cb74-18" data-line-number="18"><span class="kw">summary</span>(tree.aov)</a></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)    
+## A            2    353   176.3    8.96 0.00049 ***
+## B            3     88    29.2    1.48 0.23108    
+## A:B          6     72    12.0    0.61 0.72289    
+## Residuals   48    944    19.7                    
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version
+## 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version
+## 3.5.3</code></pre>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-256">表 5.1: </span>三种树种的平均直径
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+A
+</th>
+<th style="text-align:right;">
+mean
+</th>
+<th style="text-align:right;">
+variance
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A1
+</td>
+<td style="text-align:right;">
+19.55
+</td>
+<td style="text-align:right;">
+20.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: #D7261E !important;">
+A2
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: #D7261E !important;">
+23.55
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: #D7261E !important;">
+15.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A3
+</td>
+<td style="text-align:right;">
+17.75
+</td>
+<td style="text-align:right;">
+22.09
+</td>
+</tr>
+</tbody>
+</table>
+<p>由此可得，在显著水平<span class="math inline">\(\alpha=0.05\)</span>下，树种效应<span class="math inline">\(A\)</span>是显著的，地理位置效应<span class="math inline">\(B\)</span>及相互效应<span class="math inline">\(A\times B\)</span>并不显著。由于树种效应是显著的，所以选择什么树种对树的生长很重要，计算树种因子的平均值，如上表所示。从中可以看出，<strong>第二种树种对生长有利</strong>。同样地，我们可以计算地理位置因子的平均值，只不过该因子对生长有没有显著的影响。</p>
+</div>
+<div id="-2" class="section level2">
+<h2><span class="header-section-number">5.4</span> 小结</h2>
+<p>本章主要介绍了方差分析法来研究因子是否显著影响指标。如果发现某因子影响显著，我们可以进一步分析该因子的哪些水平存在差异性，哪些有利于指标。此时就要两两比较不同水平的差异性，如第三章提到的两样本t检验方法。</p>
+<p>此外，本章考虑的是<strong>全面实验</strong>的情形，即各个因子的所有水平组合都安排实验，得到相应的观测数据。然而，当因子比较多，水平数量比较多时，这种全面实验就不合适了，因此需要合理设计实验，挑选出一些有代表性的组合进行实验，这属于<strong>实验设计</strong>的内容。感兴趣可以参考陈家鼎等编著的教材的第五章。</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exam.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 3 章 假设检验 | 数理统计讲义</title>
+  <meta name="description" content="第 3 章 假设检验 | 数理统计讲义" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 3 章 假设检验 | 数理统计讲义" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.jpg" />
+  <meta property="og:description" content="第 3 章 假设检验 | 数理统计讲义" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 3 章 假设检验 | 数理统计讲义" />
+  
+  <meta name="twitter:description" content="第 3 章 假设检验 | 数理统计讲义" />
+  <meta name="twitter:image" content="images/cover.jpg" />
+
+<meta name="author" content="何志坚" />
+
+
+<meta name="date" content="2020-03-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="est.html"/>
+<link rel="next" href="regression.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">数理统计讲义</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e887b4e8b0a2"><i class="fa fa-check"></i>致谢</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e78988e69d83"><i class="fa fa-check"></i>版权</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 绪论</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> 学科介绍</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#section-1.1.1"><i class="fa fa-check"></i><b>1.1.1</b> 统计学的发展简史</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#section-1.1.2"><i class="fa fa-check"></i><b>1.1.2</b> 频率学派与贝叶斯学派</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#section-1.1.3"><i class="fa fa-check"></i><b>1.1.3</b> 统计学专业</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> 基本概念</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#section-1.2.1"><i class="fa fa-check"></i><b>1.2.1</b> 总体</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#section-1.2.2"><i class="fa fa-check"></i><b>1.2.2</b> 样本</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#section-1.2.3"><i class="fa fa-check"></i><b>1.2.3</b> 简单随机抽样</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#section-1.2.4"><i class="fa fa-check"></i><b>1.2.4</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> 概率分布族</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 常用的参数族</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#section-1.3.2"><i class="fa fa-check"></i><b>1.3.2</b> 伽玛分布族</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#section-1.3.3"><i class="fa fa-check"></i><b>1.3.3</b> 贝塔分布族</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#section-1.3.4"><i class="fa fa-check"></i><b>1.3.4</b> 指数型分布族</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 统计量与估计量</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#section-1.5"><i class="fa fa-check"></i><b>1.5</b> 充分统计量</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#section-1.5.1"><i class="fa fa-check"></i><b>1.5.1</b> 因子分解定理</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#section-1.5.2"><i class="fa fa-check"></i><b>1.5.2</b> 因子分解定理的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#section-1.6"><i class="fa fa-check"></i><b>1.6</b> 抽样分布</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#section-1.6.1"><i class="fa fa-check"></i><b>1.6.1</b> 样本均值的抽样分布</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#section-1.6.2"><i class="fa fa-check"></i><b>1.6.2</b> 卡方分布</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#section-1.6.3"><i class="fa fa-check"></i><b>1.6.3</b> 正态总体抽样分布定理</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#t"><i class="fa fa-check"></i><b>1.6.4</b> t分布</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#section-1.6.5"><i class="fa fa-check"></i><b>1.6.5</b> 样本均值与标准差之比的抽样分布</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#f"><i class="fa fa-check"></i><b>1.6.6</b> F分布</a></li>
+<li class="chapter" data-level="1.6.7" data-path="intro.html"><a href="intro.html#section-1.6.7"><i class="fa fa-check"></i><b>1.6.7</b> 两个独立正态总体的抽样分布</a></li>
+<li class="chapter" data-level="1.6.8" data-path="intro.html"><a href="intro.html#section-1.6.8"><i class="fa fa-check"></i><b>1.6.8</b> 顺序统计量</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#section-1.7"><i class="fa fa-check"></i><b>1.7</b> 分位数</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#ex2"><i class="fa fa-check"></i><b>1.8</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="est.html"><a href="est.html"><i class="fa fa-check"></i><b>2</b> 估计</a><ul>
+<li class="chapter" data-level="2.1" data-path="est.html"><a href="est.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 参数估计</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="est.html"><a href="est.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 矩估计法</a></li>
+<li class="chapter" data-level="2.1.2" data-path="est.html"><a href="est.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 最大似然估计法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="est.html"><a href="est.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 矩估计与最大似然估计的对比</a></li>
+<li class="chapter" data-level="2.1.4" data-path="est.html"><a href="est.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 混合正态分布的参数估计</a></li>
+<li class="chapter" data-level="2.1.5" data-path="est.html"><a href="est.html#em"><i class="fa fa-check"></i><b>2.1.5</b> EM算法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="est.html"><a href="est.html#section-2.2"><i class="fa fa-check"></i><b>2.2</b> 估计的优良性标准</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="est.html"><a href="est.html#section-2.2.1"><i class="fa fa-check"></i><b>2.2.1</b> 无偏性</a></li>
+<li class="chapter" data-level="2.2.2" data-path="est.html"><a href="est.html#section-2.2.2"><i class="fa fa-check"></i><b>2.2.2</b> 均方误差</a></li>
+<li class="chapter" data-level="2.2.3" data-path="est.html"><a href="est.html#section-2.2.3"><i class="fa fa-check"></i><b>2.2.3</b> 一致最小方差无偏估计</a></li>
+<li class="chapter" data-level="2.2.4" data-path="est.html"><a href="est.html#section-2.2.4"><i class="fa fa-check"></i><b>2.2.4</b> 统计量的大样本性质</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="est.html"><a href="est.html#section-2.3"><i class="fa fa-check"></i><b>2.3</b> 区间估计</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="est.html"><a href="est.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 区间估计的定义</a></li>
+<li class="chapter" data-level="2.3.2" data-path="est.html"><a href="est.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 枢轴量法</a></li>
+<li class="chapter" data-level="2.3.3" data-path="est.html"><a href="est.html#section-2.3.3"><i class="fa fa-check"></i><b>2.3.3</b> 单个正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.4" data-path="est.html"><a href="est.html#section-2.3.4"><i class="fa fa-check"></i><b>2.3.4</b> 两个独立正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.5" data-path="est.html"><a href="est.html#section-2.3.5"><i class="fa fa-check"></i><b>2.3.5</b> 非正态总体参数的区间估计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="est.html"><a href="est.html#section-2.4"><i class="fa fa-check"></i><b>2.4</b> 分布的估计</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="est.html"><a href="est.html#section-2.4.1"><i class="fa fa-check"></i><b>2.4.1</b> 分布函数的估计</a></li>
+<li class="chapter" data-level="2.4.2" data-path="est.html"><a href="est.html#section-2.4.2"><i class="fa fa-check"></i><b>2.4.2</b> 直方图法</a></li>
+<li class="chapter" data-level="2.4.3" data-path="est.html"><a href="est.html#section-2.4.3"><i class="fa fa-check"></i><b>2.4.3</b> 核估计法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="est.html"><a href="est.html#ex3"><i class="fa fa-check"></i><b>2.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>3</b> 假设检验</a><ul>
+<li class="chapter" data-level="3.1" data-path="test.html"><a href="test.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 女士品茶</a></li>
+<li class="chapter" data-level="3.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.2</b> 基本概念</a></li>
+<li class="chapter" data-level="3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3</b> UMP检验和似然比检验</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.1</b> UMP检验的定义</a></li>
+<li class="chapter" data-level="3.3.2" data-path="test.html"><a href="test.html#section-3.3.2"><i class="fa fa-check"></i><b>3.3.2</b> 似然比检验方法</a></li>
+<li class="chapter" data-level="3.3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.3</b> 正态分布均值的UMP检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="test.html"><a href="test.html#section-3.4"><i class="fa fa-check"></i><b>3.4</b> 单参数指数型分布族</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="test.html"><a href="test.html#section-3.4.1"><i class="fa fa-check"></i><b>3.4.1</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="test.html"><a href="test.html#section-3.5"><i class="fa fa-check"></i><b>3.5</b> 广义似然比检验</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="test.html"><a href="test.html#section-3.5.1"><i class="fa fa-check"></i><b>3.5.1</b> 正态总体的假设检验</a></li>
+<li class="chapter" data-level="3.5.2" data-path="test.html"><a href="test.html#section-3.5.2"><i class="fa fa-check"></i><b>3.5.2</b> 两个独立正态总体的检验</a></li>
+<li class="chapter" data-level="3.5.3" data-path="test.html"><a href="test.html#section-3.5.3"><i class="fa fa-check"></i><b>3.5.3</b> 案例分析：山鸢尾和杂色鸢尾花差异性比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="test.html"><a href="test.html#section-3.6"><i class="fa fa-check"></i><b>3.6</b> 置信区间与假设检验的联系</a></li>
+<li class="chapter" data-level="3.7" data-path="test.html"><a href="test.html#p"><i class="fa fa-check"></i><b>3.7</b> p值</a></li>
+<li class="chapter" data-level="3.8" data-path="test.html"><a href="test.html#section-3.8"><i class="fa fa-check"></i><b>3.8</b> 多重检验</a></li>
+<li class="chapter" data-level="3.9" data-path="test.html"><a href="test.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 伯努利分布的检验</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="test.html"><a href="test.html#i"><i class="fa fa-check"></i><b>3.9.1</b> 单侧检验I</a></li>
+<li class="chapter" data-level="3.9.2" data-path="test.html"><a href="test.html#section-3.9.2"><i class="fa fa-check"></i><b>3.9.2</b> 女士品茶问题求解</a></li>
+<li class="chapter" data-level="3.9.3" data-path="test.html"><a href="test.html#ii"><i class="fa fa-check"></i><b>3.9.3</b> 单侧检验II</a></li>
+<li class="chapter" data-level="3.9.4" data-path="test.html"><a href="test.html#section-3.9.4"><i class="fa fa-check"></i><b>3.9.4</b> 双侧检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="test.html"><a href="test.html#section-3.10"><i class="fa fa-check"></i><b>3.10</b> 拟合优度检验</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="test.html"><a href="test.html#mendel"><i class="fa fa-check"></i><b>3.10.1</b> Mendel的数据</a></li>
+<li class="chapter" data-level="3.10.2" data-path="test.html"><a href="test.html#section-3.10.2"><i class="fa fa-check"></i><b>3.10.2</b> 卡方检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.11</b> 小结</a></li>
+<li class="chapter" data-level="3.12" data-path="test.html"><a href="test.html#ex4"><i class="fa fa-check"></i><b>3.12</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>4</b> 线性回归</a><ul>
+<li class="chapter" data-level="4.1" data-path="regression.html"><a href="regression.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 一元线性模型</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="regression.html"><a href="regression.html#section-4.1.1"><i class="fa fa-check"></i><b>4.1.1</b> 最小二乘估计</a></li>
+<li class="chapter" data-level="4.1.2" data-path="regression.html"><a href="regression.html#section-4.1.2"><i class="fa fa-check"></i><b>4.1.2</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.1.3" data-path="regression.html"><a href="regression.html#section-4.1.3"><i class="fa fa-check"></i><b>4.1.3</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.1.4" data-path="regression.html"><a href="regression.html#section-4.1.4"><i class="fa fa-check"></i><b>4.1.4</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.1.5" data-path="regression.html"><a href="regression.html#section-4.1.5"><i class="fa fa-check"></i><b>4.1.5</b> 置信区间与假设检验</a></li>
+<li class="chapter" data-level="4.1.6" data-path="regression.html"><a href="regression.html#1"><i class="fa fa-check"></i><b>4.1.6</b> 案例分析1</a></li>
+<li class="chapter" data-level="4.1.7" data-path="regression.html"><a href="regression.html#section-4.1.7"><i class="fa fa-check"></i><b>4.1.7</b> 拟合的评估</a></li>
+<li class="chapter" data-level="4.1.8" data-path="regression.html"><a href="regression.html#section-4.1.8"><i class="fa fa-check"></i><b>4.1.8</b> 预测</a></li>
+<li class="chapter" data-level="4.1.9" data-path="regression.html"><a href="regression.html#section-4.1.9"><i class="fa fa-check"></i><b>4.1.9</b> 控制</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="regression.html"><a href="regression.html#section-4.2"><i class="fa fa-check"></i><b>4.2</b> 多元线性模型</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.1</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.2.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.2</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.2.3" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.3</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.2.4" data-path="regression.html"><a href="regression.html#section-4.2.4"><i class="fa fa-check"></i><b>4.2.4</b> 置信区间和假设检验</a></li>
+<li class="chapter" data-level="4.2.5" data-path="regression.html"><a href="regression.html#section-4.2.5"><i class="fa fa-check"></i><b>4.2.5</b> 模型整体的显著性检验</a></li>
+<li class="chapter" data-level="4.2.6" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.6</b> 预测</a></li>
+<li class="chapter" data-level="4.2.7" data-path="regression.html"><a href="regression.html#2"><i class="fa fa-check"></i><b>4.2.7</b> 案例分析2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regression.html"><a href="regression.html#section-4.3"><i class="fa fa-check"></i><b>4.3</b> 线性模型的推广</a></li>
+<li class="chapter" data-level="4.4" data-path="regression.html"><a href="regression.html#section-4.4"><i class="fa fa-check"></i><b>4.4</b> 回归诊断</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="regression.html"><a href="regression.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 动机</a></li>
+<li class="chapter" data-level="4.4.2" data-path="regression.html"><a href="regression.html#section-4.4.2"><i class="fa fa-check"></i><b>4.4.2</b> 残差的定义和性质</a></li>
+<li class="chapter" data-level="4.4.3" data-path="regression.html"><a href="regression.html#section-4.4.3"><i class="fa fa-check"></i><b>4.4.3</b> 残差图</a></li>
+<li class="chapter" data-level="4.4.4" data-path="regression.html"><a href="regression.html#section-4.4.4"><i class="fa fa-check"></i><b>4.4.4</b> 残差诊断的思路</a></li>
+<li class="chapter" data-level="4.4.5" data-path="regression.html"><a href="regression.html#box-cox"><i class="fa fa-check"></i><b>4.4.5</b> 案例分析：基于Box-Cox变换</a></li>
+<li class="chapter" data-level="4.4.6" data-path="regression.html"><a href="regression.html#section-4.4.6"><i class="fa fa-check"></i><b>4.4.6</b> 离群值</a></li>
+<li class="chapter" data-level="4.4.7" data-path="regression.html"><a href="regression.html#section-4.4.7"><i class="fa fa-check"></i><b>4.4.7</b> 变量选择</a></li>
+<li class="chapter" data-level="4.4.8" data-path="regression.html"><a href="regression.html#lasso"><i class="fa fa-check"></i><b>4.4.8</b> LASSO</a></li>
+<li class="chapter" data-level="4.4.9" data-path="regression.html"><a href="regression.html#section-4.4.9"><i class="fa fa-check"></i><b>4.4.9</b> 回归分析与因果分析</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="regression.html"><a href="regression.html#ex5"><i class="fa fa-check"></i><b>4.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>5</b> 方差分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="anova.html"><a href="anova.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 引言</a></li>
+<li class="chapter" data-level="5.2" data-path="anova.html"><a href="anova.html#section-5.2"><i class="fa fa-check"></i><b>5.2</b> 单因子方差分析</a></li>
+<li class="chapter" data-level="5.3" data-path="anova.html"><a href="anova.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 两因子方差分析</a></li>
+<li class="chapter" data-level="5.4" data-path="anova.html"><a href="anova.html#-2"><i class="fa fa-check"></i><b>5.4</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>6</b> 综合练习</a><ul>
+<li class="chapter" data-level="6.1" data-path="exam.html"><a href="exam.html#section-6.1"><i class="fa fa-check"></i><b>6.1</b> 2018秋季试卷</a></li>
+<li class="chapter" data-level="6.2" data-path="exam.html"><a href="exam.html#section-6.2"><i class="fa fa-check"></i><b>6.2</b> 2018秋季试卷答案</a></li>
+<li class="chapter" data-level="6.3" data-path="exam.html"><a href="exam.html#section-6.3"><i class="fa fa-check"></i><b>6.3</b> 2019春季试卷</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="http://www2.scut.edu.cn/math/2018/0118/c14638a254123/page.htm" target="blank">版权归作者所有</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">数理统计讲义</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="test" class="section level1">
+<h1><span class="header-section-number">第 3 章</span> 假设检验</h1>
+<div id="section-3.1" class="section level2">
+<h2><span class="header-section-number">3.1</span> 女士品茶</h2>
+<p>R. A. Fisher 的名著《实验设计》讲了一个最简单的实验：女士品茶。这个故事非常有名，以至于Salsburg 的统计学通俗读物就以它命名：《女士品茶：统计学如何变革了科学和生活》。</p>
+<p>先回顾一下这个故事。在英国的Rothamsted实验站，Fisher给一位名叫Muriel Bristol的女士倒了一杯茶，但是Bristol 表示，自己更喜欢先将牛奶倒入杯中，再倒入茶（也就是大街小巷常见的奶茶）。这位女士号称能够分辨先倒茶和先倒牛奶的区别。作为实验设计的鼻祖，Fisher 当然想用实验检验一下：这位女士的味觉是否有这么敏锐？检验如下命题是否可以接受：</p>
+<blockquote>
+<p>假设H: 该女士无此种鉴别能力</p>
+</blockquote>
+<p>他准备了10杯调好的奶茶（两种顺序的都有）给该女士鉴别，结果那位女士竟然能够正确地分辨出10杯奶茶中的每一杯的调制顺序。</p>
+<p><strong>如何做出你的判断？</strong>如果Bristol并没有任何分辨能力，仅凭运气，她也可能全部答对。不过这个事件的概率是<span class="math inline">\(2^{-10}\approx 9.77\times10^{-4}\)</span>. 这是一个小概率事件。所以，若是Bristol全部答对，那么“她无此种鉴别能力”这个假设就和数据不太相容，可以拒绝这个假设。假如该女士只猜对了8杯，又该如何判断？更一般地，若答对<span class="math inline">\(k\)</span>杯, 如何根据<span class="math inline">\(k\)</span>的值做出合理的判断？这时候我们的答案可能就模棱两可了，因此有必要针对这类问题建立严格的分析框架，并给出合理的决策规则。</p>
+<p><strong>更多的例子：</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>某产品的次品率是否不超过<span class="math inline">\(3\%\)</span>？</p></li>
+<li><p>男生群体平均身高是否大于女生群体平均身高？</p></li>
+<li><p>身高是否服从正态分布？</p></li>
+<li><p>抽烟与慢性支气管炎是否有关？</p></li>
+</ol>
+<p>从上述例子中不难发现，所关心的问题归纳为“是”与“否”的判断，并非给出一个具体的
+数或者区间，这区别与参数估计问题。我们把这类问题称为假设检验问题(Hypothesis Tests)。</p>
+</div>
+<div id="-1" class="section level2">
+<h2><span class="header-section-number">3.2</span> 基本概念</h2>
+<p>对总体的某种规律提出一个假设，通过样本数据来推断，决定是否拒绝这一假设，这样的统计活动成为假设检验。本节考虑参数形式的假设检验，给出相关概念和假设检验的思想。</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-140" class="example"><strong>例 3.1  (Fisher’s iris flower data set)  </strong></span>Fisher的鸢尾花数据集是个著名的数据集，是为了量化鸢尾花形态上的区别而收集得到的。它包含了三类鸢尾花——山鸢尾(Setosa)、杂色鸢尾(Versicolour)、
+维吉尼亚鸢尾(Virginica)的花萼(sepal)、花瓣(petal)的长度与宽度。</p>
+<p><img src="iris.png" /></p>
+<p>下图展示了花萼长度的核密度估计以及部分数据, <a href="iris.csv">完整数据点击这里</a></p>
+</div>
+
+<p><img src="book_files/figure-html/irispair-1.png" width="672" style="display: block; margin: auto;" /></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Sepal.Length</th>
+<th align="center">Sepal.Width</th>
+<th align="center">Petal.Length</th>
+<th align="center">Petal.Width</th>
+<th align="center">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="center">5.1</td>
+<td align="center">3.5</td>
+<td align="center">1.4</td>
+<td align="center">0.2</td>
+<td align="center">setosa</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="center">4.9</td>
+<td align="center">3.0</td>
+<td align="center">1.4</td>
+<td align="center">0.2</td>
+<td align="center">setosa</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="center">4.7</td>
+<td align="center">3.2</td>
+<td align="center">1.3</td>
+<td align="center">0.2</td>
+<td align="center">setosa</td>
+</tr>
+<tr class="even">
+<td>51</td>
+<td align="center">7.0</td>
+<td align="center">3.2</td>
+<td align="center">4.7</td>
+<td align="center">1.4</td>
+<td align="center">versicolor</td>
+</tr>
+<tr class="odd">
+<td>52</td>
+<td align="center">6.4</td>
+<td align="center">3.2</td>
+<td align="center">4.5</td>
+<td align="center">1.5</td>
+<td align="center">versicolor</td>
+</tr>
+<tr class="even">
+<td>53</td>
+<td align="center">6.9</td>
+<td align="center">3.1</td>
+<td align="center">4.9</td>
+<td align="center">1.5</td>
+<td align="center">versicolor</td>
+</tr>
+<tr class="odd">
+<td>101</td>
+<td align="center">6.3</td>
+<td align="center">3.3</td>
+<td align="center">6.0</td>
+<td align="center">2.5</td>
+<td align="center">virginica</td>
+</tr>
+<tr class="even">
+<td>102</td>
+<td align="center">5.8</td>
+<td align="center">2.7</td>
+<td align="center">5.1</td>
+<td align="center">1.9</td>
+<td align="center">virginica</td>
+</tr>
+<tr class="odd">
+<td>103</td>
+<td align="center">7.1</td>
+<td align="center">3.0</td>
+<td align="center">5.9</td>
+<td align="center">2.1</td>
+<td align="center">virginica</td>
+</tr>
+</tbody>
+</table>
+<p>考虑以下几个问题：</p>
+<ol style="list-style-type: decimal">
+<li><p>假设有个植物学家跟你说，通过基因组分析表明，山鸢尾(Setosa)花萼长度的均值是4.5cm，他这个论断是否可信？</p></li>
+<li><p>另一位植物学家说山鸢尾(Setosa)花萼长度的均值是一个不小于4.5cm的数，但具体是多少就不清楚了，那么他这个论断是否又可信？</p></li>
+<li><p>山鸢尾(Setosa)和杂色鸢尾(Versicolour)两种花的花萼长度的均值有没有显著差异？</p></li>
+</ol>
+<p>不妨设<span class="math inline">\(X,Y\)</span>分别为山鸢尾(Setosa)和杂色鸢尾(Versicolour)花萼长度的两个总体，<span class="math inline">\(\mu_1,\mu_2\)</span>分别为它们的均值。问题1要检验<span class="math inline">\(\mu_1=4.5\)</span>是否成立，问题2检验<span class="math inline">\(\mu_1\ge 4.5\)</span>是否成立，而问题3则检验<span class="math inline">\(\mu_1=\mu_2\)</span>是否成立。假设检验需要明确所讨论命题及其对立的命题。比如，对于问题1，我们关心<span class="math inline">\(\mu_1=4.5\)</span>以及它的对立面<span class="math inline">\(\mu_1\neq 4.5\)</span>哪个成立，可表示为</p>
+<p><span class="math display" id="eq:setosa">\[\begin{equation}
+H_0:\mu_1=4.5\ vs.\ H_1:\mu_1\neq 4.5,\tag{3.1}
+\end{equation}\]</span></p>
+<p>其中<span class="math inline">\(H_0\)</span>称为<strong>原假设/零假设(Null Hypothesis)</strong>，<span class="math inline">\(H_1\)</span>称为<strong>备选假设/对立假设/备择假设(Alternative Hypothesis)</strong>。检验的目标是通过样本数据判断<span class="math inline">\(H_0\)</span>成立还是<span class="math inline">\(H_1\)</span>成立，最终的结论只能有一个。</p>
+<p>更一般地，设总体来自某一参数分布族<span class="math inline">\(\{F(x,\theta),\theta\in\Theta\}\)</span>, 其中<span class="math inline">\(\Theta\)</span>为参数空间，包含所有可能的参数。假设检验问题的基本形式为</p>
+<p><span class="math display" id="eq:parht">\[\begin{equation}
+H_0:\theta \in \Theta_0\ vs. \ H_1:\theta \in \Theta_1,\tag{3.2}
+\end{equation}\]</span></p>
+<p>其中<span class="math inline">\(\varnothing\neq \Theta_0,\Theta_1\subset \Theta,\Theta_0\cap \Theta_1=\varnothing\)</span>. 最常见的情况<span class="math inline">\(\Theta_1=\Theta-\Theta_0\)</span>.</p>
+<p>简单原假设(simple null)：<span class="math inline">\(\Theta_0\)</span>只包含一个点，如<span class="math inline">\(H_0:\theta=\theta_0\)</span></p>
+<p>复杂原假设(composite null)：<span class="math inline">\(\Theta_0\)</span>只包含多个点，如<span class="math inline">\(H_0:\theta\le \theta_0\)</span></p>
+<p>同样地，对于备选假设也有简单和复杂两种分类。如果原假设和备选假设都是简单的，那么称该检验是简单假设检验(simple hypothesis test)。</p>
+<p>备选假设通常有三种形式：</p>
+<ol style="list-style-type: decimal">
+<li>双边(two-sided)：<span class="math inline">\(H_1:\theta\neq \theta_0\)</span></li>
+<li>单边(one-sided)：<span class="math inline">\(H_1:\theta&gt; \theta_0\)</span></li>
+<li>单边(one-sided)：<span class="math inline">\(H_1:\theta&lt; \theta_0\)</span></li>
+</ol>
+<p>假设检验基于样本数据作出接受或者拒绝<span class="math inline">\(H_0\)</span>的判断。这相当于把样本空间划分成两个互不相交的部分<span class="math inline">\(W\)</span>和<span class="math inline">\(\bar{W}\)</span>, 当样本属于<span class="math inline">\(W\)</span>时就拒绝<span class="math inline">\(H_0\)</span>; 否则接受<span class="math inline">\(H_0\)</span>. 我们称<span class="math inline">\(W\)</span>为该检验的<strong>拒绝域(rejection region)</strong>，而<span class="math inline">\(\bar W\)</span>为<strong>接受域(acceptance region)</strong>. 由于两者是互为补集的关系，下面只关注于拒绝域。一个拒绝域决定一种检验法则。</p>
+<p>为了解决假设检验问题<a href="test.html#eq:setosa">(3.1)</a>，不妨假设山鸢尾花萼长度<span class="math inline">\(X\sim N(\mu,0.12)\)</span>，其中<span class="math inline">\(\mu\)</span>未知。
+由于<span class="math inline">\(\mu\)</span>未知，我们可以用<span class="math inline">\(\bar X\)</span>作为<span class="math inline">\(\mu\)</span>的一种估计，当<span class="math inline">\(\bar X\)</span>偏离4.5比较远时，我们就有理由拒绝<span class="math inline">\(H_0:\mu=4.5\)</span>的假设，故一种可行的拒绝域为</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:|\bar x-4.5|&gt;c\},\]</span>
+其中<span class="math inline">\(c\)</span>为待定的常数。R中的iris数据集给出了50个山鸢尾花萼长度的数据，样本均值<span class="math inline">\(\bar x=5.006\)</span> cm。所以，<span class="math inline">\(|\bar x-4.5|=0.506\)</span>，如果<span class="math inline">\(0.506&gt;c\)</span>则拒绝原假设，否则接受原假设。我们后面将讨论如何选择合适的常数<span class="math inline">\(c\)</span>。</p>
+<p>由于样本的随机性，检验不可能<span class="math inline">\(100\%\)</span>正确，有可能出现错误。注意到客观事实只有两种可能的结果，要么原假设成立，要么备择假设成立；而检验的结果也只有两种可能，接受或者拒绝原假设。因此有下列四种情况：其中两种检验结果符合实际，另外两种则与实际相悖，对应所谓的<strong>两类错误</strong>。</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">接受原假设</th>
+<th align="center">拒绝原假设</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>原假设为真</td>
+<td align="center">正确</td>
+<td align="center">第一类（拒真, Type I）错误</td>
+</tr>
+<tr class="even">
+<td>备择假设为真</td>
+<td align="center">第二类（纳伪, Type II）错误</td>
+<td align="center">正确</td>
+</tr>
+</tbody>
+</table>
+<p><strong>假设检验的核心问题是如何控制犯两类错误的概率。</strong>值得注意的是，这两个概率为条件概率。犯第一类错误的概率常用<span class="math inline">\(\alpha\)</span>表示，其定义为：</p>
+<p><span class="math display">\[\alpha = P(X_{1{:}n}\in W|H_0).\]</span></p>
+<p>犯第二类错误的概率常用<span class="math inline">\(\beta\)</span>表示，其定义为：</p>
+<p><span class="math display">\[\beta = P(X_{1{:}n}\notin W|H_1).\]</span></p>
+<p>对于参数假设检验<a href="test.html#eq:parht">(3.2)</a>，则两类错误发生的概率分别为：</p>
+<p><span class="math display">\[\begin{align*}
+\alpha &amp;= P_\theta(X_{1{:}n}\in W)=\rho_W(\theta),\ \theta\in\Theta_0,\\
+\beta &amp;= P_\theta(X_{1{:}n}\notin W)=1-\rho_W(\theta),\ \theta\in\Theta_1,
+\end{align*}\]</span></p>
+<p>其中<span class="math inline">\(\rho_W(\theta)=P_\theta(X_{1{:}n}\in W)\)</span>表示在<span class="math inline">\(X_i\stackrel{iid}\sim F_\theta\)</span>下事件<span class="math inline">\(\{X_{1{:}n}\in W\}\)</span>的概率。我们称<span class="math inline">\(\rho_W(\theta)\)</span>为<strong>功效函数</strong>，其中<span class="math inline">\(\theta\in\Theta\)</span>。如果原假设是简单的<span class="math inline">\(H_0:\theta=\theta_0\)</span>，这时第一类错误发生的概率为<span class="math inline">\(\alpha=P_{\theta_0}(X_{1{:}n}\in W)\)</span>, 只有一种可能；如果原假设是复杂的，则<span class="math inline">\(\alpha\)</span>的取值有很多种可能，取决于真实的参数<span class="math inline">\(\theta\)</span>的取值，不管怎样，<span class="math inline">\(\alpha=\rho_W(\theta)\)</span>，其中<span class="math inline">\(\theta\in\Theta_0\)</span>. 当真实的<span class="math inline">\(\theta\in\Theta_1\)</span>时，我们称<span class="math inline">\(\rho_W(\theta)\)</span>为<strong>检验的功效</strong>，不难发现<span class="math inline">\(\beta+\rho_W(\theta)=1\)</span>.</p>
+<p>然而，在大多数情况下，这两类错误的概率相背而驰。在样本量不变的情况下，如果其中一个变小则另一个变大。见下面例子。</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-141" class="example"><strong>例 3.2  </strong></span>设山鸢尾花萼长度<span class="math inline">\(X\sim N(\mu,0.12)\)</span>，其中<span class="math inline">\(\mu\)</span>未知。现有样本量<span class="math inline">\(n=50\)</span>。为解决假设检验问题<a href="test.html#eq:setosa">(3.1)</a>，我们选择拒绝域<span class="math inline">\(W=\{x_{1{:}n}:|\bar x-4.5|&gt;c\}\)</span>.
+</div>
+
+<ul>
+<li>该检验的功效函数为：</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+\rho_W(\mu)&amp;=P_{\mu}(|\bar{X}-4.5|&gt; c)\\
+&amp;=1-\Phi\left(\sqrt{50/0.12}(4.5-\mu+c))+\Phi(\sqrt{50/0.12}(4.5-\mu-c)\right).
+\end{align*}\]</span></p>
+<ul>
+<li><p>犯第一类错误的概率为: <span class="math inline">\(\alpha =\rho_W(4.5)\)</span>.</p></li>
+<li><p>犯第二类错误的概率为: <span class="math inline">\(\beta= 1-\rho_W(\mu)\)</span>，其中<span class="math inline">\(\mu\neq 4.5\)</span>.</p></li>
+</ul>
+<p><img src="book_files/figure-html/powerfun-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>由上图可以发现：<span class="math inline">\(c\)</span>增大，第一类错误发生的概率<span class="math inline">\(\alpha\)</span>变小，检验的功效变小，第二类错误发生的概率<span class="math inline">\(\beta\)</span>变大。一般情况下，在样本量不变的前提下，两类错误不能同时减小。</p>
+<p>考虑到两类错误不能够同时被控制，在统计学中，
+<strong>拒绝域的选取准则</strong>为：在保证犯第一类错误的概率不超过一定水平的前提下，选择犯第二类错误的概率尽可能小（等价地，检验的功率尽可能大）的拒绝域<span class="math inline">\(W\)</span>.</p>
+<p>前面已提到，如果原假设是复合的，那么犯第一类错误的概率是不确定的，为了控制犯第一类错误的概率，我们对其最坏情况进行控制，使其在水平<span class="math inline">\(\alpha\in(0,1)\)</span>下，即</p>
+<p><span class="math display" id="eq:type1error">\[\begin{equation}
+\sup_{\theta\in\Theta_0} \rho_W(\theta)= \alpha.\tag{3.3}
+\end{equation}\]</span></p>
+<p>该水平<span class="math inline">\(\alpha\)</span>称为拒绝域<span class="math inline">\(W\)</span>的<strong>检验水平/显著性水平</strong>(level of significance)。一般情况下，<span class="math inline">\(\alpha\)</span>为检验之前确定的比较小的数，如<span class="math inline">\(0.1,0.05,0.01\)</span>。
+如果给定<span class="math inline">\(\alpha\)</span>，不存在一个<span class="math inline">\(W\)</span>使得式<a href="test.html#eq:type1error">(3.3)</a>成立，则将式<a href="test.html#eq:type1error">(3.3)</a>中的“<span class="math inline">\(=\)</span>”替换成“<span class="math inline">\(\le\)</span>”，这同样保证犯第一类错误控制在<span class="math inline">\(\alpha\)</span>下。</p>
+<p><strong>小概率原理</strong>：小概率事件在一次试验中是几乎不发生的。若<span class="math inline">\(H_0\)</span>为真，样本落在拒绝域<span class="math inline">\(W\)</span>是小概率事件，不应发生。如发生，则拒绝原假设。</p>
+<p><strong>如何选择显著性水平?</strong></p>
+<p>人们自然会产生这样的问题：概率小到什么程度才当作“小概率事件”呢？这要据实际情况而定，例如即使下雨的概率为10%，仍有人会因为它太小而不带雨具。但某航空公司的事故率为1%，人们就会因为它太大而不敢乘坐该公司的飞机，通常把概率不超过0.05 (或0.01)的事件当作“小概率事件”。为此在假设检验时，必须先确定小概率即显著性的值<span class="math inline">\(\alpha\)</span> (即不超过<span class="math inline">\(\alpha\)</span>的概率认为是小概率)。</p>
+<p>然而，正如前面提到，只是控制犯第一类错误控制在水平<span class="math inline">\(\alpha\)</span>下是远远不够的，而且满足这个条件的检验数不胜数。因为第二类错误不能忽略。因此，如果在保证<span class="math inline">\(\sup_{\theta\in\Theta_0} \rho_W(\theta)= \alpha\)</span>成立的前提下，使得犯第二类错误的概率最小，或者等价地，检验的功效最大化。一般情况下，这个问题不容易解决，不一定存在所谓的“最好”检验。为此下节将引入一致最大功效的概念。</p>
+</div>
+<div id="ump" class="section level2">
+<h2><span class="header-section-number">3.3</span> UMP检验和似然比检验</h2>
+<div id="ump" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> UMP检验的定义</h3>
+
+<div class="definition">
+<span id="def:unnamed-chunk-142" class="definition"><strong>定义 3.1  </strong></span>称<span class="math inline">\(W\)</span>为检验水平<span class="math inline">\(\alpha\)</span>的一致最大功效(uniformly most powerful, UMP)的拒绝域，若<span class="math inline">\(W\)</span>的水平为<span class="math inline">\(\alpha\)</span>且对一切水平不超过<span class="math inline">\(\alpha\)</span>的拒绝域<span class="math inline">\(W&#39;\)</span>均有
+</div>
+
+<p><span class="math display">\[\rho_W(\theta)\ge \rho_{W&#39;}(\theta),\ \forall \theta\in \Theta_1.\]</span></p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-143" class="definition"><strong>定义 3.2  </strong></span>称<span class="math inline">\(W\)</span>为检验水平<span class="math inline">\(\alpha\)</span>的无偏拒绝域，若<span class="math inline">\(\forall \theta\in \Theta_1\)</span>, 有<span class="math inline">\(\rho_W(\theta)\ge \alpha\)</span>.
+</div>
+
+
+<div class="definition">
+<span id="def:unnamed-chunk-144" class="definition"><strong>定义 3.3  </strong></span>称<span class="math inline">\(W\)</span>为检验水平<span class="math inline">\(\alpha\)</span>的一致最大功效无偏(uniformly most powerful unbiased, UMPU)的拒绝域，若<span class="math inline">\(W\)</span>是水平为<span class="math inline">\(\alpha\)</span>的无偏拒绝域且对一切水平不超过<span class="math inline">\(\alpha\)</span>的无偏拒绝域<span class="math inline">\(W&#39;\)</span>均有
+</div>
+
+<p><span class="math display">\[\rho_W(\theta)\ge \rho_{W&#39;}(\theta),\ \forall \theta\in \Theta_1.\]</span></p>
+<p><strong>注</strong>：UMP意味着在犯第一类错误的概率不超过<span class="math inline">\(\alpha\)</span>的前提下，犯第二类错误的概率最小。无偏性是指如果备选假设成立，拒绝原假设的概率不小于显著性水平<span class="math inline">\(\alpha\)</span>. 注意到此时检验的结果正确，该概率不应小于犯第一类错误的概率。下节将给出如何构造UMP的检验方法。</p>
+</div>
+<div id="section-3.3.2" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> 似然比检验方法</h3>
+
+<div class="example">
+<span id="exm:unnamed-chunk-145" class="example"><strong>例 3.3  </strong></span>假设有两枚硬币，第一枚硬币正面朝上的概率为<strong>0.5</strong>，第二枚正面朝上的概率为<strong>0.7</strong>。现在我选择其中一枚硬币来抛十次，并告诉你多少次正面朝上，但不告诉你选择的是哪枚硬币。你的任务是根据正面朝上的次数判断我抛的是哪枚硬币。
+你的决策是怎样？
+</div>
+
+<p>令<span class="math inline">\(X\)</span>为正面朝上的次数，<span class="math inline">\(\theta\)</span>为硬币正面朝上的概率，则<span class="math inline">\(X\sim B(10,\theta)\)</span>, <span class="math inline">\(\theta\in\{0.5,0.7\}\)</span>。假设检验为：</p>
+<p><span class="math display">\[H_0: \theta=0.5\ vs.\ H_1:\theta=0.7.\]</span></p>
+<p>不难计算，两种情况下<span class="math inline">\(X\)</span>的分布列为：</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(H_0\)</span></td>
+<td>.0010</td>
+<td>.0098</td>
+<td>.0439</td>
+<td>.1172</td>
+<td>.2051</td>
+<td>.2461</td>
+<td>.2051</td>
+<td>.1172</td>
+<td>.0439</td>
+<td>.0098</td>
+<td>.0010</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(H_1\)</span></td>
+<td>.0000</td>
+<td>.0001</td>
+<td>.0014</td>
+<td>.0090</td>
+<td>.0368</td>
+<td>.1029</td>
+<td>.2001</td>
+<td>.2668</td>
+<td>.2335</td>
+<td>.1211</td>
+<td>.0282</td>
+</tr>
+</tbody>
+</table>
+<p>假如观测到两次正面朝上，则有</p>
+<p><span class="math display">\[P(X=2|\theta=0.5)/P(X=2|\theta=0.7)\approx 30.\]</span>
+该比值称为似然比(likelihood ratio , LR)，表明相比第二枚硬币，第一枚硬币有大概30倍的可能性产生该结果。这个结果明显支持选择第一枚硬币。反之，如果观测到八次正面朝上，似然比</p>
+<p><span class="math display">\[P(X=8|\theta=0.5)/P(X=8|\theta=0.7)\approx 0.19,\]</span>
+这个结果支持第二枚硬币。似然比在接下来的假设检验中扮演重要的角色。</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-146" class="definition"><strong>定义 3.4  </strong></span>设<span class="math inline">\(L(x_{1{:}n};\theta)\)</span>为似然函数，<span class="math inline">\(\theta_1,\theta_2\in\Theta\)</span>。两个参数<span class="math inline">\(\theta_1,\theta_2\)</span>下似然函数的比值称为似然比，即</p>
+<p><span class="math display">\[LR=\frac{L(x_{1{:}n};\theta_2)}{L(x_{1{:}n};\theta_1)}.\]</span></p>
+</div>
+
+<p>考虑最简单的假设检验<span class="math inline">\((\theta_1\neq \theta_2)\)</span>：</p>
+<p><span class="math display" id="eq:simple">\[\begin{equation}
+H_0: \theta=\theta_1\ vs.\ \theta=\theta_2.
+\tag{3.4}
+\end{equation}\]</span></p>
+<p>似然比检验的拒绝域为：</p>
+<p><span class="math display" id="eq:lrrj">\[\begin{equation}
+W=\{x_{1{:}n}:\frac{L(x_{1{:}n};\theta_2)}{L(x_{1{:}n};\theta_1)}&gt; \lambda\}=\{x_{1{:}n}:LR&gt;\lambda\},
+\tag{3.5}
+\end{equation}\]</span></p>
+<p>其中<span class="math inline">\(\lambda\ge 0\)</span>满足</p>
+<p><span class="math display">\[P_{\theta_1}(X_{1{:}n}\in W)=\alpha.\]</span></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-147" class="theorem"><strong>定理 3.1  (Neyman-Pearson引理)  </strong></span>对于简单假设检验<a href="test.html#eq:simple">(3.4)</a>，似然比检验得到的拒绝域<a href="test.html#eq:lrrj">(3.5)</a>是UMP.
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>证明. </em></span> 只证明连续总体的情况，离散总体类似。此时，<span class="math inline">\(P_{\theta}(X_{1{:}n}\in W)=\int_W L(x_{1{:}n};\theta) d x_{1{:}n}\)</span>. 对任意拒绝域<span class="math inline">\(W&#39;\)</span>满足<span class="math inline">\(P_{\theta_1}(X_{1{:}n}\in W&#39;)\le\alpha\)</span>有</p>
+<p><span class="math display">\[\begin{align*}
+P_{\theta_2}(X_{1{:}n}\in W)-P_{\theta_2}(X_{1{:}n}\in W&#39;) &amp;= \int_W L(x_{1{:}n};\theta_2) d x_{1{:}n}-\int_{W&#39;} L(x_{1{:}n};\theta_2) d x_{1{:}n}\\&amp;
+=\int_{W-W&#39;} L(x_{1{:}n};\theta_2) d x_{1{:}n}-\int_{W&#39;-W} L(x_{1{:}n};\theta_2) d x_{1{:}n}\\
+&amp;\ge \lambda \left(\int_{W-W&#39;} L(x_{1{:}n};\theta_1) d x_{1{:}n}-\int_{W&#39;-W} L(x_{1{:}n};\theta_1) d x_{1{:}n}\right)\\
+&amp;=\lambda \left(\int_{W} L(x_{1{:}n};\theta_1) d x_{1{:}n}-\int_{W&#39;} L(x_{1{:}n};\theta_1) d x_{1{:}n}\right)\\
+&amp;=\lambda(\alpha-P_{\theta_1}(X_{1{:}n}\in W&#39;))\ge 0.
+\end{align*}\]</span></p>
+<p>这表明<span class="math inline">\(W\)</span>的功效不小于<span class="math inline">\(W&#39;\)</span>的功效，根据UMP的定义，得证。</p>
+</div>
+
+<p>该定理为著名的Neyman-Pearson引理，是假设检验中非常重要的结果，而且该UMP拒绝域在概率意义下是唯一的。但注意到，该结论只适用简单假设，且<span class="math inline">\(\lambda\)</span>必须满足<span class="math inline">\(P_{\theta_1}(X_{1{:}n} \in W)=\alpha\)</span>.</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-149" class="theorem"><strong>定理 3.2  </strong></span>似然比检验得到的拒绝域<a href="test.html#eq:lrrj">(3.5)</a>是无偏的，即<span class="math inline">\(\rho_{W}(\theta_2)\ge \alpha.\)</span>
+</div>
+
+<p>证明见陈家鼎等编著的教材P71页。</p>
+</div>
+<div id="ump" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> 正态分布均值的UMP检验</h3>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-150" class="example"><strong>例 3.4  </strong></span>假设总体为<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\sigma^2\)</span>已知， 样本为<span class="math inline">\(X_{1{:}n}\)</span>. 考虑检验水平为<span class="math inline">\(\alpha\)</span>的检验问题<span class="math inline">\((\mu_2&gt;\mu_1)\)</span>,</p>
+<span class="math display">\[H_0:\mu=\mu_1\ vs. \ H_1:\mu=\mu_2.\]</span>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 似然比检验的拒绝域为：<span class="math inline">\(W=\{x_{1{:}n}:\frac{L(x_{1{:}n};\mu_2)}{L(x_{1{:}n};\mu_1)}&gt; \lambda\}\)</span>. 似然比为</p>
+<p><span class="math display">\[LR=\frac{L(x_{1{:}n};\mu_2)}{L(x_{1{:}n};\mu_1)}=\prod_{i=1}^n\frac{f(x_i;\mu_2,\sigma^2)}{f(x_i;\mu_1,\sigma^2)}=e^{\frac{n(\mu_2-\mu_1)(2\bar x-\mu_1-\mu_2)}{2\sigma^2}}.\]</span></p>
+<p><span class="math inline">\(LR&gt;\lambda\)</span>等价于<span class="math inline">\(\bar x&gt;C\)</span>, 其中<span class="math inline">\(P_{\mu_1}(\bar X&gt; C)=\alpha\)</span>。注意到<span class="math inline">\(\bar X \stackrel{H_0}\sim N(\mu_1,\sigma^2/n)\)</span>, 于是有 <span class="math inline">\(C=\mu_1+u_{1-\alpha}\sigma/\sqrt{n}\)</span>, 所以似然比检验的拒绝域为</p>
+<span class="math display">\[W=\{x_{1{:}n}:\bar x&gt; \mu_1+u_{1-\alpha}\sigma/\sqrt{n}\}.\]</span>
+</div>
+
+<p><strong>思考</strong>：与双侧拒绝域比较：<span class="math inline">\(W&#39;=\{x_{1{:}n}:|\bar x-\mu_1|&gt; u_{1-\alpha/2}\sigma/\sqrt{n}\}\)</span>, 哪个功效大？</p>
+<div class="figure" style="text-align: center"><span id="fig:powerpar"></span>
+<img src="book_files/figure-html/powerpar-1.png" alt="单侧与双侧功效比较：红色虚线为单侧临界值，绿色虚线为双侧临界值" width="672" />
+<p class="caption">
+图 3.1: 单侧与双侧功效比较：红色虚线为单侧临界值，绿色虚线为双侧临界值
+</p>
+</div>
+<p>从上图中容易分析出，<span class="math inline">\(W\)</span>的功效比<span class="math inline">\(W&#39;\)</span>的功效大，与N-P引理的结论吻合。</p>
+
+<div class="example">
+<p><span id="exm:biggmu" class="example"><strong>例 3.5  </strong></span>假设总体为<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\sigma^2\)</span>已知。考虑检验水平为<span class="math inline">\(\alpha\)</span>的检验问题<span class="math inline">\((\mu_2&lt;\mu_1)\)</span>,</p>
+<span class="math display">\[H_0:\mu=\mu_1\ vs. \ H_1:\mu=\mu_2.\]</span>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 似然比检验的拒绝域为：<span class="math inline">\(W=\{x_{1{:}n}:\frac{L(x_{1{:}n};\mu_2)}{L(x_{1{:}n};\mu_1)}&gt; \lambda\}\)</span>. 似然比与上个例子一样，</p>
+<p><span class="math display">\[LR=e^{\frac{n(\mu_2-\mu_1)(2\bar X-\mu_1-\mu_2)}{2\sigma^2}}\]</span></p>
+区别在于UMP拒绝域为<span class="math inline">\(W=\{x_{1{:}n}:\bar x&lt;C\}\)</span>, <span class="math inline">\(C\)</span>满足<span class="math inline">\(P_{\mu_1}(\bar X&lt; C)=\alpha\)</span>, 则有<span class="math inline">\(C=\mu_1+u_{\alpha}\sigma/\sqrt{n}\)</span>, 所以似然比检验的拒绝域为<span class="math inline">\(W=\{x_{1{:}n}:\bar x&lt; \mu_1+u_{\alpha}\sigma/\sqrt{n}\}\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:smmu" class="example"><strong>例 3.6  </strong></span>假设总体为<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\sigma^2\)</span>已知， 样本为<span class="math inline">\(X_{1{:}n}\)</span>. 分别求以下假设检验的一致最大功效拒绝域：</p>
+<p><span class="math display">\[H_0:\mu=\mu_1\ vs. \ H_1:\mu&gt;\mu_1,\]</span></p>
+<p><span class="math display">\[H_0:\mu\le\mu_1\ vs. \ H_1:\mu&gt;\mu_1,\]</span></p>
+<p><span class="math display">\[H_0:\mu=\mu_1\ vs. \ H_1:\mu&lt;\mu_1,\]</span></p>
+<p><span class="math display">\[H_0:\mu\ge\mu_1\ vs. \ H_1:\mu&lt;\mu_1.\]</span></p>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 先考虑第一种情况<span class="math inline">\(H_0:\mu=\mu_1\ vs. \ H_1:\mu&gt;\mu_1\)</span>. 取<span class="math inline">\(\mu_2\)</span>为大于<span class="math inline">\(\mu_1\)</span>的任意常数，构造例<a href="test.html#exm:biggmu">3.5</a>中的简单检验</p>
+<p><span class="math display">\[H_0:\mu=\mu_1\ vs. \ H_1:\mu=\mu_2.\]</span>
+设<span class="math inline">\(W&#39;\)</span>为满足<span class="math inline">\(P_{\mu_1}(X_{1{:}n}\in W&#39;)\le\alpha\)</span>的任意拒绝域。注意到例<a href="test.html#exm:biggmu">3.5</a>中的UMP拒绝域<span class="math inline">\(W=\{x_{1{:}n}:\bar x&gt; \mu_1+u_{1-\alpha}\sigma/\sqrt{n}\}\)</span>不依赖<span class="math inline">\(\mu_2\)</span>的值。对于任意<span class="math inline">\(\mu_2&gt;\mu_1\)</span>, 由于<span class="math inline">\(W\)</span>是上述简单假设的UMP拒绝域，所以<span class="math inline">\(P_{\mu_2}(X_{1{:}n}\in W)\ge P_{\mu_2}(X_{1{:}n}\in W&#39;)\)</span>.
+根据UMP的定义，该拒绝域<span class="math inline">\(W\)</span>用于复合的备选假设<span class="math inline">\(H_1:\mu&gt;\mu_1\)</span>同样是UMP的。</p>
+<p>现在证明<span class="math inline">\(W\)</span>用于第二种情况<span class="math inline">\(H_0:\mu\le\mu_1\ vs. \ H_1:\mu&gt;\mu_1\)</span>同样是UMP。注意到功效函数</p>
+<p><span class="math display">\[\rho_W(\mu)=P_\mu(X_{1{:}n}\in W)= P_\mu(\bar X&gt; \mu_1+u_{1-\alpha}\sigma/\sqrt{n})\]</span>
+在<span class="math inline">\(\mu\le \mu_1\)</span>上是单调递增的。所以，<span class="math inline">\(\sup_{\mu\le\mu_1}\rho_W(\mu)=\rho_W(\mu_1)=\alpha\)</span>.
+设<span class="math inline">\(W&#39;\)</span>为满足<span class="math inline">\(\sup_{\mu\le\mu_1}P(X_{1{:}n}\in W&#39;)\le \alpha\)</span>的任意拒绝域。所以<span class="math inline">\(P_{\mu_1}(X_{1{:}n}\in W&#39;)\le \alpha\)</span>. 注意到<span class="math inline">\(W\)</span>为上述简单假设检验的UMP拒绝域，所以它比<span class="math inline">\(W&#39;\)</span>更有效。对于任意<span class="math inline">\(\mu_2&gt;\mu_1\)</span>, 同样有<span class="math inline">\(P_{\mu_2}(X_{1{:}n}\in W)\ge P_{\mu_2}(X_{1{:}n}\in W&#39;)\)</span>.
+根据UMP的定义，该拒绝域<span class="math inline">\(W\)</span>用于第二种情况是UMP。</p>
+<p>同样地，后面两种情况的UMP拒绝域和例<a href="test.html#exm:smmu">3.6</a>一样，即</p>
+<span class="math display">\[W=\{x_{1{:}n}:\bar x&lt; \mu_1+u_{\alpha}\sigma/\sqrt{n}\}.\]</span>
+</div>
+
+</div>
+</div>
+<div id="section-3.4" class="section level2">
+<h2><span class="header-section-number">3.4</span> 单参数指数型分布族</h2>
+<p>为了得到一般UMP拒绝域的一般形式，本节考虑一大类分布族——单参数指数型分布族。</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-154" class="definition"><strong>定义 3.5  </strong></span>设<span class="math inline">\(X\)</span>的可能的集合为<span class="math inline">\(\mathcal{X}\)</span>. 称<span class="math inline">\(X\)</span>服从单参数指数型分布(single-parameter exponential family)，若<span class="math inline">\(X\)</span>的密度函数（或者分布列）有下列表达式</p>
+<p><span class="math display" id="eq:single">\[\begin{equation} 
+f(x;\theta) =  S(\theta)h(x)\exp\{Q(\theta)V(x)\},
+\tag{3.6}
+\end{equation}\]</span></p>
+其中<span class="math inline">\(\theta\in\Theta=(a,b),-\infty\le a&lt;b\le \infty,S(\theta)&gt;0,x\in \mathcal{X},h(x)&gt;0,Q(\theta)\)</span>是<span class="math inline">\(\theta\)</span>的<em>严格增函数</em>。
+</div>
+
+<p>常见的分布都是指数型分布，比如：</p>
+<ul>
+<li><p>指数分布：<span class="math inline">\(f(x;\lambda)=\lambda e^{-\lambda x}\)</span>, <span class="math inline">\(Q(\lambda)=\lambda\)</span>, <span class="math inline">\(V(x)=-x\)</span></p></li>
+<li><p>Poisson分布：<span class="math inline">\(f(x;\lambda)=\frac{e^{-\lambda}\lambda^x}{x!}=\frac{e^{-\lambda}e^{\log(\lambda) x}}{x!}\)</span>, <span class="math inline">\(Q(\lambda)=\log(\lambda)\)</span>, <span class="math inline">\(V(x)=x\)</span></p></li>
+<li><p>正态分布(<span class="math inline">\(\sigma^2\)</span>已知)：<span class="math inline">\(f(x;\mu) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span>, <span class="math inline">\(Q(\mu)=\mu/\sigma^2\)</span>, <span class="math inline">\(V(x)=x\)</span></p></li>
+<li><p>正态分布(<span class="math inline">\(\mu\)</span>已知)：<span class="math inline">\(Q(\sigma^2)=-\frac{1}{2\sigma^2}\)</span>, <span class="math inline">\(V(x)=(x-\mu)^2\)</span></p></li>
+</ul>
+<p>我们将在单参数分布族总体下考虑以下五种常见的检验类型并给出UMP/UMPU拒绝域的一般形式。涉及的证明将省略，详情可参考陈家鼎等编著的教材P72-P87.</p>
+<p><span class="math display">\[H_0:\theta\le \theta_1\ vs.\ H_1:\theta&gt;\theta_1,\]</span></p>
+<p><span class="math display">\[H_0:\theta\ge \theta_1\ vs.\ H_1:\theta&lt;\theta_1,\]</span></p>
+<p><span class="math display">\[H_0:\theta\notin (\theta_1,\theta_2)\ vs.\ H_1:\theta\in (\theta_1,\theta_2),\]</span></p>
+<p><span class="math display">\[H_0:\theta\in [\theta_1,\theta_2]\ vs.\ H_1:\theta\notin [\theta_1,\theta_2].\]</span></p>
+<p><span class="math display">\[H_0:\theta=\theta_0\ vs.\ H_1:\theta\neq\theta_0\]</span></p>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-155" class="theorem"><strong>定理 3.3  </strong></span>考虑单参数指数型分布<a href="test.html#eq:single">(3.6)</a>，给定检验问题</p>
+<p><span class="math display">\[H_0:\theta\le \theta_1\ vs.\ H_1:\theta&gt;\theta_1.\]</span></p>
+<p>对<span class="math inline">\(\alpha\in(0,1)\)</span>, 若存在<span class="math inline">\(C\)</span>满足</p>
+<p><span class="math display">\[P_{\theta_1}\left(\sum_{i=1}^n V(X_i)&gt;C\right)=\alpha,\]</span></p>
+则检验水平为<span class="math inline">\(\alpha\)</span>的UMP拒绝域为：<span class="math display">\[W=\{x_{1{:}n}:\sum_{i=1}^n V(x_i)&gt;C\}.\]</span>
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-156" class="theorem"><strong>定理 3.4  </strong></span>考虑单参数指数型分布<a href="test.html#eq:single">(3.6)</a>，给定检验问题</p>
+<p><span class="math display">\[H_0:\theta\ge \theta_1\ vs.\ H_1:\theta&lt;\theta_1.\]</span></p>
+<p>对<span class="math inline">\(\alpha\in(0,1)\)</span>, 若存在<span class="math inline">\(C\)</span>满足</p>
+<p><span class="math display">\[P_{\theta_1}\left(\sum_{i=1}^n V(X_i)&lt;C\right)=\alpha,\]</span></p>
+<p>则检验水平为<span class="math inline">\(\alpha\)</span>的UMP拒绝域为：</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:\sum_{i=1}^n V(x_i)&lt;C\}.\]</span></p>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-157" class="example"><strong>例 3.7  </strong></span>假设总体为<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\sigma^2\)</span>已知， 样本为<span class="math inline">\(X_{1{:}n}\)</span>. 求下列检验的UMP</p>
+<p><span class="math display">\[H_0:\mu\le\mu_1\ vs. \ H_1:\mu&gt;\mu_1.\]</span></p>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 因为在指数分布族形式中<span class="math inline">\(V(x)=x\)</span>, UMP拒绝域为</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:\sum_{i=1}^nx_i&gt;C\}=\{x_{1{:}n}:\bar x&gt;C&#39;\},\]</span></p>
+其中<span class="math inline">\(C&#39;\)</span>满足
+<span class="math inline">\(P_{\mu_1}(\bar X&gt;C&#39;)=\alpha\)</span>, <span class="math inline">\(C&#39;=\mu_1+u_{1-\alpha}\sigma/\sqrt{n}.\)</span>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-159" class="example"><strong>例 3.8  </strong></span>假设总体为<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\mu\)</span>已知，样本为<span class="math inline">\(X_{1{:}n}\)</span>. 求下列检验的UMP</p>
+<p><span class="math display">\[H_0:\sigma^2\le\sigma^2_1\ vs. \ H_1:\sigma^2&gt;\sigma^2_1.\]</span></p>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 因为在指数分布族形式中<span class="math inline">\(V(x)=(x-\mu)^2\)</span>, UMP拒绝域为</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:\sum_{i=1}^n(x_i-\mu)^2&gt;C\}=\{x_{1{:}n}:\sum_{i=1}^n\frac{(x_i-\mu)^2}{\sigma^2_1}&gt;C&#39;\},\]</span></p>
+其中<span class="math inline">\(C&#39;\)</span>满足<span class="math inline">\(P_{\sigma^2_1}(\sum_{i=1}^n\frac{(X_i-\mu)^2}{\sigma^2_1}&gt;C&#39;)=\alpha\)</span>, 所以<span class="math inline">\(C&#39;=\chi^2_{1-\alpha}(n)\)</span>.
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-161" class="theorem"><strong>定理 3.5  </strong></span>考虑单参数指数型分布<a href="test.html#eq:single">(3.6)</a>，给定检验问题</p>
+<p><span class="math display">\[
+H_0:\theta\notin (\theta_1,\theta_2)\ vs.\ H_1:\theta\in (\theta_1,\theta_2).
+\]</span></p>
+<p>令</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:C_1&lt;\sum_{i=1}^n V(x_i)&lt;C_2\}.\]</span></p>
+<p>若存在<span class="math inline">\(C_1,C_2\)</span>满足</p>
+<p><span class="math display">\[P_{\theta_1}(X_{1{:}n}\in W)=P_{\theta_2}(X_{1{:}n}\in W)=\alpha,\]</span></p>
+则检验水平为<span class="math inline">\(\alpha\)</span>的一致最大功效的拒绝域为<span class="math inline">\(W\)</span>.
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-162" class="theorem"><strong>定理 3.6  </strong></span>考虑单参数指数型分布<a href="test.html#eq:single">(3.6)</a>，给定检验问题</p>
+<p><span class="math display">\[H_0:\theta\in [\theta_1,\theta_2]\ vs.\ H_1:\theta\notin [\theta_1,\theta_2].\]</span></p>
+<p>令</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:\sum_{i=1}^n V(x_i)\notin[C_1,C_2]\}.\]</span></p>
+<p>若存在<span class="math inline">\(C_1,C_2\)</span>满足</p>
+<p><span class="math display">\[P_{\theta_1}(X_{1{:}n}\in W)=P_{\theta_2}(X_{1{:}n}\in W)=\alpha\]</span></p>
+则检验水平为<span class="math inline">\(\alpha\)</span>的一致最大功效无偏(UMPU)的拒绝域为<span class="math inline">\(W\)</span>.
+</div>
+
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-163" class="theorem"><strong>定理 3.7  </strong></span>考虑上述单参数指数型分布，给定检验问题</p>
+<p><span class="math display">\[H_0:\theta=\theta_0\ vs.\ H_1:\theta\neq\theta_0.\]</span></p>
+<p>令<span class="math inline">\(W=\{x_{1{:}n}:\sum_{i=1}^n V(x_i)\notin[C_1,C_2]\}.\)</span></p>
+<p>若存在<span class="math inline">\(C_1,C_2\)</span>满足</p>
+<p><span class="math display">\[P_{\theta_0}(X_{1{:}n}\in W)=\alpha\]</span></p>
+<p><span class="math display">\[E_{\theta_0}\left[1\{X_{1{:}n}\in W\}\sum_{i=1}^n V(X_i)\right]=\alpha E_{\theta_0}\left[\sum_{i=1}^n V(X_i)\right],\]</span></p>
+则检验水平为<span class="math inline">\(\alpha\)</span>的一致最大功效无偏(UMPU)的拒绝域为<span class="math inline">\(W\)</span>.
+</div>
+
+
+<div class="corollary">
+<p><span id="cor:unnamed-chunk-164" class="corollary"><strong>推论 3.1  </strong></span>考虑上述单参数指数型分布，给定检验问题</p>
+<p><span class="math display">\[H_0:\theta=\theta_0\ vs.\ H_1:\theta\neq\theta_0.\]</span></p>
+<p>如果在<span class="math inline">\(\theta=\theta_0\)</span>下，<span class="math inline">\(T(x_{1{:}n}) = \sum_{i=1}^n V(X_i)\)</span>的分布关于某数<span class="math inline">\(r_0\)</span>对称，取</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:|T(x_{1{:}n})-r_0|&gt;C\}.\]</span></p>
+<p>若存在<span class="math inline">\(C\)</span>满足</p>
+<p><span class="math display">\[P_{\theta_0}(X_{1{:}n}\in W)=\alpha,\]</span></p>
+则检验水平为<span class="math inline">\(\alpha\)</span>的一致最大功效无偏(UMPU)的拒绝域为<span class="math inline">\(W\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-165" class="example"><strong>例 3.9  </strong></span>假设总体为<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\sigma^2\)</span>已知。求下列检验的UMPU拒绝域</p>
+<span class="math display">\[H_0:\mu=\mu_0\ vs. \ H_1:\mu\neq\mu_0.\]</span>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 因为在指数分布族形式中<span class="math inline">\(V(x)=x\)</span>, 此时<span class="math inline">\(T(x_{1{:}n})=\sum_{i=1}^nX_i\)</span>.
+在<span class="math inline">\(\mu=\mu_0\)</span>下，<span class="math inline">\(T(X_{1{:}n})\sim N(n\mu_0,n\sigma^2)\)</span>, 故其分布关于<span class="math inline">\(r_0=n\mu_0\)</span>对称，</p>
+<p>UMPU拒绝域为</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:|T(x_{1{:}n})-n\mu_0|&gt;C\}=\{x_{1{:}n}:|\bar x-\mu_0|&gt;C&#39;\},\]</span></p>
+其中<span class="math inline">\(C&#39;\)</span>满足<span class="math inline">\(P_{\mu_0}(|\bar X-\mu_0|&gt;C&#39;)=\alpha\)</span>, 所以<span class="math inline">\(C&#39;=u_{1-\alpha/2}\sigma/\sqrt{n}\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-167" class="example"><strong>例 3.10  </strong></span>假设总体为<span class="math inline">\(N(\mu,\sigma^2)\)</span>, 其中<span class="math inline">\(\mu\)</span>已知。求下列检验的UMPU拒绝域</p>
+<span class="math display">\[H_0:\sigma^2=\sigma_0^2\ vs. \ H_1:\sigma^2\neq\sigma_0^2.\]</span>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 为方便起见，令<span class="math inline">\(T(x_{1{:}n})=\sum_{i=1}^n(X_i-\mu)^2/\sigma_0^2\)</span>. 这样，
+在<span class="math inline">\(\sigma^2=\sigma_0^2\)</span>下，<span class="math inline">\(T(X_{1{:}n})\sim \chi^2(n)\)</span>. UMPU拒绝域表示为
+<span class="math inline">\(W=\{x_{1{:}n}:T(x_{1{:}n})\notin [C_1,C_2]\}\)</span>，其中<span class="math inline">\(C_1,C_2\)</span>满足</p>
+<p><span class="math display">\[P_{\sigma^2_0}(T(X_{1{:}n})\notin W)=\int_{C_1}^{C_2} f(x;n) dx=1-\alpha,\]</span></p>
+<p><span class="math display">\[E_{\sigma^2_0}[1\{X_{1{:}n}\notin W\}T(X_{1{:}n})]=\int_{C_1}^{C_2} x f(x;n)dx=(1-\alpha)E_{\sigma_0^2}[T(X_{1{:}n})]=n(1-\alpha).\]</span></p>
+<p>其中，<span class="math inline">\(f(x;n)\)</span>为<span class="math inline">\(\chi^2(n)\)</span>的密度函数，即</p>
+<p><span class="math display">\[f(x;n)=\frac{1}{2^{n/2}\Gamma(n/2)}x^{n/2-1}e^{-x/2}1\{x&gt;0\}.\]</span>
+所以，
+<span class="math display">\[\begin{align*}
+\int_{C_1}^{C_2} \frac{x}{n} f(x;n)dx&amp;=\int_{C_1}^{C_2} \frac{x}{n} \frac{1}{2^{n/2}\Gamma(n/2)}x^{n/2-1}e^{-x/2}dx\\
+&amp;=\int_{C_1}^{C_2} f(x;n+2)dx=\int_{C_1}^{C_2} f(x;n) dx=1-\alpha.
+\end{align*}\]</span></p>
+实际上，求解<span class="math inline">\(C_1,C_2\)</span>比较困难，为方便起见，不妨用平均法取<span class="math inline">\(C_1=\chi_{\alpha/2}^2(n), C_2=\chi_{1-\alpha/2}^2(n)\)</span>.
+</div>
+
+<div id="section-3.4.1" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> 小结</h3>
+<p>我们已经在单参数指数型分布总体下给出常见的假设检验的UMP/UMPU, 具体步骤可以归纳如下：</p>
+<ul>
+<li><p>根据指数型分布写出<strong>检验统计量(test statistic)</strong>: <span class="math inline">\(T(X_{1{:}n})=\sum_{i=1}^nV(X_i)\)</span>，或者它的常数倍</p></li>
+<li><p>根据假设检验的类型写出拒绝域<span class="math inline">\(W\)</span>的形式，一般有</p></li>
+</ul>
+<p><span class="math display">\[T(x_{1{:}n})&gt;C,T(x_{1{:}n})&lt;C,Tx_{1{:}n} \in (C_1,C_2),T(x_{1{:}n})\notin [C_1,C_2]\]</span></p>
+<ul>
+<li>如果是只有一个待定参数<span class="math inline">\(C\)</span>时，可以检验水平<span class="math inline">\(\alpha\)</span>来得到<span class="math inline">\(C\)</span>的值，即</li>
+</ul>
+<p><span class="math display">\[P_{\theta_0}(T(X_{1{:}n}) \in W)=\alpha,\]</span>
+其中<span class="math inline">\(\theta_0\)</span>为<span class="math inline">\(\Theta_0\)</span>的边界点。</p>
+<ul>
+<li>如果有两个待定参数<span class="math inline">\(C_1,C_2\)</span>时, 可能还需另外一个等式来求解（比如双边假设检验）。</li>
+</ul>
+<p>正态总体的期望的检验统计量为<span class="math inline">\(n\bar X\)</span>或者<span class="math inline">\(\bar X\)</span>, 称为<strong>U检验</strong>；方差的检验统计量为<span class="math inline">\(\sum_{i=1}^n(X_i-\mu)^2\)</span>, 称为<strong>卡方检验</strong>。</p>
+</div>
+</div>
+<div id="section-3.5" class="section level2">
+<h2><span class="header-section-number">3.5</span> 广义似然比检验</h2>
+<p>似然比检验只适合简单假设检验，为了适用于复合假设检验情形，我们需要将似然比检验进行推广。
+考虑一般的参数假设检验问题</p>
+<p><span class="math display">\[H_0:\theta\in \Theta_0\ vs.\ H_1:\theta \notin \Theta_0.\]</span></p>
+<p>定义<strong>广义似然比</strong>为：</p>
+<p><span class="math display">\[\lambda(x_{1{:}n}):=\frac{\sup_{\theta\in \Theta}L(x_{1{:}n};\theta)}{\sup_{\theta\in \Theta_0}L(x_{1{:}n};\theta)}=\frac{L(x_{1{:}n};\hat\theta)}{L(x_{1{:}n};\hat\theta_0)},\]</span></p>
+<p>其中<span class="math inline">\(\hat\theta\)</span>为<span class="math inline">\(\theta\)</span>的最大似然估计，<span class="math inline">\(\hat\theta_0\)</span>为<span class="math inline">\(\theta\)</span>限制在<span class="math inline">\(\Theta_0\)</span>上的最大似然估计。</p>
+<p><strong>广义似然比拒绝域</strong>为：</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:\lambda(x_{1{:}n})&gt;\lambda_0\},\]</span></p>
+<p>其中<span class="math inline">\(\lambda_0\ge 1\)</span>满足<span class="math inline">\(\sup_{\theta\in\Theta_0}P_{\theta}(X_{1{:}n}\in W)=\alpha\)</span>, <span class="math inline">\(\alpha\)</span>为给定的显著性水平。</p>
+<p><strong>广义似然比检验的思想</strong>：如果<span class="math inline">\(H_0\)</span>成立，则似然函数在<span class="math inline">\(\theta\in\Theta_0\)</span>的最大值应当与全局最大值接近，如果两者相差很大，则有理由拒绝原假设。</p>
+<p><strong>注1</strong>：如果退化成简单检验问题，<span class="math inline">\(\Theta_0=\{\theta_1\},\ \Theta_1=\{\theta_2\}\)</span>，则广义似然比简化为</p>
+<p><span class="math display">\[\lambda(x_{1{:}n}):=\frac{\max(L(x_{1{:}n};\theta_1),L(x_{1{:}n};\theta_2))}{L(x_{1{:}n};\theta_1)}.\]</span></p>
+<p><span class="math inline">\(\lambda(x_{1{:}n})&gt;\lambda_0\)</span>等价于<span class="math inline">\(L(x_{1{:}n};\theta_2)/L(x_{1{:}n};\theta_1)&gt;\lambda_0&#39;\)</span>，该形式与简单似然比拒绝域相同，故称之为“广义”似然比方法。</p>
+<p><strong>注2</strong>：广义似然比检验适用范围非常广，虽然它不一定是UMP的，但在多数情况下可以证明随着样本量<span class="math inline">\(n\to\infty\)</span>，检验的功效收敛到1，也就是犯第二类错误的概率收敛到0.</p>
+<p><strong>注3</strong>：设充分统计量为<span class="math inline">\(\psi(x_{1{:}n})\)</span>, 由因子分解定理知，<span class="math inline">\(L(x_{1{:}n};\theta)=g(\psi(x_{1{:}n}),\theta)h(x_{1{:}n})\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+\lambda(x_{1{:}n}):&amp;=\frac{\sup_{\theta\in\Theta} g(\psi(x_{1{:}n}),\theta)h(x_{1{:}n})}{\sup_{\theta\in\Theta_0} g(\psi(x_{1{:}n}),\theta)h(x_{1{:}n})}\\&amp;=\frac{\sup_{\theta\in\Theta} g(\psi(x_{1{:}n}),\theta)}{\sup_{\theta\in\Theta_0} g(\psi(x_{1{:}n}),\theta)}=:\ell(\psi(x_{1{:}n})).
+\end{align*}\]</span></p>
+<p>可以看出，广义似然比是充分统计量的函数，所以拒绝域可以写成</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:\lambda(x_{1{:}n})&gt;\lambda_0\}=\{x_{1{:}n}:\psi(x_{1{:}n}) \in B\}.\]</span></p>
+<p>问题转化成求解集合<span class="math inline">\(B\)</span>使得检验水平为<span class="math inline">\(\alpha\)</span>. 如果充分统计量在给定<span class="math inline">\(\theta=\theta_0\)</span>下容易得到，这个问题则比较容易处理。
+下面只针对<strong>正态总体</strong>来分析。</p>
+<div id="section-3.5.1" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> 正态总体的假设检验</h3>
+<p>设总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>。前面我们已经分析了正态总体下参数的简单假设检验问题，现在利用广义似然比来分析复合假设检验。只考虑下面三种情况：</p>
+<p><span class="math display">\[\theta=\theta_0\ vs.\ \theta\neq \theta_0\]</span></p>
+<p><span class="math display">\[\theta\le \theta_0\ vs.\ \theta&gt;\theta_0\]</span></p>
+<p><span class="math display">\[\theta\ge \theta_0\ vs.\ \theta&lt;\theta_0\]</span></p>
+<p>其中<span class="math inline">\(\theta=\mu\)</span> 或者 <span class="math inline">\(\sigma^2\)</span>, 另外一个参数已知或者未知（分情况讨论）。</p>
+<p>似然函数为：</p>
+<p><span class="math display">\[L(\mu,\sigma^2)=(2\pi \sigma^2)^{-n/2}\exp\left(-\frac 1{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2\right).\]</span></p>
+<p><strong>期望的假设检验（方差已知）</strong>： 考虑双边假设检验</p>
+<p><span class="math display">\[H_0:\mu=\mu_0\ vs.\ H_1:\mu\neq \mu_0.\]</span></p>
+<p>因为方差<span class="math inline">\(\sigma^2\)</span>已知，<span class="math inline">\(\theta=\mu\)</span>的最大似然估计为<span class="math inline">\(\bar X\)</span>。此时的广义似然比为</p>
+<p><span class="math display">\[\begin{align*}
+\lambda(x_{1{:}n})&amp;=\frac{L(\bar x,\sigma^2)}{L(\mu_0,\sigma^2)}\\
+&amp;=\exp\left(\frac{\sum_{i=1}^n[(x_i-\mu_0)^2-(x_i-\bar x)^2]}{2\sigma^2}\right)\\
+&amp;=\exp\left(\frac{n(\bar x-\mu_0)^2}{2\sigma^2}\right).
+\end{align*}\]</span></p>
+<p>则拒绝域为<span class="math inline">\(W=\{x_{1{:}n}:|\bar x-\mu_0|&gt;c\}\)</span>，其中<span class="math inline">\(c\)</span>满足<span class="math inline">\(P_{\mu_0}(|\bar X-\mu_0|&gt;c)=\alpha\)</span>。所以，<span class="math inline">\(c=u_{1-\alpha/2}\sigma/\sqrt{n}\)</span>. 令</p>
+<p><span class="math display">\[U:=\frac{\bar X-\mu_0}{\sigma/\sqrt{n}}.\]</span></p>
+<p>当<span class="math inline">\(|U|&gt;u_{1-\alpha/2}\)</span>时，拒绝<span class="math inline">\(H_0\)</span>. 它称为该检验的检验统计量，<span class="math inline">\(U\stackrel{H_0}\sim N(0,1)\)</span>。这个检验也称U检验（或者Z检验）。</p>
+<p>接下来考虑单边假设检验</p>
+<p><span class="math display">\[H_0:\mu\le \mu_0\ vs.\ H_1:\mu&gt; \mu_0.\]</span></p>
+<p>在<span class="math inline">\(\mu\le \mu_0\)</span>下，<span class="math inline">\(\mu\)</span>的最大似然估计为<span class="math inline">\(\hat\mu_0=\min(\bar X,\mu_0)\)</span>. 此时广义似然比为</p>
+<p><span class="math display">\[\begin{align*}
+\lambda(x_{1{:}n})=\frac{L(\bar x,\sigma^2)}{L(\min(\bar X,\mu_0),\sigma^2)}=\begin{cases}
+e^\frac {n(\bar x-\mu_0)^2}{2\sigma^2},&amp;\ \bar x&gt; \mu_0\\
+1,&amp;\ \bar x\le\mu_0.
+\end{cases}
+\end{align*}\]</span></p>
+<p>注意到<span class="math inline">\(\lambda(x_{1{:}n})\)</span>应当严格大于1，否则拒绝域为样本全空间，故<span class="math inline">\(\bar x&gt;\mu_0\)</span>且<span class="math inline">\(\lambda(x_{1{:}n})&gt;\lambda_0\ge 1\)</span>. 这等价于拒绝域为<span class="math inline">\(W=\{x_{1{:}n}:\bar x-\mu_0&gt;c\}\)</span>，其中<span class="math inline">\(c\ge 0\)</span>满足</p>
+<p><span class="math display">\[\sup_{\mu\le\mu_0}P_{\mu}(\bar X-\mu_0&gt;c)=P_{\mu_0}(\bar X-\mu_0&gt;c)=\alpha.\]</span></p>
+<p>所以，<span class="math inline">\(c=u_{1-\alpha}\sigma/\sqrt{n}\)</span>（注意到<span class="math inline">\(\alpha\)</span>是接近于0的正数，所以<span class="math inline">\(c&gt;0\)</span>）。 当<span class="math inline">\(U&gt;u_{1-\alpha}\)</span>时，拒绝<span class="math inline">\(H_0\)</span>.</p>
+<p>类似地，对于另一种单边假设检验</p>
+<p><span class="math display">\[H_0:\mu\ge \mu_0\ vs.\ H_1:\mu&lt; \mu_0,\]</span></p>
+<p>当<span class="math inline">\(U&lt;u_{\alpha}\)</span>时，拒绝<span class="math inline">\(H_0\)</span>.</p>
+<p>这三种情况汇总如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(H_1\)</span></th>
+<th align="center"><span class="math inline">\(\mu\neq \mu_0\)</span></th>
+<th align="center"><span class="math inline">\(\mu&gt; \mu_0\)</span></th>
+<th align="center"><span class="math inline">\(\mu&lt; \mu_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">拒绝域</td>
+<td align="center"><span class="math inline">\(|u|&gt;u_{1-\alpha/2}\)</span></td>
+<td align="center"><span class="math inline">\(u&gt;u_{1-\alpha}\)</span></td>
+<td align="center"><span class="math inline">\(u&lt;u_{\alpha}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>期望的假设检验（方差未知）</strong>：在方差未知的情况下考虑期望的检验问题，相应的检验统计量为</p>
+<p><span class="math display">\[T=\frac{\bar X-\mu_0}{S_n/\sqrt{n-1}}=\frac{\bar X-\mu_0}{S_n^*/\sqrt{n}}.\]</span></p>
+<p>当<span class="math inline">\(\mu=\mu_0\)</span>时，<span class="math inline">\(T\sim t(n-1)\)</span>. 该检验称为<strong>t检验</strong>。拒绝域<span class="math inline">\(W\)</span>形式如下：</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(H_1\)</span></th>
+<th align="center"><span class="math inline">\(\mu\neq \mu_0\)</span></th>
+<th align="center"><span class="math inline">\(\mu&gt; \mu_0\)</span></th>
+<th align="center"><span class="math inline">\(\mu&lt; \mu_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">拒绝域</td>
+<td align="center"><span class="math inline">\(|t|&gt;t_{1-\alpha/2}(n-1)\)</span></td>
+<td align="center"><span class="math inline">\(t&gt;t_{1-\alpha}(n-1)\)</span></td>
+<td align="center"><span class="math inline">\(t&lt;t_{\alpha}(n-1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-169"></span>
+<img src="test.jpg" alt="均值的假设检验" width="90%" />
+<p class="caption">
+图 3.2: 均值的假设检验
+</p>
+</div>
+<p><strong>方差的假设检验（期望已知）</strong>： 检验统计量为</p>
+<p><span class="math display">\[V_1 = \frac{1}{\sigma^2_0}\sum_{i=1}^n(X_i-\mu)^2.\]</span></p>
+<p>当<span class="math inline">\(\sigma^2=\sigma^2_0\)</span>时，<span class="math inline">\(V_1\sim \chi^2(n)\)</span>。该检验称为<strong>卡方检验</strong>。拒绝域<span class="math inline">\(W\)</span>形式如下：</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(H_1\)</span></th>
+<th align="center"><span class="math inline">\(\sigma^2\neq \sigma^2_0\)</span></th>
+<th align="center"><span class="math inline">\(\sigma^2&gt; \sigma^2_0\)</span></th>
+<th align="center"><span class="math inline">\(\sigma^2&lt; \sigma^2_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">拒绝域</td>
+<td align="center"><span class="math inline">\(v_1&gt;\chi^2_{1-\alpha/2}(n)\)</span> 或 <span class="math inline">\(v_1&lt;\chi^2_{\alpha/2}(n)\)</span></td>
+<td align="center"><span class="math inline">\(v_1&gt;\chi^2_{1-\alpha}(n)\)</span></td>
+<td align="center"><span class="math inline">\(v_1&lt;\chi^2_{\alpha}(n)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>方差的假设检验（期望未知）</strong>： 检验统计量为</p>
+<p><span class="math display">\[V_2 = \frac{1}{\sigma^2_0}\sum_{i=1}^n(X_i-\bar X)^2=nS_n^2/\sigma_0^2.\]</span></p>
+<p>当<span class="math inline">\(\sigma^2=\sigma^2_0\)</span>时，<span class="math inline">\(V_2\sim \chi^2(n-1)\)</span>。该检验同样为<strong>卡方检验</strong>。拒绝域<span class="math inline">\(W\)</span>形式如下：</p>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(H_1\)</span></th>
+<th align="center"><span class="math inline">\(\sigma^2\neq \sigma^2_0\)</span></th>
+<th align="center"><span class="math inline">\(\sigma^2&gt; \sigma^2_0\)</span></th>
+<th align="center"><span class="math inline">\(\sigma^2&lt; \sigma^2_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">拒绝域</td>
+<td align="center"><span class="math inline">\(v_2&gt;\chi^2_{1-\alpha/2}(n-1)\)</span> 或 <span class="math inline">\(v_2&lt;\chi^2_{\alpha/2}(n-1)\)</span></td>
+<td align="center"><span class="math inline">\(v_2&gt;\chi^2_{1-\alpha}(n-1)\)</span></td>
+<td align="center"><span class="math inline">\(v_2&lt;\chi^2_{\alpha}(n-1)\)</span></td>
+</tr>
+</tbody>
+</table>
+
+<div class="example">
+<p><span id="exm:alco" class="example"><strong>例 3.11  (血液酒精浓度测试)  </strong></span>下面是一台已使用三年的仪器测出某人血液酒精浓度的30个数据（百分比）。已知精准的机器给出读数为12.6%。请根据这些数据检验这台仪器是否精准，是否需要校准。</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>12.3</td>
+<td>12.7</td>
+<td>13.6</td>
+<td>12.7</td>
+<td>12.9</td>
+<td>12.6</td>
+</tr>
+<tr class="even">
+<td>12.6</td>
+<td>13.1</td>
+<td>12.6</td>
+<td>13.1</td>
+<td>12.7</td>
+<td>12.5</td>
+</tr>
+<tr class="odd">
+<td>13.2</td>
+<td>12.8</td>
+<td>12.4</td>
+<td>12.6</td>
+<td>12.4</td>
+<td>12.4</td>
+</tr>
+<tr class="even">
+<td>13.1</td>
+<td>12.9</td>
+<td>13.3</td>
+<td>12.6</td>
+<td>12.6</td>
+<td>12.7</td>
+</tr>
+<tr class="odd">
+<td>13.1</td>
+<td>12.4</td>
+<td>12.4</td>
+<td>13.1</td>
+<td>12.4</td>
+<td>12.9</td>
+</tr>
+</tbody>
+</table>
+如果这台老仪器的方差<span class="math inline">\(\sigma=0.4\)</span>. 在置信水平<span class="math inline">\(\alpha=0.05\)</span>下，你是否建议对该仪器进行校准？如果置信水平减小到<span class="math inline">\(\alpha=0.01\)</span>，你的结论会不会发生改变？
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>解. </em></span> 假设这台仪器读数服从正态分布<span class="math inline">\(N(\mu,\sigma^2)\)</span>. 题中问题可描述成</p>
+<p><span class="math display">\[H_0:\mu=12.6\ vs.\ H_1:\mu\neq 12.6.\]</span></p>
+<p>由数据知，<span class="math inline">\(\bar x=12.757.\)</span> 拒绝域为</p>
+<span class="math display">\[W=\{|\bar x-12.6|&gt;u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\}.\]</span>
+如果<span class="math inline">\(\alpha=0.05\)</span>, <span class="math inline">\(W=\{|\bar x-12.6|&gt;0.143\}\)</span>. 此时，样本落在拒绝域里面，故建议机器进行校准。 如果<span class="math inline">\(\alpha\)</span>减小到<span class="math inline">\(0.01\)</span>, 拒绝域为<span class="math inline">\(W=\{|\bar x-12.6|&gt;0.188\}\)</span>. 此时，样本落在拒绝域外，故不建议机器进行校准。
+</div>
+
+<p>如果上题方差未知，我们需要用到t检验，R的命令为：</p>
+<p>t.test(x, alternative = c(“two.sided”, “less”, “greater”), mu = 0, conf.level = 0.95, …)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">x =<span class="st"> </span><span class="kw">c</span>(<span class="fl">12.3</span>, <span class="fl">12.7</span>, <span class="fl">13.6</span>, <span class="fl">12.7</span>, <span class="fl">12.9</span>, <span class="fl">12.6</span>, </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">      <span class="fl">12.6</span>, <span class="fl">13.1</span>, <span class="fl">12.6</span>, <span class="fl">13.1</span>, <span class="fl">12.7</span>, <span class="fl">12.5</span>, </a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">      <span class="fl">13.2</span>, <span class="fl">12.8</span>, <span class="fl">12.4</span>, <span class="fl">12.6</span>, <span class="fl">12.4</span>, <span class="fl">12.4</span>,  </a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">      <span class="fl">13.1</span>, <span class="fl">12.9</span>, <span class="fl">13.3</span>, <span class="fl">12.6</span>, <span class="fl">12.6</span>, <span class="fl">12.7</span>,  </a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">      <span class="fl">13.1</span>, <span class="fl">12.4</span>, <span class="fl">12.4</span>, <span class="fl">13.1</span>, <span class="fl">12.4</span>, <span class="fl">12.9</span>)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw">t.test</span>(x,<span class="dt">mu=</span><span class="fl">12.6</span>)</a></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  x
+## t = 2.6, df = 29, p-value = 0.01
+## alternative hypothesis: true mean is not equal to 12.6
+## 95 percent confidence interval:
+##  12.64 12.88
+## sample estimates:
+## mean of x 
+##     12.76</code></pre>
+<p>因为<span class="math inline">\(|t|=2.6444&gt;t_{0.975}(29)=2.04523\)</span>，所以在显著性水平<span class="math inline">\(\alpha=0.05\)</span>下拒绝<span class="math inline">\(H_0\)</span>。但<span class="math inline">\(|t|=2.6444&lt;t_{0.995}(29)=2.756386\)</span>，所以在显著性水平<span class="math inline">\(\alpha=0.01\)</span>下接受<span class="math inline">\(H_0\)</span>。结论与之前一致。</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-171" class="example"><strong>例 3.12  </strong></span>1. 假设有个植物学家跟你说，通过基因组分析表明，山鸢尾(Setosa)花萼长度的均值是4.5cm，他这个论断是否可信？</p>
+<ol start="2" style="list-style-type: decimal">
+<li>另一位植物学家说山鸢尾(Setosa)花萼长度的均值是一个不小于4.5cm的数，但具体是多少就不清楚了，那么他这个论断是否又可信？</li>
+</ol>
+</div>
+
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">x =<span class="st"> </span>iris[iris<span class="op">$</span>Species<span class="op">==</span><span class="st">&quot;setosa&quot;</span>,<span class="dv">1</span>] </a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">t.test</span>(x,<span class="dt">mu=</span><span class="fl">4.5</span>)</a></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  x
+## t = 10, df = 49, p-value = 1e-13
+## alternative hypothesis: true mean is not equal to 4.5
+## 95 percent confidence interval:
+##  4.906 5.106
+## sample estimates:
+## mean of x 
+##     5.006</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">t.test</span>(x,<span class="dt">mu=</span><span class="fl">4.5</span>, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  x
+## t = 10, df = 49, p-value = 1
+## alternative hypothesis: true mean is less than 4.5
+## 95 percent confidence interval:
+##  -Inf 5.09
+## sample estimates:
+## mean of x 
+##     5.006</code></pre>
+</div>
+<div id="section-3.5.2" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> 两个独立正态总体的检验</h3>
+<p>有时候，我们需要比较两个总体的差异性。例如，男生群体平均身高是否大于女生群体平均身高？山鸢尾和杂色鸢尾两种花的花萼有没有显著差异？大部分问题归结为比较两个总体均值或者方差的差异性。</p>
+<p><strong>前提条件</strong>：设总体<span class="math inline">\(X\sim N(\mu_1,\sigma_1^2)\)</span>, 另有与<span class="math inline">\(X\)</span>独立的总体<span class="math inline">\(Y\sim N(\mu_2,\sigma_2^2)\)</span>. 两个总体的样本分别为<span class="math inline">\(X_1,\dots,X_m\)</span>; <span class="math inline">\(Y_1,\dots,Y_n\)</span>，修正样本方差分别为<span class="math inline">\(S_X^{*2},\ S_Y^{*2}\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>考虑检验问题：</li>
+</ol>
+<p><span class="math display">\[H_0: \mu_1-\mu_2=\delta\ vs.\ H_1: \mu_1-\mu_2\neq \delta.\]</span></p>
+<p>大部分应用场景取<span class="math inline">\(\delta=0\)</span>.</p>
+<ul>
+<li>如果<span class="math inline">\(\sigma_1^2,\sigma_2^2\)</span>已知, 选择<strong>U检验统计量</strong>：</li>
+</ul>
+<p><span class="math display">\[U=\frac{\bar X-\bar Y-\delta}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}}\stackrel{H_0}\sim N(0,1).\]</span></p>
+<p>若<span class="math inline">\(|U|&gt; u_{1-\alpha/2}\)</span>拒绝<span class="math inline">\(H_0\)</span>，否则接受<span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li>如果<span class="math inline">\(\sigma_1^2,\sigma_2^2\)</span>未知，已知<span class="math inline">\(\sigma_1^2=\sigma_2^2\)</span>，选择<strong>t检验统计量</strong>：</li>
+</ul>
+<p><span class="math display">\[T=\frac{\bar X-\bar Y-\delta}{S_w\sqrt{1/m+1/n}}\stackrel{H_0}\sim t(m+n-2),\]</span></p>
+<p>其中<span class="math inline">\(S_w^2=[(m-1)S_X^{2*}+(n-1)S_Y^{*2}]/(m+n-2)\)</span>为合并的样本方差。</p>
+<p>若<span class="math inline">\(|T|&gt; t_{1-\alpha/2}(n+m-2)\)</span>拒绝<span class="math inline">\(H_0\)</span>，否则接受<span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li>如果<span class="math inline">\(\sigma_1^2,\sigma_2^2\)</span>未知，但<span class="math inline">\(\sigma_1^2\neq\sigma_2^2\)</span>, 选择<strong>检验统计量</strong>：</li>
+</ul>
+<p><span class="math display">\[T=\frac{(\bar X-\bar Y)-\delta}{\sqrt{S_X^{*2}/m+S_Y^{*2}/n}}.\]</span></p>
+<p>在<span class="math inline">\(\mu_1-\mu_2=\delta\)</span>下，<span class="math inline">\(T\)</span>近似服从自由度为<span class="math inline">\(k\)</span>的<span class="math inline">\(t\)</span>分布，其中<span class="math inline">\(k\)</span>为接近<span class="math inline">\(k^*\)</span>的整数，</p>
+<p><span class="math display">\[k^*=\frac{(S_{X}^{*2}/m+S_{Y}^{*2}/n)^2}{(S_{X}^{*2}/m)^2/(m-1)+(S_Y^{*2}/n)^2/(n-1)}\]</span></p>
+<p>这就是著名的<strong>Behrens-Fisher问题</strong>，该检验为<strong>Welch’s t-test</strong>。</p>
+<p><strong>配对检验</strong>：假设两个总体的样本量都一样，即<span class="math inline">\(m=n\)</span>。此时，令<span class="math display">\[Z=X-Y\sim N(\mu_1-\mu_2,\sigma_1^2+\sigma^2_2),\]</span></p>
+<p><span class="math inline">\(Z\)</span>的样本为<span class="math inline">\(Z_i=X_i-Y_i\)</span>, <span class="math inline">\(i=1,\dots,n.\)</span> 原问题可以转化成关于<span class="math inline">\(Z\)</span>的均值的检验，故可构造<strong>t检验统计量</strong></p>
+<p><span class="math display">\[T=\frac{\bar Z-\delta}{S_Z^*/\sqrt{n}}\sim t(n-1),\]</span>
+其中<span class="math inline">\(S_Z^{*2}\)</span>为<span class="math inline">\(Z_i\)</span>的修正样本方差。这种检验方法称<strong>配对检验(paired test)</strong>, 优点是对两个总体的方差没有要求，甚至不要求两个总体独立。但只适用于<span class="math inline">\(m=n\)</span>的情况。如果<span class="math inline">\(m\neq n\)</span>, 这种配对检验就不太适合，尤其是两个样本量相差很大时，做配对检验就不得不舍弃大量的样本，造成一定的信息丢失。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>考虑方差比值的检验问题</li>
+</ol>
+<p><span class="math display">\[H_0: \sigma_1^2=\sigma_2^2,\ H_1: \sigma_1^2\neq \sigma_2^2\]</span></p>
+<ul>
+<li>如果<span class="math inline">\(\mu_1,\mu_2\)</span>已知，选择<strong>F检验统计量</strong>：</li>
+</ul>
+<p><span class="math display">\[F_1=\frac{\frac 1 m\sum_{i=1}^m(X_i-\mu_1)^2}{\frac 1 n\sum_{i=1}^n(Y_i-\mu_2)^2}\stackrel{H_0}\sim F(m,n).\]</span></p>
+<p>若<span class="math inline">\(F_1&gt; F_{1-\alpha/2}(m,n)\)</span>或者<span class="math inline">\(F_1&lt;F_{\alpha/2}(m,n)\)</span>拒绝<span class="math inline">\(H_0\)</span>，否则接受<span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li>如果<span class="math inline">\(\mu_1,\mu_2\)</span>未知，选择<strong>F检验统计量</strong>：</li>
+</ul>
+<p><span class="math display">\[F_2=\frac{\frac 1 {m-1}\sum_{i=1}^m(X_i-\bar X)^2}{\frac 1 {n-1}\sum_{i=1}^n(Y_i-\bar Y)^2}=\frac{S_X^{*2}}{S_Y^{*2}}\stackrel{H_0}\sim F(m-1,n-1)\quad.\]</span></p>
+<p>若<span class="math inline">\(F_2&gt; F_{1-\alpha/2}(m-1,n-1)\)</span>或者<span class="math inline">\(F_2&lt;F_{\alpha/2}(m-1,n-1)\)</span>拒绝<span class="math inline">\(H_0\)</span>，否则接受<span class="math inline">\(H_0\)</span>.</p>
+</div>
+<div id="section-3.5.3" class="section level3">
+<h3><span class="header-section-number">3.5.3</span> 案例分析：山鸢尾和杂色鸢尾花差异性比较</h3>
+<p><strong>均值差的假设检验R命令</strong>：</p>
+<p>t.test(x, y = NULL,
+alternative = c(“two.sided”, “less”, “greater”),
+mu = 0, paired = FALSE, var.equal = FALSE,
+conf.level = 0.95, …)</p>
+<p><strong>方差比的假设检验R命令</strong>：</p>
+<p>var.test(x, y, ratio = 1,
+alternative = c(“two.sided”, “less”, “greater”),
+conf.level = 0.95, …)</p>
+<ol style="list-style-type: decimal">
+<li>假设山鸢尾和杂色鸢尾两种花的花萼长度方差相等时，花萼长度均值的双边假设检验</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">x =<span class="st"> </span>iris[iris<span class="op">$</span>Species<span class="op">==</span><span class="st">&quot;setosa&quot;</span>,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">y =<span class="st"> </span>iris[iris<span class="op">$</span>Species<span class="op">==</span><span class="st">&quot;versicolor&quot;</span>,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">t.test</span>(x,y,<span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  x and y
+## t = -11, df = 98, p-value &lt;2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.1054 -0.7546
+## sample estimates:
+## mean of x mean of y 
+##     5.006     5.936</code></pre>
+<p>因为<span class="math inline">\(|t|=10.521&gt;t_{0.975}(98)=1.984467\)</span>，所以在显著性水平<span class="math inline">\(\alpha=0.05\)</span>下拒绝<span class="math inline">\(H_0\)</span>，即认为两种花的花萼长度均值相等不显著。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>方差不相等时双边假设检验，即Welch的t检验。</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">t.test</span>(x,y)</a></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  x and y
+## t = -11, df = 87, p-value &lt;2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.1057 -0.7543
+## sample estimates:
+## mean of x mean of y 
+##     5.006     5.936</code></pre>
+<p>因为<span class="math inline">\(|t|=10.521&gt;t_{0.975}(87)=1.987608\)</span>，在显著性水平<span class="math inline">\(\alpha=0.05\)</span>下同样拒绝<span class="math inline">\(H_0\)</span>，即认为两种花的花萼长度均值相等不显著。</p>
+<ol start="3" style="list-style-type: decimal">
+<li>方差不相等时单边假设检验</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">t.test</span>(x,y,<span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  x and y
+## t = -11, df = 87, p-value &lt;2e-16
+## alternative hypothesis: true difference in means is less than 0
+## 95 percent confidence interval:
+##    -Inf -0.783
+## sample estimates:
+## mean of x mean of y 
+##     5.006     5.936</code></pre>
+<p>因为<span class="math inline">\(t=-10.521&lt;t_{0.05}(87)=-1.662557\)</span>，在显著性水平<span class="math inline">\(\alpha=0.05\)</span>下拒绝<span class="math inline">\(H_0\)</span>，即认为山鸢尾花萼平均长度小于杂色鸢尾花萼平均长度。</p>
+<ol start="4" style="list-style-type: decimal">
+<li>山鸢尾和杂色鸢尾两种花的花萼长度方差比的检验</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">var.test</span>(x,y)</a></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  x and y
+## F = 0.47, num df = 49, denom df = 49, p-value =
+## 0.009
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.2646 0.8218
+## sample estimates:
+## ratio of variances 
+##             0.4663</code></pre>
+<p>因为<span class="math inline">\(F=0.46634&lt; F_{0.025}(49,49)=0.5674762\)</span>，在显著性水平<span class="math inline">\(\alpha=0.05\)</span>下拒绝<span class="math inline">\(H_0\)</span>，即认为两种花的花萼长度方差相等是不显著的。
+所以一开始认为两者方差相等对均值差进行检验是不合适的。</p>
+<ol start="5" style="list-style-type: decimal">
+<li>通过配对检验山鸢尾和杂色鸢尾两种花的花萼长度平均水平的差异</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">t.test</span>(x,y,<span class="dt">paired =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  x and y
+## t = -10, df = 49, p-value = 1e-13
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.1142 -0.7458
+## sample estimates:
+## mean of the differences 
+##                   -0.93</code></pre>
+<p>因为<span class="math inline">\(|t|=10.146&gt;t_{0.975}(49)=.009575\)</span>，所以在显著性水平<span class="math inline">\(\alpha=0.05\)</span>下拒绝<span class="math inline">\(H_0\)</span>，即认为两种花的花萼长度均值相等不显著（与Welch的t检验结果一致）。</p>
+</div>
+</div>
+<div id="section-3.6" class="section level2">
+<h2><span class="header-section-number">3.6</span> 置信区间与假设检验的联系</h2>
+<p>假设<span class="math inline">\(\theta\)</span>的100<span class="math inline">\((1-\alpha)\%\)</span> 置信区间为 <span class="math inline">\([L(X_{1{:}n}),U(X_{1{:}n})]\)</span>. 这表明</p>
+<p><span class="math display">\[P_{\theta}(\theta\in [L,U])=1-\alpha,\ \forall\theta\in\Theta.\]</span></p>
+<p>考虑假设检验:</p>
+<p><span class="math display">\[H_0:\theta=\theta_0\ vs.\ H_1:\theta\neq\theta_0.\]</span></p>
+<p><strong>检验法则</strong>: 如果<span class="math inline">\(\theta_0\notin [L,U]\)</span>, 拒绝原假设；否则接受原假设。于是得到一个拒绝域：<span class="math inline">\(W=\{x_{1{:}n}:\theta_0\notin [L(x_{1{:}n}),U(x_{1{:}n})]\}\)</span>, 显著性水平为</p>
+<p><span class="math display">\[P_{\theta_0}(\theta_0\notin [L,U])=\alpha\]</span></p>
+<p>有置信区间诱导的拒绝域可以控制犯第一类错误的概率在水平<span class="math inline">\(\alpha\)</span>，但这样得到的拒绝域不一定是UMP或者UMPU!
+对于正态总体，这种方式得到的拒绝域与之前通过似然比或者广义似然比方法得到一样。</p>
+<p>反过来，假如我们有以下检验的一个拒绝域<span class="math inline">\(W(\theta_0)\)</span></p>
+<p><span class="math display">\[H_0:\theta=\theta_0\ vs.\ H_1:\theta\neq\theta_0,\]</span></p>
+<p>其中<span class="math inline">\(P_{\theta_0}(X_{1{:}n} \in W(\theta_0))=\alpha, \forall \theta_0\in\Theta\)</span>. 可以得到一个置信集<strong>(confidence set)</strong>:</p>
+<p><span class="math display">\[S(X_{1{:}n})=\{\theta:X_{1{:}n}\notin W(\theta)\}\]</span></p>
+<p><span class="math display">\[P_\theta(\theta\in S) = P_{\theta}(X_{1{:}n}\notin W(\theta)) = 1-\alpha,\ \forall\theta\in\Theta.\]</span></p>
+<ul>
+<li><p>该置信集是由所有“接受”的<span class="math inline">\(\theta\)</span>的值组成的</p></li>
+<li><p>若该置信集为区间形式，则可以得到一个置信区间。</p></li>
+</ul>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-172" class="example"><strong>例 3.13  </strong></span>考虑总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>，其中<span class="math inline">\(\mu\)</span>未知，方差<span class="math inline">\(\sigma^2\)</span>已知。则有</p>
+<p><span class="math display">\[P(\bar X-u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\le \mu\le \bar X+u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}})=1-\alpha\]</span></p>
+<p>于是得到一个置信区间：<span class="math inline">\([\bar X-u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},\bar X+u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}]\)</span></p>
+<p>由此可以构造拒绝域：</p>
+<p><span class="math display">\[W=\{\mu_0\notin [\bar x-u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}},\bar x+u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}]\}\]</span></p>
+<p><span class="math display">\[W=\{x_{1{:}n}:|\bar x-\mu_0|&gt;u_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}\}\]</span></p>
+此拒绝域和我们之前得到的一样的。
+</div>
+
+</div>
+<div id="p" class="section level2">
+<h2><span class="header-section-number">3.7</span> p值</h2>
+<p>由例<a href="test.html#exm:alco">3.11</a>可以看出，当<span class="math inline">\(\alpha\)</span>变化时，我们需要重新计算拒绝域再进行判断接受或者拒绝。不同的显著性水平得到结论可能不一样。不难看出，对一个固定的样本，<span class="math inline">\(\alpha\)</span>越大越容易拒绝该样本，越小越容易接受。于是便存在一个临界状态，如果我们能够获得这个临界值，那么检验问题就可以等价转化成显著性水平与该临界值比较大小问题。这就避免了拒绝域的频繁计算。这个临界值称为p值(p-value).</p>
+<p>假设拒绝域具备如下形式（似然比和广义似然比检验经常出现这种形式）</p>
+<p><span class="math display">\[W=\{x_{1{:}n}:T(x_{1{:}n})&gt;\lambda_\alpha\},\]</span></p>
+<ul>
+<li><p><span class="math inline">\(T\)</span>为检验统计量</p></li>
+<li><p><span class="math inline">\(\lambda_\alpha\)</span>满足<span class="math inline">\(\sup_{\theta\in\Theta_0}P_{\theta}(T(X_{1{:}n})&gt;\lambda_\alpha)=\alpha\)</span></p></li>
+</ul>
+<p>由此可得：</p>
+<ul>
+<li><p>对于固定的样本，显著性水平<span class="math inline">\(\alpha\)</span>越大，<span class="math inline">\(\lambda\)</span>越小，这样越容易拒绝原假设</p></li>
+<li><p>对于固定的样本，是否存在一个临界值<span class="math inline">\(p\)</span>, 使得当<span class="math inline">\(p&lt;\alpha\)</span>时拒绝原假设，当<span class="math inline">\(p\ge \alpha\)</span>时接受原假设？这个临界值称为<span class="math inline">\(p\)</span>值</p></li>
+</ul>
+<p><span class="math display">\[p=p(x_{1{:}n})=\sup_{\theta\in\Theta_0}P_\theta(T(X_{1{:}n})&gt; T(x_{1{:}n})).\]</span></p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-173" class="theorem"><strong>定理 3.8  </strong></span>令<span class="math inline">\(f(\lambda) = \sup_{\theta\in\Theta_0}P_{\theta}(T(X_{1{:}n})&gt;\lambda)\)</span>.
+如果对任意的<span class="math inline">\(\alpha\in(0,1)\)</span>, <span class="math inline">\(f^{-1}(\alpha)\)</span>存在，那么<span class="math inline">\(T(x_{1{:}n})&gt;\lambda_\alpha\)</span>当且仅当<span class="math inline">\(p(x_{1{:}n})&lt;\alpha\)</span>.
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>证明. </em></span> 由定理条件知，<span class="math inline">\(f(\lambda)\)</span>为严格单调递减函数。注意到<span class="math inline">\(f(\lambda_\alpha)=\alpha\)</span>且<span class="math inline">\(f(T(x_{1{:}n}))=p\)</span>. 所以，<span class="math inline">\(T(x_{1{:}n})&gt;\lambda_\alpha\)</span>当且仅当<span class="math inline">\(p(x_{1{:}n})&lt;\alpha\)</span>.
+</div>
+
+<p>如果原假设是简单的, 即<span class="math inline">\(H_0:\theta=\theta_0\)</span>，则</p>
+<p><span class="math display">\[p = P_{\theta_0}(T(X_{1{:}n})&gt; T(x_{1{:}n})).\]</span></p>
+<p>对于一些复合的原假设，<span class="math inline">\(\sup_{\theta\in\Theta_0}P_{\theta}(T(X_{1{:}n})&gt;\lambda)=P_{\theta_0}(T(X_{1{:}n})&gt; \lambda)\)</span>，其中<span class="math inline">\(\theta_0\)</span>为<span class="math inline">\(\Theta_0\)</span>的边界点。</p>
+<p>类似地， 如果拒绝域另一种单边情况，<span class="math inline">\(W=\{x_{1{:}n}:T(x_{1{:}n})&lt;\lambda\},\)</span> 则p值为</p>
+<p><span class="math display">\[p=p(x_{1{:}n})=\sup_{\theta\in\Theta_0}P_\theta(T(X_{1{:}n})&lt; T(x_{1{:}n})).\]</span></p>
+<p>如果对检验问题<span class="math inline">\(H_0:\theta=\theta_0\ vs.\ H_1:\theta\neq\theta_0\)</span>选择双边拒绝域，<span class="math inline">\(W=\{T(x_{1{:}n})&lt;\lambda_1\}\cup\{T(x_{1{:}n})&gt;\lambda_2\}\)</span>，其中</p>
+<p><span class="math display">\[P_{\theta_0}(T(X_{1{:}n})&lt;\lambda_1)=P_{\theta_0}(T(X_{1{:}n})&gt;\lambda_2)=\alpha/2,\]</span>
+假设<span class="math inline">\(\lambda^*\)</span>满足<span class="math inline">\(P_{\theta_0}(T(X_{1{:}n})\le\lambda^*)=0.5\)</span>，则<span class="math inline">\(\lambda_1\leq\lambda^*\leq\lambda_2\)</span>。则p值为</p>
+<p><span class="math display">\[p=
+\begin{cases}
+2P_{\theta_0}(T(X_{1{:}n})&lt;T(x_{1{:}n})),\ &amp; T(x_{1{:}n})&lt;\lambda^*\\
+2P_{\theta_0}(T(X_{1{:}n})&gt;T(x_{1{:}n})),\ &amp; T(x_{1{:}n})\ge \lambda^*.
+\end{cases}
+\]</span></p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-175" class="example"><strong>例 3.14  </strong></span>总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>，其中<span class="math inline">\(\mu\)</span>未知，方差<span class="math inline">\(\sigma^2\)</span>已知，考虑检验</p>
+<p><span class="math display">\[H_0:\mu\le\mu_0\ vs.\ H_1:\mu&gt;\mu_0.\]</span>
+检验统计量为<span class="math inline">\(U = \sqrt{n}(\bar X-\mu_0)/\sigma\)</span>.
+拒绝域为<span class="math inline">\(W=\{u&gt;c\}\)</span>. 故p值为</p>
+<span class="math display">\[p = \sup_{\mu\le\mu_0}P_{\mu}(U&gt; u)=P_{\mu_0}(U&gt; u)=1-\Phi\left(\frac{\bar x-\mu_0}{\sigma/\sqrt{n}}\right).\]</span>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-176" class="example"><strong>例 3.15  </strong></span>总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>，其中<span class="math inline">\(\mu\)</span>未知，方差<span class="math inline">\(\sigma^2\)</span>已知，考虑检验</p>
+<p><span class="math display">\[H_0:\mu=\mu_0\ vs.\ H_1:\mu\neq\mu_0.\]</span>
+拒绝域为<span class="math inline">\(W=\{x_{1{:}n}:\sqrt{n}|\bar x-\mu_0|/\sigma&gt;u_{1-\alpha/2}\}\)</span>, 其中检验统计量为<span class="math inline">\(T = \sqrt{n}|\bar X-\mu_0|/\sigma\)</span>. 故p值为</p>
+<span class="math display">\[p = P_{\mu_0}(T(X_{1{:}n})&gt; T(x_{1{:}n}))=2-2\Phi(T(x_{1{:}n}))=2-2\Phi\left(\frac{|\bar x-\mu_0|}{\sigma/\sqrt{n}}\right).\]</span>
+</div>
+
+<p>对应到例<a href="test.html#exm:alco">3.11</a>，</p>
+<p><span class="math display">\[p = 2-2\Phi\left(\frac{|12.757-12.6|}{0.4/\sqrt{30}}\right)=0.032.\]</span>
+因此, 如果<span class="math inline">\(\alpha&gt; 0.032\)</span>, 拒绝<span class="math inline">\(H_0\)</span>（建议校正）；否则, 接受<span class="math inline">\(H_0\)</span>（不建议校正）。</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-177" class="example"><strong>例 3.16  </strong></span>总体<span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>，其中<span class="math inline">\(\mu\)</span>已知，考虑检验</p>
+<p><span class="math display">\[H_0:\sigma^2=\sigma^2_0\ vs.\ H_1:\sigma^2\neq\sigma^2_0.\]</span>
+检验统计量为<span class="math inline">\(V = \frac{1}{\sigma^2_0}\sum_{i=1}^n(X_i-\mu)^2\stackrel{H_0}{\sim}\chi^2(n).\)</span>
+拒绝域为<span class="math inline">\(W=\{v&lt;c_1\}\cup\{v&gt;c_2\}\)</span>，不难发现<span class="math inline">\(c_1\le \chi^2_{0.5}(n)\le c_2\)</span>. 故p值为</p>
+<p><span class="math display">\[p = 
+\begin{cases}
+2F(v),\ &amp; v&lt;\chi^2_{0.5}(n)\\
+2(1-F(v)),\ &amp; v\ge \chi^2_{0.5}(n),
+\end{cases}  
+\]</span>
+其中<span class="math inline">\(v\)</span>为<span class="math inline">\(V\)</span>的观测值，<span class="math inline">\(F(x)\)</span>为<span class="math inline">\(\chi^2(n)\)</span>的CDF.</p>
+</div>
+
+<p><strong>注：</strong></p>
+<ul>
+<li><p>p值可以看作样本与原假设<strong>相容程度的度量</strong>。p值越大相容度越高；反之，p值越小相容度越低。当p值小于<span class="math inline">\(\alpha\)</span>时认为两者不相容，拒绝原假设。</p></li>
+<li><p>做检验时不需要事先确定显著性水平<span class="math inline">\(\alpha\)</span>（它具有一定的主观性），如果p值非常小，则毫不犹豫地拒绝原假设；同样地，如果p值比较大，则接受原假设，这样就不用争论<span class="math inline">\(\alpha=0.1,0.05\)</span>或者其他。</p></li>
+<li><p>p值提供更多的信息，可以用于<strong>保护隐私数据</strong>。</p></li>
+<li><p>统计软件提供的是p值。</p></li>
+</ul>
+</div>
+<div id="section-3.8" class="section level2">
+<h2><span class="header-section-number">3.8</span> 多重检验</h2>
+<ul>
+<li><p>如果独立检验同一个假设<span class="math inline">\(k\)</span>次，我们可以得到<span class="math inline">\(k\)</span>个p值: <span class="math inline">\(p_1,\dots,p_k\)</span>, 可否由这<span class="math inline">\(k\)</span>个p值汇总成一个p值来检验该假设？<strong>元分析(meta-analysis)</strong></p></li>
+<li><p>假如我们有<span class="math inline">\(k\)</span>个不同的原假设<span class="math inline">\(H_{0j},j=1,\dots,k\)</span>，这种问题称为<strong>多重假设(multiple tests)</strong>问题。可否利用<span class="math inline">\(k\)</span>个不同假设的p值: <span class="math inline">\(p_1,\dots,p_k\)</span>来进一步控制错误发生率?</p></li>
+</ul>
+<p>例子：吃果冻与长青春痘的联系：<a href="https://xkcd.com/882/" class="uri">https://xkcd.com/882/</a></p>
+<p>How to annoy a statistician: <a href="https://xkcd.com/2118/" class="uri">https://xkcd.com/2118/</a></p>
+</div>
+<div id="section-3.9" class="section level2">
+<h2><span class="header-section-number">3.9</span> 伯努利分布的检验</h2>
+<p>设<span class="math inline">\(X\)</span>服从两点分布<span class="math inline">\(B(1,p)\)</span>, 下面考虑以下三种常见的假设检验</p>
+<ul>
+<li><p><span class="math inline">\(H_0:p\le p_0\ vs.\ H_1:p&gt;p_0\)</span></p></li>
+<li><p><span class="math inline">\(H_0:p\ge p_0\ vs.\ H_1:p&lt;p_0\)</span></p></li>
+<li><p><span class="math inline">\(H_0:p= p_0\ vs.\ H_1:p\neq p_0\)</span></p></li>
+</ul>
+<p>对于该总体，我们选<span class="math inline">\(S=\sum_{i=1}^nX_i\sim B(n,p)\)</span>为检验统计量。相应的拒绝域形式为</p>
+<ul>
+<li><p><span class="math inline">\(W=\{s\ge c\}\)</span></p></li>
+<li><p><span class="math inline">\(W=\{s\le c\}\)</span></p></li>
+<li><p><span class="math inline">\(W=\{s\ge c_2\}\cup\{s\le c_1\}\)</span></p></li>
+</ul>
+<p>注意到<span class="math inline">\(S\)</span>为离散型随机变量，所以满足<span class="math inline">\(\sup_{p\in\Theta_0}P_p(X_{1{:}n}\in W)=\alpha\)</span>的分界点不一定存在。因此，我们考虑<span class="math inline">\(\sup_{p\in\Theta_0}P_p(X_{1{:}n}\in W)\le \alpha\)</span>下分界点的选取。</p>
+<div id="i" class="section level3">
+<h3><span class="header-section-number">3.9.1</span> 单侧检验I</h3>
+<p>考虑单边假设<span class="math inline">\(H_0:p\le p_0\ vs.\ H_1:p&gt;p_0\)</span>, 为了使得检验功效最大化，临界值<span class="math inline">\(c\)</span>为满足下式<strong>最小的整数</strong></p>
+<p><span class="math display">\[\sup_{p\le p_0}P_p(S\ge c)\le \alpha.\]</span></p>
+
+<div class="lemma">
+<p><span id="lem:unnamed-chunk-178" class="lemma"><strong>引理 3.1  </strong></span>设<span class="math inline">\(F_{\beta}(x;a,b)\)</span>为<span class="math inline">\(Beta(a,b)\)</span>分布的累积分布函数，则</p>
+<p><span class="math display">\[P_p(S\ge c)=\sum_{i=c}^nC_n^ip^i(1-p)^{n-i}=F_{\beta}(p;c,n-c+1),\]</span></p>
+其中<span class="math inline">\(F_{\beta}(p;c,n-c+1)\)</span>表示<span class="math inline">\(Beta(c,n-c+1)\)</span>分布的CDF在<span class="math inline">\(p\)</span>点处的取值。
+</div>
+
+<p>由于<span class="math inline">\(P_p(S\ge c)\)</span>关于<span class="math inline">\(p\)</span><strong>单调递增</strong>，所以</p>
+<p><span class="math display">\[\sup_{p\le p_0}P_p(S\ge c)=P_{p_0}(S\ge c)=\sum_{i=c}^nC_n^ip_0^i(1-p_0)^{n-i}\le \alpha.\]</span></p>
+<p>计算<span class="math inline">\(c\)</span>比较复杂，为了避免此，我们将拒绝域<span class="math inline">\(\{s\ge c\}\)</span>等价转化为</p>
+<p><span class="math display">\[W=\{\sum_{i=s}^nC_n^ip_0^i(1-p_0)^{n-i}\le \alpha\}.\]</span></p>
+<p>更进一步，假设<span class="math inline">\(p_\alpha(s)\)</span>为方程<span class="math inline">\(\sum_{i=s}^nC_n^ip^i(1-p)^{n-i}=\alpha\)</span>的根，则拒绝域等价转化为</p>
+<p><span class="math display">\[W=\{p_0\le p_\alpha(s)\},\]</span></p>
+<p>其中<span class="math inline">\(p_\alpha(s)=F_{\beta}^{-1}(\alpha;s,n-s+1)\)</span>, 或者可以表示成<span class="math inline">\(F\)</span>分布分位数的函数</p>
+<p><span class="math display">\[p_\alpha(s)=\left(1+\frac{n-s+1}{s}F_{1-\alpha}(2(n-s+1),2s)\right)^{-1}.\]</span>
+详细的转化见陈家鼎等编著的教材P105引理4.2.</p>
+</div>
+<div id="section-3.9.2" class="section level3">
+<h3><span class="header-section-number">3.9.2</span> 女士品茶问题求解</h3>
+<p>考虑女士品茶问题，设该女士鉴别的成功率为<span class="math inline">\(p\)</span>. 设<span class="math inline">\(X_i\)</span>表示第<span class="math inline">\(i\)</span>次鉴别结果，即<span class="math inline">\(X_i=1\)</span>表示成功，<span class="math inline">\(X_i=0\)</span>表示失败。如果<span class="math inline">\(p&gt;p_0\)</span>我们认为该女士具备这种辨别能力，其中<span class="math inline">\(p_0\ge 1/2\)</span>为给定的数。故考虑检验</p>
+<p><span class="math display">\[H_0: p\le p_0\ vs.\ H_1:p&gt;p_0.\]</span></p>
+<p><strong>二项分布检验的R代码</strong></p>
+<p>binom.test(x, n, p = 0.5,
+alternative = c(“two.sided”, “less”, “greater”),
+conf.level = 0.95)</p>
+<p><strong>n=10的检验结果：</strong></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">alpha =<span class="st"> </span><span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">n =<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">s =<span class="st"> </span><span class="dv">1</span><span class="op">:</span>n</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">pr =<span class="st"> </span><span class="kw">qbeta</span>(alpha,s,n<span class="op">-</span>s<span class="op">+</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6"><span class="kw">plot</span>(s,pr,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="kw">expression</span>(p[alpha](s)),</a>
+<a class="sourceLine" id="cb21-7" data-line-number="7">     <span class="dt">main=</span><span class="kw">expression</span>(alpha<span class="op">==</span><span class="fl">0.1</span>))</a>
+<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="kw">abline</span>(<span class="dt">h=</span><span class="fl">0.5</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9">lb =<span class="st"> </span><span class="kw">expression</span>(p[<span class="dv">0</span>]<span class="op">==</span><span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb21-10" data-line-number="10"><span class="kw">text</span>(<span class="dv">3</span>,<span class="fl">0.55</span>,lb)</a>
+<a class="sourceLine" id="cb21-11" data-line-number="11">alpha =<span class="st"> </span><span class="fl">0.05</span></a>
+<a class="sourceLine" id="cb21-12" data-line-number="12">pr =<span class="st"> </span><span class="kw">qbeta</span>(alpha,s,n<span class="op">-</span>s<span class="op">+</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb21-13" data-line-number="13"><span class="kw">plot</span>(s,pr,<span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="kw">expression</span>(p[alpha](s)),</a>
+<a class="sourceLine" id="cb21-14" data-line-number="14">     <span class="dt">main=</span><span class="kw">expression</span>(alpha<span class="op">==</span><span class="fl">0.05</span>))</a>
+<a class="sourceLine" id="cb21-15" data-line-number="15"><span class="kw">abline</span>(<span class="dt">h=</span><span class="fl">0.5</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb21-16" data-line-number="16"><span class="kw">text</span>(<span class="dv">3</span>,<span class="fl">0.55</span>,lb)</a></code></pre></div>
+<p><img src="book_files/figure-html/testn10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">binom.test</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="fl">0.5</span>,<span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Exact binomial test
+## 
+## data:  8 and 10
+## number of successes = 8, number of trials = 10,
+## p-value = 0.05
+## alternative hypothesis: true probability of success is greater than 0.5
+## 95 percent confidence interval:
+##  0.4931 1.0000
+## sample estimates:
+## probability of success 
+##                    0.8</code></pre>
+</div>
+<div id="ii" class="section level3">
+<h3><span class="header-section-number">3.9.3</span> 单侧检验II</h3>
+<p>考虑单边假设<span class="math inline">\(H_0:p\ge p_0\ vs.\ H_1:p&lt;p_0\)</span>, 临界值<span class="math inline">\(c\)</span>为满足下式<strong>最大的整数</strong></p>
+<p><span class="math display">\[\sup_{p\ge p_0}P_p(S\le c)\le \alpha.\]</span></p>
+<p>由于<span class="math inline">\(P_p(S\le c)=\sum_{i=0}^cC_n^ip^i(1-p)^{n-i}\)</span>关于<span class="math inline">\(p\)</span><strong>单调递减</strong>，所以只需考虑</p>
+<p><span class="math display">\[P_{p_0}(S\le c)=\sum_{i=0}^cC_n^ip_0^i(1-p_0)^{n-i}\le \alpha.\]</span></p>
+<p>计算<span class="math inline">\(c\)</span>比较复杂，为了避免此，我们将拒绝域<span class="math inline">\(\{s\ge c\}\)</span>等价转化为</p>
+<p><span class="math display">\[W=\{\sum_{i=s+1}^nC_n^ip_0^i(1-p_0)^{n-i}\ge 1-\alpha\}.\]</span></p>
+<p>更进一步，假设<span class="math inline">\(\tilde p_\alpha(s)\)</span>为方程<span class="math inline">\(\sum_{i=s+1}^nC_n^ip^i(1-p)^{n-i}=1-\alpha\)</span>的根，则拒绝域等价转化为</p>
+<p><span class="math display">\[W=\{p_0\ge \tilde p_\alpha(s)\}\]</span></p>
+<p>其中<span class="math inline">\(\tilde p_\alpha(s)=F_{\beta}^{-1}(1-\alpha;s+1,n-s)\)</span>, 或者可以表示成</p>
+<p><span class="math display">\[\tilde p_\alpha(s)=\left(1+\frac{n-s}{(s+1)F_{1-\alpha}(2s+2,2n-2s)}\right)^{-1}\]</span></p>
+</div>
+<div id="section-3.9.4" class="section level3">
+<h3><span class="header-section-number">3.9.4</span> 双侧检验</h3>
+<p>考虑双边假设<span class="math display">\[H_0:p= p_0\ vs.\ H_1:p\neq p_0\]</span>
+拒绝域为<span class="math inline">\(\{s\le c_1\}\cup\{s\ge c_2\}\)</span>，其中临界值<span class="math inline">\(c_1\)</span>为满足<span class="math inline">\(P_{p_0}(S\le c_1)=\alpha/2\)</span><strong>最大的整数</strong>，临界值<span class="math inline">\(c_1\)</span>为满足<span class="math inline">\(P_{p_0}(S\ge c_2)=\alpha/2\)</span><strong>最小的整数</strong>。由前面分析，该拒绝域等价于</p>
+<p><span class="math display">\[\{p_0\le p_{\alpha/2}(s)\}\cup\{p_0\ge \tilde{p}_{\alpha/2}(s)\}.\]</span></p>
+</div>
+</div>
+<div id="section-3.10" class="section level2">
+<h2><span class="header-section-number">3.10</span> 拟合优度检验</h2>
+<div id="mendel" class="section level3">
+<h3><span class="header-section-number">3.10.1</span> Mendel的数据</h3>
+<p>In one of his famous experiments, Mendel crossed 556 smooth, yellow male peas
+with wrinkled, green female peas. The counts that Mendel recorded are</p>
+<table>
+<thead>
+<tr class="header">
+<th>smooth yellow</th>
+<th>smooth green</th>
+<th>wrinkled yellow</th>
+<th>wrinkled green</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>315</td>
+<td>108</td>
+<td>102</td>
+<td>31</td>
+</tr>
+</tbody>
+</table>
+<p>According to now established genetic theory, the
+relative frequencies of the progeny should be as given below.</p>
+<p><span class="math display">\[P(\text{smooth yellow}) = 9/16, P(\text{smooth green}) = 3/16\]</span></p>
+<p><span class="math display">\[P(\text{wrinkled yellow}) = 3/16, P(\text{wrinkled green}) = 1/16\]</span></p>
+<p>Would you conclude that Mendal’s experiment is correct at the level of significance <span class="math inline">\(\alpha=0.05\)</span>?</p>
+</div>
+<div id="section-3.10.2" class="section level3">
+<h3><span class="header-section-number">3.10.2</span> 卡方检验</h3>
+<p>考虑离散型分布的假设检验，<span class="math inline">\(X\in \{t_1,\dots,t_m\}\)</span>.</p>
+<p><span class="math display">\[H_0: P(X=t_i)=p^0_i,\ i=1,\dots,m,\ vs.\ H_1: P(X=t_i)\neq p^0_i,\]</span></p>
+<p>其中<span class="math inline">\(p^0_i\in(0,1)\)</span>为给定的数且<span class="math inline">\(\sum_{i=1}^m p^0_i=1\)</span>.</p>
+<p>皮尔逊卡方检验法(Pearson, 1900)选择检验统计量：</p>
+<p><span class="math display">\[V=\sum_{i=1}^{m} \frac{(v_i-np^0_i)^2}{np^0_i},\]</span></p>
+<p>其中<span class="math inline">\(v_i\)</span>表示<span class="math inline">\(x_{1{:}n}\)</span>中包含<span class="math inline">\(t_i\)</span>的个数，即<span class="math inline">\(v_i=\sum_{j=1}^n 1\{X_j=t_i\}\)</span>. 注意到，<span class="math inline">\(v_i\)</span>是<span class="math inline">\(np_i\)</span>的无偏估计。如果<span class="math inline">\(H_0\)</span>成立，求和里面的<span class="math inline">\(\frac{(v_i-np^0_i)^2}{np^0_i}\)</span>可以看作<span class="math inline">\(v_i\)</span>的相对平方误差。</p>
+<p>拒绝域<span class="math inline">\(W=\{V&gt;\lambda\}\)</span>. 可以证明在<span class="math inline">\(H_0\)</span>下，<span class="math inline">\(V\stackrel{\cdot}{\sim} \chi^2(m-1)\)</span>；参见专著E. L. Lehmann and J. R. Romano. Testing Statistical Hypothesis (3rd Edition). P591页定理14.3.1. 故取<span class="math inline">\(\lambda=\chi^2_{1-\alpha}(m-1)\)</span>.</p>
+<p>对Mendel的数据，我们有</p>
+<ul>
+<li><p>卡方检验统计量<span class="math inline">\(V=0.604\)</span>, <span class="math inline">\(\chi^2_{1-0.05}(3)=7.81\)</span>, 所以接受原假设。p值为<span class="math inline">\(0.90\)</span>。</p></li>
+<li><p>R代码关键命令为：</p></li>
+</ul>
+<p><strong>chisq.test</strong>(x, y = NULL, correct = TRUE,
+p = rep(1/length(x), length(x)), rescale.p = FALSE,
+simulate.p.value = FALSE, B = 2000)</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">x =<span class="st"> </span><span class="kw">c</span>(<span class="dv">315</span>, <span class="dv">108</span>, <span class="dv">102</span>, <span class="dv">31</span>)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">p =<span class="st"> </span><span class="kw">c</span>(<span class="dv">9</span><span class="op">/</span><span class="dv">16</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">16</span>,<span class="dv">3</span><span class="op">/</span><span class="dv">16</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">16</span>)</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="kw">chisq.test</span>(x,<span class="dt">p=</span>p)</a></code></pre></div>
+<pre><code>## 
+##  Chi-squared test for given probabilities
+## 
+## data:  x
+## X-squared = 0.6, df = 3, p-value = 0.9</code></pre>
+<p><strong>注</strong>：上述检验同样可以通过广义似然比检验得到。令<span class="math inline">\(V_i\)</span>为<span class="math inline">\(X_1,\dots,X_n\)</span>中包含<span class="math inline">\(t_i\)</span>的个数，<span class="math inline">\(v_i\)</span>为其观测值，<span class="math inline">\(i=1,\dots,m\)</span>. 注意到，<span class="math inline">\((V_1,\dots,V_m)\)</span>服从多项式分布，数据<span class="math inline">\((v_1,\dots,v_m)\)</span>的似然函数为</p>
+<p><span class="math display">\[L(p_1,\dots,p_m) = \frac{n!}{\prod_{i=1}^m v_i!}\prod_{i=1}^m p_i^{v_i}.\]</span></p>
+<p>其中，参数空间为<span class="math inline">\(\Theta=\{(p_1,\dots,p_m)\in(0,1)^m|\sum_{i=1}^mp_i=1\}\)</span>. 由拉格朗日乘子法，不难发现<span class="math inline">\(p_1,\dots,p_m\)</span>的MLE为<span class="math inline">\(\hat p_i=v_i/n\)</span>.</p>
+<p>广义似然比为</p>
+<p><span class="math display">\[\begin{align*}
+\lambda(v_1,\dots,v_m)&amp;=\frac{\sup_{(p_1,\dots,p_m)\in\Theta}L(p_1,\dots,p_m)}{L(p_1^0,\dots,p_m^0)}\\
+&amp;=\frac{L(\hat p_1,\dots,\hat p_m)}{L(p_1^0,\dots,p_m^0)}\\
+&amp;=\prod_{i=1}^m(\hat p_i/p_i^0)^{v_i}=\prod_{i=1}^m\left(\frac{v_i}{n p_i^0}\right)^{v_i}.
+\end{align*}\]</span></p>
+<p>于是，</p>
+<p><span class="math display">\[2\log \lambda(v_1,\dots,v_m) = 2n\sum_{i=1}^m \frac{v_i}{n} [\log\left (\frac{v_i}{n }\right)-\log(p_i^0)].\]</span></p>
+<p>如果<span class="math inline">\(H_0\)</span>成立，当<span class="math inline">\(n\)</span>充分大时，<span class="math inline">\(v_i/n\approx p_i^0\)</span>. 对函数<span class="math inline">\(f(x) = x[\log(x)-\log (x_0)]\)</span>在<span class="math inline">\(x=x_0\)</span>处进行二阶泰勒展开，有</p>
+<p><span class="math display">\[f(x)\approx (x-x_0)+\frac{(x-x_0)^2}{2x_0}.\]</span></p>
+<p>所以，</p>
+<p><span class="math display">\[2\log \lambda(v_1,\dots,v_m)\approx 2n\sum_{i=1}^m \left(\frac{v_i}{n }-p_i^0\right)+n\sum_{i=1}^m\left(\frac{v_i}{n }-p_i^0\right)^2/p_i^0=\sum_{i=1}^m\frac{\left(v_i-np_i^0\right)^2}{np_i^0}=V,\]</span></p>
+<p>其中用到<span class="math inline">\(\sum_{i=1}^m v_i/n=1,\ \sum_{i=1}^m p_i^0=1\)</span>. 这表明，广义似然比检验的拒绝域与卡方检验法的拒绝域接近，但是卡方检验法的统计量较为简单。</p>
+<p><strong>推广</strong>：考虑连续型分布</p>
+<p><span class="math display">\[H_0:F(x)=F_0(x)\ vs.\ H_1:\ F(x)\neq F_0(x),\]</span>
+其中<span class="math inline">\(F_0\)</span>为给定的分布，比如<span class="math inline">\(N(0,1)\)</span>. 为了使用卡方检验法，我们需要把连续分布离散化得到一个离散分布进行检验。
+把整个实轴分成<span class="math inline">\(m\)</span>份，<span class="math inline">\((-\infty,t_1],\ (t_1,t_2],\dots,(t_{m-2},t_{m-1}],\ (t_{m-1},\infty)\)</span>, 分别计算这<span class="math inline">\(m\)</span>个区间的概率<span class="math inline">\(p_i,i=1,\dots,m\)</span>, <span class="math inline">\(v_i\)</span>表示<span class="math inline">\(x_{1{:}n}\)</span>落到第<span class="math inline">\(i\)</span>个区间的个数， 类似离散的分布的检验。
+借鉴直方图法的选取<span class="math inline">\(t_{i}\)</span>和<span class="math inline">\(m\)</span>.</p>
+</div>
+</div>
+<div id="-1" class="section level2">
+<h2><span class="header-section-number">3.11</span> 小结</h2>
+<p>其他检验：</p>
+<ul>
+<li><p>独立性检验</p></li>
+<li><p>正态性检验</p></li>
+<li><p>柯尔莫哥洛夫检验法</p></li>
+</ul>
+</div>
+<div id="ex4" class="section level2">
+<h2><span class="header-section-number">3.12</span> 本章习题</h2>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-179" class="exercise"><strong>习题 3.1  </strong></span>Let <span class="math inline">\(X_1,\dots,X_{100}\)</span> be a sample from <span class="math inline">\(N(\mu,1)\)</span>. Given a significance level <span class="math inline">\(\alpha=0.05\)</span>, derive a UMP rejection region <span class="math inline">\(W\)</span> of</p>
+<p><span class="math display">\[H_0:\mu=0\ vs.\ H_1:\mu&gt;0.\]</span></p>
+Let <span class="math inline">\(W&#39;=\{x_{1{:}n}:|\bar x| &gt; u_{0.975}/10\}\)</span> be another rejection region. Show that the significance level for <span class="math inline">\(W&#39;\)</span> is <span class="math inline">\(0.05\)</span>, and graph the power functions for <span class="math inline">\(W\)</span> and <span class="math inline">\(W&#39;\)</span>. Try to explain that you observed.
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-180" class="exercise"><strong>习题 3.2  </strong></span>Let <span class="math inline">\(X_{1{:}n}\)</span> be a sample from an exponential distribution <span class="math inline">\(Exp(\lambda)\)</span>. Given a significance level <span class="math inline">\(\alpha\)</span>, derive a likelihood ratio test of</p>
+<p><span class="math display">\[H_0:\lambda=\lambda_1\ vs.\ H_1:\lambda=\lambda_2,\]</span></p>
+<p>where <span class="math inline">\(\lambda_1\neq\lambda_2\)</span>.</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-181" class="exercise"><strong>习题 3.3  </strong></span>Let <span class="math inline">\(X_{1{:}n}\)</span> be a sample from an exponential distribution <span class="math inline">\(Exp(\lambda)\)</span>. Given a significance level <span class="math inline">\(\alpha\)</span>, derive a UMPU test of</p>
+<span class="math display">\[H_0:\lambda=\lambda_0\ vs.\ H_1:\lambda\neq\lambda_0.\]</span>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-182" class="exercise"><strong>习题 3.4  </strong></span>Let <span class="math inline">\(X_{1{:}n}\)</span> be a sample from <span class="math inline">\(U[0,\theta]\)</span>. Given a significance level <span class="math inline">\(\alpha\)</span>, derive a UMP test of</p>
+<span class="math display">\[H_0:\theta=\theta_0\ vs.\ H_1:\theta&gt;\theta_0.\]</span>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-183" class="exercise"><strong>习题 3.5  </strong></span>Let <span class="math inline">\(X_1,X_2,X_3,X_4\)</span> be a sample from <span class="math inline">\(N(\theta,1)\)</span>. Given a significance level <span class="math inline">\(\alpha=0.1\)</span>, derive a UMP test of</p>
+<p><span class="math display">\[H_0:\theta\ge 10\ vs.\ H_1:\theta&lt;10.\]</span></p>
+Calculate the power of the test when <span class="math inline">\(\theta=9\)</span>.
+</div>
+
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-184" class="exercise"><strong>习题 3.6  </strong></span>True or false, and state why:
+</div>
+
+<ol style="list-style-type: decimal">
+<li><p>The generalized likelihood ratio statistic <span class="math inline">\(\lambda(x_{1{:}n})\)</span> (see P.87 of our textbook) is always greater than or equal to 1.</p></li>
+<li><p>If the p-value is 0.03, the corresponding test will reject at the significance
+level 0.02.</p></li>
+<li><p>If a test rejects at significance level 0.06, then the p-value is less than or equal
+to 0.06.</p></li>
+<li><p>The p-value of a test is the probability that the null hypothesis is correct.</p></li>
+<li><p>In testing a simple versus simple hypothesis via the likelihood ratio test, the
+p-value equals the inverse of the likelihood ratio.</p></li>
+</ol>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-185" class="exercise"><strong>习题 3.7  </strong></span><code>Case study 1</code>: Mutual funds are investment vehicles consisting of a portfolio of various types
+of investments. If such an investment is to meet annual spending needs, the
+owner of shares in the fund is interested in the average of the annual returns of
+the fund. Investors are also concerned with the volatility of the annual returns,
+measured by the variance or standard deviation. One common method of evaluating
+a mutual fund is to compare it to a benchmark, the Lipper Average being
+one of these. This index number is the average of returns from a universe of
+mutual funds.
+The Global Rock Fund is a typical mutual fund, with heavy investments in
+international funds. It claimed to best the Lipper Average in terms of volatility
+over the period from 1989 through 2007. Its returns are given in the table below.
+</div>
+
+<table>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Investment Return %</th>
+<th>Year</th>
+<th>Investment Return %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1989</td>
+<td>15.32</td>
+<td>1999</td>
+<td>27.43</td>
+</tr>
+<tr class="even">
+<td>1990</td>
+<td>1.62</td>
+<td>2000</td>
+<td>8.57</td>
+</tr>
+<tr class="odd">
+<td>1991</td>
+<td>28.43</td>
+<td>2001</td>
+<td>1.88</td>
+</tr>
+<tr class="even">
+<td>1992</td>
+<td>11.91</td>
+<td>2002</td>
+<td>−7.96</td>
+</tr>
+<tr class="odd">
+<td>1993</td>
+<td>20.71</td>
+<td>2003</td>
+<td>35.98</td>
+</tr>
+<tr class="even">
+<td>1994</td>
+<td>−2.15</td>
+<td>2004</td>
+<td>14.27</td>
+</tr>
+<tr class="odd">
+<td>1995</td>
+<td>23.29</td>
+<td>2005</td>
+<td>10.33</td>
+</tr>
+<tr class="even">
+<td>1996</td>
+<td>15.96</td>
+<td>2006</td>
+<td>15.94</td>
+</tr>
+<tr class="odd">
+<td>1997</td>
+<td>11.12</td>
+<td>2007</td>
+<td>16.71</td>
+</tr>
+<tr class="even">
+<td>1998</td>
+<td>0.37</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The standard deviation for the Lipper Average is <span class="math inline">\(11.67\%\)</span>. Let <span class="math inline">\(\sigma^2\)</span> denote the variance of the population represented by the return
+percentages shown in the table above. Consider the test</p>
+<p><span class="math display">\[H_0: \sigma^2=(11.67)^2\ vs.\ H_1:\sigma^2&lt;(11.67)^2.\]</span></p>
+<ul>
+<li><p>If the significance level <span class="math inline">\(\alpha=0.05\)</span>, what’s your decision?</p></li>
+<li><p>Show up the p-value of your test.</p></li>
+</ul>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-186" class="exercise"><strong>习题 3.8  </strong></span><code>Case study 2</code>: Forensic scientists sometimes have difficulty identifying the sex of a murder
+victim whose body is discovered badly decomposed. Often, dental structure can
+provide useful clues because female teeth and male teeth have different physical and chemical characteristics. The extent to which X-rays can penetrate tooth
+enamel, for instance, is not the same for the two sexes.</p>
+<p>Table below lists the enamel spectropenetration gradients for eight male
+teeth and eight female teeth. These measurements have all the characteristics
+of the two-sample format: the data are quantitative, the units are similar,
+two factor levels (male and female) are involved, and the observations are
+independent.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Male</th>
+<th>Female</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4.9</td>
+<td>4.8</td>
+</tr>
+<tr class="even">
+<td>5.4</td>
+<td>5.3</td>
+</tr>
+<tr class="odd">
+<td>5.0</td>
+<td>3.7</td>
+</tr>
+<tr class="even">
+<td>5.5</td>
+<td>4.1</td>
+</tr>
+<tr class="odd">
+<td>5.4</td>
+<td>5.6</td>
+</tr>
+<tr class="even">
+<td>6.6</td>
+<td>4.0</td>
+</tr>
+<tr class="odd">
+<td>6.3</td>
+<td>3.6</td>
+</tr>
+<tr class="even">
+<td>4.3</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+Assume that the enamel spectropenetration gradients for male teeth and female teeth are normally distributed. Based on the data above, conduct a test (the significance level <span class="math inline">\(\alpha=0.05\)</span>) to judge whether female teeth and male teeth have different physical and chemical characteristics.
+</div>
+
+<ul>
+<li><p>Assume that their variances are the same, what’s your decision?</p></li>
+<li><p>If you were not able to have the prior information that their variances are the same, what would you do? This is the case of <strong>Behrens-Fisher Problem</strong>.</p></li>
+<li><p>The data are paired. Is it possible to do a paired test, without judging whether their variances are the same?</p></li>
+</ul>
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-187" class="exercise"><strong>习题 3.9  </strong></span>
+<code>Case study 3</code>: The National Center for Health Statistics (1970) gives the following data on
+distribution of suicides in the United States by month in 1970. Is there any
+evidence that the suicide rate varies seasonally, or are the data consistent with
+the hypothesis that the rate is constant (the significance level <span class="math inline">\(\alpha=0.05\)</span>)? (Hint: Under the latter hypothesis, model
+the number of suicides in each month as a multinomial random variable with the
+appropriate probabilities and conduct a goodness-of-fit test.)</p>
+<table>
+<thead>
+<tr class="header">
+<th>Month</th>
+<th>Number of Suicides</th>
+<th>Days/Month</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Jan.</td>
+<td>1867</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td>Feb.</td>
+<td>1789</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td>Mar.</td>
+<td>1944</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td>Apr.</td>
+<td>2094</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td>May</td>
+<td>2097</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td>June</td>
+<td>1981</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td>July</td>
+<td>1887</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td>Aug.</td>
+<td>2024</td>
+<td>31</td>
+</tr>
+<tr class="odd">
+<td>Sept.</td>
+<td>1928</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>Oct.</td>
+<td>2032</td>
+<td>31</td>
+</tr>
+<tr class="odd">
+<td>Nov.</td>
+<td>1978</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td>Dec.</td>
+<td>1859</td>
+<td>31</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-188" class="exercise"><strong>习题 3.10  </strong></span>
+<code>Case study 4</code>: Under (the assumption of) simple Mendelian inheritance, a cross
+between plants of two particular genotypes produces progeny 1/4 of
+which are “dwarf” and <span class="math inline">\(3/4\)</span> of which are “giant”, respectively.
+In an experiment to determine if this assumption is reasonable, a
+cross results in progeny having 243 dwarf and 682 giant plants.
+If “giant” is taken as success, the null hypothesis is that <span class="math inline">\(p =3/4\)</span> and the alternative that <span class="math inline">\(p \neq 3/4\)</span>.
+</div>
+
+<ul>
+<li><p>Let <span class="math inline">\(X_i,i=1,\dots,n\)</span> be the sample of the population <span class="math inline">\(B(1,p)\)</span>. By central limit theorem (CLT), the distribution of <span class="math inline">\(\bar X\)</span> can be approximated by a normal distribution <span class="math inline">\(N(p,p(1-p)/n)\)</span>. Please use this approximation to do the binominal test above.</p></li>
+<li><p>Actually, we can do the exact binominal test according to the formula given in P.114 of our textbook. Compare the results in the exact test and the approximate test for significance levels <span class="math inline">\(\alpha=0.05,0.01,0.001\)</span>.</p></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="est.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 6 章 综合练习 | 数理统计讲义</title>
+  <meta name="description" content="第 6 章 综合练习 | 数理统计讲义" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 6 章 综合练习 | 数理统计讲义" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.jpg" />
+  <meta property="og:description" content="第 6 章 综合练习 | 数理统计讲义" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 6 章 综合练习 | 数理统计讲义" />
+  
+  <meta name="twitter:description" content="第 6 章 综合练习 | 数理统计讲义" />
+  <meta name="twitter:image" content="images/cover.jpg" />
+
+<meta name="author" content="何志坚" />
+
+
+<meta name="date" content="2020-03-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anova.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">数理统计讲义</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>前言</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e887b4e8b0a2"><i class="fa fa-check"></i>致谢</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#e78988e69d83"><i class="fa fa-check"></i>版权</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>作者简介</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 绪论</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#section-1.1"><i class="fa fa-check"></i><b>1.1</b> 学科介绍</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#section-1.1.1"><i class="fa fa-check"></i><b>1.1.1</b> 统计学的发展简史</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#section-1.1.2"><i class="fa fa-check"></i><b>1.1.2</b> 频率学派与贝叶斯学派</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#section-1.1.3"><i class="fa fa-check"></i><b>1.1.3</b> 统计学专业</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#section-1.2"><i class="fa fa-check"></i><b>1.2</b> 基本概念</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#section-1.2.1"><i class="fa fa-check"></i><b>1.2.1</b> 总体</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#section-1.2.2"><i class="fa fa-check"></i><b>1.2.2</b> 样本</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#section-1.2.3"><i class="fa fa-check"></i><b>1.2.3</b> 简单随机抽样</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro.html"><a href="intro.html#section-1.2.4"><i class="fa fa-check"></i><b>1.2.4</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#section-1.3"><i class="fa fa-check"></i><b>1.3</b> 概率分布族</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#section-1.3.1"><i class="fa fa-check"></i><b>1.3.1</b> 常用的参数族</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro.html"><a href="intro.html#section-1.3.2"><i class="fa fa-check"></i><b>1.3.2</b> 伽玛分布族</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro.html"><a href="intro.html#section-1.3.3"><i class="fa fa-check"></i><b>1.3.3</b> 贝塔分布族</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro.html"><a href="intro.html#section-1.3.4"><i class="fa fa-check"></i><b>1.3.4</b> 指数型分布族</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#section-1.4"><i class="fa fa-check"></i><b>1.4</b> 统计量与估计量</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#section-1.5"><i class="fa fa-check"></i><b>1.5</b> 充分统计量</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#section-1.5.1"><i class="fa fa-check"></i><b>1.5.1</b> 因子分解定理</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#section-1.5.2"><i class="fa fa-check"></i><b>1.5.2</b> 因子分解定理的应用</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#section-1.6"><i class="fa fa-check"></i><b>1.6</b> 抽样分布</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#section-1.6.1"><i class="fa fa-check"></i><b>1.6.1</b> 样本均值的抽样分布</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#section-1.6.2"><i class="fa fa-check"></i><b>1.6.2</b> 卡方分布</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#section-1.6.3"><i class="fa fa-check"></i><b>1.6.3</b> 正态总体抽样分布定理</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#t"><i class="fa fa-check"></i><b>1.6.4</b> t分布</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#section-1.6.5"><i class="fa fa-check"></i><b>1.6.5</b> 样本均值与标准差之比的抽样分布</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#f"><i class="fa fa-check"></i><b>1.6.6</b> F分布</a></li>
+<li class="chapter" data-level="1.6.7" data-path="intro.html"><a href="intro.html#section-1.6.7"><i class="fa fa-check"></i><b>1.6.7</b> 两个独立正态总体的抽样分布</a></li>
+<li class="chapter" data-level="1.6.8" data-path="intro.html"><a href="intro.html#section-1.6.8"><i class="fa fa-check"></i><b>1.6.8</b> 顺序统计量</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#section-1.7"><i class="fa fa-check"></i><b>1.7</b> 分位数</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#ex2"><i class="fa fa-check"></i><b>1.8</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="est.html"><a href="est.html"><i class="fa fa-check"></i><b>2</b> 估计</a><ul>
+<li class="chapter" data-level="2.1" data-path="est.html"><a href="est.html#section-2.1"><i class="fa fa-check"></i><b>2.1</b> 参数估计</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="est.html"><a href="est.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 矩估计法</a></li>
+<li class="chapter" data-level="2.1.2" data-path="est.html"><a href="est.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 最大似然估计法</a></li>
+<li class="chapter" data-level="2.1.3" data-path="est.html"><a href="est.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 矩估计与最大似然估计的对比</a></li>
+<li class="chapter" data-level="2.1.4" data-path="est.html"><a href="est.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 混合正态分布的参数估计</a></li>
+<li class="chapter" data-level="2.1.5" data-path="est.html"><a href="est.html#em"><i class="fa fa-check"></i><b>2.1.5</b> EM算法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="est.html"><a href="est.html#section-2.2"><i class="fa fa-check"></i><b>2.2</b> 估计的优良性标准</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="est.html"><a href="est.html#section-2.2.1"><i class="fa fa-check"></i><b>2.2.1</b> 无偏性</a></li>
+<li class="chapter" data-level="2.2.2" data-path="est.html"><a href="est.html#section-2.2.2"><i class="fa fa-check"></i><b>2.2.2</b> 均方误差</a></li>
+<li class="chapter" data-level="2.2.3" data-path="est.html"><a href="est.html#section-2.2.3"><i class="fa fa-check"></i><b>2.2.3</b> 一致最小方差无偏估计</a></li>
+<li class="chapter" data-level="2.2.4" data-path="est.html"><a href="est.html#section-2.2.4"><i class="fa fa-check"></i><b>2.2.4</b> 统计量的大样本性质</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="est.html"><a href="est.html#section-2.3"><i class="fa fa-check"></i><b>2.3</b> 区间估计</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="est.html"><a href="est.html#section-2.3.1"><i class="fa fa-check"></i><b>2.3.1</b> 区间估计的定义</a></li>
+<li class="chapter" data-level="2.3.2" data-path="est.html"><a href="est.html#section-2.3.2"><i class="fa fa-check"></i><b>2.3.2</b> 枢轴量法</a></li>
+<li class="chapter" data-level="2.3.3" data-path="est.html"><a href="est.html#section-2.3.3"><i class="fa fa-check"></i><b>2.3.3</b> 单个正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.4" data-path="est.html"><a href="est.html#section-2.3.4"><i class="fa fa-check"></i><b>2.3.4</b> 两个独立正态总体的区间估计</a></li>
+<li class="chapter" data-level="2.3.5" data-path="est.html"><a href="est.html#section-2.3.5"><i class="fa fa-check"></i><b>2.3.5</b> 非正态总体参数的区间估计</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="est.html"><a href="est.html#section-2.4"><i class="fa fa-check"></i><b>2.4</b> 分布的估计</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="est.html"><a href="est.html#section-2.4.1"><i class="fa fa-check"></i><b>2.4.1</b> 分布函数的估计</a></li>
+<li class="chapter" data-level="2.4.2" data-path="est.html"><a href="est.html#section-2.4.2"><i class="fa fa-check"></i><b>2.4.2</b> 直方图法</a></li>
+<li class="chapter" data-level="2.4.3" data-path="est.html"><a href="est.html#section-2.4.3"><i class="fa fa-check"></i><b>2.4.3</b> 核估计法</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="est.html"><a href="est.html#ex3"><i class="fa fa-check"></i><b>2.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>3</b> 假设检验</a><ul>
+<li class="chapter" data-level="3.1" data-path="test.html"><a href="test.html#section-3.1"><i class="fa fa-check"></i><b>3.1</b> 女士品茶</a></li>
+<li class="chapter" data-level="3.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.2</b> 基本概念</a></li>
+<li class="chapter" data-level="3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3</b> UMP检验和似然比检验</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.1</b> UMP检验的定义</a></li>
+<li class="chapter" data-level="3.3.2" data-path="test.html"><a href="test.html#section-3.3.2"><i class="fa fa-check"></i><b>3.3.2</b> 似然比检验方法</a></li>
+<li class="chapter" data-level="3.3.3" data-path="test.html"><a href="test.html#ump"><i class="fa fa-check"></i><b>3.3.3</b> 正态分布均值的UMP检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="test.html"><a href="test.html#section-3.4"><i class="fa fa-check"></i><b>3.4</b> 单参数指数型分布族</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="test.html"><a href="test.html#section-3.4.1"><i class="fa fa-check"></i><b>3.4.1</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="test.html"><a href="test.html#section-3.5"><i class="fa fa-check"></i><b>3.5</b> 广义似然比检验</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="test.html"><a href="test.html#section-3.5.1"><i class="fa fa-check"></i><b>3.5.1</b> 正态总体的假设检验</a></li>
+<li class="chapter" data-level="3.5.2" data-path="test.html"><a href="test.html#section-3.5.2"><i class="fa fa-check"></i><b>3.5.2</b> 两个独立正态总体的检验</a></li>
+<li class="chapter" data-level="3.5.3" data-path="test.html"><a href="test.html#section-3.5.3"><i class="fa fa-check"></i><b>3.5.3</b> 案例分析：山鸢尾和杂色鸢尾花差异性比较</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="test.html"><a href="test.html#section-3.6"><i class="fa fa-check"></i><b>3.6</b> 置信区间与假设检验的联系</a></li>
+<li class="chapter" data-level="3.7" data-path="test.html"><a href="test.html#p"><i class="fa fa-check"></i><b>3.7</b> p值</a></li>
+<li class="chapter" data-level="3.8" data-path="test.html"><a href="test.html#section-3.8"><i class="fa fa-check"></i><b>3.8</b> 多重检验</a></li>
+<li class="chapter" data-level="3.9" data-path="test.html"><a href="test.html#section-3.9"><i class="fa fa-check"></i><b>3.9</b> 伯努利分布的检验</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="test.html"><a href="test.html#i"><i class="fa fa-check"></i><b>3.9.1</b> 单侧检验I</a></li>
+<li class="chapter" data-level="3.9.2" data-path="test.html"><a href="test.html#section-3.9.2"><i class="fa fa-check"></i><b>3.9.2</b> 女士品茶问题求解</a></li>
+<li class="chapter" data-level="3.9.3" data-path="test.html"><a href="test.html#ii"><i class="fa fa-check"></i><b>3.9.3</b> 单侧检验II</a></li>
+<li class="chapter" data-level="3.9.4" data-path="test.html"><a href="test.html#section-3.9.4"><i class="fa fa-check"></i><b>3.9.4</b> 双侧检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.10" data-path="test.html"><a href="test.html#section-3.10"><i class="fa fa-check"></i><b>3.10</b> 拟合优度检验</a><ul>
+<li class="chapter" data-level="3.10.1" data-path="test.html"><a href="test.html#mendel"><i class="fa fa-check"></i><b>3.10.1</b> Mendel的数据</a></li>
+<li class="chapter" data-level="3.10.2" data-path="test.html"><a href="test.html#section-3.10.2"><i class="fa fa-check"></i><b>3.10.2</b> 卡方检验</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>3.11</b> 小结</a></li>
+<li class="chapter" data-level="3.12" data-path="test.html"><a href="test.html#ex4"><i class="fa fa-check"></i><b>3.12</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>4</b> 线性回归</a><ul>
+<li class="chapter" data-level="4.1" data-path="regression.html"><a href="regression.html#section-4.1"><i class="fa fa-check"></i><b>4.1</b> 一元线性模型</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="regression.html"><a href="regression.html#section-4.1.1"><i class="fa fa-check"></i><b>4.1.1</b> 最小二乘估计</a></li>
+<li class="chapter" data-level="4.1.2" data-path="regression.html"><a href="regression.html#section-4.1.2"><i class="fa fa-check"></i><b>4.1.2</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.1.3" data-path="regression.html"><a href="regression.html#section-4.1.3"><i class="fa fa-check"></i><b>4.1.3</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.1.4" data-path="regression.html"><a href="regression.html#section-4.1.4"><i class="fa fa-check"></i><b>4.1.4</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.1.5" data-path="regression.html"><a href="regression.html#section-4.1.5"><i class="fa fa-check"></i><b>4.1.5</b> 置信区间与假设检验</a></li>
+<li class="chapter" data-level="4.1.6" data-path="regression.html"><a href="regression.html#1"><i class="fa fa-check"></i><b>4.1.6</b> 案例分析1</a></li>
+<li class="chapter" data-level="4.1.7" data-path="regression.html"><a href="regression.html#section-4.1.7"><i class="fa fa-check"></i><b>4.1.7</b> 拟合的评估</a></li>
+<li class="chapter" data-level="4.1.8" data-path="regression.html"><a href="regression.html#section-4.1.8"><i class="fa fa-check"></i><b>4.1.8</b> 预测</a></li>
+<li class="chapter" data-level="4.1.9" data-path="regression.html"><a href="regression.html#section-4.1.9"><i class="fa fa-check"></i><b>4.1.9</b> 控制</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="regression.html"><a href="regression.html#section-4.2"><i class="fa fa-check"></i><b>4.2</b> 多元线性模型</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.1</b> 期望和方差</a></li>
+<li class="chapter" data-level="4.2.2" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.2</b> 误差项的方差的估计</a></li>
+<li class="chapter" data-level="4.2.3" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.3</b> 抽样分布定理</a></li>
+<li class="chapter" data-level="4.2.4" data-path="regression.html"><a href="regression.html#section-4.2.4"><i class="fa fa-check"></i><b>4.2.4</b> 置信区间和假设检验</a></li>
+<li class="chapter" data-level="4.2.5" data-path="regression.html"><a href="regression.html#section-4.2.5"><i class="fa fa-check"></i><b>4.2.5</b> 模型整体的显著性检验</a></li>
+<li class="chapter" data-level="4.2.6" data-path="test.html"><a href="test.html#-1"><i class="fa fa-check"></i><b>4.2.6</b> 预测</a></li>
+<li class="chapter" data-level="4.2.7" data-path="regression.html"><a href="regression.html#2"><i class="fa fa-check"></i><b>4.2.7</b> 案例分析2</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regression.html"><a href="regression.html#section-4.3"><i class="fa fa-check"></i><b>4.3</b> 线性模型的推广</a></li>
+<li class="chapter" data-level="4.4" data-path="regression.html"><a href="regression.html#section-4.4"><i class="fa fa-check"></i><b>4.4</b> 回归诊断</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="regression.html"><a href="regression.html#section-4.4.1"><i class="fa fa-check"></i><b>4.4.1</b> 动机</a></li>
+<li class="chapter" data-level="4.4.2" data-path="regression.html"><a href="regression.html#section-4.4.2"><i class="fa fa-check"></i><b>4.4.2</b> 残差的定义和性质</a></li>
+<li class="chapter" data-level="4.4.3" data-path="regression.html"><a href="regression.html#section-4.4.3"><i class="fa fa-check"></i><b>4.4.3</b> 残差图</a></li>
+<li class="chapter" data-level="4.4.4" data-path="regression.html"><a href="regression.html#section-4.4.4"><i class="fa fa-check"></i><b>4.4.4</b> 残差诊断的思路</a></li>
+<li class="chapter" data-level="4.4.5" data-path="regression.html"><a href="regression.html#box-cox"><i class="fa fa-check"></i><b>4.4.5</b> 案例分析：基于Box-Cox变换</a></li>
+<li class="chapter" data-level="4.4.6" data-path="regression.html"><a href="regression.html#section-4.4.6"><i class="fa fa-check"></i><b>4.4.6</b> 离群值</a></li>
+<li class="chapter" data-level="4.4.7" data-path="regression.html"><a href="regression.html#section-4.4.7"><i class="fa fa-check"></i><b>4.4.7</b> 变量选择</a></li>
+<li class="chapter" data-level="4.4.8" data-path="regression.html"><a href="regression.html#lasso"><i class="fa fa-check"></i><b>4.4.8</b> LASSO</a></li>
+<li class="chapter" data-level="4.4.9" data-path="regression.html"><a href="regression.html#section-4.4.9"><i class="fa fa-check"></i><b>4.4.9</b> 回归分析与因果分析</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="regression.html"><a href="regression.html#ex5"><i class="fa fa-check"></i><b>4.5</b> 本章习题</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>5</b> 方差分析</a><ul>
+<li class="chapter" data-level="5.1" data-path="anova.html"><a href="anova.html#section-5.1"><i class="fa fa-check"></i><b>5.1</b> 引言</a></li>
+<li class="chapter" data-level="5.2" data-path="anova.html"><a href="anova.html#section-5.2"><i class="fa fa-check"></i><b>5.2</b> 单因子方差分析</a></li>
+<li class="chapter" data-level="5.3" data-path="anova.html"><a href="anova.html#section-5.3"><i class="fa fa-check"></i><b>5.3</b> 两因子方差分析</a></li>
+<li class="chapter" data-level="5.4" data-path="anova.html"><a href="anova.html#-2"><i class="fa fa-check"></i><b>5.4</b> 小结</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>6</b> 综合练习</a><ul>
+<li class="chapter" data-level="6.1" data-path="exam.html"><a href="exam.html#section-6.1"><i class="fa fa-check"></i><b>6.1</b> 2018秋季试卷</a></li>
+<li class="chapter" data-level="6.2" data-path="exam.html"><a href="exam.html#section-6.2"><i class="fa fa-check"></i><b>6.2</b> 2018秋季试卷答案</a></li>
+<li class="chapter" data-level="6.3" data-path="exam.html"><a href="exam.html#section-6.3"><i class="fa fa-check"></i><b>6.3</b> 2019春季试卷</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="http://www2.scut.edu.cn/math/2018/0118/c14638a254123/page.htm" target="blank">版权归作者所有</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">数理统计讲义</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exam" class="section level1">
+<h1><span class="header-section-number">第 6 章</span> 综合练习</h1>
+<div id="section-6.1" class="section level2">
+<h2><span class="header-section-number">6.1</span> 2018秋季试卷</h2>
+<p>Part I: Each problem is worth 3 points.</p>
+<ol style="list-style-type: decimal">
+<li><p>Let <span class="math inline">\(X_1,X_2,\dots,X_6\)</span> be a simple random sample taken from <span class="math inline">\(N(0,2^2)\)</span>. Denote
+<span class="math display">\[Y = (X_1+X_2)^2+(X_3+X_4)^2+(X_5+X_6)^2.\]</span>
+If <span class="math inline">\(kY\sim \chi^2(3)\)</span>, then <span class="math inline">\(k=\)</span>___?</p></li>
+<li><p>Let <span class="math inline">\(X_1,X_2,X_3\)</span> be a simple random sample taken from <span class="math inline">\(N(\mu,\sigma^2)\)</span>. If <span class="math inline">\(\hat\mu = \frac{1}{2} X_1+cX_2+\frac{1}{6}X_3\)</span> is an unibased estimate of <span class="math inline">\(\mu\)</span>, then <span class="math inline">\(c=\)</span>___?</p></li>
+<li><p>Let <span class="math inline">\(X_1,X_2,X_3\)</span> be a simple random sample taken from <span class="math inline">\(B(1,p)\)</span>. For testing the hypothesis <span class="math inline">\(H_0:p=1/2\ vs.\ H_1:p=3/4\)</span>, we use a rejection region:
+<span class="math display">\[W=\{(x_1,x_2,x_3):x_1+x_2+x_3\ge 2\}.\]</span>
+The power of the test is ___?</p></li>
+<li><p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a simple random sample taken from <span class="math inline">\(N(\mu,1)\)</span>, and let <span class="math inline">\(S_n^2=\frac 1n\sum_{i=1}^n(X_i-\bar X)^2\)</span> be the sample variance. Then <span class="math inline">\(Var[S_n^2]=\)</span>___?</p></li>
+<li><p>If the usual <span class="math inline">\(95\%\)</span> confidence interval for the mean of normal population was <span class="math inline">\([0.12,0.22]\)</span>, the method of moments estimate of the mean would be ___?</p></li>
+</ol>
+<hr />
+<p>Part II: Multiple Choice Problems (one or more than one items may be true). Each problem is worth 3 points.</p>
+<ol style="list-style-type: decimal">
+<li>The parameters <span class="math inline">\(\theta,\lambda,\alpha,\beta\)</span> are unknown in the following densities. Which of the following probability distributions belong to the exponential family? ( )</li>
+</ol>
+<p>A. <span class="math inline">\(f(x;\theta,\lambda) = \frac \theta\lambda\left(\frac{x}{\lambda}\right)^{\theta-1}e^{-(x/\lambda)^\theta}1\{x&gt; 0\}\)</span></p>
+<p>B. <span class="math inline">\(f(x;\alpha,\beta) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}1\{0&lt;x&lt;1\}\)</span>, where <span class="math inline">\(\Gamma(\cdot)\)</span> is the gamma function.</p>
+<p>C. <span class="math inline">\(f(x;\lambda) = \frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x}1\{x&gt; 0\}\)</span></p>
+<p>D. <span class="math inline">\(f(x;\theta) = \frac{2}{\sqrt{2\pi}}e^{-\frac{(x-\theta)^2}{2}}1\{x\ge \theta\}\)</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be the simple random sample taken from the normal distribution <span class="math inline">\(N(\mu,\sigma^2)\)</span>, where <span class="math inline">\(\mu,\sigma^2\)</span> are unknown parameters. Which of the following are sufficient statistics for <span class="math inline">\(\theta=(\mu,\sigma^2)\)</span>? ( )</li>
+</ol>
+<p>A. <span class="math inline">\(T_1 = (X_1,\dots,X_n)\)</span></p>
+<p>B. <span class="math inline">\(T_2 = (\sum_{i=1}^n X_i,\sum_{i=1}^n X_i^2)\)</span></p>
+<p>C. <span class="math inline">\(T_3 = (\sum_{i=1}^n |X_i|,\sum_{i=1}^n X_i^2)\)</span></p>
+<p>D. <span class="math inline">\(T_4 = \frac{1}{n}\sum_{i=1}^n X_i\)</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Which of the following statements are true? ( )</li>
+</ol>
+<p>A. If the <span class="math inline">\(p\)</span>-value is 0.05, the corresponding test will be rejected at the significance level 0.03.</p>
+<p>B. If a test rejects at significance level 0.05, then the <span class="math inline">\(p\)</span>-value is less than or equal to 0.05.</p>
+<p>C. If the significance level of a test is decreased, the power of the test would be expected to decrease.</p>
+<p>D. A type II error occurs when the test statistic falls in the rejection region of the test and the null is true.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Let <span class="math inline">\(\hat\beta_0,\hat\beta_1\)</span> be the least squares etstimators for the simple linear model <span class="math inline">\(y_i = \beta_0+\beta_1x_i+\epsilon_i,\ i=1,\dots,n\)</span>, where <span class="math inline">\(\epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2)\)</span>. Which of the following statements are true? ( )</li>
+</ol>
+<p>A. <span class="math inline">\(\hat\beta_0\)</span> and <span class="math inline">\(\hat\beta_1\)</span> are independent.</p>
+<p>B. <span class="math inline">\(\hat\beta_0-\hat\beta_1\)</span> is normally distributed.</p>
+<p>C. The more spread out the <span class="math inline">\(x_i\)</span> are the better we can estimate the slope <span class="math inline">\(\beta_1\)</span>.</p>
+<p>D. <span class="math inline">\(\bar y = \hat\beta_0+\hat\beta_1 \bar x\)</span>, where <span class="math inline">\(\bar x = \frac 1 n\sum_{i=1}^n x_i,\ \bar y = \frac 1 n\sum_{i=1}^n y_i\)</span>.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a simple random sample taken from <span class="math inline">\(N(2,3^2)\)</span>, and let <span class="math inline">\(\bar X\)</span> be the sample mean. Which of the following are true? ( )</li>
+</ol>
+<p>A. <span class="math inline">\(\frac{\bar X -2}{3/\sqrt{n}}\sim t(n)\)</span></p>
+<p>B. <span class="math inline">\(\frac 1 9\sum_{i=1}^n (X_i-2)^2\sim F(n,1)\)</span></p>
+<p>C. <span class="math inline">\(\frac{\bar X-2}{\sqrt{3}/\sqrt{n}}\sim N(0,1)\)</span></p>
+<p>D. <span class="math inline">\(\frac 1 9\sum_{i=1}^n(X_i-2)^2\sim \chi^2(n)\)</span></p>
+<hr />
+<p>Part III. (15 points)</p>
+<p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a simple random sample taken from the density</p>
+<p><span class="math display">\[f(x;\theta)=\frac{2x}{\theta^2},\quad 0\le x\le \theta.\]</span></p>
+<ol style="list-style-type: decimal">
+<li><p>Find an expression for <span class="math inline">\(\hat\theta_L\)</span>, the maximum likelihood estimator (MLE) for <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Find an expression for <span class="math inline">\(\hat\theta_M\)</span>, the method of moments estimator for <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>For the two estimators <span class="math inline">\(\hat\theta_L\)</span> and <span class="math inline">\(\hat\theta_M\)</span>, which one is more efficient in terms of mean squared error (MSE)?</p></li>
+</ol>
+<hr />
+<p>Part IV. (10 points)</p>
+<p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a simple random sample taken from an exponential distribution <span class="math inline">\(Exp(\lambda)\)</span>, whose density is given by
+<span class="math display">\[f(x;\lambda) = \lambda e^{-\lambda x}1\{x\ge 0\},\ \lambda&gt;0.\]</span>
+Derive a likelihood ratio test of the hypothesis
+<span class="math display">\[H_0:\lambda=1\ vs.\ H_1:\lambda=2.\]</span>
+What is the definition of uniformly most powerful (UMP)? Is the test UMP against the alternative <span class="math inline">\(H_1:\lambda&gt;1\)</span>?</p>
+<hr />
+<p>Part V. (10 points)</p>
+<p>A medical researcher believes that women typically
+have lower serum cholesterol (血清胆固醇) than men. To test this
+hypothesis, he took a sample of 476 men between the ages
+of nineteen and forty-four and found their mean serum
+cholesterol to be 189.0 mg/dl with a sample standard deviation
+of 34.2. A group of 592 women in the same age range
+averaged 177.2 mg/dl and had a sample standard deviation
+of 33.3. Is the lower average for the women statistically
+significant? Set the significant level <span class="math inline">\(\alpha\)</span> =0.05. What assumptions are made when conducting the test? (<span class="math inline">\(u_{0.95}=1.644854\)</span>, <span class="math inline">\(t_{0.95}(1066)=1.646284\)</span>, <span class="math inline">\(t_{0.95}(1068)=1.646282\)</span>, <span class="math inline">\(u_{0.975}=1.959964\)</span>, <span class="math inline">\(t_{0.975}(1066)=1.962192\)</span>, <span class="math inline">\(t_{0.975}(1068)=1.962188\)</span>)</p>
+<hr />
+<p>Part VI. (10 points)</p>
+<p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a simple random sample taken from the uniform distribution <span class="math inline">\(U(\theta,0)\)</span>, where <span class="math inline">\(\theta&lt;0\)</span>.</p>
+<p>(a). Derive a <span class="math inline">\(100(1-\alpha)\%\)</span> confidence interval for <span class="math inline">\(\theta\)</span>.</p>
+<p>(b). There is a duality between confidence intervals and
+hypothesis tests. Use the result in part (a) to derive a test at significant level <span class="math inline">\(\alpha\)</span> of the hypothesis
+<span class="math display">\[H_0: \theta = \theta_0\ vs.\ H_1:\theta \neq \theta_0,\]</span>
+where <span class="math inline">\(\theta_0&lt;0\)</span> is fixed.</p>
+<hr />
+<p>Part VII. (10 points)</p>
+<p>Consider the linear model
+<span class="math display">\[y_i=\beta_0+\beta_1x_i+\epsilon_i,\ \epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2),\ i=1,\dots,n.\]</span>
+Suppose that all the fixed <span class="math inline">\(x_i\)</span> are not equal and <span class="math inline">\(n\ge 3\)</span>.</p>
+<p>(a). Derive a maximum likelihood estimator (MLE) <span class="math inline">\(\hat\sigma_L^2\)</span> for <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>(b). Let <span class="math inline">\(T_k=k\hat\sigma_L^2\)</span> be an estimate of <span class="math inline">\(\sigma^2\)</span>. Find a <span class="math inline">\(k\in \mathbb{R}\)</span> such that <span class="math inline">\(T_k\)</span> is an unbiased estimate of <span class="math inline">\(\sigma^2\)</span>.
+Show that the unbiased estimate is not the optimal choice by taking account of mean squared error (MSE), and
+the most efficient <span class="math inline">\(T_k\)</span> takes place at <span class="math inline">\(k=1\)</span>, i.e., the MLE <span class="math inline">\(\hat\sigma_L^2\)</span>.</p>
+<hr />
+<p>Part VIII. (15 points)</p>
+<p>Consider the multiple linear regression model
+<span class="math display">\[y_i = \beta_0+\beta_1 x_{i1}+\beta_2x_{i2}+\dots+\beta_{p-1}x_{i,p-1} +\epsilon_i,\]</span>
+where <span class="math inline">\(i=1,\dots,n\)</span> and <span class="math inline">\(n&gt;p\ge 2\)</span>.</p>
+<p>(a). Find the least squares estimates (LSE) of <span class="math inline">\(\beta_0,\dots,\beta_{p-1}\)</span> via the matrix formalism. What assumptions are required for ensuring a unique solution of the LSE?</p>
+<p>(b). Show that the the residuals sum to zero. Are the standard assumptions of <span class="math inline">\(E[\epsilon_i]=0\)</span> for <span class="math inline">\(i=1,\dots,n\)</span> required to establish the statement?</p>
+<p>(c). Suppose that <span class="math inline">\(\epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2)\)</span>, where <span class="math inline">\(\sigma&gt;0\)</span> is an unknown parameter. Define <span class="math inline">\(\alpha = \sum_{i=1}^{p-1} \beta_i^2\)</span>. Use the generalized likelihood ratio method to test the hypothesis</p>
+<p><span class="math display">\[H_0: \alpha = 0\ vs.\ H_1:\alpha&gt;0.\]</span>
+If the coefficient of determination <span class="math inline">\(R^2=0.95\)</span>, <span class="math inline">\(p = 3\)</span> and <span class="math inline">\(n=13\)</span>, is the null rejected at the significant level <span class="math inline">\(\alpha =0.05\)</span>? (<span class="math inline">\(F_{0.95}(2,10)=4.10,F_{0.95}(3,10)=3.71,t_{0.95}(10)=1.81\)</span>)</p>
+</div>
+<div id="section-6.2" class="section level2">
+<h2><span class="header-section-number">6.2</span> 2018秋季试卷答案</h2>
+<p><strong>Part I:</strong></p>
+<ol style="list-style-type: decimal">
+<li>1/8</li>
+<li>1/3</li>
+<li>27/32</li>
+<li><span class="math inline">\(2(n-1)/n^2\)</span></li>
+<li>0.17</li>
+</ol>
+<p><strong>Part II:</strong></p>
+<ol style="list-style-type: decimal">
+<li>BC</li>
+<li>AB</li>
+<li>BC</li>
+<li>BCD</li>
+<li>D</li>
+</ol>
+<p><strong>Part III:</strong></p>
+<ol style="list-style-type: decimal">
+<li>The likelihood function is</li>
+</ol>
+<p><span class="math display">\[L(\theta) = \prod_{i=1}^n f(x_i;\theta) = \frac{2^n}{\theta^n}\left(\prod_{i=1}^n x_i\right) 1\{x_{(n)}\le \theta\}.\]</span></p>
+<p>To maximize <span class="math inline">\(L(\theta)\)</span>, we need to choose <span class="math inline">\(\theta\ge x_{(n)}\)</span> so that
+<span class="math inline">\(L(\theta) = A\theta^{-n}\)</span>, where <span class="math inline">\(A=2^n\prod_{i=1}^n x_i\)</span> does not depend on <span class="math inline">\(\theta\)</span>. So the MLE is <span class="math inline">\(\hat\theta_L = X_{(n)}\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>First, compute the first order moment:</li>
+</ol>
+<p><span class="math display">\[E[X] = \int_0^\theta xf(x;\theta)dx = \int_0^\theta \frac{2x^2}{\theta^2}dx=\frac{2\theta}{3}.\]</span></p>
+<p>This implies that <span class="math inline">\(\theta = 3E[X]/2\)</span>. The method of moments estimator <span class="math inline">\(\hat\theta_M=3\bar X/2\)</span>.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>The density for <span class="math inline">\(X_{(n)}\)</span> is given by</li>
+</ol>
+<p><span class="math display">\[f_{X_{(n)}}(x;\theta) = nF^{n-1}(x)f(x;\theta)=n\frac{x^{2(n-1)}}{\theta^{2(n-1)}}\frac{2x}{\theta^2}=\frac{2nx^{2n-1}}{\theta^{2n}},\quad 0\le x\le \theta.\]</span></p>
+<p>The first and second order moments for <span class="math inline">\(X_{(n)}\)</span> are</p>
+<p><span class="math display">\[E[X_{(n)}] = \int_0^\theta \frac{2nx^{2n}}{\theta^{2n}}dx = \frac{2n\theta}{2n+1},\]</span></p>
+<p><span class="math display">\[E[X_{(n)}^2] = \int_0^\theta \frac{2nx^{2n+1}}{\theta^{2n}}dx = \frac{n\theta^2}{n+1}.\]</span></p>
+<p>The MSE for <span class="math inline">\(\hat\theta_L\)</span> is given by</p>
+<p><span class="math display">\[\begin{align*}
+MSE(\hat\theta_L)&amp;=E[(\hat\theta_L-\theta)^2]=E[X_{(n)}^2]-2\theta E[X_{(n)}]+\theta^2\\
+&amp;=\frac{n\theta^2}{n+1}-\frac{4n\theta^2}{2n+1}+\theta^2\\
+&amp;=\frac{\theta^2}{(n+1)(2n+1)}.
+\end{align*}\]</span></p>
+<p>The second order moment for <span class="math inline">\(X\)</span> is</p>
+<p><span class="math display">\[E[X^2] = \int_{0}^\theta \frac{2x^3}{\theta^2}dx=\frac{\theta^2}{2}.\]</span></p>
+<p>The MSE for <span class="math inline">\(\hat\theta_M\)</span> is given by</p>
+<p><span class="math display">\[\begin{align*}
+MSE(\hat\theta_M)&amp;=Var[\hat\theta_M]=\frac{9Var[X]}{4n}\\
+&amp;=\frac{9}{4n}(E[X^2]-E[X]^2)\\
+&amp;=\frac{9}{4n}\left(\frac{\theta^2}{2}-\frac{4\theta^2}{9}\right)= \frac{\theta^2}{8n}.
+\end{align*}\]</span></p>
+<p>It is easy to see that when <span class="math inline">\(n\ge 3\)</span>, <span class="math inline">\(MSE(\hat\theta_L)&lt;MSE(\hat\theta_M)\)</span>; otherwise, <span class="math inline">\(MSE(\hat\theta_L)&gt;MSE(\hat\theta_M)\)</span>.</p>
+<p><strong>Part IV:</strong></p>
+<p>The likelihood function is</p>
+<p><span class="math display">\[L(\lambda)=\prod_{i=1}^n (\lambda e^{-\lambda x_i}) = \lambda^ne^{-\lambda n\bar x}.\]</span></p>
+<p>The likelihood ratio is given by</p>
+<p><span class="math display">\[\lambda(\vec x)= \frac{L(2)}{L(1)}=\frac{2^ne^{-2 n\bar x}}{e^{- n\bar x}}=2^ne^{-n\bar x}.\]</span></p>
+<p>Choose the test statistic <span class="math inline">\(T(\vec x) = 2n\bar x\)</span>. When <span class="math inline">\(\lambda=1\)</span>, <span class="math inline">\(T(\vec X)\sim \chi^2(2n)\)</span>. Also,
+<span class="math inline">\(\lambda(\vec x) = 2^ne^{-T(\vec x)/2}.\)</span> The rejection region is of the form <span class="math inline">\(W=\{T(\vec x)&lt;C\}\)</span>. We thus have <span class="math inline">\(C=\chi_{\alpha}^2(2n)\)</span>.</p>
+<p>A rejection region <span class="math inline">\(W\)</span> is said to be UMP if for any rejection region <span class="math inline">\(W&#39;\)</span> with the type I error probability no more than <span class="math inline">\(\alpha\)</span>, the power of the test associated with <span class="math inline">\(W&#39;\)</span> is no larger than that of the rejection region <span class="math inline">\(W\)</span>.</p>
+<p>Consider the test of the hypothesis</p>
+<p><span class="math display">\[H_0:\lambda=1\ vs.\ H_1:\lambda=\lambda_0&gt;1.\]</span>
+Following the same procedure above, the likelihood ratio test gives the same rejection region W. So the test derived before is also UMP for the alternative <span class="math inline">\(H_1:\lambda&gt;1\)</span> by using the N-P lemma.</p>
+<p><strong>Part V:</strong></p>
+<p>Let <span class="math inline">\(X_i\)</span> be the serum cholesterol for men, <span class="math inline">\(i=1,\dots,n=476\)</span>, let <span class="math inline">\(Y_j\)</span> be the serum cholesterol for women, <span class="math inline">\(j=1,\dots,m=592\)</span>. We now have <span class="math inline">\(\bar x = 189.0\)</span>, <span class="math inline">\(s_{1n}=34.2\)</span>, <span class="math inline">\(\bar y = 177.2\)</span>, <span class="math inline">\(s_{2m}=33.3\)</span>. Suppose that <span class="math inline">\(X_i\stackrel{iid}{\sim} N(\mu_1,\sigma^2)\)</span> and <span class="math inline">\(Y_i\stackrel{iid}{\sim} N(\mu_2,\sigma^2)\)</span>. We are testing</p>
+<p><span class="math display">\[H_0:\mu_1\le \mu_2,\ vs.\ H_1:\mu_1&gt;\mu_2.\]</span></p>
+<p>We use the t-test. The test statistic is</p>
+<p><span class="math display">\[T = \frac{\bar X-\bar Y}{S_w\sqrt{\frac 1 n+\frac 1 m}},\]</span>
+where <span class="math inline">\(S_w^2 = (nS_{1n}^2+mS_{2m}^2)/(n+m-2)\)</span>. The rejection region is given by <span class="math inline">\(W = \{T&gt;t_{1-\alpha}(n+m-2)\}\)</span>.
+The observed test statistic is</p>
+<p><span class="math display">\[t=\frac{189.0-177.2}{33.74\sqrt{\frac 1 {476}+\frac 1 {592}}}=5.68&gt;t_{0.95}(1066)=1.65.\]</span></p>
+<p>We therefore reject the null. The lower average for the women is statistically significant.</p>
+<p>The assumptions are</p>
+<ol style="list-style-type: decimal">
+<li>normally distributed for both groups</li>
+<li>the two grouds are independent</li>
+<li>their variances are the same</li>
+</ol>
+<p><strong>Part VI:</strong></p>
+<p>Let <span class="math inline">\(G = X_{(1)}/\theta\)</span>. The CDF for <span class="math inline">\(G\)</span>
+is given by</p>
+<p><span class="math display">\[\begin{align*}
+F_G(x) &amp;= P(G\le x) = P(X_{(1)}/\theta\le x) \\
+&amp;= P(X_{(1)}\ge \theta x) \\
+&amp;= \prod_{i=1}^nP(X_i\ge \theta x) \\
+&amp;= x^n,\ 0&lt; x&lt; 1.
+\end{align*}\]</span></p>
+<p>Let <span class="math inline">\(a,b\in \mathbb{R}\)</span> such that <span class="math inline">\(P(a\le G\le b)=1-\alpha\)</span>. Then the CI for <span class="math inline">\(\theta\)</span> is</p>
+<p><span class="math display">\[CI=\left[\frac{X_{(1)}}{a},\frac{X_{(1)}}{b}\right].\]</span></p>
+<p>For simplicity, we take <span class="math inline">\(a,b\)</span> such that <span class="math inline">\(P(G\le a) = P(G\ge b) = \alpha/2\)</span>. This implies <span class="math inline">\(a = (\alpha/2)^{1/n},\ b= (1-\alpha/2)^{1/n}\)</span>.</p>
+<p>Or you can take <span class="math inline">\(P(G\le a) = \alpha,P(G\le b)=1\)</span> so that <span class="math inline">\(a=\alpha^{1/n}, b=1\)</span>.</p>
+<p>You can also other statistics, such as <span class="math inline">\(G=-2\log(\sum_{i=1}^n X_i/\theta)\)</span>. The answer is not unique.</p>
+<p>Form part (a), we have</p>
+<p><span class="math display">\[P_{\theta}\left(\theta\in CI\right) = 1-\alpha\ \forall\theta&lt;0.\]</span></p>
+<p>We therefore choose the rejection region</p>
+<p><span class="math display">\[W = \{\theta_0\notin CI\}.\]</span></p>
+<p>It is easy to see that <span class="math inline">\(P_{\theta_0}(\theta_0\notin CI) = \alpha\)</span>.</p>
+<p><strong>Part VII:</strong></p>
+<p>It is easy to see that</p>
+<p><span class="math display">\[\hat\sigma_L^2=\frac{S_e^2}{n},\]</span></p>
+<p>where <span class="math inline">\(S_e^2 = \sum_{i=1}^n(y_i-\hat\beta_0-\hat\beta_1x_i)^2\)</span>, and <span class="math inline">\(\hat\beta_0,\hat\beta_1\)</span> are the LSE for <span class="math inline">\(\beta_0,\beta_1\)</span>.
+It is known that <span class="math inline">\(S_e^2/\sigma^2\sim \chi^2(n-2)\)</span>. This gives
+<span class="math inline">\(E[S_e^2]=(n-2)\sigma^2\)</span> and <span class="math inline">\(Var[S_e^2] = 2(n-2)\sigma^4\)</span>.</p>
+<p>As a result, <span class="math inline">\(E[T_k] = kE[S_e^2/n]=\frac{k(n-2)}{n}\sigma^2\)</span>. If <span class="math inline">\(T_k\)</span> is unbiased, then <span class="math inline">\(k = n/(n-2)\)</span>.
+On the other hand,</p>
+<p><span class="math display">\[Var[T_k] = \frac{k^2}{n^2}Var[S_e^2] = \frac{2(n-2)k^2}{n^2}\sigma^4.\]</span></p>
+<p>The MSE of <span class="math inline">\(T_k\)</span> is given by</p>
+<p><span class="math display">\[\begin{align*}
+M(k) &amp;= E[(T_k-\sigma^2)^2] = (E[T_k]-\sigma^2)^2+Var[T_k]\\
+&amp;=\frac{(n-2)(k-1)^2+2}{n}\sigma^4
+\end{align*}\]</span></p>
+<p>whose minimum takes place at <span class="math inline">\(k=1\)</span>.</p>
+<p><strong>Part VIII:</strong></p>
+<p>(a). <span class="math inline">\(Y=X\beta\)</span>, the LSE is <span class="math inline">\(\hat\beta = (X^\top X)^{-1} X^\top Y\)</span>. It is requried that
+that <span class="math inline">\(\text{rank} (X) = p\)</span>.</p>
+<p>(b). <span class="math inline">\(\hat\epsilon = Y-X\hat \beta = Y-X(X^\top X)^{-1} X^\top Y=(I_n-P)Y\)</span></p>
+<p><span class="math display">\[\hat \epsilon^\top X = Y^\top (I_n-P)X = 0.\]</span></p>
+<p>As a result, we have <span class="math inline">\(\hat \epsilon^\top 1 = \sum_{i=1}^n \hat\epsilon_i=0\)</span>. We do not require any assumption on <span class="math inline">\(\epsilon_i\)</span>.</p>
+<p>(C). The test statistic is</p>
+<p><span class="math display">\[\begin{align*}
+F &amp;=\frac{S_R^2/(p-1)}{S_e^2/(n-p)}=\frac{R^2/(p-1)}{(1-R^2)/(n-p)}\\
+&amp;=\frac{0.95/2}{(1-0.95)/10}=95&gt;F_{0.95}(2,10)=4.1.
+\end{align*}\]</span></p>
+<p>We therefore reject the null.</p>
+</div>
+<div id="section-6.3" class="section level2">
+<h2><span class="header-section-number">6.3</span> 2019春季试卷</h2>
+<p>Part I: Each problem is worth 3 points.</p>
+<ol style="list-style-type: decimal">
+<li><p>Let <span class="math inline">\(X_1,\dots,X_{10}\)</span> be i.i.d. sample of <span class="math inline">\(X\sim \text{Exp}(1)\)</span>. If <span class="math inline">\(2\sum_{i=1}^{10} X_i\sim \chi^2(k)\)</span>, then the value of <span class="math inline">\(k\)</span> is __________</p></li>
+<li><p>What is the definition of Type I error?_______________________________</p></li>
+<li><p>Let <span class="math inline">\(T\sim t(10)\)</span>. It is known that <span class="math inline">\(P(T\le 1.8)=0.95\)</span>. Then
+<span class="math inline">\(F_{0.9}(1,10)=\)</span>___________</p></li>
+<li><p>If the <span class="math inline">\(95\%\)</span> confidence interval for the mean of a normally distributed population with known variance is <span class="math inline">\([1.2, 1.4]\)</span> based on a sample of size <span class="math inline">\(100\)</span>, how much larger a sample do you think you would need to halve the length
+of the confidence interval （该置信区间长度减半需要增加多少样本）? ____________</p></li>
+<li><p>Show one advantage of the maximum likelihood method compared to the method of moments. ___________________________</p></li>
+</ol>
+<hr />
+<p>Part II: Multiple-Choice Problems (ONLY one of the items is true). Each problem is worth 3 points.</p>
+<ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be i.i.d. sample of <span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>, where <span class="math inline">\(\mu,\sigma\)</span> are unknown parameters. Which one of the following is NOT a statistic. ( )</li>
+</ol>
+<p>A. <span class="math inline">\(X_1+X_2+\dots+X_n\)</span></p>
+<p>B. <span class="math inline">\(X_{(1)} = \min\{X_1,X_2,\dots,X_n\}\)</span></p>
+<p>C. <span class="math inline">\(\frac{\bar X-\mu}{\sigma/\sqrt{n}}\)</span></p>
+<p>D. <span class="math inline">\(g(\bar X)\)</span>, where <span class="math inline">\(g(\cdot)\)</span> is a given function over <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Consider the problem of testing</li>
+</ol>
+<p><span class="math display">\[H_0:\mu=0\ vs.\ H_1:\mu&gt;0.\]</span></p>
+<p>The power functions of four rejection regions are plotted below. Which one might be the uniformly most powerful (UMP) rejection region at the significance level <span class="math inline">\(\alpha = 0.05\)</span>? ( )</p>
+<p><img src="book_files/figure-html/unnamed-chunk-257-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Let <span class="math inline">\(X_1,\dots,X_n\)</span> <span class="math inline">\((n\ge 3)\)</span> be a smple of a Weibull population with denstiy</li>
+</ol>
+<p><span class="math display">\[f(x;k,\lambda)=\frac k\lambda\left(\frac{x}{\lambda}\right)^{k-1}e^{-(x/\lambda)^k}1\{x&gt; 0\},\]</span></p>
+<p>where <span class="math inline">\(k&gt;0,\lambda&gt;0\)</span> are unknown parameters. Which of following is a sufficient statistic for <span class="math inline">\(\theta=(k,\lambda)\)</span>? ( )</p>
+<p>A. <span class="math inline">\(T_1 = (X_1,\dots, X_n)\)</span></p>
+<p>B. <span class="math inline">\(T_2 = \prod_{i=1}^n X_i\)</span></p>
+<p>C. <span class="math inline">\(T_3 = \sum_{i=1}^n X_i^k\)</span></p>
+<p>D. <span class="math inline">\(T_4 = (\sum_{i=1}^n X_i^k, \prod_{i=1}^n X_i)\)</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Let <span class="math inline">\(\hat\beta_0,\hat\beta_1,\hat\beta_2\)</span> be the least squares estimators for the multiple linear model</li>
+</ol>
+<p><span class="math display">\[y_i = \beta_0+\beta_1x_{i1}+\beta_2x_{i2}+\epsilon_i,\]</span></p>
+<p>where <span class="math inline">\(\epsilon_i\stackrel{iid}{\sim}N(0,\sigma^2)\)</span>, <span class="math inline">\(i=1,\dots,n\)</span>. Which of the following statements is NOT true? ( )</p>
+<p>A. The estimators <span class="math inline">\(\hat\beta_0,\hat\beta_1,\hat\beta_2\)</span> are normally distributed.</p>
+<p>B. The estimators <span class="math inline">\(\hat\beta_0,\hat\beta_1,\hat\beta_2\)</span> are independent.</p>
+<p>C. <span class="math inline">\(\mathbb{E}[\hat\beta_i] = \beta_i,\ i=0,1,2\)</span>.</p>
+<p>D. <span class="math inline">\(\hat\beta_0-\hat\beta_1\)</span> is normally distributed.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Consider the multiple linear model <span class="math inline">\(Y = X\beta +\epsilon\)</span>, where <span class="math inline">\(X\)</span> is the <span class="math inline">\(n\times p\)</span> design matrix, <span class="math inline">\(\beta\)</span> is a vector of <span class="math inline">\(p\)</span> parameters, and the error <span class="math inline">\(\epsilon\sim N(0,\sigma^2 I_n)\)</span>. Let <span class="math inline">\(\hat\beta\)</span> be the least squares estimate of <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\hat Y = X\hat\beta\)</span>, <span class="math inline">\(\hat\epsilon = Y-\hat Y\)</span>, and <span class="math inline">\(S_e^2 = ||\hat\epsilon||^2=\sum_{i=1}^n \hat\epsilon_i^2\)</span>. Which of following statements is true? ( )</li>
+</ol>
+<p>A. <span class="math inline">\(\frac{S_e^2}{\sigma^2}\sim \chi^2(n)\)</span></p>
+<p>B. <span class="math inline">\(S_e^2\)</span> is independent of the length of <span class="math inline">\(\hat\beta\)</span>, i.e., <span class="math inline">\(||\hat\beta||\)</span>.</p>
+<p>C. <span class="math inline">\(\hat\beta\sim N(\beta,\sigma^2 X^\top X)\)</span></p>
+<p>D. <span class="math inline">\(\sqrt{S_e^2/(n-p)}\)</span> is an unbiased estimate of <span class="math inline">\(\sigma\)</span>.</p>
+<hr />
+<p>Part III. (15 points)</p>
+<p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be i.i.d. sample of <span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>, where <span class="math inline">\(\mu\in\mathbb{R}\)</span> and <span class="math inline">\(\sigma&gt;0\)</span>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>If <span class="math inline">\(\sigma\)</span> is known, find a <span class="math inline">\(1-\alpha\)</span> confidence interval (CI) for <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\sigma\)</span> is unknown, find a <span class="math inline">\(1-\alpha\)</span> CI for <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Would you use the CI established in Part (b) if you were able to get the value of <span class="math inline">\(\sigma\)</span>? Why?</p></li>
+</ol>
+<hr />
+<p>Part IV. (10 points)</p>
+<p>For a random sample of size <span class="math inline">\(n\)</span> from a population <span class="math inline">\(X\)</span>, consider the following as an estimate of <span class="math inline">\(\theta=\mathbb{E}[X]\)</span>:</p>
+<p><span class="math display">\[\hat\theta = \sum_{i=1}^n c_i X_i,\]</span></p>
+<p>where <span class="math inline">\(c_i\)</span> are fixed numbers and <span class="math inline">\(X_1,\dots,X_n\)</span> is i.i.d. sample.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Find a condition on the <span class="math inline">\(c_i\)</span> such that the estimate is unbiased.</p></li>
+<li><p>Show that the choice of <span class="math inline">\(c_i\)</span> that minimizes the mean squared errors (MSEs) of the estimate subject
+to the condition in Part (a) is <span class="math inline">\(c_i = 1/n\)</span>, where <span class="math inline">\(i=1,\dots,n\)</span>.</p></li>
+</ol>
+<hr />
+<p>Part V. (10 points)</p>
+<p>Suppose that <span class="math inline">\(X\)</span> is a discrete random variable with
+<span class="math display">\[P(X=1) = (1-\theta)^2,\ P(X=2) = 2\theta(1-\theta),\ P(X=3)=\theta^2,\]</span>
+where <span class="math inline">\(\theta\in(0,1)\)</span>. Now a total of <span class="math inline">\(100\)</span> independent observations of <span class="math inline">\(X\)</span> are made with the following frequencies:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Case</th>
+<th align="center"><span class="math inline">\(X=1\)</span></th>
+<th align="center"><span class="math inline">\(X=2\)</span></th>
+<th align="center"><span class="math inline">\(X=3\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Frequency</td>
+<td align="center">70</td>
+<td align="center">10</td>
+<td align="center">20</td>
+</tr>
+</tbody>
+</table>
+<p>What is the maximum likelihood estimate of <span class="math inline">\(\theta\)</span>?</p>
+<hr />
+<p>Part VI. (10 points)</p>
+<p>Write down the Neyman-Pearson (N-P) Lemma and prove it.</p>
+<hr />
+<p>Part VII. (10 points)</p>
+<p>There are 37 blood alcohol determinations made by Analyzer GTE-10, a three-year-old unit that may be in need of recalibration （校准）.
+All 37 measurements were made using a test sample on which a properly adjusted machine would give a reading of <span class="math inline">\(12.6\%\)</span>. Based on the data, the sample mean <span class="math inline">\(\bar x = 12.7\%\)</span> and the sample standard deviation <span class="math inline">\(s = 0.6\%\)</span>.
+(<span class="math inline">\(t_{0.975}(36)=2.028, t_{0.975}(37)=2.026, t_{0.95}(36)=1.688, t_{0.95}(37)=1.687, u_{0.975}=1.960, u_{0.95}=1.645\)</span>)</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Would you recommend that the machine should be readjusted （重新调整） at the level of significance <span class="math inline">\(\alpha = 0.05\)</span>?</p></li>
+<li><p>What is the p-value of your test? (Suppose that the CDFs of the standard normal, t, <span class="math inline">\(\chi^2\)</span>, F distributions are known. You can use them whenever you need.)</p></li>
+<li><p>What assumptions are made when conducting the test?</p></li>
+</ol>
+<hr />
+<p>Part VIII. (15 points)</p>
+<p>Suppose that in the model</p>
+<p><span class="math display">\[y_i= \beta_0+\beta_1x_i+\epsilon_i,\ i=1,\dots,n,\]</span></p>
+<p>the errors <span class="math inline">\(\epsilon_i\)</span> have mean zero and are uncorrelated, but <span class="math inline">\(\mathrm{Var}(\epsilon_i) = \rho_i^2\sigma^2\)</span>, where
+the <span class="math inline">\(\rho_i&gt;0\)</span> are known constants, so the errors do not have equal vairance. Because the
+variances are not equal, the theory developed in our class does not apply.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Try to transform suitably the model such that the basic assumptions (i.e., the errors have zero mean and equal variance, and are uncorrelated) of the standard statistical
+model are satisfied.</p></li>
+<li><p>Find the least squares estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> for the transformed model.</p></li>
+<li><p>Find the variances of the estimates of Part (b).</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
