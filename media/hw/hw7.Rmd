@@ -2,23 +2,25 @@
 title: "Homework 7"
 author: "Put your name and student ID here"
 date: "`r format(Sys.Date())`"
-CJKmainfont: SimSun
 output:
-  pdf_document: 
+  pdf_document:
     includes:
       header-includes:
-        - \usepackage{xeCJK}
-        - \usepackage{amsmath}
-        - \usepackage{listings}
-        - \usepackage{amsfonts}
-        - \usepackage{amssymb}
+      - \usepackage{xeCJK}
+      - \usepackage{amsmath}
+      - \usepackage{listings}
+      - \usepackage{amsfonts}
+      - \usepackage{amssymb}
     keep_tex: yes
     latex_engine: xelatex
+  html_document:
+    df_print: paged
+CJKmainfont: SimSun
 ---
 
 
-**Q1**: Let $X_1,\dots,X_n$ be an iid sample of Poisson distribution with parameter $\lambda$. Which of the following are
-unbiased estimates of $\lambda$? (    ) 多选
+**Q1(多选)**: Let $X_1,\dots,X_n$ be an iid sample of Poisson distribution with parameter $\lambda$. Which of the following are
+unbiased estimates of $\lambda$? (    ) 
 
 A. $\bar X$
 
@@ -31,7 +33,11 @@ D. $S_n^2$
 
 **Q2**: Let $X_1,\dots,X_n$ be an iid  sample of $N(\mu,\sigma^2)$, where $\mu,\sigma$ are unknown parameters. Let $T_k=k\sum_{i=1}^n(X_i-\bar X)^2$ be an estimator of $\sigma^2$. Particularly, when $k=1/n$, $T_k=S_n^2$, and when $k=1/(n-1)$, $T_k=S_n^{*2}$. Find a value of $k$ such that $T_k$ is the most efficient one by taking account of MSE.
 
-**Q3**: Let $X_1,\dots,X_n$ be a simple random sample taken from the density
+**Q3**: Let $X_1,\dots,X_n$ be a simple random sample of the population $X$ with $\mu_k = E[(X-E[X])^k]$. Prove that
+$$\mathrm{Var}[S_n^{*2}]= \frac{\mu_4}{n}-\frac{(n-3)\mu_2^2}{n(n-1)}.$$
+Hint: Replace $X_i$ with $Y_i=X_i-E[X]$ in $S_n^{*2}$ and then do  the calculation using moments of $Y_i$. 
+
+**Q4**: Let $X_1,\dots,X_n$ be a simple random sample taken from the density
 
 $$f(x;\theta)=\frac{2x}{\theta^2},\quad 0\le x\le \theta.$$
 
