@@ -84,7 +84,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2021-04-12}
+    \date{2021-04-13}
 
 
 \begin{document}
@@ -112,8 +112,8 @@ efficient one by taking account of MSE.
 \textbf{Q3}: Let \(X_1,\dots,X_n\) be a simple random sample of the
 population \(X\) with \(\mu_k = E[(X-E[X])^k]\). Prove that
 \[\mathrm{Var}[S_n^{*2}]= \frac{\mu_4}{n}-\frac{(n-3)\mu_2^2}{n(n-1)}.\]
-Hint: Replace \(X_i\) with \(Y_i=X_i-E[X]\) in \(S_n^{*2}\) and then do
-the calculation using moments of \(Y_i\).
+Hint: Replace \(X_i\) with \(Y_i=X_i-E[X_i]\) in \(S_n^{*2}\) and then
+do the calculation using moments of \(Y_i\).
 
 \textbf{Q4}: Let \(X_1,\dots,X_n\) be a simple random sample taken from
 the density
@@ -136,7 +136,7 @@ the density
   \(\hat\theta_M\).
 \end{enumerate}
 
-\textbf{Q4}: Suppose that \(X_1,\dots,X_n\) is an iid sample from the
+\textbf{Q5}: Suppose that \(X_1,\dots,X_n\) is an iid sample from the
 exponential density, \(f(x)=\lambda e^{-\lambda x},x>0\), and
 \(\lambda>0\).
 
@@ -149,21 +149,21 @@ exponential density, \(f(x)=\lambda e^{-\lambda x},x>0\), and
   \(\lambda\).
 \end{enumerate}
 
-\textbf{Q5}: Suppose that the population \(X\) has a density
+\textbf{Q6}: Suppose that the population \(X\) has a density
 \(f(x;\theta)\), where \(\theta\in (a,b)\). The Fisher information is
 defined by \(I(\theta) = E[(\frac{d}{d\theta}\ln f(X;\theta))^2]\). If
 \(\int_R\frac{d^2}{d\theta^2} f(x;\theta)d x = \frac{d^2}{d\theta^2}\int_R f(x;\theta)d x\)
 holds, prove that
 \[I(\theta)= -E\left[\frac{d^2}{d\theta^2} \ln f(X;\theta)\right].\]
 
-\textbf{Q6}: Suppose that the population \(X\) follows a Poisson
+\textbf{Q7}: Suppose that the population \(X\) follows a Poisson
 distribution with parameter \(\lambda>0\), and \(X_1,\dots, X_n\) is iid
 sample of \(X\).
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Use the two formulas in Q5 to compute the Fisher information
+  Use the two formulas in Q6 to compute the Fisher information
   \(I(\lambda)\) (where \(f(x;\theta)\) refers to the probability mass
   function (PMF) of the Poisson distribution \(X\) for this case) and
   see whether they are the same.
