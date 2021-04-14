@@ -50,11 +50,12 @@ $$f(x;\theta)=\frac{2x}{\theta^2},\quad 0\le x\le \theta.$$
 4. Inspecting the consistency of the estimators $\hat\theta_L$ and $\hat\theta_M$.
 
 
-**Q5**: Suppose that $X_1,\dots,X_n$ is an iid sample from the exponential density, $f(x)=\lambda e^{-\lambda x},x>0$, and $\lambda>0$.
+**Q5**: Let $X_1,\dots,X_n$ be i.i.d. sample of $N(\mu,\sigma^2)$, where $\sigma^2$ is known. 
 
-(a) Show that $\hat\lambda_n=X_1$ is not consistent for $\lambda$.
 
-(b) Show that $\hat\lambda_n=X_1+\dots+X_n$ is not consistent for $\lambda$.
+(a). Show that $T(X_1,\dots,X_n) = (\bar X)^2-\sigma^2/n$ is an unbiased estimator for $\mu^2$.
+
+(b). Inspecting whether the variance of $T(X_1,\dots,X_n)$ attains the Cramer-Rao lower bound.
 
 **Q6**: Suppose that the population $X$ has a density $f(x;\theta)$, where $\theta\in (a,b)$. The Fisher information is defined by $I(\theta) = E[(\frac{d}{d\theta}\ln f(X;\theta))^2]$. If $\int_R\frac{d^2}{d\theta^2} f(x;\theta)d x = \frac{d^2}{d\theta^2}\int_R f(x;\theta)d x$ holds, prove that $$I(\theta)= -E\left[\frac{d^2}{d\theta^2} \ln f(X;\theta)\right].$$
 
