@@ -45,9 +45,8 @@ $$f(x;\theta)=\frac{2x}{\theta^2},\quad 0\le x\le \theta.$$
 
 2. Find an expression for $\hat\theta_M$, the method of moments estimator for $\theta$.
 
-3. For the two estimators $\hat\theta_L$ and $\hat\theta_M$, which one is more efficient in terms of MSE?
+3. For the two estimators $\hat\theta_L$ and $\hat\theta_M$, which one is better in terms of MSE?
 
-4. Inspecting the consistency of the estimators $\hat\theta_L$ and $\hat\theta_M$.
 
 
 **Q5**: Let $X_1,\dots,X_n$ be i.i.d. sample of $N(\mu,\sigma^2)$, where $\sigma^2$ is known. 
