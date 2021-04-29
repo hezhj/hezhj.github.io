@@ -30,28 +30,20 @@ output:
 (c) Now suppose that $F(x)=1-\exp(-\lambda x)$ for $x>0$ and $0$ otherwise. Inspecting whether the variance of $\hat F_n(x)$ attains the lower bound of Cramer-Rao inequality for estimating $F(x)$ with fixed $x>0$. (In fact, there exists a better unbiased estimator for $F(x)$ than the empirical CDF for this case.)
 
 
+**Q4**: 两个样本比较问题（开放性题目）
 
-**Q4**: True or false, and state why:
+两个样本比较是统计中很常见的问题。如，比较男生和女生的某些指标（身高、体重、考试成绩等）；在医学上，为了验证某药物的效果，需要比较实验组（服用药物）和对照组（没有服用药物）的差异性。两样本问题数不胜数。为了方便比较，我们经常做出这样的假设：两个样本所属的总体为独立的正态总体。在课上，我们讨论了两个独立正态总体均值差异和方差差异，给出相应的点估计和区间估计。你的任务如下：
 
-1. The significance level of a statistical test is equal to the probability that the
-null hypothesis is true.
-2. If the significance level of a test is decreased, the power of the test would be expected to
-increase.
-3. The probability that the null hypothesis is falsely rejected is equal to the power
-of the test.
-4. A type I error occurs when the test statistic falls in the rejection region of the
-test.
-
-
-**Q5**: A coin is thrown independently 10 times to test the hypothesis that the probability of heads is $1/2$ versus the alternative that the probability is not $1/2$. The test rejects
-if either 0 or 10 heads are observed.
-
-1. What is the significance level of the test?
-2. If in fact the probability of heads is $0.1$, what is the power of the test?
+1. 根据感兴趣的应用背景，自选两样本数据。这些数据可以通过发放调查问卷得到，也可以使用已有的数据。如果是通过调查问卷获得，需要说明问卷的内容和调查的对象等信息。如果是使用已有的数据，需要引用数据的来源以及说明该数据的相关背景。
+2. 描述性数据分析：通过图表等方式比较两样本数据，比如箱线图、密度直方图/核估计等
+3. 异常数据处理（如有）
+4. 正态性假设的验证：通过观察密度估计图像，判断是否能够用正态假设进行分析
+5. 分别求出每个总体的均值和方差的点估计和95%置信区间（需要说明你所用到的假设）
+6. 分别求出均值差和方差比的点估计和95%置信区间（需要说明你所用到的假设）
+7. 基于上述分析得出你的结论：回答这两个样本是否存在差异，并由此能得到什么有价值的信息。比如，你正在比较实验组（服用药物）和对照组（没有服用药物）的差异性，如果发现这两个样本没有差异，则或许可以说明该药物对治疗没有效果。
 
 
-**Q6**: Suppose that $X_1,X_2,X_3$ are samples of Bernoulli $B(1,p)$ population. For testing the hypothesis $H_0:p=1/2\ vs.\ H_1:p=3/4$, we use a rejection region:
-$$W=\{(x_1,x_2,x_3):x_1+x_2+x_3\ge 2\}.$$
+PS: 如果实在找不到合适的数据，可以使用R package `dslabs` 中的身高数据“heights” (in inches).
 
-1. What are the probabilities of the two types of errors for $W$?
-2. What is the power of the test? 
+
+
