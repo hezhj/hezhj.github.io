@@ -16,20 +16,42 @@ output:
     latex_engine: xelatex
 ---
 
+**Q1**: True or false, and state why:
 
-**Q1**: Let $X_1,\dots,X_n$ be an iid sample of $N(\mu,\sigma^2)$, where $\mu$ is known. Show that this model has a monotone likelihood ratio. Given a significance level $\alpha$, derive a UMP test of the following hypotheses:
+1. The significance level of a statistical test is equal to the probability that the
+null hypothesis is true.
+2. If the significance level of a test is decreased, the power of the test would be expected to
+increase.
+3. The probability that the null hypothesis is falsely rejected is equal to the power
+of the test.
+4. A type I error occurs when the test statistic falls in the rejection region of the
+test.
+
+
+**Q2**: A coin is thrown independently 10 times to test the hypothesis that the probability of heads is $1/2$ versus the alternative that the probability is not $1/2$. The test rejects
+if either 0 or 10 heads are observed.
+
+1. What is the significance level of the test?
+2. If in fact the probability of heads is $0.1$, what is the power of the test?
+
+
+**Q3**: Suppose that $X_1,X_2,X_3$ are samples of Bernoulli $B(1,p)$ population. For testing the hypothesis $H_0:p=1/2\ vs.\ H_1:p=3/4$, we use a rejection region:
+$$W=\{(x_1,x_2,x_3):x_1+x_2+x_3\ge 2\}.$$
+
+
+**Q4**: Let $X_1,\dots,X_n$ be an iid sample of $N(\mu,\sigma^2)$, where $\mu$ is known. Show that this model has a monotone likelihood ratio. Given a significance level $\alpha$, derive a UMP test of the following hypotheses:
 $$H_0:\sigma^2 \ge \sigma_0^2\ vs.\ H_1:\sigma^2<\sigma_0^2;$$
 $$H_0:\sigma^2 \le \sigma_0^2\ vs.\ H_1:\sigma^2>\sigma_0^2.$$
 
-**Q2**: Let $X_1,\dots,X_n$ be an iid sample of the double exponential distribution with PDF $f(x) = \frac 12\lambda\exp(-\lambda|x|)$, where $\lambda>0$ is unknown. Show that this model has a monotone likelihood ratio. Given a significance level $\alpha$, derive a UMP test of the following hypotheses:
+**Q5**: Let $X_1,\dots,X_n$ be an iid sample of the double exponential distribution with PDF $f(x) = \frac 12\lambda\exp(-\lambda|x|)$, where $\lambda>0$ is unknown. Show that this model has a monotone likelihood ratio. Given a significance level $\alpha$, derive a UMP test of the following hypotheses:
 $$H_0:\lambda \ge \lambda_0\ vs.\ H_1:\lambda < \lambda_0;$$
 $$H_0:\lambda \le \lambda_0\ vs.\ H_1:\lambda > \lambda_0.$$
 
 
-**Q3**: Under the setting of Q2, derive a test (not necessarily UMP) of the two-sided hypothesis
+**Q6**: Under the setting of Q5, derive a test (not necessarily UMP) of the two-sided hypothesis
 $$H_0:\lambda =\lambda_0\ vs.\ H_1:\lambda \neq \lambda_0$$
 for a given level of significance $\alpha$.
 
-**Q4**: Under the setting of Q2, derive a UMP test of the hypothesis
+**Q7**: Under the setting of Q5, derive a UMP test of the hypothesis
 $$H_0:\lambda > \lambda_0\ vs.\ H_1:\lambda \le \lambda_0$$
-for a given level of significance $\alpha$. (Hint:  prove that the result in Q2 is also UMP for this case)
+for a given level of significance $\alpha$. (Hint:  prove that the result in Q5 is also UMP for this case)

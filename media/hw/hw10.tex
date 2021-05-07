@@ -84,20 +84,59 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-11-11}
+    \date{2021-05-07}
 
 
 \begin{document}
 \maketitle
 
-\textbf{Q1}: Let \(X_1,\dots,X_n\) be an iid sample of
+\textbf{Q1}: True or false, and state why:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The significance level of a statistical test is equal to the
+  probability that the null hypothesis is true.
+\item
+  If the significance level of a test is decreased, the power of the
+  test would be expected to increase.
+\item
+  The probability that the null hypothesis is falsely rejected is equal
+  to the power of the test.
+\item
+  A type I error occurs when the test statistic falls in the rejection
+  region of the test.
+\end{enumerate}
+
+\textbf{Q2}: A coin is thrown independently 10 times to test the
+hypothesis that the probability of heads is \(1/2\) versus the
+alternative that the probability is not \(1/2\). The test rejects if
+either 0 or 10 heads are observed.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What is the significance level of the test?
+\item
+  If in fact the probability of heads is \(0.1\), what is the power of
+  the test?
+\end{enumerate}
+
+\textbf{Q3}: Suppose that \(X_1,X_2,X_3\) are samples of Bernoulli
+\(B(1,p)\) population. For testing the hypothesis
+\(H_0:p=1/2\ vs.\ H_1:p=3/4\), we use a rejection region:
+\[W=\{(x_1,x_2,x_3):x_1+x_2+x_3\ge 2\}.\]
+
+\textbf{Q4}: Let \(X_1,\dots,X_n\) be an iid sample of
 \(N(\mu,\sigma^2)\), where \(\mu\) is known. Show that this model has a
 monotone likelihood ratio. Given a significance level \(\alpha\), derive
 a UMP test of the following hypotheses:
 \[H_0:\sigma^2 \ge \sigma_0^2\ vs.\ H_1:\sigma^2<\sigma_0^2;\]
 \[H_0:\sigma^2 \le \sigma_0^2\ vs.\ H_1:\sigma^2>\sigma_0^2.\]
 
-\textbf{Q2}: Let \(X_1,\dots,X_n\) be an iid sample of the double
+\textbf{Q5}: Let \(X_1,\dots,X_n\) be an iid sample of the double
 exponential distribution with PDF
 \(f(x) = \frac 12\lambda\exp(-\lambda|x|)\), where \(\lambda>0\) is
 unknown. Show that this model has a monotone likelihood ratio. Given a
@@ -105,15 +144,15 @@ significance level \(\alpha\), derive a UMP test of the following
 hypotheses: \[H_0:\lambda \ge \lambda_0\ vs.\ H_1:\lambda < \lambda_0;\]
 \[H_0:\lambda \le \lambda_0\ vs.\ H_1:\lambda > \lambda_0.\]
 
-\textbf{Q3}: Under the setting of Q2, derive a test (not necessarily
+\textbf{Q6}: Under the setting of Q5, derive a test (not necessarily
 UMP) of the two-sided hypothesis
 \[H_0:\lambda =\lambda_0\ vs.\ H_1:\lambda \neq \lambda_0\] for a given
 level of significance \(\alpha\).
 
-\textbf{Q4}: Under the setting of Q2, derive a UMP test of the
+\textbf{Q7}: Under the setting of Q5, derive a UMP test of the
 hypothesis \[H_0:\lambda > \lambda_0\ vs.\ H_1:\lambda \le \lambda_0\]
 for a given level of significance \(\alpha\). (Hint: prove that the
-result in Q2 is also UMP for this case)
+result in Q5 is also UMP for this case)
 
 
 \end{document}
