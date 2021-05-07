@@ -38,6 +38,9 @@ if either 0 or 10 heads are observed.
 **Q3**: Suppose that $X_1,X_2,X_3$ are samples of Bernoulli $B(1,p)$ population. For testing the hypothesis $H_0:p=1/2\ vs.\ H_1:p=3/4$, we use a rejection region:
 $$W=\{(x_1,x_2,x_3):x_1+x_2+x_3\ge 2\}.$$
 
+1. What are the probabilities of the two types of errors for $W$?
+2. What is the power of the test? 
+
 
 **Q4**: Let $X_1,\dots,X_n$ be an iid sample of $N(\mu,\sigma^2)$, where $\mu$ is known. Show that this model has a monotone likelihood ratio. Given a significance level $\alpha$, derive a UMP test of the following hypotheses:
 $$H_0:\sigma^2 \ge \sigma_0^2\ vs.\ H_1:\sigma^2<\sigma_0^2;$$
