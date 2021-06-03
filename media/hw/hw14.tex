@@ -31,47 +31,6 @@
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -125,40 +84,63 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-12-09}
+    \date{2021-06-03}
 
 
 \begin{document}
 \maketitle
 
-\textbf{Q1}: Consider the multiple linear regression model \[
-\boldsymbol{Y} = \boldsymbol{X}\boldsymbol {\beta} + \boldsymbol\epsilon,
-\] where \(\boldsymbol Y=(y_1,\dots,y_n)^\top\),
-\(\boldsymbol\beta=(\beta_0,\dots,\beta_{p-1})^\top\), \(\boldsymbol X\)
-is the \(n\times p\) design matrix, and
-\(\boldsymbol\epsilon=(\epsilon_1,\dots,\epsilon_n)^\top\). Assume that
-\(\mathrm{rank}(X)=p<n\), \(E[\boldsymbol\epsilon]=\boldsymbol 0\), and
-\(\mathrm{Var}[\boldsymbol\epsilon]= \sigma^2 I_n\) with \(\sigma>0\).
+\textbf{Q1}: Let us consider fitting a straight line,
+\(y = \beta_0+\beta_1x\), to points \((x_i,y_i)\), where
+\(i=1,\dots,n\).
 
-(a). Show that the covariance matrix of the least squares estimates is
-diagonal if and only if the columns of \(\boldsymbol{X}\),
-\(\boldsymbol{X}_1,\dots,\boldsymbol{X}_p\), are orthogonal, that is
-\(\boldsymbol{X}_i^\top \boldsymbol{X}_j=0\) for \(i\neq j\).
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Write down the normal equations for the simple linear model via the
+  matrix formalism.
+\item
+  Solve the normal equations by the matrix approach and see whether the
+  solutions agree with the earlier calculation derived in the simple
+  linear models.
+\end{enumerate}
 
-(b). Let \(\hat y_i\) and \(\hat\epsilon_i\) be the fitted values and
-the residuals, respectively. Show that
-\(n\sigma^2 = \sum_{i=1}^n \mathrm{Var}[\hat y_i]+\sum_{i=1}^n\mathrm{Var}[\hat\epsilon_i]\).
+\textbf{Q2}: Consider fitting the curve \(y = \beta_0x+\beta_1x^2\) to
+points (\(x_i,y_i\)), where \(i = 1,\dots,n\).
 
-(c). Suppose further that
-\(\boldsymbol\epsilon\sim N(\boldsymbol 0,\sigma^2 I_n)\), and you use F
-test to handle the hypothesis
-\[H_0: \beta_1=\beta_2=\dots=\beta_{p-1}=0\ vs.\ H_1:\sum_{i=1}^{p-1} \beta_i^2\neq0.\]
-If the coefficient of determination \(R^2=0.58\), \(p = 5\) and
-\(n=15\), is the null rejected at the significance level
-\(\alpha =0.05\)?
-(\(F_{0.95}(4,10)=3.48,F_{0.95}(5,10)=3.33,t_{0.95}(10)=1.81\))
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use the matrix formalism to find expressions for the least squares
+  estimates of \(\beta_0\) and \(\beta_1\).
+\item
+  Find an expression for the covariance matrix of the estimates.
+\end{enumerate}
 
-\textbf{Q2}: Consider the multiple linear model
+\textbf{Q3}: Suppose that in the model
+
+\[y_i= \beta_0+\beta_1x_i+\epsilon_i,\ i=1,\dots,n,\]
+
+the errors \(\epsilon_i\) have mean zero and are uncorrelated, but
+\(\mathrm{Var}(\epsilon_i) = \rho_i^2\sigma^2\), where the \(\rho_i>0\)
+are known constants, so the errors do not have equal variance. Because
+the variances are not equal, the theory developed in our class does not
+apply.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Try to transform suitably the model such that the basic assumptions
+  (i.e., the errors have zero mean and equal variance, and are
+  uncorrelated) of the standard statistical model are satisfied.
+\item
+  Find the least squares estimates of \(\beta_0\) and \(\beta_1\) for
+  the transformed model.
+\item
+  Find the variances of the estimates of Part (b).
+\end{enumerate}
+
+\textbf{Q4}: Consider the multiple linear model
 \(Y = X\beta +\epsilon\), where \(X\) is the \(n\times p\) design
 matrix, \(\beta=(\beta_0,\dots,\beta_{p-1})^\top\) is a vector of \(p\)
 parameters, and the error \(\epsilon\sim N(0,\sigma^2 I_n)\). Now
@@ -185,16 +167,7 @@ squares estimate of \(\beta\). Let
   estimator for \(\theta\).)
 \end{enumerate}
 
-\textbf{Q3}: Consider the simple linear model
-
-\[y_i= \beta_0+\beta_1x_i+\epsilon_i,\ \epsilon_i\stackrel{iid}{\sim} N(0,\sigma^2).\]
-
-Use the F-test method derived in the multiple linear model to test the
-hypothesis \(H_0:\beta_1=0\ vs.\ H_1:\beta_1\neq 0\), and see whether
-the F-test agrees with the earlier t-test derived in the simple linear
-models.
-
-\textbf{Q4}: Consider the linear model in matrix formalism
+\textbf{Q5}: Consider the linear model in matrix formalism
 
 \[
 \boldsymbol{Y} = \boldsymbol{X}\boldsymbol {\beta} + \boldsymbol\epsilon,
@@ -223,57 +196,6 @@ with unknown \(\sigma>0\). Assume that
   unique. Find an unbiased estimate of \(\sigma^2\) and show its
   variance.
 \end{enumerate}
-
-\textbf{Q5}:
-这是一份1994年收集1379个对象关于收入(earn)、身高(height，单位：英寸)、性别(sex)、教育水平(ed，单位：年)、年龄(age)等信息的数据集。下面展示\textbf{前6组数据(不是完整数据)}。
-
-\begin{longtable}[]{@{}rrllrr@{}}
-\toprule
-earn & height & sex & race & ed & age\tabularnewline
-\midrule
-\endhead
-79571.30 & 73.89 & male & white & 16 & 49\tabularnewline
-96396.99 & 66.23 & female & white & 16 & 62\tabularnewline
-48710.67 & 63.77 & female & white & 16 & 33\tabularnewline
-80478.10 & 63.22 & female & other & 16 & 95\tabularnewline
-82089.35 & 63.08 & female & white & 17 & 43\tabularnewline
-15313.35 & 64.53 & female & white & 15 & 30\tabularnewline
-\bottomrule
-\end{longtable}
-
-根据完整的数据集:
-\url{http://www.hezhijian.com.cn/hw/wages.csv}，建立回归模型探索收入与其他变量之间的关系.
-根据回归的结果回答以下问题:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  长的越高的人挣钱越多？男性是否比女性挣得多？是否年龄越大挣得越多？高学历是不是挣得更多？
-\item
-  请根据你自己的个人数据预测下你在未来不同年龄段收入的置信区间和预测区间。PS:
-  这里身高单位为英寸（1厘米=0.3937008英寸），教育年长是指你一共读了多少年的书（不算幼儿园时间,例如大部分大三学生读书时间=\(6+3+3+3=15\),
-  当然留级或者跳级除外.）。
-\end{enumerate}
-
-在R中你可以这样导入数据:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{wages <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\KeywordTok{url}\NormalTok{(}\StringTok{'http://www.hezhijian.com.cn/hw/wages.csv'}\NormalTok{))}
-\KeywordTok{head}\NormalTok{(wages) }\CommentTok{# 展示前6行}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##       earn height    sex ed age
-## 1 79571.30  73.89   male 16  49
-## 2 96396.99  66.23 female 16  62
-## 3 48710.67  63.77 female 16  33
-## 4 80478.10  63.22 female 16  95
-## 5 82089.35  63.08 female 17  43
-## 6 15313.35  64.53 female 15  30
-\end{verbatim}
 
 
 \end{document}
